@@ -1,0 +1,20 @@
+{
+  "name": "Bao Predictions",
+  "short_name": "Bao",
+  "icons": [
+    {
+      "src": "/assets/img/logo-mark.png",
+      "sizes": "1024x1024",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/apple-touch-icon.png",
+      "sizes": "180x180",
+      "type": "image/png"
+    }
+  ],
+  "theme_color": "#153A5F",
+  "background_color": "#153A5F",
+  "display": "standalone"
+}

@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Weekend Football Predictions — Saturday &amp; Sunday Tips | Bao Predictions</title>
+  <meta name="description" content="Weekend football predictions for Saturday and Sunday fixtures, ranked by confidence for ticket planning. 18+ only.">
+  <link rel="canonical" href="https://www.baopredictions.com/weekend-football-predictions/">
+  <meta name="robots" content="index,follow">
+  <!--BAO_HEAD_EXTRA_START-->
+  <meta name="title" content="Weekend Football Predictions — Saturday &amp; Sunday Tips | Bao Predictions">
+  <meta name="keywords" content="weekend football predictions, saturday sunday tips">
+  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
+  <meta property="article:published_time" content="<?php echo date('c'); ?>">
+  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
+  <meta property="article:author" content="Bao Predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Weekend Football Predictions — Saturday &amp; Sunday Tips | Bao Predictions">
+  <meta name="twitter:description" content="Weekend football predictions for Saturday and Sunday fixtures, ranked by confidence for ticket planning. 18+ only.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/weekend-football-predictions/">
+  <!--BAO_HEAD_EXTRA_END-->
+  
+  <meta property="og:title" content="Weekend Football Predictions — Saturday &amp; Sunday Tips | Bao Predictions">
+  <meta property="og:description" content="Weekend football predictions for Saturday and Sunday fixtures, ranked by confidence for ticket planning. 18+ only.">
+  <meta property="og:url" content="https://www.baopredictions.com/weekend-football-predictions/">
+  <meta property="og:type" content="article">
+  <meta property="og:site_name" content="Bao Predictions">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
+    <script>
+  (function () {
+    try {
+      var t = localStorage.getItem('bao-theme');
+      if (!t) t = window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light';
+      document.documentElement.setAttribute('data-theme', t);
+    } catch (e) {}
+  })();
+  </script>
+  <link rel="stylesheet" href="/assets/css/main.css">
+<?php require __DIR__ . '/../components/favicon.php'; ?>
+</head>
+<body>
+    <?php require __DIR__ . '/../components/header.php'; ?>
+<main id="main">
+
+    
+
+
+
+
+
+
+
+<div class="wrap">
+  
+  <nav aria-label="Breadcrumb">
+  <ol class="breadcrumbs">
+    
+    <li>
+      
+      <a href="/">Home</a>
+      
+    </li>
+    
+    <li>
+      
+      <span aria-current="page">Weekend Football Predictions — 6–7 September 2026</span>
+      
+    </li>
+    
+  </ol>
+</nav>
+
+
+  <header class="page-hero">
+    <h1>Weekend Football Predictions</h1>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+<?php echo bao_rg_notice_html(); ?>
+
+<p class="lede">Saturday and Sunday leans in one place. Pair this page with the SportPesa Mega Jackpot sheet if you are filling a 17-fold.</p>
+  </header>
+</div>
+
+<section class="section-tight">
+  <div class="wrap wrap-wide">
+<div class="main-grid">
+<?php require __DIR__ . '/../components/sidebar.php'; ?>
+<div class="matches-area">
+
+<?php
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/weekend-football-predictions');
+if ($payload === null) {
+  echo bao_api_fail_msg();
+} elseif (empty($payload['games'])) {
+  echo bao_api_empty_msg('fixtures');
+} else {
+  echo bao_matches_html($payload['games'], ['title' => 'Weekend predictions']);
+}
+?>
+
+    
+
+    
+    
+    
+
+
+  
+  
+  </div><!-- /.matches-area -->
+</div><!-- /.main-grid -->
+</div>
+</section>
+<section class="section section-muted bao-writeup">
+  <div class="wrap prose">
+<p class="seo-unique">Planning ahead of matchday? Here are Saturday and Sunday fixtures grouped together so you can build weekend tickets without hopping between daily pages. Predictions are based on the latest team news available and will be reviewed again closer to kickoff.</p>
+
+<!--BAO_FEATURED_START-->
+<aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Saturday and Sunday in one place</p><p class="featured-text">Weekend fixtures grouped for ticket planning. Still re-check lineups Saturday morning — Friday tips can move.</p></aside>
+<!--BAO_FEATURED_END-->
+
+<p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Today</a> · <a href="/football-predictions-tomorrow">Tomorrow</a> · <a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></p>
+  </div>
+</section>
+
+
+
+<section class="section section-muted">
+  <div class="wrap prose">
+    <h2>Weekend focus</h2>
+    <p>Weekend cards reward patience: midday underdogs and evening favourites behave differently. We keep Saturday's London derbies toward unders/draws where form is flat, and load confidence into Sunday's clearer favourites once Saturday's results reshape the table narrative.</p>
+  </div>
+</section>
+
+
+<!--BAO_ARTICLE_START-->
+<section class="section section-muted seo-article-section"><div class="wrap"><article class="content-article prose"><header class="article-header"><h2 class="article-title">Building a weekend betting plan</h2></header><div class="article-content"><p>Weekend volume is higher. Prioritise sleepers with strong confidence, then fill jackpot cards from the weaker rows knowingly. Do not raise stakes just because more matches are on TV.</p></div></article></div></section>
+<!--BAO_ARTICLE_END-->
+<section class="section"><div class="wrap"><h2 class="section-title">Weekend Predictions FAQ</h2><ul class="faq-list"><li><details><summary>What days are included?</summary><p>Saturday and Sunday fixtures we cover that weekend.</p></details></li><li><details><summary>Can Friday tips move?</summary><p>Yes — re-check Saturday morning for lineups.</p></details></li><li><details><summary>How should I plan stakes?</summary><p>Do not raise stakes just because more matches are on TV. Prioritise higher confidence.</p></details></li><li><details><summary>Jackpots on weekends?</summary><p>Use the Jackpot hub and SportPesa Mega sheet alongside this page.</p></details></li><li><details><summary>Are tips free?</summary><p>Yes.</p></details></li><li><details><summary>18+?</summary><p>Yes — informational only.</p></details></li></ul></div></section>
+
+
+
+
+  </main>
+  <footer class="site-footer">
+  <div class="wrap">
+    <div class="footer-grid">
+      <div>
+        <h3>Predictions</h3>
+        <ul>
+          <li><a href="/football-predictions-today">Today</a></li>
+          <li><a href="/football-predictions-tomorrow">Tomorrow</a></li>
+          <li><a href="/football-predictions-yesterday">Yesterday</a></li>
+          <li><a href="/weekend-football-predictions">Weekend</a></li>
+          <li><a href="/must-win-teams-today">Must-Win</a></li>
+          <li><a href="/sure-bets-today">Sure Bets</a></li>
+          <li><a href="/accumulator-tips">Accumulators</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Markets</h3>
+        <ul>
+          <li><a href="/1x2-predictions">1X2</a></li>
+          <li><a href="/double-chance-predictions">Double Chance</a></li>
+          <li><a href="/over-under-predictions">Over/Under</a></li>
+          <li><a href="/btts-predictions">BTTS</a></li>
+          <li><a href="/ht-ft-predictions">HT/FT</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Jackpots</h3>
+        <ul>
+          <li><a href="/jackpot-predictions">All Jackpots</a></li>
+          <li><a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></li>
+          <li><a href="/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a></li>
+          <li><a href="/betika-midweek-jackpot-predictions">Betika Midweek</a></li>
+          <li><a href="/sportybet-daily-jackpot-predictions">SportyBet Daily</a></li>
+          <li><a href="/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Site</h3>
+        <ul>
+          <li><a href="/how-we-predict">How We Predict</a></li>
+          <li><a href="/results">Results</a></li>
+          <li><a href="/blog">Blog</a></li>
+          <li><a href="/about-us">About</a></li>
+          <li><a href="/faq">FAQ</a></li>
+          <li><a href="/contact-us">Contact</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Legal</h3>
+        <ul>
+          <li><a href="/responsible-betting">Responsible Betting</a></li>
+          <li><a href="/privacy-policy">Privacy Policy</a></li>
+          <li><a href="/terms-of-service">Terms of Service</a></li>
+        </ul>
+      </div>
+    </div>
+                    <div class="footer-disclaimer">
+      <p>Predictions are for informational purposes only and do not guarantee outcomes. Betting involves financial risk — please gamble responsibly and only with money you can afford to lose. Must be 18+ (or the legal age in your jurisdiction). If gambling is affecting your life, contact <a href="https://www.begambleaware.org/" rel="noopener noreferrer" target="_blank">BeGambleAware.org</a> or your local support service.</p>
+      <p>© <?php echo date('Y'); ?> Bao Predictions. All rights reserved.</p>
+    </div>
+  </div>
+</footer>
+<script src="/assets/js/timezone.js" defer></script>
+<script src="/assets/js/theme.js" defer></script>
+<!--BAO_SCHEMA_START-->
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_faq_schema(array (
+  0 => 
+  array (
+    'q' => 'What days are included?',
+    'a' => 'Saturday and Sunday fixtures we cover that weekend.',
+  ),
+  1 => 
+  array (
+    'q' => 'Can Friday tips move?',
+    'a' => 'Yes — re-check Saturday morning for lineups.',
+  ),
+  2 => 
+  array (
+    'q' => 'How should I plan stakes?',
+    'a' => 'Do not raise stakes just because more matches are on TV. Prioritise higher confidence.',
+  ),
+  3 => 
+  array (
+    'q' => 'Jackpots on weekends?',
+    'a' => 'Use the Jackpot hub and SportPesa Mega sheet alongside this page.',
+  ),
+  4 => 
+  array (
+    'q' => 'Are tips free?',
+    'a' => 'Yes.',
+  ),
+  5 => 
+  array (
+    'q' => '18+?',
+    'a' => 'Yes — informational only.',
+  ),
+)); echo bao_breadcrumb_schema(array (
+  0 => 
+  array (
+    'name' => 'Home',
+    'url' => '/',
+  ),
+  1 => 
+  array (
+    'name' => 'Weekend',
+    'url' => '/weekend-football-predictions',
+  ),
+)); echo bao_article_schema('Building a weekend betting plan', 'Weekend football predictions for Saturday and Sunday fixtures, ranked by confidence for ticket planning. 18+ only.', '/weekend-football-predictions'); echo bao_organization_schema(); ?>
+<!--BAO_SCHEMA_END-->
+</body>
+</html>

@@ -1,0 +1,4 @@
+<?php
+/**
+ * One-off rebuild helper is not needed — data rebuilt via Python below.
+ */

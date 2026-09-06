@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" role="img" aria-label="Bao Predictions">
+  <rect x="0" y="0" width="64" height="64" rx="10" fill="#153A5F"/>
+  <path d="M32 12 L48 44 H16 Z" fill="none" stroke="#D63B2D" stroke-width="3.2" stroke-linejoin="round"/>
+  <text x="32" y="42" text-anchor="middle" font-family="Arial Narrow, Arial, sans-serif" font-size="18" font-weight="700" fill="#E9EEF3">B</text>
+  <text x="78" y="42" font-family="Arial Narrow, Arial, sans-serif" font-size="28" font-weight="700" fill="#153A5F" letter-spacing="0.5">BAO</text>
+  <text x="148" y="42" font-family="Arial Narrow, Arial, sans-serif" font-size="28" font-weight="600" fill="#D63B2D" letter-spacing="0.5">PREDICTIONS</text>
+</svg>
