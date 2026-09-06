@@ -432,6 +432,7 @@ SQL;
 
     /**
      * Take the next $legs games from $pool (already priority-sorted), remove them from pool.
+     * Diversifies tip types so tickets are not all Home Win (or any single market).
      *
      * @param list<array<string,mixed>> $pool
      * @return array{0:list<array<string,mixed>>,1:list<array<string,mixed>>}|null
@@ -442,25 +443,38 @@ SQL;
             return null;
         }
 
-        // Prefer filling from main leagues first when possible
-        $main = [];
-        $rest = [];
-        foreach ($pool as $g) {
-            if ($this->leaguePriority($g) >= 70) {
-                $main[] = $g;
-            } else {
-                $rest[] = $g;
-            }
-        }
-
+        $maxSameCode = max(1, (int) ceil($legs / 2));
         $chosen = [];
-        $sources = [$main, $rest];
-        foreach ($sources as $src) {
-            foreach ($src as $g) {
+        $codeCounts = [];
+
+        // Pass 1: prefer main leagues with tip diversity
+        // Pass 2: any remaining with tip diversity
+        // Pass 3: fill without diversity if still short
+        for ($pass = 1; $pass <= 3; $pass++) {
+            foreach ($pool as $g) {
                 if (count($chosen) >= $legs) {
                     break 2;
                 }
+                $id = (int) ($g['fixture_id'] ?? 0);
+                foreach ($chosen as $c) {
+                    if ($id !== 0 && (int) ($c['fixture_id'] ?? 0) === $id) {
+                        continue 2;
+                    }
+                }
+
+                $prio = $this->leaguePriority($g);
+                if ($pass === 1 && $prio < 70) {
+                    continue;
+                }
+
+                $code = strtoupper((string) ($g['pick_code'] ?? $g['pick'] ?? ''));
+                $same = $codeCounts[$code] ?? 0;
+                if ($pass < 3 && $same >= $maxSameCode) {
+                    continue;
+                }
+
                 $chosen[] = $g;
+                $codeCounts[$code] = $same + 1;
             }
         }
 
@@ -1338,7 +1352,26 @@ SQL;
         $a = (int) ($row['percent_pred_away'] ?? 0);
 
         $max = max($h, $d, $a);
-        if ($max <= 0 || ($h === $max && $h >= $d && $h >= $a)) {
+        if ($max <= 0) {
+            // Missing model % — fall back to shortest 1X2 price, not a blind Home Win.
+            $oh = $this->oddFloat($row['bets_home'] ?? null) ?? 99.0;
+            $od = $this->oddFloat($row['bets_draw'] ?? null) ?? 99.0;
+            $oa = $this->oddFloat($row['bets_away'] ?? null) ?? 99.0;
+            $shortest = min($oh, $od, $oa);
+            if ($shortest >= 99.0) {
+                $code = '1';
+                $conf = 50;
+            } elseif ($oa === $shortest) {
+                $code = '2';
+                $conf = 50;
+            } elseif ($od === $shortest) {
+                $code = 'X';
+                $conf = 50;
+            } else {
+                $code = '1';
+                $conf = 50;
+            }
+        } elseif ($h === $max && $h >= $d && $h >= $a) {
             $code = '1';
             $conf = $h;
         } elseif ($a === $max && $a >= $h && $a >= $d) {

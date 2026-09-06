@@ -92,7 +92,7 @@ if ($payload === null) {
 } elseif (empty($payload['accumulators'])) {
   echo bao_api_empty_msg('accumulator tickets');
 } else {
-  echo bao_accumulators_html($payload['accumulators'], ['title' => 'Pre-built accumulator tips']);
+  echo bao_accumulators_html($payload['accumulators']);
 }
 ?>
 </div><!-- /.matches-area -->

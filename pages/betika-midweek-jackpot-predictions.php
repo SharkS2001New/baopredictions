@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Betika Midweek Jackpot Predictions | Bao Predictions</title>
   <meta name="description" content="Betika Midweek Jackpot tips for this round&#039;s fixtures. Always confirm live stake and bonus rules on Betika. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/jackpot-predictions/betika-midweek-jackpot-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/jackpots/betika-midweek-jackpot-predictions/">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Betika Midweek Jackpot Predictions | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Betika Midweek Jackpot Predictions | Bao Predictions">
   <meta name="twitter:description" content="Betika Midweek Jackpot tips for this round&#039;s fixtures. Always confirm live stake and bonus rules on Betika. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/betika-midweek-jackpot-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/betika-midweek-jackpot-predictions/">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Betika Midweek Jackpot Predictions | Bao Predictions">
   <meta property="og:description" content="Betika Midweek Jackpot tips for this round&#039;s fixtures. Always confirm live stake and bonus rules on Betika. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/jackpot-predictions/betika-midweek-jackpot-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/jackpots/betika-midweek-jackpot-predictions/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,8 +89,6 @@
 <div class="matches-area">
 <p>Betika&#39;s 15-game midweek list is lighter on European elite ties and heavier on domestic leagues — that shifts our confidence distribution toward clearer favourites.</p>
     <p class="text-muted">We treat Betika Midweek as a separate sheet from SportPesa Midweek. Overlap fixtures may share a lean, but confidence and order follow Betika&#39;s published list.</p>
-
-    <h2 class="section-title">Full Betika Midweek sheet</h2>
     <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/betika-midweek-jackpot-predictions');
@@ -99,7 +97,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => 'Betika Midweek Jackpot sheet']);
+  echo bao_matches_html($payload['games']);
 }
 ?>
   </div><!-- /.matches-area -->
@@ -112,7 +110,7 @@ if ($payload === null) {
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Betika Midweek — confirm live terms</p><p class="featured-text">Game count and stake have changed before. Our sheet follows this round&#039;s fixtures; always match stake and bonus rules on Betika before betting.</p></aside>
 <!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a> · <a href="/sportybet-daily-jackpot-predictions">SportyBet Daily</a> · <a href="/jackpot-predictions">Jackpot hub</a></p>
+<p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a> · <a href="/jackpots/sportybet-daily-jackpot-predictions">SportyBet Daily</a> · <a href="/jackpot-predictions">Jackpot hub</a></p>
   </div>
   <div class="wrap prose bao-seo-howto">
 <h2>How the Betika Midweek Jackpot works</h2>
@@ -179,9 +177,9 @@ if ($payload === null) {
   2 =>
   array (
     'name' => 'Betika Midweek',
-    'url' => '/betika-midweek-jackpot-predictions',
+    'url' => '/jackpots/betika-midweek-jackpot-predictions',
   ),
-)); echo bao_article_schema('Using Betika Midweek tips responsibly', 'Betika Midweek Jackpot tips for this round\'s fixtures. Always confirm live stake and bonus rules on Betika. 18+ only.', '/betika-midweek-jackpot-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_article_schema('Using Betika Midweek tips responsibly', 'Betika Midweek Jackpot tips for this round\'s fixtures. Always confirm live stake and bonus rules on Betika. 18+ only.', '/jackpots/betika-midweek-jackpot-predictions'); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

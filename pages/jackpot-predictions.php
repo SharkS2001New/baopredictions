@@ -113,7 +113,7 @@ if ($payload === null) {
   $countGames = (int) ($jpItem['count'] ?? 0);
 ?>
       <li>
-        <a href="/<?php echo htmlspecialchars($slug); ?>" style="display:grid;gap:0.35rem">
+        <a href="/jackpots/<?php echo htmlspecialchars($slug); ?>" style="display:grid;gap:0.35rem">
           <span><?php echo htmlspecialchars($meta[0]); ?></span>
           <small><?php echo $countGames; ?> games · <?php echo htmlspecialchars($meta[1]); ?> · Open full predictions</small>
         </a>
@@ -130,7 +130,7 @@ if ($payload === null) {
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">All Kenya jackpots in one hub</p><p class="featured-text">Pick your operator sheet for game-by-game 1X2 leans and reasoning. Rules for voids and bonuses differ by bookmaker — always check the official terms.</p></aside>
 <!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega</a> · <a href="/betika-midweek-jackpot-predictions">Betika Midweek</a> · <a href="/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></p>
+<p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega</a> · <a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek</a> · <a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></p>
   </div>
 <!--BAO_ARTICLE_START-->
   <div class="wrap seo-article-block">

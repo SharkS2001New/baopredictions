@@ -27,11 +27,11 @@
         <h3>Jackpots</h3>
         <ul>
           <li><a href="/jackpot-predictions">All Jackpots</a></li>
-          <li><a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></li>
-          <li><a href="/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a></li>
-          <li><a href="/betika-midweek-jackpot-predictions">Betika Midweek</a></li>
-          <li><a href="/sportybet-daily-jackpot-predictions">SportyBet Daily</a></li>
-          <li><a href="/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></li>
+          <li><a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></li>
+          <li><a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a></li>
+          <li><a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek</a></li>
+          <li><a href="/jackpots/sportybet-daily-jackpot-predictions">SportyBet Daily</a></li>
+          <li><a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></li>
         </ul>
       </div>
       <div>

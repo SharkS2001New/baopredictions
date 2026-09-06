@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SportyBet Daily Jackpot Predictions Today | Bao Predictions</title>
   <meta name="description" content="SportyBet Daily Jackpot tips rebuilt every day. Check fixtures and deadline before you play. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/jackpot-predictions/sportybet-daily-jackpot-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/jackpots/sportybet-daily-jackpot-predictions/">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="SportyBet Daily Jackpot Predictions Today | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SportyBet Daily Jackpot Predictions Today | Bao Predictions">
   <meta name="twitter:description" content="SportyBet Daily Jackpot tips rebuilt every day. Check fixtures and deadline before you play. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sportybet-daily-jackpot-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/sportybet-daily-jackpot-predictions/">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="SportyBet Daily Jackpot Predictions Today | Bao Predictions">
   <meta property="og:description" content="SportyBet Daily Jackpot tips rebuilt every day. Check fixtures and deadline before you play. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/jackpot-predictions/sportybet-daily-jackpot-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/jackpots/sportybet-daily-jackpot-predictions/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,8 +89,6 @@
 <div class="matches-area">
 <p>Today&#39;s SportyBet Daily card is compact: five clear favourites, three balanced games, and two trap fixtures we have marked at under 60% confidence.</p>
     <p class="text-muted">Daily cards change every day. Our sheet is rebuilt for the current day&#39;s published SportyBet list — do not reuse yesterday&#39;s picks.</p>
-
-    <h2 class="section-title">Full SportyBet Daily sheet</h2>
     <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/sportybet-daily-jackpot-predictions');
@@ -99,7 +97,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => 'SportyBet Daily Jackpot sheet']);
+  echo bao_matches_html($payload['games']);
 }
 ?>
   </div><!-- /.matches-area -->
@@ -112,7 +110,7 @@ if ($payload === null) {
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Daily jackpot — rebuilt every day</p><p class="featured-text">SportyBet Daily runs on a shorter cycle than weekly megas. Check back daily for the new fixture list and deadline.</p></aside>
 <!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/odibets-laki-tatu-predictions">Odibets Laki Tatu</a> · <a href="/football-predictions-today">Today&#039;s tips</a> · <a href="/jackpot-predictions">Jackpot hub</a></p>
+<p class="seo-related"><strong>Related:</strong> <a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu</a> · <a href="/football-predictions-today">Today&#039;s tips</a> · <a href="/jackpot-predictions">Jackpot hub</a></p>
   </div>
   <div class="wrap prose bao-seo-howto">
 <h2>How the SportyBet Daily Jackpot works</h2>
@@ -179,9 +177,9 @@ if ($payload === null) {
   2 =>
   array (
     'name' => 'SportyBet Daily',
-    'url' => '/sportybet-daily-jackpot-predictions',
+    'url' => '/jackpots/sportybet-daily-jackpot-predictions',
   ),
-)); echo bao_article_schema('Why daily jackpots need daily updates', 'SportyBet Daily Jackpot tips rebuilt every day. Check fixtures and deadline before you play. 18+ only.', '/sportybet-daily-jackpot-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_article_schema('Why daily jackpots need daily updates', 'SportyBet Daily Jackpot tips rebuilt every day. Check fixtures and deadline before you play. 18+ only.', '/jackpots/sportybet-daily-jackpot-predictions'); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

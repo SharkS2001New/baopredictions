@@ -93,7 +93,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => 'Today\'s predictions']);
+  echo bao_matches_html($payload['games']);
 }
 ?>
 
@@ -126,7 +126,7 @@ if ($payload === null) {
       </div>
       <p>This weekend&#39;s Mega Jackpot leans toward home favourites in the English and Spanish midday slots, with two midweek carry-overs that need careful 1X cover.</p>
       <p>
-        <a class="btn btn-primary" href="/sportpesa-mega-jackpot-predictions">View full sheet</a>
+        <a class="btn btn-primary" href="/jackpots/sportpesa-mega-jackpot-predictions">View full sheet</a>
         <a class="btn btn-ghost" href="/jackpot-predictions" style="margin-left:0.5rem">All jackpots</a>
       </p>
     </div>

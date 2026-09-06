@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Odibets Laki Tatu Predictions — 3 Game Tips | Bao Predictions</title>
   <meta name="description" content="Odibets Laki Tatu predictions with deeper notes on three games. Verify the live product name and stake on Odibets. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/jackpot-predictions/odibets-laki-tatu-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions/">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Odibets Laki Tatu Predictions — 3 Game Tips | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Odibets Laki Tatu Predictions — 3 Game Tips | Bao Predictions">
   <meta name="twitter:description" content="Odibets Laki Tatu predictions with deeper notes on three games. Verify the live product name and stake on Odibets. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/odibets-laki-tatu-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions/">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Odibets Laki Tatu Predictions — 3 Game Tips | Bao Predictions">
   <meta property="og:description" content="Odibets Laki Tatu predictions with deeper notes on three games. Verify the live product name and stake on Odibets. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/jackpot-predictions/odibets-laki-tatu-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,8 +89,6 @@
 <div class="matches-area">
 <p>Today&#39;s Laki Tatu trio is built from our highest-confidence 1X2 leans of the day — City, Bayern, and PSG — to maximise the short-card hit rate.</p>
     <p class="text-muted">Because only three picks are required, we only publish games we rate 70%+ unless the Odibets card forces a tougher slate. Short cards reward selectivity.</p>
-
-    <h2 class="section-title">Full Laki Tatu sheet</h2>
     <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/odibets-laki-tatu-predictions');
@@ -99,7 +97,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => 'Odibets Laki Tatu sheet']);
+  echo bao_matches_html($payload['games']);
 }
 ?>
   </div><!-- /.matches-area -->
@@ -112,7 +110,7 @@ if ($payload === null) {
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Laki Tatu — three games, deeper notes</p><p class="featured-text">With only three legs, every pick matters more than on a 17-game mega. We write deeper analysis per match. Verify the live product name and stake on Odibets.</p></aside>
 <!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/sportybet-daily-jackpot-predictions">SportyBet Daily</a> · <a href="/jackpot-predictions">Jackpot hub</a> · <a href="/1x2-predictions">1X2 predictions</a></p>
+<p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportybet-daily-jackpot-predictions">SportyBet Daily</a> · <a href="/jackpot-predictions">Jackpot hub</a> · <a href="/1x2-predictions">1X2 predictions</a></p>
   </div>
   <div class="wrap prose bao-seo-howto">
 <h2>How Odibets Laki Tatu works</h2>
@@ -179,9 +177,9 @@ if ($payload === null) {
   2 =>
   array (
     'name' => 'Odibets Laki Tatu',
-    'url' => '/odibets-laki-tatu-predictions',
+    'url' => '/jackpots/odibets-laki-tatu-predictions',
   ),
-)); echo bao_article_schema('How Laki Tatu differs from Mega Jackpots', 'Odibets Laki Tatu predictions with deeper notes on three games. Verify the live product name and stake on Odibets. 18+ only.', '/odibets-laki-tatu-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_article_schema('How Laki Tatu differs from Mega Jackpots', 'Odibets Laki Tatu predictions with deeper notes on three games. Verify the live product name and stake on Odibets. 18+ only.', '/jackpots/odibets-laki-tatu-predictions'); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

@@ -82,7 +82,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('live fixtures right now');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => 'Live now', 'class' => 'live-board']);
+  echo bao_matches_html($payload['games'], ['class' => 'live-board']);
 }
 ?>
   </div><!-- /.matches-area -->

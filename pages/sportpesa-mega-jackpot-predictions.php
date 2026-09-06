@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SportPesa Mega Jackpot Predictions — 17 Games Tips | Bao Predictions</title>
   <meta name="description" content="SportPesa Mega Jackpot predictions with 1X2 leans and reasoning on every game. Confirm stake and deadline on SportPesa. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/jackpot-predictions/sportpesa-mega-jackpot-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/jackpots/sportpesa-mega-jackpot-predictions/">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="SportPesa Mega Jackpot Predictions — 17 Games Tips | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SportPesa Mega Jackpot Predictions — 17 Games Tips | Bao Predictions">
   <meta name="twitter:description" content="SportPesa Mega Jackpot predictions with 1X2 leans and reasoning on every game. Confirm stake and deadline on SportPesa. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sportpesa-mega-jackpot-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/sportpesa-mega-jackpot-predictions/">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="SportPesa Mega Jackpot Predictions — 17 Games Tips | Bao Predictions">
   <meta property="og:description" content="SportPesa Mega Jackpot predictions with 1X2 leans and reasoning on every game. Confirm stake and deadline on SportPesa. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/jackpot-predictions/sportpesa-mega-jackpot-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/jackpots/sportpesa-mega-jackpot-predictions/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,8 +89,6 @@
 <div class="matches-area">
 <p>This weekend&#39;s Mega Jackpot leans toward home favourites in the English and Spanish midday slots, with two midweek carry-overs that need careful 1X cover.</p>
     <p class="text-muted">Our Mega Jackpot sheet ranks picks by confidence within the 17-game card. We publish a primary pick per game plus a one-line reason so you can see where we are most and least sure — not a copy-paste sheet.</p>
-
-    <h2 class="section-title">Full Mega Jackpot sheet</h2>
     <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/sportpesa-mega-jackpot-predictions');
@@ -99,7 +97,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => 'SportPesa Mega Jackpot sheet']);
+  echo bao_matches_html($payload['games']);
 }
 ?>
   </div><!-- /.matches-area -->
@@ -112,7 +110,7 @@ if ($payload === null) {
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">17-game Mega Jackpot — pick and reasoning per game</p><p class="featured-text">SportPesa Mega Jackpot tips with 1X2 leans and a one-line reason on every row. Confirm stake, bonus bands, and deadline on SportPesa before you play. 18+ only.</p></aside>
 <!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/jackpot-predictions">All jackpots</a> · <a href="/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a> · <a href="/1x2-predictions">1X2 predictions</a></p>
+<p class="seo-related"><strong>Related:</strong> <a href="/jackpot-predictions">All jackpots</a> · <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a> · <a href="/1x2-predictions">1X2 predictions</a></p>
   </div>
   <div class="wrap prose bao-seo-howto">
 <h2>How the SportPesa Mega Jackpot works</h2>
@@ -180,9 +178,9 @@ if ($payload === null) {
   2 =>
   array (
     'name' => 'SportPesa Mega',
-    'url' => '/sportpesa-mega-jackpot-predictions',
+    'url' => '/jackpots/sportpesa-mega-jackpot-predictions',
   ),
-)); echo bao_article_schema('How to use Bao\'s SportPesa Mega Jackpot sheet', 'SportPesa Mega Jackpot predictions with 1X2 leans and reasoning on every game. Confirm stake and deadline on SportPesa. 18+ only.', '/sportpesa-mega-jackpot-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_article_schema('How to use Bao\'s SportPesa Mega Jackpot sheet', 'SportPesa Mega Jackpot predictions with 1X2 leans and reasoning on every game. Confirm stake and deadline on SportPesa. 18+ only.', '/jackpots/sportpesa-mega-jackpot-predictions'); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

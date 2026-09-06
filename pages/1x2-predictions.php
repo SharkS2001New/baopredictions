@@ -92,7 +92,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => '1X2 predictions']);
+  echo bao_matches_html($payload['games']);
 }
 ?>
   </div><!-- /.matches-area -->

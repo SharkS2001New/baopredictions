@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>SportPesa Midweek Jackpot Predictions | Bao Predictions</title>
   <meta name="description" content="SportPesa Midweek Jackpot tips with per-game reasoning. Higher rotation risk midweek — re-check before the deadline. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/jackpot-predictions/sportpesa-midweek-jackpot-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/jackpots/sportpesa-midweek-jackpot-predictions/">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="SportPesa Midweek Jackpot Predictions | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SportPesa Midweek Jackpot Predictions | Bao Predictions">
   <meta name="twitter:description" content="SportPesa Midweek Jackpot tips with per-game reasoning. Higher rotation risk midweek — re-check before the deadline. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sportpesa-midweek-jackpot-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/sportpesa-midweek-jackpot-predictions/">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="SportPesa Midweek Jackpot Predictions | Bao Predictions">
   <meta property="og:description" content="SportPesa Midweek Jackpot tips with per-game reasoning. Higher rotation risk midweek — re-check before the deadline. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/jackpot-predictions/sportpesa-midweek-jackpot-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/jackpots/sportpesa-midweek-jackpot-predictions/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
   <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -89,8 +89,6 @@
 <div class="matches-area">
 <p>This midweek card mixes Champions League leftovers with domestic midweeks. Favourites at home in Europe are our anchors; three domestic derbies are the swing fixtures.</p>
     <p class="text-muted">Midweek sheets include cup ties and mid-table rearrangements. We flag lower-confidence games explicitly so you can hedge those slots.</p>
-
-    <h2 class="section-title">Full Midweek Jackpot sheet</h2>
     <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/sportpesa-midweek-jackpot-predictions');
@@ -99,7 +97,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => 'SportPesa Midweek Jackpot sheet']);
+  echo bao_matches_html($payload['games']);
 }
 ?>
   </div><!-- /.matches-area -->
@@ -112,7 +110,7 @@ if ($payload === null) {
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Midweek jackpot sheet with fresh team news</p><p class="featured-text">Same 1X2 format as Mega, separate prize pool, midweek fixtures. Rotation risk is higher midweek — re-check before the deadline.</p></aside>
 <!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega</a> · <a href="/betika-midweek-jackpot-predictions">Betika Midweek</a> · <a href="/jackpot-predictions">Jackpot hub</a></p>
+<p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega</a> · <a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek</a> · <a href="/jackpot-predictions">Jackpot hub</a></p>
   </div>
   <div class="wrap prose bao-seo-howto">
 <h2>How the SportPesa Midweek Jackpot works</h2>
@@ -179,9 +177,9 @@ if ($payload === null) {
   2 =>
   array (
     'name' => 'SportPesa Midweek',
-    'url' => '/sportpesa-midweek-jackpot-predictions',
+    'url' => '/jackpots/sportpesa-midweek-jackpot-predictions',
   ),
-)); echo bao_article_schema('SportPesa Midweek Jackpot analysis approach', 'SportPesa Midweek Jackpot tips with per-game reasoning. Higher rotation risk midweek — re-check before the deadline. 18+ only.', '/sportpesa-midweek-jackpot-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_article_schema('SportPesa Midweek Jackpot analysis approach', 'SportPesa Midweek Jackpot tips with per-game reasoning. Higher rotation risk midweek — re-check before the deadline. 18+ only.', '/jackpots/sportpesa-midweek-jackpot-predictions'); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

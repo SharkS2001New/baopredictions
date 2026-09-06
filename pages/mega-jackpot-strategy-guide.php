@@ -60,7 +60,7 @@
   <header class="page-hero">
     <h1>Mega Jackpot Strategy Guide</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="seo-unique">Built for the long-tail search “sportpesa mega jackpot rules explained” and strategy readers who then open the live <a href="/sportpesa-mega-jackpot-predictions">Mega Jackpot predictions</a> sheet.</p>
+<p class="seo-unique">Built for the long-tail search “sportpesa mega jackpot rules explained” and strategy readers who then open the live <a href="/jackpots/sportpesa-mega-jackpot-predictions">Mega Jackpot predictions</a> sheet.</p>
     <p class="lede text-muted">Updated 1 Sep 2026</p>
   </header>
   <article class="prose">
@@ -69,7 +69,7 @@
     <p>Stack your highest-confidence home favourites early in your own review, then spend time on draws and away leans. Those are where most public sheets fail.</p>
     <h2>Stake sizing</h2>
     <p>Jackpots are entertainment with upside — not a wage replacement. Stake only what you can afford to lose entirely.</p>
-    <p>This week's sheet: <a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot predictions</a>.</p>
+    <p>This week's sheet: <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot predictions</a>.</p>
   </article>
 </div>
 

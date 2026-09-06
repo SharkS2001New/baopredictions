@@ -193,25 +193,28 @@ $router->get('/jackpot-predictions', function () {
     include __DIR__ . '/../pages/jackpot-predictions.php';
 });
 
-$router->get('/sportpesa-mega-jackpot-predictions', function () {
-    include __DIR__ . '/../pages/sportpesa-mega-jackpot-predictions.php';
-});
-
-$router->get('/sportpesa-midweek-jackpot-predictions', function () {
-    include __DIR__ . '/../pages/sportpesa-midweek-jackpot-predictions.php';
-});
-
-$router->get('/betika-midweek-jackpot-predictions', function () {
-    include __DIR__ . '/../pages/betika-midweek-jackpot-predictions.php';
-});
-
-$router->get('/sportybet-daily-jackpot-predictions', function () {
-    include __DIR__ . '/../pages/sportybet-daily-jackpot-predictions.php';
-});
-
-$router->get('/odibets-laki-tatu-predictions', function () {
-    include __DIR__ . '/../pages/odibets-laki-tatu-predictions.php';
-});
+$jackpotPages = [
+    'sportpesa-mega-jackpot-predictions',
+    'sportpesa-midweek-jackpot-predictions',
+    'betika-midweek-jackpot-predictions',
+    'sportybet-daily-jackpot-predictions',
+    'odibets-laki-tatu-predictions',
+];
+foreach ($jackpotPages as $jackpotSlug) {
+    $router->get('/jackpots/' . $jackpotSlug, function () use ($jackpotSlug) {
+        include __DIR__ . '/../pages/' . $jackpotSlug . '.php';
+    });
+    // Legacy flat URLs → nested /jackpots/{slug}
+    $router->get('/' . $jackpotSlug, function () use ($jackpotSlug) {
+        header('Location: /jackpots/' . $jackpotSlug, true, 301);
+        exit;
+    });
+    // Legacy hub-nested URLs → /jackpots/{slug}
+    $router->get('/jackpot-predictions/' . $jackpotSlug, function () use ($jackpotSlug) {
+        header('Location: /jackpots/' . $jackpotSlug, true, 301);
+        exit;
+    });
+}
 
 $router->get('/how-we-predict', function () {
     include __DIR__ . '/../pages/how-we-predict.php';

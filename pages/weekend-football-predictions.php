@@ -92,7 +92,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['title' => 'Weekend predictions']);
+  echo bao_matches_html($payload['games']);
 }
 ?>
   </div><!-- /.matches-area -->
@@ -106,7 +106,7 @@ if ($payload === null) {
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Saturday and Sunday in one place</p><p class="featured-text">Weekend fixtures grouped for ticket planning. Still re-check lineups Saturday morning — Friday tips can move.</p></aside>
 <!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Today</a> · <a href="/football-predictions-tomorrow">Tomorrow</a> · <a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></p>
+<p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Today</a> · <a href="/football-predictions-tomorrow">Tomorrow</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></p>
   </div>
   <div class="wrap prose bao-seo-howto">
 <h2>Weekend focus</h2>
