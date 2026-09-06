@@ -2,3 +2,11 @@
 .env
 .env.*
 *.log
+
+vendor/
+storage/cache/*.json
+
+/vendor/
+/storage/framework/cache/data/*
+!/storage/framework/cache/data/.gitkeep
+/storage/cache/

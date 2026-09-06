@@ -25,7 +25,15 @@ $router->get('/api/health', function () {
     try {
         $pdo = \App\Database::connection();
         $pdo->query('SELECT 1');
-        bao_api_json(['ok' => true, 'db' => 'up', 'time' => date('c')]);
+        $cacheDriver = class_exists(\App\Support\Cache::class)
+            ? \App\Support\Cache::driver()
+            : 'none';
+        bao_api_json([
+            'ok' => true,
+            'db' => 'up',
+            'cache' => $cacheDriver,
+            'time' => date('c'),
+        ]);
     } catch (Throwable $e) {
         bao_api_error('db down: ' . $e->getMessage(), 503);
     }
@@ -45,10 +53,13 @@ $router->get('/api/pages', function () {
 });
 
 $router->get('/api/stats', function () {
-    require_once __DIR__ . '/../src/Api/bootstrap.php';
+    require_once __DIR__ . '/../components/api-curl.php';
     try {
-        $stats = new \App\Services\StatsService();
-        bao_api_json($stats->payload());
+        $payload = bao_curl_api('/api/stats');
+        if ($payload === null) {
+            bao_api_error('stats unavailable', 500);
+        }
+        bao_api_json($payload);
     } catch (Throwable $e) {
         bao_api_error($e->getMessage(), 500);
     }
@@ -87,8 +98,17 @@ $router->get('/api/games', function () {
 $pageApiKeys = array_keys(require __DIR__ . '/../config/api-pages.php');
 foreach ($pageApiKeys as $pageKey) {
     $router->get('/api/' . $pageKey, function () use ($pageKey) {
-        require_once __DIR__ . '/../src/Api/bootstrap.php';
+        require_once __DIR__ . '/../components/api-curl.php';
         try {
+            $hasOverrides = isset($_GET['limit']) || isset($_GET['date']);
+            if (!$hasOverrides) {
+                $payload = bao_curl_api('/api/' . $pageKey);
+                if ($payload === null) {
+                    bao_api_error('Unknown page', 404);
+                }
+                bao_api_json($payload);
+                return;
+            }
             $overrides = [];
             if (isset($_GET['limit'])) {
                 $overrides['limit'] = (int) $_GET['limit'];

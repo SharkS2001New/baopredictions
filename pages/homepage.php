@@ -62,16 +62,16 @@ $baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
   <div class="wrap">
     <ul class="hero-stats-list">
       <li>
-        <strong><?= htmlspecialchars(bao_fmt_pct(isset($baoToday['accuracy']) ? (float) $baoToday['accuracy'] : null, 0)) ?></strong>
-        <span>Today's accuracy</span>
+        <strong><?= htmlspecialchars(bao_fmt_pct(isset($baoToday['accuracy']) ? (float) $baoToday['accuracy'] : (isset($baoStats['recent']['accuracy']) ? (float) $baoStats['recent']['accuracy'] : null), 0)) ?></strong>
+        <span>3-day accuracy</span>
       </li>
       <li>
         <strong><?= htmlspecialchars((string) ((int) ($baoToday['predictions'] ?? 0))) ?></strong>
         <span>Predictions today</span>
       </li>
       <li>
-        <strong><?= htmlspecialchars((string) ((int) ($baoStats['win_streak'] ?? $baoStats['yesterday']['win_streak'] ?? 0))) ?></strong>
-        <span>Current win streak</span>
+        <strong><?= htmlspecialchars((string) ((int) ($baoStats['win_streak'] ?? $baoStats['recent']['win_streak'] ?? 0))) ?></strong>
+        <span>Best streak (3 days)</span>
       </li>
     </ul>
   </div>

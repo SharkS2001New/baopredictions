@@ -1,11 +1,14 @@
 <?php
 /**
  * Server-side page data helpers.
- * HTML pages load tips in-process via PageApiService / StatsService (not browser JS).
- * Public JSON routes under /api/* remain available separately.
+ * Caching mirrors pitchpredictionsbackend: Cache::get/put/remember via Predis
+ * (CACHE_DRIVER=redis, REDIS_CACHE_DB) with file fallback — same k3s Redis service.
  */
 require_once __DIR__ . '/match-cards.php';
 require_once dirname(__DIR__) . '/src/Api/bootstrap.php';
+
+use App\Support\Cache;
+use App\Support\DateTimeHelper;
 
 /**
  * Load a page API payload in-process, e.g. /api/1x2-predictions or homepage.
@@ -22,17 +25,38 @@ function bao_curl_api(string $apiPath): ?array
         return null;
     }
 
+    $day = DateTimeHelper::siteToday();
+    // Laravel-style versioned JSON keys + date-based TTL (FixtureApiHelpers pattern).
+    $cacheKey = 'bao_api_' . str_replace('-', '_', $path) . '_' . $day;
+    if ($path === 'stats') {
+        $ttl = Cache::ttlStats();
+    } elseif (str_contains($path, 'live')) {
+        $ttl = Cache::ttlLive();
+    } else {
+        $ttl = Cache::ttlForSiteDate($day);
+    }
+
     try {
-        if ($path === 'stats') {
-            $stats = new \App\Services\StatsService();
-            return $stats->payload();
+        $cached = Cache::getCachedJsonPayload($cacheKey);
+        if (is_array($cached) && ($cached['ok'] ?? false) === true) {
+            return $cached;
         }
 
-        $api = new \App\Services\PageApiService();
-        if (!$api->hasPage($path)) {
-            return null;
+        if ($path === 'stats') {
+            $payload = (new \App\Services\StatsService())->payload();
+        } else {
+            $api = new \App\Services\PageApiService();
+            if (!$api->hasPage($path)) {
+                return null;
+            }
+            $payload = $api->payload($path);
         }
-        return $api->payload($path);
+
+        if (is_array($payload) && ($payload['ok'] ?? true)) {
+            Cache::putCachedJsonPayload($cacheKey, $payload, $ttl);
+        }
+
+        return $payload;
     } catch (Throwable $e) {
         return null;
     }
@@ -49,7 +73,7 @@ function bao_api_fail_msg(): string
 }
 
 /**
- * Cached stats for the current request (hero, track strip, sidebar).
+ * Request-local + Redis/file cached stats (hero, track strip, sidebar).
  *
  * @return array<string,mixed>|null
  */

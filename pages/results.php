@@ -88,7 +88,7 @@ $baoUpdated = (string) ($baoStats['last_updated'] ?? date('c'));
       <div><strong><?= htmlspecialchars(bao_fmt_pct(isset($baoStats['win_rate']) ? (float) $baoStats['win_rate'] : (isset($baoTrack['win_rate']) ? (float) $baoTrack['win_rate'] : null))) ?></strong><span>Win rate</span></div>
       <div><strong><?= htmlspecialchars(bao_fmt_roi(isset($baoStats['roi']) ? (float) $baoStats['roi'] : (isset($baoTrack['roi']) ? (float) $baoTrack['roi'] : null))) ?></strong><span>ROI</span></div>
       <div><strong><?= htmlspecialchars((string) ((int) ($baoStats['settled_tips'] ?? $baoTrack['settled_tips'] ?? 0))) ?></strong><span>Settled tips</span></div>
-      <div><strong><?= htmlspecialchars((string) ((int) ($baoStats['win_streak'] ?? $baoStats['yesterday']['win_streak'] ?? 0))) ?></strong><span>Win streak</span></div>
+      <div><strong><?= htmlspecialchars((string) ((int) ($baoStats['win_streak'] ?? $baoStats['recent']['win_streak'] ?? 0))) ?></strong><span>Best streak (3 days)</span></div>
     </div>
     <p class="text-muted" style="margin-top:1rem;color:rgba(247,245,240,0.65);font-size:0.85rem">Last updated <?= htmlspecialchars($baoUpdated) ?></p>
   </div>

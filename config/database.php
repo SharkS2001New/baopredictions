@@ -1,42 +1,17 @@
 <?php
 /**
  * Database connection settings for pitchnewdb (fixtures / predictions / odds).
- *
- * Values load from project-root .env (preferred). Falls back to defaults below.
- * Never commit real passwords — keep them in .env (gitignored).
+ * Values load from project-root .env. Never commit real passwords.
  */
-
-$root = dirname(__DIR__);
-$envFile = $root . '/.env';
-
-if (is_file($envFile)) {
-    foreach (file($envFile, FILE_IGNORE_NEW_LINES | FILE_SKIP_EMPTY_LINES) as $line) {
-        $line = trim($line);
-        if ($line === '' || $line[0] === '#' || strpos($line, '=') === false) {
-            continue;
-        }
-        [$key, $value] = explode('=', $line, 2);
-        $key = trim($key);
-        $value = trim($value, " \t\"'");
-        if ($key !== '' && getenv($key) === false) {
-            putenv("$key=$value");
-            $_ENV[$key] = $value;
-        }
-    }
-}
-
-$env = static function (string $key, $default = null) {
-    $v = $_ENV[$key] ?? getenv($key);
-    return ($v === false || $v === null || $v === '') ? $default : $v;
-};
+require __DIR__ . '/load-env.php';
 
 return [
-    'driver' => $env('DB_CONNECTION', 'mysql'),
-    'host' => $env('DB_HOST', '127.0.0.1'),
-    'port' => (int) $env('DB_PORT', 3306),
-    'database' => $env('DB_DATABASE', 'pitchnewdb'),
-    'username' => $env('DB_USERNAME', ''),
-    'password' => $env('DB_PASSWORD', ''),
+    'driver' => bao_env('DB_CONNECTION', 'mysql'),
+    'host' => bao_env('DB_HOST', '127.0.0.1'),
+    'port' => (int) bao_env('DB_PORT', 3306),
+    'database' => bao_env('DB_DATABASE', 'pitchnewdb'),
+    'username' => bao_env('DB_USERNAME', ''),
+    'password' => bao_env('DB_PASSWORD', ''),
     'charset' => 'utf8mb4',
     'options' => [
         PDO::ATTR_ERRMODE => PDO::ERRMODE_EXCEPTION,

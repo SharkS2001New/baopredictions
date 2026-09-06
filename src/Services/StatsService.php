@@ -2,6 +2,7 @@
 namespace App\Services;
 
 use App\Database;
+use App\Support\DateTimeHelper;
 use PDO;
 
 /**
@@ -31,7 +32,14 @@ final class StatsService
         $track = $this->trackRecord(90, 800);
         $today = $this->todayPerformance();
         $yesterday = $this->yesterdayPerformance();
+        $recent = $this->recentPerformance(3);
         $markets = $this->marketCounts();
+
+        // Hero accuracy + streak use last 3 days (larger settled sample).
+        $today['accuracy'] = $recent['accuracy'];
+        $today['win_rate'] = $recent['accuracy'];
+        $today['accuracy_window_days'] = 3;
+        $today['win_streak'] = $recent['win_streak'];
 
         $payload = [
             'ok' => true,
@@ -39,16 +47,117 @@ final class StatsService
             'win_rate' => $track['win_rate'],
             'roi' => $track['roi'],
             'settled_tips' => $track['settled_tips'],
-            // Hero "Current win streak" = consecutive wins from yesterday's published tips.
-            'win_streak' => $yesterday['win_streak'],
+            'win_streak' => $recent['win_streak'],
             'track' => $track,
             'today' => $today,
             'yesterday' => $yesterday,
+            'recent' => $recent,
             'markets' => $markets,
         ];
 
         date_default_timezone_set($prevTz);
         return $payload;
+    }
+
+    /**
+     * Settled published tips over the last N Nairobi calendar days.
+     * Used for hero accuracy + current win streak (more stable than a single day).
+     *
+     * @return array<string,mixed>
+     */
+    public function recentPerformance(int $days = 3): array
+    {
+        $days = max(1, min(14, $days));
+        $games = [];
+        $dates = [];
+
+        for ($i = 0; $i < $days; $i++) {
+            $date = DateTimeHelper::siteNow()->modify('-' . $i . ' days')->format('Y-m-d');
+            $dates[] = $date;
+            $dayGames = $this->games->listGames([
+                'date' => $date,
+                'limit' => 120,
+                'market' => '1x2',
+                'order' => 'kickoff_desc',
+            ]);
+            foreach ($dayGames as $g) {
+                $games[] = $g;
+            }
+        }
+
+        $settled = [];
+        foreach ($games as $g) {
+            if ($g['won'] === null) {
+                continue;
+            }
+            $settled[] = $g;
+        }
+
+        // Newest kickoff first → current streak ends on the latest settled tip.
+        usort($settled, static function (array $a, array $b): int {
+            $ka = (string) ($a['kickoff'] ?? '');
+            $kb = (string) ($b['kickoff'] ?? '');
+            if ($ka !== $kb) {
+                return $kb <=> $ka;
+            }
+            return ((int) ($b['fixture_id'] ?? 0)) <=> ((int) ($a['fixture_id'] ?? 0));
+        });
+
+        $streak = 0;
+        foreach ($settled as $g) {
+            if ($g['won'] === true) {
+                $streak++;
+            } else {
+                break;
+            }
+        }
+
+        // Best consecutive win run in the window (hero-friendly; "current" trailing
+        // streak is often 0 when the latest kickoff batch includes a loss).
+        $bestStreak = 0;
+        $run = 0;
+        // Chronological order for longest-run scan.
+        $chrono = $settled;
+        usort($chrono, static function (array $a, array $b): int {
+            $ka = (string) ($a['kickoff'] ?? '');
+            $kb = (string) ($b['kickoff'] ?? '');
+            if ($ka !== $kb) {
+                return $ka <=> $kb;
+            }
+            return ((int) ($a['fixture_id'] ?? 0)) <=> ((int) ($b['fixture_id'] ?? 0));
+        });
+        foreach ($chrono as $g) {
+            if ($g['won'] === true) {
+                $run++;
+                if ($run > $bestStreak) {
+                    $bestStreak = $run;
+                }
+            } else {
+                $run = 0;
+            }
+        }
+
+        $wins = 0;
+        foreach ($settled as $g) {
+            if ($g['won'] === true) {
+                $wins++;
+            }
+        }
+        $total = count($settled);
+
+        return [
+            'window_days' => $days,
+            'from' => $dates[$days - 1] ?? null,
+            'to' => $dates[0] ?? null,
+            'predictions' => count($games),
+            'settled_total' => $total,
+            'settled_won' => $wins,
+            // Hero uses best run in the window so a single late loss does not blank the streak.
+            'win_streak' => $bestStreak,
+            'current_streak' => $streak,
+            'best_streak' => $bestStreak,
+            'accuracy' => $total > 0 ? round(100 * $wins / $total, 1) : null,
+        ];
     }
 
     /**
