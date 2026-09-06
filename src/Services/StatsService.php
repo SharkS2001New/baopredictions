@@ -29,11 +29,19 @@ final class StatsService
         $prevTz = date_default_timezone_get();
         date_default_timezone_set('Africa/Nairobi');
 
-        $track = $this->trackRecord(90, 2500);
-        $today = $this->todayPerformance();
+        // One shared today pool for hero tip count + sidebar market counts (avoids duplicate listGames).
+        $todayPool = $this->listPageGames('football-predictions-today', [
+            'day' => 'today',
+            'limit' => 60,
+            'market' => '1x2',
+            'order' => 'kickoff_asc',
+        ]);
+
+        $track = $this->trackRecord(90, 800);
+        $today = $this->todayPerformanceFromPool($todayPool);
         $yesterday = $this->yesterdayPerformance();
         $recent = $this->recentPerformance(3);
-        $markets = $this->marketCounts();
+        $markets = $this->marketCountsFromPool($todayPool);
 
         // Hero accuracy + streak use last 3 days (larger settled sample).
         $today['accuracy'] = $recent['accuracy'];
@@ -61,37 +69,14 @@ final class StatsService
 
     /**
      * Settled published tips over the last N Nairobi calendar days.
-     * Used for hero accuracy + current win streak (more stable than a single day).
+     * Uses one settled SQL query (not N× listGames).
      *
      * @return array<string,mixed>
      */
     public function recentPerformance(int $days = 3): array
     {
         $days = max(1, min(14, $days));
-        $games = [];
-        $dates = [];
-
-        for ($i = 0; $i < $days; $i++) {
-            $date = DateTimeHelper::siteNow()->modify('-' . $i . ' days')->format('Y-m-d');
-            $dates[] = $date;
-            $dayGames = $this->games->listGames([
-                'date' => $date,
-                'limit' => 120,
-                'market' => '1x2',
-                'order' => 'kickoff_desc',
-            ]);
-            foreach ($dayGames as $g) {
-                $games[] = $g;
-            }
-        }
-
-        $settled = [];
-        foreach ($games as $g) {
-            if ($g['won'] === null) {
-                continue;
-            }
-            $settled[] = $g;
-        }
+        $settled = $this->fetchSettled1x2($days, 400);
 
         // Newest kickoff first → current streak ends on the latest settled tip.
         usort($settled, static function (array $a, array $b): int {
@@ -100,38 +85,28 @@ final class StatsService
             if ($ka !== $kb) {
                 return $kb <=> $ka;
             }
-            return ((int) ($b['fixture_id'] ?? 0)) <=> ((int) ($a['fixture_id'] ?? 0));
+            return 0;
         });
 
         $streak = 0;
         foreach ($settled as $g) {
-            if ($g['won'] === true) {
+            if (($g['won'] ?? null) === true) {
                 $streak++;
             } else {
                 break;
             }
         }
 
-        // Best consecutive win run in the window (hero-friendly; "current" trailing
-        // streak is often 0 when the latest kickoff batch includes a loss).
         $bestStreak = 0;
         $run = 0;
-        // Chronological order for longest-run scan.
         $chrono = $settled;
         usort($chrono, static function (array $a, array $b): int {
-            $ka = (string) ($a['kickoff'] ?? '');
-            $kb = (string) ($b['kickoff'] ?? '');
-            if ($ka !== $kb) {
-                return $ka <=> $kb;
-            }
-            return ((int) ($a['fixture_id'] ?? 0)) <=> ((int) ($b['fixture_id'] ?? 0));
+            return ((string) ($a['kickoff'] ?? '')) <=> ((string) ($b['kickoff'] ?? ''));
         });
         foreach ($chrono as $g) {
-            if ($g['won'] === true) {
+            if (($g['won'] ?? null) === true) {
                 $run++;
-                if ($run > $bestStreak) {
-                    $bestStreak = $run;
-                }
+                $bestStreak = max($bestStreak, $run);
             } else {
                 $run = 0;
             }
@@ -139,7 +114,7 @@ final class StatsService
 
         $wins = 0;
         foreach ($settled as $g) {
-            if ($g['won'] === true) {
+            if (($g['won'] ?? null) === true) {
                 $wins++;
             }
         }
@@ -147,12 +122,8 @@ final class StatsService
 
         return [
             'window_days' => $days,
-            'from' => $dates[$days - 1] ?? null,
-            'to' => $dates[0] ?? null,
-            'predictions' => count($games),
             'settled_total' => $total,
             'settled_won' => $wins,
-            // Hero uses best run in the window so a single late loss does not blank the streak.
             'win_streak' => $bestStreak,
             'current_streak' => $streak,
             'best_streak' => $bestStreak,
@@ -242,9 +213,23 @@ final class StatsService
      */
     public function todayPerformance(): array
     {
+        $todayPool = $this->listPageGames('football-predictions-today', [
+            'day' => 'today',
+            'limit' => 60,
+            'market' => '1x2',
+            'order' => 'kickoff_asc',
+        ]);
+        return $this->todayPerformanceFromPool($todayPool);
+    }
+
+    /**
+     * @param list<array<string,mixed>> $todayPool
+     * @return array<string,mixed>
+     */
+    private function todayPerformanceFromPool(array $todayPool): array
+    {
         $today = date('Y-m-d');
-        // Same game list the Today page API returns — not every DB fixture with a model row.
-        $predictionsToday = $this->countDisplayedTodayTips();
+        $predictionsToday = count($todayPool);
 
         $settledRows = $this->fetchSettled1x2ForDate($today);
         $summary = $this->summarizeRows($settledRows);
@@ -284,10 +269,20 @@ final class StatsService
             'market' => '1x2',
             'order' => 'confidence_desc',
         ]);
+        return $this->marketCountsFromPool($pool);
+    }
+
+    /**
+     * @param list<array<string,mixed>> $pool
+     * @return array<string,int>
+     */
+    private function marketCountsFromPool(array $pool): array
+    {
         $n = count($pool);
 
         $must = 0;
         $sure = 0;
+        $accaEligible = 0;
         foreach ($pool as $g) {
             $c = (int) ($g['confidence'] ?? 0);
             if ($c >= 75) {
@@ -296,13 +291,24 @@ final class StatsService
             if ($c >= 70) {
                 $sure++;
             }
+            // Same usable band as buildAccumulators (odds + confidence proxy).
+            $odds = isset($g['odds']) ? (float) $g['odds'] : 0;
+            if ($c >= 58 && $odds >= 1.20 && $odds <= 3.50 && !empty($g['pick'])) {
+                $accaEligible++;
+            }
         }
 
-        $accPool = array_values(array_filter(
-            $pool,
-            static fn(array $g): bool => (int) ($g['confidence'] ?? 0) >= 70
-        ));
-        $acc = count($this->games->buildAccumulators(array_slice($accPool, 0, 24)));
+        // Cheap ticket estimate: up to three tickets (3/5/8) when pool is deep enough.
+        $acc = 0;
+        if ($accaEligible >= 3) {
+            $acc++;
+        }
+        if ($accaEligible >= 8) {
+            $acc++;
+        }
+        if ($accaEligible >= 16) {
+            $acc++;
+        }
 
         return [
             '1x2-predictions' => min(60, $n),
@@ -310,13 +316,7 @@ final class StatsService
             'btts-predictions' => min(60, $n),
             'double-chance-predictions' => min(60, $n),
             'ht-ft-predictions' => min(40, $n),
-            'live-football-predictions' => count($this->games->listGames([
-                'day' => 'today',
-                'limit' => 80,
-                'market' => 'best',
-                'live_only' => true,
-                'order' => 'kickoff_asc',
-            ])),
+            'live-football-predictions' => min(80, $this->countLiveFixturesToday()),
             'must-win-teams-today' => min(30, $must),
             'sure-bets-today' => min(30, $sure),
             'betnumbers-tips' => min(40, $n),
@@ -325,7 +325,7 @@ final class StatsService
     }
 
     /**
-     * Tips shown on the Today page (/football-predictions-today) — same filters as that API.
+     * @deprecated Prefer todayPerformanceFromPool — kept for callers.
      */
     private function countDisplayedTodayTips(): int
     {
@@ -335,6 +335,28 @@ final class StatsService
             'market' => '1x2',
             'order' => 'kickoff_asc',
         ]));
+    }
+
+    /**
+     * Cheap COUNT for sidebar live badge (avoids full listGames mapping).
+     */
+    private function countLiveFixturesToday(): int
+    {
+        $today = DateTimeHelper::siteToday();
+        $fromLocal = (new \DateTimeImmutable($today . ' 00:00:00', new \DateTimeZone(DateTimeHelper::SITE_TZ)))
+            ->modify('-1 day');
+        $toLocalExclusive = (new \DateTimeImmutable($today . ' 00:00:00', new \DateTimeZone(DateTimeHelper::SITE_TZ)))
+            ->modify('+2 day');
+        $stmt = $this->db->prepare(
+            "SELECT COUNT(*) FROM fixtures f
+             WHERE f.date >= :date_from AND f.date < :date_to
+               AND UPPER(TRIM(f.status_short)) IN ('1H','2H','HT','ET','BT','P','LIVE','INT','BREAK','SUSP')"
+        );
+        $stmt->execute([
+            ':date_from' => $fromLocal->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+            ':date_to' => $toLocalExclusive->setTimezone(new \DateTimeZone('UTC'))->format('Y-m-d H:i:s'),
+        ]);
+        return (int) $stmt->fetchColumn();
     }
 
     /**

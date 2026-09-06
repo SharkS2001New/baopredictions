@@ -16,7 +16,7 @@ http_response_code(404);
     } catch (e) {}
   })();
   </script>
-  <link rel="stylesheet" href="/assets/css/main.css">
+  <?php require __DIR__ . '/../components/head-assets.php'; ?>
 <?php require __DIR__ . '/../components/favicon.php'; ?>
 </head>
 <body>

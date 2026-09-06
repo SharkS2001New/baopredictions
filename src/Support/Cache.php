@@ -110,10 +110,14 @@ final class Cache
 
     /**
      * Same TTL bands as pitchpredictionsbackend FixtureApiHelpers::fixtureCacheTtlForDate.
-     * today → 10 min, tomorrow → 1 hour, past/future → 12 hours.
+     * Override with CACHE_TTL_PAGE (seconds) when set.
      */
     public static function ttlForSiteDate(string $siteDate): int
     {
+        $override = self::envTtl('CACHE_TTL_PAGE');
+        if ($override !== null) {
+            return $override;
+        }
         $today = DateTimeHelper::siteToday();
         $tomorrow = DateTimeHelper::siteDate('tomorrow');
         if ($siteDate === $today) {
@@ -125,15 +129,29 @@ final class Cache
         return 12 * 60 * 60;
     }
 
-    /** Stats board refreshes a bit faster than tip pages. */
+    /** Stats board refreshes a bit faster than tip pages. Override: CACHE_TTL_STATS */
     public static function ttlStats(): int
     {
-        return 10 * 60;
+        return self::envTtl('CACHE_TTL_STATS') ?? (10 * 60);
     }
 
+    /** Live tips TTL. Override: CACHE_TTL_LIVE */
     public static function ttlLive(): int
     {
-        return 2 * 60;
+        return self::envTtl('CACHE_TTL_LIVE') ?? (2 * 60);
+    }
+
+    private static function envTtl(string $key): ?int
+    {
+        if (!function_exists('bao_env')) {
+            require_once dirname(__DIR__, 2) . '/config/load-env.php';
+        }
+        $raw = bao_env($key);
+        if ($raw === null || $raw === '') {
+            return null;
+        }
+        $n = (int) $raw;
+        return $n > 0 ? $n : null;
     }
 
     public static function driver(): string

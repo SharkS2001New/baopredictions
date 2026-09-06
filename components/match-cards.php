@@ -141,7 +141,7 @@ function bao_match_card(array $g): string {
         $html .= '<span class="at-time bao-kickoff-time"'
             . ($kickoffIso !== '' ? ' data-kickoff-utc="' . bao_h($kickoffIso) . '"' : '')
             . ' title="Kick-off time (shown in your timezone)">';
-        $html .= '<svg class="at-clock" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="10"/><path d="M12 6v6l4 2"/></svg>';
+        $html .= '<span class="at-clock" aria-hidden="true"></span>';
         $html .= '<span class="bao-kickoff-label">' . bao_h($time) . '</span>';
         $html .= '</span>';
     }

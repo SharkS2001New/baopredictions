@@ -15,7 +15,8 @@ RUN apt-get update && apt-get install -y \
     libmcrypt-dev \
     libreadline-dev \
     libfreetype6-dev \
-    g++
+    g++ \
+    && rm -rf /var/lib/apt/lists/*
 
 # Install PHP extensions
 RUN docker-php-ext-configure gd --with-freetype=/usr/include/ --with-jpeg=/usr/include/
@@ -30,6 +31,9 @@ RUN docker-php-ext-install -j$(nproc) \
     mysqli \
     gd
 
+# Production OPcache (no timestamp validation — rebuild image to pick up PHP changes)
+COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+
 # Install Composer (Dependency Manager for PHP)
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
 
@@ -38,7 +42,7 @@ ENV APACHE_DOCUMENT_ROOT=/var/www/html/public
 RUN sed -ri -e 's!/var/www/html!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/sites-available/*.conf
 RUN sed -ri -e 's!/var/www/!${APACHE_DOCUMENT_ROOT}!g' /etc/apache2/apache2.conf /etc/apache2/conf-available/*.conf
 
-RUN a2enmod rewrite headers
+RUN a2enmod rewrite headers deflate expires
 
 # Ensure public directory exists before writing .htaccess
 RUN mkdir -p /var/www/html/public
@@ -49,6 +53,14 @@ RUN sed -i 's/:80/:5500/' /etc/apache2/sites-available/*.conf
 
 # Add ServerName directive to Apache configuration
 RUN echo "ServerName localhost" >> /etc/apache2/apache2.conf
+
+# KeepAlive + modest compression defaults
+RUN printf '%s\n' \
+  'KeepAlive On' \
+  'MaxKeepAliveRequests 100' \
+  'KeepAliveTimeout 5' \
+  > /etc/apache2/conf-available/bao-perf.conf \
+  && a2enconf bao-perf
 
 # Ensure PHP logs are captured by the container
 ENV LOG_CHANNEL=stderr
@@ -62,8 +74,8 @@ COPY . /var/www/html
 # Set the working directory to /var/www/html
 WORKDIR /var/www/html
 
-# Run Composer to install PHP dependencies
-RUN composer install --no-dev --optimize-autoloader
+# Run Composer to install PHP dependencies (authoritative classmap = faster autoload)
+RUN composer install --no-dev --optimize-autoloader --classmap-authoritative --no-interaction
 
 # Set the correct permissions for the public folder to avoid permission denied errors
 RUN mkdir -p /var/www/html/storage/cache /var/www/html/storage/framework/cache/data \

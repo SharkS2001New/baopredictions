@@ -179,7 +179,8 @@ SQL;
         }
 
         // Prefer popular leagues in the fetch pool; final order still applied in sortGames.
-        $fetchLimit = min(500, max($limit * 8, 200));
+        // Keep the SQL window proportional to the page limit (avoid mapping 200 rows for an 18-card board).
+        $fetchLimit = min(500, max($limit * 3, $limit + 40));
         $sql .= ' ORDER BY COALESCE(l.popular_status, 0) DESC, f.date ASC, f.fixture_id ASC LIMIT ' . $fetchLimit;
 
         $stmt = $this->db->prepare($sql);

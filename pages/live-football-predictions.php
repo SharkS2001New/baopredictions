@@ -27,10 +27,6 @@
   <meta property="og:url" content="https://www.baopredictions.com/live-football-predictions/">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap">
-  <link href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@600;700&family=Source+Sans+3:wght@400;500;600&display=swap" rel="stylesheet">
     <script>
   (function () {
     try {
@@ -40,7 +36,7 @@
     } catch (e) {}
   })();
   </script>
-  <link rel="stylesheet" href="/assets/css/main.css">
+<?php require __DIR__ . '/../components/head-assets.php'; ?>
 <?php require __DIR__ . '/../components/favicon.php'; ?>
 </head>
 <body>
