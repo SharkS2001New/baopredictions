@@ -25,7 +25,6 @@ http_response_code(404);
     <p class="lede">That URL isn’t on Bao Predictions.</p>
     <p><a class="btn btn-primary" href="/">Back to homepage</a></p>
   </main>
-  <script src="/assets/js/timezone.js" defer></script>
 <script src="/assets/js/theme.js" defer></script>
 </body>
 </html>

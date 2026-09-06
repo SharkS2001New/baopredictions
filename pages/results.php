@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/results/">
   <!--BAO_HEAD_EXTRA_END-->
-  
+
   <meta property="og:title" content="Football Tip Results &amp; Track Record | Bao Predictions">
   <meta property="og:description" content="Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.">
   <meta property="og:url" content="https://www.baopredictions.com/results/">
@@ -46,25 +46,23 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-    
-
 <div class="wrap">
-  
+
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
+
     <li>
-      
+
       <a href="/">Home</a>
-      
+
     </li>
-    
+
     <li>
-      
+
       <span aria-current="page">Results</span>
-      
+
     </li>
-    
+
   </ol>
 </nav>
 
@@ -76,11 +74,11 @@
 <p class="lede">Is Bao Predictions accurate? Judge the numbers — wins and losses — not slogans.</p>
   </header>
 </div>
+
 <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $baoStats = bao_api_stats();
 $baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
-$baoUpdated = (string) ($baoStats['last_updated'] ?? date('c'));
 ?>
 <section class="section-tight section-dark">
   <div class="wrap">
@@ -90,7 +88,6 @@ $baoUpdated = (string) ($baoStats['last_updated'] ?? date('c'));
       <div><strong><?= htmlspecialchars((string) ((int) ($baoStats['settled_tips'] ?? $baoTrack['settled_tips'] ?? 0))) ?></strong><span>Settled tips</span></div>
       <div><strong><?= htmlspecialchars((string) ((int) ($baoStats['win_streak'] ?? $baoStats['recent']['win_streak'] ?? 0))) ?></strong><span>Best streak (3 days)</span></div>
     </div>
-    <p class="text-muted" style="margin-top:1rem;color:rgba(247,245,240,0.65);font-size:0.85rem">Last updated <?= htmlspecialchars($baoUpdated) ?></p>
   </div>
 </section>
 <section class="section">
@@ -111,134 +108,73 @@ if ($payload === null) {
   echo bao_matches_html($payload['games'], ['title' => 'Settled results']);
 }
 ?>
-
-    <p class="text-muted">Dated archives (e.g. <a href="/results/2026-09-03/">/results/2026-09-03/</a>) will grow as daily history accumulates.</p>
 </div><!-- /.matches-area -->
 </div><!-- /.main-grid -->
   </div>
 </section>
-<section class="section section-muted bao-writeup">
-  <div class="wrap prose">
+<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
+<section class="section section-muted bao-seo-stack">
+  <div class="wrap prose bao-writeup">
 <p class="seo-unique">We track every published prediction from the moment it goes live. Wins and losses both stay visible. Use yesterday&#039;s page for the most recent matchday, and this page for the longer-term picture by market and over time.</p>
-
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Wins and losses — both stay published</p><p class="featured-text">Audit our settled tips before you trust today&#039;s board. Past performance is not a guarantee of future results.</p></aside>
 <!--BAO_FEATURED_END-->
-
 <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday&#039;s results</a> · <a href="/how-we-predict">How we predict</a> · <a href="/about-us">About us</a></p>
+  </div>
+<!--BAO_ARTICLE_START-->
+  <div class="wrap seo-article-block">
+<article class="content-article prose"><header class="article-header"><h2 class="article-title">How to read Bao&#039;s track record</h2></header><div class="article-content"><p>Win rate counts only settled predictions where the specific market outcome matched the result. Postponements are excluded. ROI, when shown, uses published odds at tip time — not closing lines after the fact.</p></div></article>
+  </div>
+<!--BAO_ARTICLE_END-->
+</section>
+<section class="section section-tight bao-faq">
+  <div class="wrap"><h2 class="section-title">Results FAQ</h2><ul class="faq-list"><li><details><summary>Do you hide losing tips?</summary><p>No. Wins and losses both stay published.</p></details></li><li><details><summary>How is win rate calculated?</summary><p>Settled predictions where the specific market outcome matched the result. Postponements are excluded.</p></details></li><li><details><summary>Is past performance a guarantee?</summary><p>No. It is a transparency tool only.</p></details></li><li><details><summary>What odds do you use for ROI?</summary><p>Published odds at tip time when shown — not closing lines after the fact.</p></details></li><li><details><summary>How often is Results updated?</summary><p>After matchdays as fixtures settle.</p></details></li><li><details><summary>Where are yesterday&#039;s tips?</summary><p>On the Yesterday predictions page for a daily verification layer.</p></details></li></ul>
   </div>
 </section>
 
-
-  
-  <!--BAO_ARTICLE_START-->
-<section class="section section-muted seo-article-section"><div class="wrap"><article class="content-article prose"><header class="article-header"><h2 class="article-title">How to read Bao&#039;s track record</h2></header><div class="article-content"><p>Win rate counts only settled predictions where the specific market outcome matched the result. Postponements are excluded. ROI, when shown, uses published odds at tip time — not closing lines after the fact.</p></div></article></div></section>
-<!--BAO_ARTICLE_END-->
-<section class="section"><div class="wrap"><h2 class="section-title">Results FAQ</h2><ul class="faq-list"><li><details><summary>Do you hide losing tips?</summary><p>No. Wins and losses both stay published.</p></details></li><li><details><summary>How is win rate calculated?</summary><p>Settled predictions where the specific market outcome matched the result. Postponements are excluded.</p></details></li><li><details><summary>Is past performance a guarantee?</summary><p>No. It is a transparency tool only.</p></details></li><li><details><summary>What odds do you use for ROI?</summary><p>Published odds at tip time when shown — not closing lines after the fact.</p></details></li><li><details><summary>How often is Results updated?</summary><p>After matchdays as fixtures settle.</p></details></li><li><details><summary>Where are yesterday&#039;s tips?</summary><p>On the Yesterday predictions page for a daily verification layer.</p></details></li></ul></div></section>
 </main>
-  <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h3>Predictions</h3>
-        <ul>
-          <li><a href="/football-predictions-today">Today</a></li>
-          <li><a href="/football-predictions-tomorrow">Tomorrow</a></li>
-          <li><a href="/football-predictions-yesterday">Yesterday</a></li>
-          <li><a href="/weekend-football-predictions">Weekend</a></li>
-          <li><a href="/must-win-teams-today">Must-Win</a></li>
-          <li><a href="/sure-bets-today">Sure Bets</a></li>
-          <li><a href="/accumulator-tips">Accumulators</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Markets</h3>
-        <ul>
-          <li><a href="/1x2-predictions">1X2</a></li>
-          <li><a href="/double-chance-predictions">Double Chance</a></li>
-          <li><a href="/over-under-predictions">Over/Under</a></li>
-          <li><a href="/btts-predictions">BTTS</a></li>
-          <li><a href="/ht-ft-predictions">HT/FT</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Jackpots</h3>
-        <ul>
-          <li><a href="/jackpot-predictions">All Jackpots</a></li>
-          <li><a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></li>
-          <li><a href="/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a></li>
-          <li><a href="/betika-midweek-jackpot-predictions">Betika Midweek</a></li>
-          <li><a href="/sportybet-daily-jackpot-predictions">SportyBet Daily</a></li>
-          <li><a href="/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Site</h3>
-        <ul>
-          <li><a href="/how-we-predict">How We Predict</a></li>
-          <li><a href="/results">Results</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/about-us">About</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/contact-us">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="/responsible-betting">Responsible Betting</a></li>
-          <li><a href="/privacy-policy">Privacy Policy</a></li>
-          <li><a href="/terms-of-service">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-                    <div class="footer-disclaimer">
-      <p>Predictions are for informational purposes only and do not guarantee outcomes. Betting involves financial risk — please gamble responsibly and only with money you can afford to lose. Must be 18+ (or the legal age in your jurisdiction). If gambling is affecting your life, contact <a href="https://www.begambleaware.org/" rel="noopener noreferrer" target="_blank">BeGambleAware.org</a> or your local support service.</p>
-      <p>© <?php echo date('Y'); ?> Bao Predictions. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+  <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/timezone.js" defer></script>
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_faq_schema(array (
-  0 => 
+  0 =>
   array (
     'q' => 'Do you hide losing tips?',
     'a' => 'No. Wins and losses both stay published.',
   ),
-  1 => 
+  1 =>
   array (
     'q' => 'How is win rate calculated?',
     'a' => 'Settled predictions where the specific market outcome matched the result. Postponements are excluded.',
   ),
-  2 => 
+  2 =>
   array (
     'q' => 'Is past performance a guarantee?',
     'a' => 'No. It is a transparency tool only.',
   ),
-  3 => 
+  3 =>
   array (
     'q' => 'What odds do you use for ROI?',
     'a' => 'Published odds at tip time when shown — not closing lines after the fact.',
   ),
-  4 => 
+  4 =>
   array (
     'q' => 'How often is Results updated?',
     'a' => 'After matchdays as fixtures settle.',
   ),
-  5 => 
+  5 =>
   array (
     'q' => 'Where are yesterday\'s tips?',
     'a' => 'On the Yesterday predictions page for a daily verification layer.',
   ),
 )); echo bao_breadcrumb_schema(array (
-  0 => 
+  0 =>
   array (
     'name' => 'Home',
     'url' => '/',
   ),
-  1 => 
+  1 =>
   array (
     'name' => 'Results',
     'url' => '/results',

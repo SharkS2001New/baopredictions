@@ -221,10 +221,6 @@ $router->get('/results', function () {
     include __DIR__ . '/../pages/results.php';
 });
 
-$router->get('/2026-09-03', function () {
-    include __DIR__ . '/../pages/2026-09-03.php';
-});
-
 $router->get('/blog', function () {
     include __DIR__ . '/../pages/blog.php';
 });

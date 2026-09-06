@@ -38,10 +38,7 @@
     </div>
   </div>
 </header>
-<div id="bao-page-loader" class="bao-page-loader" role="status" aria-live="polite" aria-busy="false">
-  <div class="bao-page-loader-card">
-    <span class="bao-spinner" aria-hidden="true"></span>
-    <span class="bao-page-loader-text">Loading…</span>
-  </div>
+<div id="bao-page-loader" class="bao-page-progress" role="status" aria-live="polite" aria-busy="false" aria-hidden="true">
+  <span class="bao-page-progress-bar" aria-hidden="true"></span>
 </div>
-<noscript><style>.bao-page-loader{display:none!important}</style></noscript>
+<noscript><style>.bao-page-progress{display:none!important}</style></noscript>

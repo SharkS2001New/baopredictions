@@ -29,7 +29,7 @@ final class StatsService
         $prevTz = date_default_timezone_get();
         date_default_timezone_set('Africa/Nairobi');
 
-        $track = $this->trackRecord(90, 800);
+        $track = $this->trackRecord(90, 2500);
         $today = $this->todayPerformance();
         $yesterday = $this->yesterdayPerformance();
         $recent = $this->recentPerformance(3);
@@ -228,6 +228,10 @@ final class StatsService
     public function trackRecord(int $lookbackDays = 90, int $limit = 2000): array
     {
         $rows = $this->fetchSettled1x2($lookbackDays, $limit);
+        // Cap the public sample so the strip stays readable/stable.
+        if (count($rows) > 800) {
+            $rows = array_slice($rows, 0, 800);
+        }
         return $this->summarizeRows($rows);
     }
 
@@ -363,24 +367,20 @@ SELECT
   pc.percent_pred_home,
   pc.percent_pred_draw,
   pc.percent_pred_away,
-  o.bets_home,
-  o.bets_draw,
-  o.bets_away
+  (
+    SELECT MAX(o2.bets_home) FROM odds o2
+    WHERE o2.fixture_id = f.fixture_id AND o2.bets_home > 1.01
+  ) AS best_home,
+  (
+    SELECT MAX(o2.bets_draw) FROM odds o2
+    WHERE o2.fixture_id = f.fixture_id AND o2.bets_draw > 1.01
+  ) AS best_draw,
+  (
+    SELECT MAX(o2.bets_away) FROM odds o2
+    WHERE o2.fixture_id = f.fixture_id AND o2.bets_away > 1.01
+  ) AS best_away
 FROM fixtures f
 INNER JOIN predictions_computation pc ON pc.fixture_id = f.fixture_id
-LEFT JOIN odds o ON o.id = (
-  SELECT o2.id FROM odds o2
-  WHERE o2.fixture_id = f.fixture_id
-  ORDER BY
-    CASE o2.bookmaker_name
-      WHEN 'Bet365' THEN 0
-      WHEN '10Bet' THEN 1
-      WHEN 'William Hill' THEN 2
-      ELSE 9
-    END,
-    o2.id ASC
-  LIMIT 1
-)
 WHERE f.status_short = 'FT'
   AND f.goals_home IS NOT NULL
   AND f.goals_away IS NOT NULL
@@ -412,24 +412,20 @@ SELECT
   pc.percent_pred_home,
   pc.percent_pred_draw,
   pc.percent_pred_away,
-  o.bets_home,
-  o.bets_draw,
-  o.bets_away
+  (
+    SELECT MAX(o2.bets_home) FROM odds o2
+    WHERE o2.fixture_id = f.fixture_id AND o2.bets_home > 1.01
+  ) AS best_home,
+  (
+    SELECT MAX(o2.bets_draw) FROM odds o2
+    WHERE o2.fixture_id = f.fixture_id AND o2.bets_draw > 1.01
+  ) AS best_draw,
+  (
+    SELECT MAX(o2.bets_away) FROM odds o2
+    WHERE o2.fixture_id = f.fixture_id AND o2.bets_away > 1.01
+  ) AS best_away
 FROM fixtures f
 INNER JOIN predictions_computation pc ON pc.fixture_id = f.fixture_id
-LEFT JOIN odds o ON o.id = (
-  SELECT o2.id FROM odds o2
-  WHERE o2.fixture_id = f.fixture_id
-  ORDER BY
-    CASE o2.bookmaker_name
-      WHEN 'Bet365' THEN 0
-      WHEN '10Bet' THEN 1
-      WHEN 'William Hill' THEN 2
-      ELSE 9
-    END,
-    o2.id ASC
-  LIMIT 1
-)
 WHERE f.status_short = 'FT'
   AND f.goals_home IS NOT NULL
   AND f.goals_away IS NOT NULL
@@ -456,10 +452,17 @@ SQL;
         $out = [];
         foreach ($rows as $row) {
             $code = $this->pick1x2Code($row);
+            if ($code === '') {
+                continue;
+            }
+            $odds = $this->pickOdds($row, $code);
+            // Never invent odds — synthetic 1.85 was dragging ROI negative on losses.
+            if ($odds <= 1.01) {
+                continue;
+            }
             $gh = (int) $row['goals_home'];
             $ga = (int) $row['goals_away'];
             $actual = $gh > $ga ? '1' : ($gh < $ga ? '2' : 'X');
-            $odds = $this->pickOdds($row, $code);
             $out[] = [
                 'won' => $code === $actual,
                 'odds' => $odds,
@@ -479,19 +482,16 @@ SQL;
         $wins = 0;
         $units = 0.0;
         $oddsSum = 0.0;
-        $oddsN = 0;
         $streak = 0;
         $streaking = true;
 
         foreach ($rows as $r) {
             $odd = (float) $r['odds'];
-            if ($odd > 1.01) {
-                $oddsSum += $odd;
-                $oddsN++;
-            }
+            $oddsSum += $odd;
             if ($r['won']) {
                 $wins++;
-                $units += ($odd > 1.01 ? $odd - 1.0 : 0.85);
+                // Flat 1u stake: win returns (odds - 1) profit; loss loses the 1u stake.
+                $units += ($odd - 1.0);
                 if ($streaking) {
                     $streak++;
                 }
@@ -502,8 +502,9 @@ SQL;
         }
 
         $winRate = $n > 0 ? round(100 * $wins / $n, 1) : 0.0;
+        // ROI% = net profit / total stakes (1u × settled tips)
         $roi = $n > 0 ? round(100 * $units / $n, 1) : 0.0;
-        $avgOdds = $oddsN > 0 ? round($oddsSum / $oddsN, 2) : null;
+        $avgOdds = $n > 0 ? round($oddsSum / $n, 2) : null;
 
         return [
             'settled_tips' => $n,
@@ -524,7 +525,11 @@ SQL;
         $d = (int) ($row['percent_pred_draw'] ?? 0);
         $a = (int) ($row['percent_pred_away'] ?? 0);
         $max = max($h, $d, $a);
-        if ($max <= 0 || $h === $max) {
+        // Skip coin-flip leans — they are not published tips and inflate losing ROI.
+        if ($max < 55) {
+            return '';
+        }
+        if ($h === $max) {
             return '1';
         }
         if ($a === $max) {
@@ -533,15 +538,19 @@ SQL;
         return 'X';
     }
 
-    /** @param array<string,mixed> $row */
+    /**
+     * Best available decimal odds for the tipped 1X2 outcome.
+     *
+     * @param array<string,mixed> $row
+     */
     private function pickOdds(array $row, string $code): float
     {
-        $raw = match ($code) {
-            '2' => $row['bets_away'] ?? null,
-            'X' => $row['bets_draw'] ?? null,
-            default => $row['bets_home'] ?? null,
+        $primary = match ($code) {
+            '2' => $row['best_away'] ?? $row['bets_away'] ?? null,
+            'X' => $row['best_draw'] ?? $row['bets_draw'] ?? null,
+            default => $row['best_home'] ?? $row['bets_home'] ?? null,
         };
-        $odd = is_numeric($raw) ? (float) $raw : 0.0;
-        return $odd > 1.01 ? $odd : 1.85;
+        $odd = is_numeric($primary) ? (float) $primary : 0.0;
+        return $odd > 1.01 ? $odd : 0.0;
     }
 }

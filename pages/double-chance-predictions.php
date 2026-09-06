@@ -20,7 +20,7 @@
   <meta name="twitter:description" content="Today&#039;s double chance predictions — cover two outcomes when the exact 1X2 is unclear. Lower variance, shorter odds. 18+ only.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/double-chance-predictions/">
   <!--BAO_HEAD_EXTRA_END-->
-  
+
   <meta property="og:title" content="Double Chance Predictions Today (1X, X2, 12) | Bao Predictions">
   <meta property="og:description" content="Today&#039;s double chance predictions — cover two outcomes when the exact 1X2 is unclear. Lower variance, shorter odds. 18+ only.">
   <meta property="og:url" content="https://www.baopredictions.com/double-chance-predictions/">
@@ -46,38 +46,35 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-    
-
-
-
-
 <div class="wrap">
-  
+
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
+
     <li>
-      
+
       <a href="/">Home</a>
-      
+
     </li>
-    
+
     <li>
-      
+
       <span aria-current="page">Double Chance Predictions</span>
-      
+
     </li>
-    
+
   </ol>
 </nav>
 
-  <header class="page-hero">
+
+<header class="page-hero">
     <h1>Double Chance Predictions Today</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
 
 <p class="lede">Cover two of three outcomes: 1X, X2, or 12. Lower odds, higher hit rate when used selectively.</p>
   </header>
+
 </div>
 
 <section class="section-tight">
@@ -86,7 +83,8 @@
 <?php require __DIR__ . '/../components/sidebar.php'; ?>
 <div class="matches-area">
 
-<?php
+
+  <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/double-chance-predictions');
 if ($payload === null) {
@@ -97,151 +95,78 @@ if ($payload === null) {
   echo bao_matches_html($payload['games'], ['title' => 'Double chance predictions']);
 }
 ?>
-
-    
-    
-    
-
-
-  
-  
   </div><!-- /.matches-area -->
 </div><!-- /.main-grid -->
 </div>
 </section>
-<section class="section section-muted bao-writeup">
-  <div class="wrap prose">
+<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
+<section class="section section-muted bao-seo-stack">
+  <div class="wrap prose bao-writeup">
 <p class="seo-unique">Double chance lets you cover two of the three possible 1X2 outcomes in a single bet — 1X (home win or draw), X2 (draw or away win), or 12 (either team wins, no draw). It pays lower odds than a straight match-result bet because you&#039;re covering more ground, but it&#039;s a genuine way to reduce risk on matches where you&#039;re confident about ruling out one specific outcome rather than picking the exact result.</p>
-
 <!--BAO_FEATURED_START-->
 <aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Cover two outcomes when the exact result is unclear</p><p class="featured-text">Double chance (1X, X2, or 12) lowers variance when you can rule one result out but not nail the precise 1X2. Odds are shorter — use it as risk control, not a free lunch.</p></aside>
 <!--BAO_FEATURED_END-->
-
 <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2 predictions</a> · <a href="/sure-bets-today">Sure bets</a> · <a href="/responsible-betting">Responsible betting</a></p>
   </div>
-</section>
-
-
-<section class="section section-muted">
-  <div class="wrap prose">
-    <h2>When double chance makes sense</h2>
+  <div class="wrap prose bao-seo-howto">
+<h2>When double chance makes sense</h2>
     <p>Double chance is useful when you like a side but want draw insurance, or when you want to fade a heavy favourite. We do not spam DC on every favourite — that destroys price.</p>
   </div>
+<!--BAO_ARTICLE_START-->
+  <div class="wrap seo-article-block">
+<article class="content-article prose"><header class="article-header"><h2 class="article-title">When double chance beats straight 1X2</h2></header><div class="article-content"><p>Double chance is best when your football read is asymmetric: you are confident the away side will not win, but less sure whether the home side closes the game out or settles for a point. 1X covers that story in one selection.</p>
+<p>It is a poor fit when the match is a true coin flip between two attack-minded teams — then 12 (no draw) or a goals market may express the view better. Always compare the double-chance price to backing the two outcomes separately as a Dutch; if the book is offering almost no premium for the convenience, skip it.</p></div></article>
+  </div>
+<!--BAO_ARTICLE_END-->
+</section>
+<section class="section section-tight bao-faq">
+  <div class="wrap"><h2 class="section-title">Double Chance FAQ</h2><ul class="faq-list"><li><details><summary>When is double chance better than 1X2?</summary><p>When you can rule one result out but not nail the exact scoreline path — e.g. 1X when an away win looks unlikely.</p></details></li><li><details><summary>Why are the odds shorter?</summary><p>You cover two of three outcomes, so the book pays less than a straight 1X2.</p></details></li><li><details><summary>What is 12?</summary><p>Either team wins — no draw. Useful when both sides attack and a draw looks least likely.</p></details></li><li><details><summary>Can I Dutch the two outcomes instead?</summary><p>Sometimes. Compare prices; if double chance offers almost no convenience premium, skip it.</p></details></li><li><details><summary>Is double chance risk-free?</summary><p>No. You can still lose if the uncovered outcome lands.</p></details></li><li><details><summary>Do you publish 1X and X2 both?</summary><p>We publish the lean that matches our read — not every variant on every match.</p></details></li></ul>
+  </div>
 </section>
 
-<!--BAO_ARTICLE_START-->
-<section class="section section-muted seo-article-section"><div class="wrap"><article class="content-article prose"><header class="article-header"><h2 class="article-title">When double chance beats straight 1X2</h2></header><div class="article-content"><p>Double chance is best when your football read is asymmetric: you are confident the away side will not win, but less sure whether the home side closes the game out or settles for a point. 1X covers that story in one selection.</p>
-<p>It is a poor fit when the match is a true coin flip between two attack-minded teams — then 12 (no draw) or a goals market may express the view better. Always compare the double-chance price to backing the two outcomes separately as a Dutch; if the book is offering almost no premium for the convenience, skip it.</p></div></article></div></section>
-<!--BAO_ARTICLE_END-->
-<section class="section"><div class="wrap"><h2 class="section-title">Double Chance FAQ</h2><ul class="faq-list"><li><details><summary>When is double chance better than 1X2?</summary><p>When you can rule one result out but not nail the exact scoreline path — e.g. 1X when an away win looks unlikely.</p></details></li><li><details><summary>Why are the odds shorter?</summary><p>You cover two of three outcomes, so the book pays less than a straight 1X2.</p></details></li><li><details><summary>What is 12?</summary><p>Either team wins — no draw. Useful when both sides attack and a draw looks least likely.</p></details></li><li><details><summary>Can I Dutch the two outcomes instead?</summary><p>Sometimes. Compare prices; if double chance offers almost no convenience premium, skip it.</p></details></li><li><details><summary>Is double chance risk-free?</summary><p>No. You can still lose if the uncovered outcome lands.</p></details></li><li><details><summary>Do you publish 1X and X2 both?</summary><p>We publish the lean that matches our read — not every variant on every match.</p></details></li></ul></div></section>
-
-
-
-
-  </main>
-  <footer class="site-footer">
-  <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h3>Predictions</h3>
-        <ul>
-          <li><a href="/football-predictions-today">Today</a></li>
-          <li><a href="/football-predictions-tomorrow">Tomorrow</a></li>
-          <li><a href="/football-predictions-yesterday">Yesterday</a></li>
-          <li><a href="/weekend-football-predictions">Weekend</a></li>
-          <li><a href="/must-win-teams-today">Must-Win</a></li>
-          <li><a href="/sure-bets-today">Sure Bets</a></li>
-          <li><a href="/accumulator-tips">Accumulators</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Markets</h3>
-        <ul>
-          <li><a href="/1x2-predictions">1X2</a></li>
-          <li><a href="/double-chance-predictions">Double Chance</a></li>
-          <li><a href="/over-under-predictions">Over/Under</a></li>
-          <li><a href="/btts-predictions">BTTS</a></li>
-          <li><a href="/ht-ft-predictions">HT/FT</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Jackpots</h3>
-        <ul>
-          <li><a href="/jackpot-predictions">All Jackpots</a></li>
-          <li><a href="/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></li>
-          <li><a href="/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a></li>
-          <li><a href="/betika-midweek-jackpot-predictions">Betika Midweek</a></li>
-          <li><a href="/sportybet-daily-jackpot-predictions">SportyBet Daily</a></li>
-          <li><a href="/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Site</h3>
-        <ul>
-          <li><a href="/how-we-predict">How We Predict</a></li>
-          <li><a href="/results">Results</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/about-us">About</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/contact-us">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Legal</h3>
-        <ul>
-          <li><a href="/responsible-betting">Responsible Betting</a></li>
-          <li><a href="/privacy-policy">Privacy Policy</a></li>
-          <li><a href="/terms-of-service">Terms of Service</a></li>
-        </ul>
-      </div>
-    </div>
-                    <div class="footer-disclaimer">
-      <p>Predictions are for informational purposes only and do not guarantee outcomes. Betting involves financial risk — please gamble responsibly and only with money you can afford to lose. Must be 18+ (or the legal age in your jurisdiction). If gambling is affecting your life, contact <a href="https://www.begambleaware.org/" rel="noopener noreferrer" target="_blank">BeGambleAware.org</a> or your local support service.</p>
-      <p>© <?php echo date('Y'); ?> Bao Predictions. All rights reserved.</p>
-    </div>
-  </div>
-</footer>
+</main>
+  <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/timezone.js" defer></script>
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_faq_schema(array (
-  0 => 
+  0 =>
   array (
     'q' => 'When is double chance better than 1X2?',
     'a' => 'When you can rule one result out but not nail the exact scoreline path — e.g. 1X when an away win looks unlikely.',
   ),
-  1 => 
+  1 =>
   array (
     'q' => 'Why are the odds shorter?',
     'a' => 'You cover two of three outcomes, so the book pays less than a straight 1X2.',
   ),
-  2 => 
+  2 =>
   array (
     'q' => 'What is 12?',
     'a' => 'Either team wins — no draw. Useful when both sides attack and a draw looks least likely.',
   ),
-  3 => 
+  3 =>
   array (
     'q' => 'Can I Dutch the two outcomes instead?',
     'a' => 'Sometimes. Compare prices; if double chance offers almost no convenience premium, skip it.',
   ),
-  4 => 
+  4 =>
   array (
     'q' => 'Is double chance risk-free?',
     'a' => 'No. You can still lose if the uncovered outcome lands.',
   ),
-  5 => 
+  5 =>
   array (
     'q' => 'Do you publish 1X and X2 both?',
     'a' => 'We publish the lean that matches our read — not every variant on every match.',
   ),
 )); echo bao_breadcrumb_schema(array (
-  0 => 
+  0 =>
   array (
     'name' => 'Home',
     'url' => '/',
   ),
-  1 => 
+  1 =>
   array (
     'name' => 'Double Chance',
     'url' => '/double-chance-predictions',

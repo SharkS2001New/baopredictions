@@ -28,12 +28,12 @@ $a = $bao_sidebar_active;
 <aside class="sidebar" aria-label="Markets and statistics">
   <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle" hidden>
   <label for="sidebar-toggle" class="sidebar-mobile-toggle">
-    <span>Show Markets &amp; Stats</span>
+    <span>Show Stats</span>
     <span class="sidebar-toggle-chevron" aria-hidden="true"></span>
   </label>
 
   <div class="sidebar-collapsible">
-    <section class="panel">
+    <section class="panel sidebar-panel-markets">
       <header class="panel-header">
         <h2 class="panel-title">Betting Markets</h2>
       </header>

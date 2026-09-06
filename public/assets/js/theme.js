@@ -1,7 +1,7 @@
 /**
  * Light / dark theme toggle for Bao Predictions.
  * Persists to localStorage key `bao-theme`.
- * Also drives the global page loading overlay.
+ * Shows a thin top progress bar during same-origin navigation (no full-screen overlay).
  */
 (function () {
   var KEY = 'bao-theme';
@@ -50,21 +50,21 @@
     });
   } catch (e) {}
 
-  /* —— Page loader —— */
+  /* —— Thin top progress (no black full-screen overlay) —— */
   var loader = document.getElementById('bao-page-loader');
 
-  function showLoader(label) {
+  function showLoader() {
     if (!loader) return;
-    var text = loader.querySelector('.bao-page-loader-text');
-    if (text && label) text.textContent = label;
     loader.classList.add('is-active');
     loader.setAttribute('aria-busy', 'true');
+    loader.setAttribute('aria-hidden', 'false');
   }
 
   function hideLoader() {
     if (!loader) return;
     loader.classList.remove('is-active');
     loader.setAttribute('aria-busy', 'false');
+    loader.setAttribute('aria-hidden', 'true');
   }
 
   function isModifiedClick(e) {
@@ -94,19 +94,17 @@
     if (isModifiedClick(e)) return;
     var a = e.target.closest && e.target.closest('a[href]');
     if (!a || !shouldShowForLink(a)) return;
-    showLoader('Loading…');
+    showLoader();
   }, true);
 
   document.addEventListener('submit', function (e) {
     var form = e.target;
     if (!form || form.tagName !== 'FORM') return;
     if (form.target && form.target !== '' && form.target !== '_self') return;
-    showLoader('Loading…');
+    showLoader();
   }, true);
 
   window.addEventListener('pageshow', hideLoader);
   window.addEventListener('load', hideLoader);
-
-  // Safety: never leave the overlay stuck
-  setTimeout(hideLoader, 25000);
+  setTimeout(hideLoader, 12000);
 })();
