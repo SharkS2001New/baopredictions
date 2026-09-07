@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Double Chance Predictions Today (1X, X2, 12) | Bao Predictions</title>
   <meta name="description" content="Today&#039;s double chance predictions — cover two outcomes when the exact 1X2 is unclear. Lower variance, shorter odds. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/double-chance-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/double-chance-predictions">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Double Chance Predictions Today (1X, X2, 12) | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Double Chance Predictions Today (1X, X2, 12) | Bao Predictions">
   <meta name="twitter:description" content="Today&#039;s double chance predictions — cover two outcomes when the exact 1X2 is unclear. Lower variance, shorter odds. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/double-chance-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/double-chance-predictions">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Double Chance Predictions Today (1X, X2, 12) | Bao Predictions">
   <meta property="og:description" content="Today&#039;s double chance predictions — cover two outcomes when the exact 1X2 is unclear. Lower variance, shorter odds. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/double-chance-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/double-chance-predictions">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

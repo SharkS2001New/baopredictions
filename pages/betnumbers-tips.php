@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>BetNumbers Tips — Best Mixed Market Picks Today | Bao Predictions</title>
   <meta name="description" content="BetNumbers tips: each fixture picks the strongest lean across 1X2, BTTS, Over/Under 2.5, and Double Chance — best win chance with a fitting price. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/betnumbers-tips/">
+  <link rel="canonical" href="https://www.baopredictions.com/betnumbers-tips">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="BetNumbers Tips — Best Mixed Market Picks Today | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="BetNumbers Tips — Best Mixed Market Picks Today | Bao Predictions">
   <meta name="twitter:description" content="BetNumbers tips: each fixture picks the strongest lean across 1X2, BTTS, Over/Under 2.5, and Double Chance — best win chance with a fitting price. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/betnumbers-tips/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/betnumbers-tips">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="BetNumbers Tips — Best Mixed Market Picks Today | Bao Predictions">
   <meta property="og:description" content="BetNumbers tips: each fixture picks the strongest lean across 1X2, BTTS, Over/Under 2.5, and Double Chance — best win chance with a fitting price. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/betnumbers-tips/">
+  <meta property="og:url" content="https://www.baopredictions.com/betnumbers-tips">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

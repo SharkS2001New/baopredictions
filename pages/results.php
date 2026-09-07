@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Football Tip Results &amp; Track Record | Bao Predictions</title>
   <meta name="description" content="Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/results/">
+  <link rel="canonical" href="https://www.baopredictions.com/results">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Football Tip Results &amp; Track Record | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Football Tip Results &amp; Track Record | Bao Predictions">
   <meta name="twitter:description" content="Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/results/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/results">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Football Tip Results &amp; Track Record | Bao Predictions">
   <meta property="og:description" content="Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/results/">
+  <meta property="og:url" content="https://www.baopredictions.com/results">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

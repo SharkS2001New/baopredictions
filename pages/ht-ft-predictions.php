@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>HT/FT Predictions Today — Half Time Full Time Tips | Bao Predictions</title>
   <meta name="description" content="Half-time / full-time predictions for slow starters and late finishers. Two results, higher odds. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/ht-ft-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/ht-ft-predictions">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="HT/FT Predictions Today — Half Time Full Time Tips | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="HT/FT Predictions Today — Half Time Full Time Tips | Bao Predictions">
   <meta name="twitter:description" content="Half-time / full-time predictions for slow starters and late finishers. Two results, higher odds. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/ht-ft-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/ht-ft-predictions">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="HT/FT Predictions Today — Half Time Full Time Tips | Bao Predictions">
   <meta property="og:description" content="Half-time / full-time predictions for slow starters and late finishers. Two results, higher odds. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/ht-ft-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/ht-ft-predictions">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

@@ -815,7 +815,8 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .jackpot-hub-list a {
-  display: block;
+  display: grid;
+  gap: 0.35rem;
   padding: 0.85rem 1rem;
   border: 1px solid var(--line);
   border-radius: 0.35rem;
@@ -830,6 +831,12 @@ main:has(.bao-faq) + .site-footer {
 
 .jackpot-hub-list strong {
   color: var(--card-accent, var(--ink));
+  font-size: 1.05rem;
+}
+
+.jackpot-hub-list small {
+  color: var(--ink-muted);
+  font-size: 0.9rem;
 }
 
 

@@ -75,47 +75,40 @@
 <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/jackpot-predictions');
-$items = is_array($payload) ? ($payload['jackpots'] ?? []) : [];
-// Fallback schedule labels when API count is missing; live count always preferred.
-$labels = [
-  'sportpesa-mega-jackpot-predictions' => ['SportPesa Mega Jackpot', 'weekend', 17],
-  'sportpesa-midweek-jackpot-predictions' => ['SportPesa Midweek Jackpot', 'midweek', 13],
-  'betika-midweek-jackpot-predictions' => ['Betika Midweek Jackpot', 'midweek', 15],
-  'sportybet-daily-jackpot-predictions' => ['SportyBet Daily Jackpot', 'daily', 13],
-  // Odibets Laki Tatu = KES 300,000 daily pool product — 10 games (not “lucky three”).
-  'odibets-laki-tatu-predictions' => ['Odibets Laki Tatu', 'daily', 10],
-];
-if ($payload === null) {
+$apiItems = is_array($payload) ? ($payload['jackpots'] ?? []) : [];
+// Config is the SEO source of truth for labels/order; API overlays live row counts.
+$baoJackpots = require __DIR__ . '/../config/jackpots.php';
+$liveCounts = [];
+foreach ($apiItems as $jpItem) {
+  $s = (string) ($jpItem['slug'] ?? '');
+  if ($s !== '') {
+    $liveCounts[$s] = (int) ($jpItem['count'] ?? 0);
+  }
+}
+$hubListForSchema = [];
+if ($payload === null && !$baoJackpots) {
   echo bao_api_fail_msg();
-} elseif (!$items) {
-  // Still show the hub list with expected counts if API is empty.
+} else {
   echo '<ul class="jackpot-hub-list">';
-  foreach ($labels as $slug => $meta) {
-    echo '<li><a href="/jackpots/' . htmlspecialchars($slug) . '"><strong>'
-      . htmlspecialchars($meta[0]) . '</strong> — ' . (int) $meta[2] . ' games, '
-      . htmlspecialchars($meta[1]) . '</a></li>';
+  foreach ($baoJackpots as $slug => $meta) {
+    $countGames = (int) ($liveCounts[$slug] ?? 0);
+    if ($countGames < 1) {
+      $countGames = (int) ($meta['expected_games'] ?? 0);
+    }
+    $label = (string) ($meta['label'] ?? 'Jackpot');
+    $schedule = ucfirst((string) ($meta['schedule'] ?? 'open'));
+    $href = '/jackpots/' . $slug;
+    $hubListForSchema[] = ['name' => $label, 'url' => $href, 'games' => $countGames];
+    echo '<li><a href="' . htmlspecialchars($href) . '">'
+      . '<strong>' . htmlspecialchars($label) . '</strong>'
+      . '<small>' . $countGames . ' games · ' . htmlspecialchars($schedule)
+      . ' · Open full predictions</small>'
+      . '</a></li>';
   }
   echo '</ul>';
-} else {
+}
 ?>
-    <ul class="jackpot-hub-list">
-<?php foreach ($items as $jpItem):
-  $slug = (string) ($jpItem['slug'] ?? '');
-  $meta = $labels[$slug] ?? [($jpItem['jackpot_name'] ?? 'Jackpot'), 'open', 0];
-  $countGames = (int) ($jpItem['count'] ?? 0);
-  if ($countGames < 1) {
-    $countGames = (int) $meta[2];
-  }
-?>
-      <li>
-        <a href="/jackpots/<?php echo htmlspecialchars($slug); ?>">
-          <strong><?php echo htmlspecialchars($meta[0]); ?></strong>
-          — <?php echo $countGames; ?> games, <?php echo htmlspecialchars($meta[1]); ?>
-        </a>
-      </li>
-<?php endforeach; ?>
-    </ul>
-<?php } ?>
+<p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega</a> · <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a> · <a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek</a> · <a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></p>
 </div><!-- /.matches-area -->
   </div>
 </section>
@@ -153,6 +146,24 @@ echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],
 ]);
+if (!empty($hubListForSchema)) {
+  $itemList = [];
+  $pos = 1;
+  foreach ($hubListForSchema as $row) {
+    $itemList[] = [
+      '@type' => 'ListItem',
+      'position' => $pos++,
+      'name' => $row['name'] . ' — ' . $row['games'] . ' games',
+      'url' => 'https://www.baopredictions.com' . $row['url'],
+    ];
+  }
+  echo '<script type="application/ld+json">' . json_encode([
+    '@context' => 'https://schema.org',
+    '@type' => 'ItemList',
+    'name' => 'Open jackpots this week',
+    'itemListElement' => $itemList,
+  ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+}
 echo bao_organization_schema();
 ?>
 <!--BAO_SCHEMA_END-->

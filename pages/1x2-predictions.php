@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>1X2 Predictions Today — Home Draw Away Tips | Bao Predictions</title>
   <meta name="description" content="Today&#039;s 1X2 match result predictions — home win, draw, or away win — with confidence ratings and clear reasoning. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/1x2-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/1x2-predictions">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="1X2 Predictions Today — Home Draw Away Tips | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="1X2 Predictions Today — Home Draw Away Tips | Bao Predictions">
   <meta name="twitter:description" content="Today&#039;s 1X2 match result predictions — home win, draw, or away win — with confidence ratings and clear reasoning. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/1x2-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/1x2-predictions">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="1X2 Predictions Today — Home Draw Away Tips | Bao Predictions">
   <meta property="og:description" content="Today&#039;s 1X2 match result predictions — home win, draw, or away win — with confidence ratings and clear reasoning. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/1x2-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/1x2-predictions">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

@@ -41,41 +41,28 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+$sheet = bao_jackpot_sheet('odibets-laki-tatu-predictions', '/api/odibets-laki-tatu-predictions');
+$payload = $sheet['payload'];
+$gameCount = (int) $sheet['count'];
+?>
 
 <div class="wrap">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-
-    <li>
-
-      <a href="/">Home</a>
-
-    </li>
-
-    <li>
-
-      <a href="/jackpot-predictions">Jackpot Predictions</a>
-
-    </li>
-
-    <li>
-
-      <span aria-current="page">Odibets Laki Tatu</span>
-
-    </li>
-
+    <li><a href="/">Home</a></li>
+    <li><a href="/jackpot-predictions">Jackpot Predictions</a></li>
+    <li><span aria-current="page">Odibets Laki Tatu</span></li>
   </ol>
 </nav>
 
-  
-
 <header class="page-hero">
     <h1>Odibets Laki Tatu Predictions Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+<?php echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">10 games · Daily · Prize pool up to KES 300,000</p>
+<?php echo bao_jackpot_lede_html($sheet); ?>
   </header>
 
 </div>
@@ -83,11 +70,9 @@
 <section class="section-tight">
   <div class="wrap wrap-wide">
 <div class="matches-area">
-<p>Today's Laki Tatu card is Odibets' daily 10-game jackpot (top prize up to KES 300,000 — that's what &quot;Laki Tatu&quot; refers to, not a three-match ticket). Every game on the sheet gets its own note.</p>
+<p>Today's Laki Tatu card is Odibets' daily <?php echo $gameCount; ?>-game jackpot (top prize up to KES 300,000 — that's what &quot;Laki Tatu&quot; refers to, not a three-match ticket). Every game on the sheet gets its own note.</p>
     <p class="text-muted">Confirm the live lineup, stake (typically KES 15), and bonus rules in the Odibets app before you play.</p>
     <?php
-require_once __DIR__ . '/../components/api-curl.php';
-$payload = bao_curl_api('/api/odibets-laki-tatu-predictions');
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (empty($payload['games'])) {

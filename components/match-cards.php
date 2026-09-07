@@ -28,9 +28,15 @@ function bao_team_initials(string $name): string {
 function bao_guess_confidence(string $pick, ?string $score = null): int {
     $base = 72 + (strlen($pick) % 14);
     if ($score && $score !== '—' && $score !== '-') {
-        $base = min(95, $base + 6);
+        $base = min(85, $base + 6);
     }
-    return min(95, $base);
+    // Never invent a near-certainty stamp — matches published confidence clamp.
+    return max(40, min(85, $base));
+}
+
+/** Display clamp: never show 100% model on cards (RG / trust). */
+function bao_display_confidence(int $confidence): int {
+    return max(1, min(85, $confidence));
 }
 
 /**
@@ -103,7 +109,9 @@ function bao_match_card(array $g): string {
     $kickLabel = bao_kickoff_label($g, $showDate);
     $pick = $g['pick'] ?? '—';
     $odds = isset($g['odds']) ? (string) $g['odds'] : '';
-    $confidence = isset($g['confidence']) ? (int) $g['confidence'] : bao_guess_confidence($pick, $g['score'] ?? null);
+    $confidence = bao_display_confidence(
+        isset($g['confidence']) ? (int) $g['confidence'] : bao_guess_confidence($pick, $g['score'] ?? null)
+    );
     $reason = trim($g['reason'] ?? '');
     $score = $g['score'] ?? null;
     $won = $g['won'] ?? null;
@@ -303,7 +311,9 @@ function bao_matches_table_html(array $games, string $title, string $class, bool
         $kickoffIso = trim((string) ($g['kickoff_iso'] ?? ''));
         $pick = (string) ($g['pick'] ?? '—');
         $odds = isset($g['odds']) && $g['odds'] !== '' && $g['odds'] !== null ? (string) $g['odds'] : '—';
-        $confidence = isset($g['confidence']) ? (int) $g['confidence'] : bao_guess_confidence($pick, $g['score'] ?? null);
+        $confidence = bao_display_confidence(
+            isset($g['confidence']) ? (int) $g['confidence'] : bao_guess_confidence($pick, $g['score'] ?? null)
+        );
         $reason = trim((string) ($g['reason'] ?? ''));
         $score = $g['score'] ?? null;
         $won = $g['won'] ?? null;

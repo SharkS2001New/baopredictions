@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How We Predict | Bao Predictions</title>
   <meta name="description" content="How Bao Predictions builds every football prediction — our data sources, review process, and what our confidence ratings actually mean. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/how-we-predict/">
+  <link rel="canonical" href="https://www.baopredictions.com/how-we-predict">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="How We Predict | Bao Predictions">
@@ -17,12 +17,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How We Predict | Bao Predictions">
   <meta name="twitter:description" content="How Bao Predictions builds every football prediction — our data sources, review process, and what our confidence ratings actually mean. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/how-we-predict/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/how-we-predict">
   <!--BAO_HEAD_EXTRA_END-->
   
   <meta property="og:title" content="How We Predict | Bao Predictions">
   <meta property="og:description" content="How Bao Predictions builds every football prediction — our data sources, review process, and what our confidence ratings actually mean. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/how-we-predict/">
+  <meta property="og:url" content="https://www.baopredictions.com/how-we-predict">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
@@ -91,7 +91,7 @@
 <p>Confidence is relative to our own process that day — it is not a promise of hit rate. Football is unpredictable; even our highest-confidence picks lose sometimes.</p>
 
 <h2>Where our data comes from</h2>
-<p>We pull fixture and statistical data from our fixtures feed <!--API: name your data provider, e.g. API-Football or SportMonks once integrated-->, covering team form, head-to-head records, and league standings. This is combined with manually tracked team news — injuries, suspensions, and confirmed lineups — checked as close to kickoff as the data allows.</p>
+<p>We pull fixture and statistical data from our fixtures feed, covering team form, head-to-head records, and league standings. This is combined with manually tracked team news — injuries, suspensions, and confirmed lineups — checked as close to kickoff as the data allows.</p>
 
 <h2>What we don't do</h2>
 <p>We don't publish a prediction just to have one for every match on the calendar. If the data doesn't point clearly in a direction, we either publish it as a genuinely low-confidence pick and say so, or we leave it off the site entirely rather than dress up a guess as analysis.</p>

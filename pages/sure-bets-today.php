@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Sure Bets Today — Highest Confidence Tips | Bao Predictions</title>
   <meta name="description" content="&quot;Sure bet&quot; is a search phrase, not a promise. These are our highest-confidence published picks with a public track record. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/sure-bets-today/">
+  <link rel="canonical" href="https://www.baopredictions.com/sure-bets-today">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Sure Bets Today — Highest Confidence Tips | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sure Bets Today — Highest Confidence Tips | Bao Predictions">
   <meta name="twitter:description" content="&quot;Sure bet&quot; is a search phrase, not a promise. These are our highest-confidence published picks with a public track record. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sure-bets-today/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sure-bets-today">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Sure Bets Today — Highest Confidence Tips | Bao Predictions">
   <meta property="og:description" content="&quot;Sure bet&quot; is a search phrase, not a promise. These are our highest-confidence published picks with a public track record. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/sure-bets-today/">
+  <meta property="og:url" content="https://www.baopredictions.com/sure-bets-today">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

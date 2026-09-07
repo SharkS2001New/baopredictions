@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Must-Win Teams Today — High Confidence Tips | Bao Predictions</title>
   <meta name="description" content="Must-win shortlist: table pressure plus 85%+ confidence. Not every favourite qualifies. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/must-win-teams-today/">
+  <link rel="canonical" href="https://www.baopredictions.com/must-win-teams-today">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Must-Win Teams Today — High Confidence Tips | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Must-Win Teams Today — High Confidence Tips | Bao Predictions">
   <meta name="twitter:description" content="Must-win shortlist: table pressure plus 85%+ confidence. Not every favourite qualifies. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/must-win-teams-today/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/must-win-teams-today">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Must-Win Teams Today — High Confidence Tips | Bao Predictions">
   <meta property="og:description" content="Must-win shortlist: table pressure plus 85%+ confidence. Not every favourite qualifies. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/must-win-teams-today/">
+  <meta property="og:url" content="https://www.baopredictions.com/must-win-teams-today">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

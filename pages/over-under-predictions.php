@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Over/Under Predictions Today — Goals Tips | Bao Predictions</title>
   <meta name="description" content="Over and under goals predictions from both teams&#039; scoring and conceding profiles, not just the match winner. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/over-under-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/over-under-predictions">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Over/Under Predictions Today — Goals Tips | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Over/Under Predictions Today — Goals Tips | Bao Predictions">
   <meta name="twitter:description" content="Over and under goals predictions from both teams&#039; scoring and conceding profiles, not just the match winner. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/over-under-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/over-under-predictions">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Over/Under Predictions Today — Goals Tips | Bao Predictions">
   <meta property="og:description" content="Over and under goals predictions from both teams&#039; scoring and conceding profiles, not just the match winner. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/over-under-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/over-under-predictions">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

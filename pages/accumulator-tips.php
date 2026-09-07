@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Accumulator Tips Today — Acca Folds | Bao Predictions</title>
   <meta name="description" content="Pre-built accumulator tips at different risk levels, plus plain-language maths on why long accas fail. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/accumulator-tips/">
+  <link rel="canonical" href="https://www.baopredictions.com/accumulator-tips">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Accumulator Tips Today — Acca Folds | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Accumulator Tips Today — Acca Folds | Bao Predictions">
   <meta name="twitter:description" content="Pre-built accumulator tips at different risk levels, plus plain-language maths on why long accas fail. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/accumulator-tips/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/accumulator-tips">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Accumulator Tips Today — Acca Folds | Bao Predictions">
   <meta property="og:description" content="Pre-built accumulator tips at different risk levels, plus plain-language maths on why long accas fail. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/accumulator-tips/">
+  <meta property="og:url" content="https://www.baopredictions.com/accumulator-tips">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

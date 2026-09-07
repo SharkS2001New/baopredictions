@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Tomorrow's Football Predictions & Early Tips, <?php echo date('l j F Y', strtotime('+1 day')); ?> | Bao Predictions</title>
   <meta name="description" content="Tomorrow&#039;s football predictions — early picks with confidence ratings. Re-check closer to kickoff for lineup updates. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/football-predictions-tomorrow/">
+  <link rel="canonical" href="https://www.baopredictions.com/football-predictions-tomorrow">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Tomorrow's Football Predictions & Early Tips, <?php echo date('l j F Y', strtotime('+1 day')); ?> | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Tomorrow's Football Predictions & Early Tips, <?php echo date('l j F Y', strtotime('+1 day')); ?> | Bao Predictions">
   <meta name="twitter:description" content="Tomorrow&#039;s football predictions — early picks with confidence ratings. Re-check closer to kickoff for lineup updates. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-tomorrow/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-tomorrow">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Tomorrow's Football Predictions & Early Tips, <?php echo date('l j F Y', strtotime('+1 day')); ?> | Bao Predictions">
   <meta property="og:description" content="Tomorrow&#039;s football predictions — early picks with confidence ratings. Re-check closer to kickoff for lineup updates. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/football-predictions-tomorrow/">
+  <meta property="og:url" content="https://www.baopredictions.com/football-predictions-tomorrow">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

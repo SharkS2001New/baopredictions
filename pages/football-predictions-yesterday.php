@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Yesterday&#039;s Football Predictions Results | Bao Predictions</title>
   <meta name="description" content="Yesterday&#039;s tips vs actual results. Every published pick stays listed — wins and losses. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/football-predictions-yesterday/">
+  <link rel="canonical" href="https://www.baopredictions.com/football-predictions-yesterday">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Yesterday&#039;s Football Predictions Results | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Yesterday&#039;s Football Predictions Results | Bao Predictions">
   <meta name="twitter:description" content="Yesterday&#039;s tips vs actual results. Every published pick stays listed — wins and losses. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-yesterday/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-yesterday">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Yesterday&#039;s Football Predictions Results | Bao Predictions">
   <meta property="og:description" content="Yesterday&#039;s tips vs actual results. Every published pick stays listed — wins and losses. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/football-predictions-yesterday/">
+  <meta property="og:url" content="https://www.baopredictions.com/football-predictions-yesterday">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

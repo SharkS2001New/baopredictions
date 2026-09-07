@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="About Us | Bao Predictions">
   <meta name="twitter:description" content="About Bao Predictions — who we are, how we work, and why we publish our results transparently. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/about-us/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/about-us">
   <!--BAO_HEAD_EXTRA_END-->
   
   <meta property="og:title" content="About Us | Bao Predictions">

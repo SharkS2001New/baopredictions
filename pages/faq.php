@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="FAQ | Bao Predictions">
   <meta name="twitter:description" content="Frequently asked questions about Bao Predictions — how we work, how accurate we are, and how to use our predictions responsibly. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/faq/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/faq">
   <!--BAO_HEAD_EXTRA_END-->
   
   <meta property="og:title" content="FAQ | Bao Predictions">

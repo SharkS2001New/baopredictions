@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Today's Football Predictions & Sure Tips, <?php echo date('l j F Y'); ?> | Bao Predictions</title>
   <meta name="description" content="Today&#039;s football predictions — every fixture, pick, and confidence rating across the leagues we cover. Updated live. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/football-predictions-today/">
+  <link rel="canonical" href="https://www.baopredictions.com/football-predictions-today">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Today's Football Predictions & Sure Tips, <?php echo date('l j F Y'); ?> | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Today's Football Predictions & Sure Tips, <?php echo date('l j F Y'); ?> | Bao Predictions">
   <meta name="twitter:description" content="Today&#039;s football predictions — every fixture, pick, and confidence rating across the leagues we cover. Updated live. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-today/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-today">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Today's Football Predictions & Sure Tips, <?php echo date('l j F Y'); ?> | Bao Predictions">
   <meta property="og:description" content="Today&#039;s football predictions — every fixture, pick, and confidence rating across the leagues we cover. Updated live. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/football-predictions-today/">
+  <meta property="og:url" content="https://www.baopredictions.com/football-predictions-today">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

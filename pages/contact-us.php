@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact Us | Bao Predictions">
   <meta name="twitter:description" content="Contact Bao Predictions — partnerships, corrections, and media enquiries. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/contact-us/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/contact-us">
   <!--BAO_HEAD_EXTRA_END-->
   
   <meta property="og:title" content="Contact Us | Bao Predictions">

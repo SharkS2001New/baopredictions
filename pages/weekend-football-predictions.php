@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Weekend Football Predictions — Saturday &amp; Sunday Tips | Bao Predictions</title>
   <meta name="description" content="Weekend football predictions for Saturday and Sunday fixtures, ranked by confidence for ticket planning. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/weekend-football-predictions/">
+  <link rel="canonical" href="https://www.baopredictions.com/weekend-football-predictions">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Weekend Football Predictions — Saturday &amp; Sunday Tips | Bao Predictions">
@@ -18,12 +18,12 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Weekend Football Predictions — Saturday &amp; Sunday Tips | Bao Predictions">
   <meta name="twitter:description" content="Weekend football predictions for Saturday and Sunday fixtures, ranked by confidence for ticket planning. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/weekend-football-predictions/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/weekend-football-predictions">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Weekend Football Predictions — Saturday &amp; Sunday Tips | Bao Predictions">
   <meta property="og:description" content="Weekend football predictions for Saturday and Sunday fixtures, ranked by confidence for ticket planning. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/weekend-football-predictions/">
+  <meta property="og:url" content="https://www.baopredictions.com/weekend-football-predictions">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>

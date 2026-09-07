@@ -21,6 +21,44 @@ function bao_rg_notice_html(): string {
     return '<p class="rg-notice"><span class="age-badge">18+</span> Tips are informational opinions for entertainment — not financial advice, not betting tips that guarantee profit, and not a substitute for your own judgment. Confidence scores are model leans only; they are not predicted win rates. Never stake money you cannot afford to lose. <a href="/responsible-betting">Responsible betting</a>. Must be 18+ (or legal age where you live).</p>';
 }
 
+/**
+ * Load a jackpot sheet payload and resolve game count from the live fixtures array
+ * (never a separate hardcoded strip number). Config expected_games is fallback only.
+ *
+ * @return array{
+ *   payload:?array<string,mixed>,
+ *   count:int,
+ *   label:string,
+ *   schedule:string,
+ *   prize_label:string
+ * }
+ */
+function bao_jackpot_sheet(string $slug, string $apiPath): array {
+    require_once __DIR__ . '/api-curl.php';
+    $all = require dirname(__DIR__) . '/config/jackpots.php';
+    $meta = is_array($all[$slug] ?? null) ? $all[$slug] : [];
+    $payload = bao_curl_api($apiPath);
+    $live = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+        ? count($payload['games'])
+        : 0;
+    $expected = (int) ($meta['expected_games'] ?? 0);
+    $prize = $meta['prize_label'] ?? null;
+
+    return [
+        'payload' => $payload,
+        'count' => $live > 0 ? $live : $expected,
+        'label' => (string) ($meta['label'] ?? 'Jackpot'),
+        'schedule' => ucfirst((string) ($meta['schedule'] ?? 'open')),
+        'prize_label' => $prize !== null && $prize !== '' ? (string) $prize : 'varies',
+    ];
+}
+
+function bao_jackpot_lede_html(array $sheet): string {
+    return '<p class="lede">' . (int) $sheet['count'] . ' games · '
+        . bao_h((string) $sheet['schedule']) . ' · Prize pool '
+        . bao_h((string) $sheet['prize_label']) . '</p>';
+}
+
 function bao_faq_schema(array $faqs): string {
     if (!$faqs) {
         return '';

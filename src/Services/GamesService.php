@@ -1042,7 +1042,16 @@ SQL;
             default => 82,
         };
 
-        return max(50, min($cap, $modelPct));
+        return $this->clampPublishedConfidence(max(50, min($cap, $modelPct)));
+    }
+
+    /**
+     * Never publish 100% (or near-certainty) on tips cards — that reads as a guarantee
+     * and contradicts the site RG disclaimer. Upstream prediction_confidence can be 100.
+     */
+    private function clampPublishedConfidence(int $pct): int
+    {
+        return max(40, min(85, $pct));
     }
 
     /**
@@ -1121,6 +1130,17 @@ SQL;
         $h = (int) ($row['percent_pred_home'] ?? 0);
         $d = (int) ($row['percent_pred_draw'] ?? 0);
         $a = (int) ($row['percent_pred_away'] ?? 0);
+        // Card pill and reason must show the same lean % (published confidence).
+        $published = (int) ($pickMeta['confidence'] ?? 0);
+        if ($published > 0) {
+            if ($code === '1') {
+                $h = $published;
+            } elseif ($code === '2') {
+                $a = $published;
+            } elseif ($code === 'X') {
+                $d = $published;
+            }
+        }
         $avg = isset($row['avg_goals']) ? (float) $row['avg_goals'] : 0.0;
         $bttsProb = isset($row['both_teams_percentage_prob']) ? (int) $row['both_teams_percentage_prob'] : 0;
         $price = $odd !== null ? number_format($odd, 2) : null;
@@ -1612,7 +1632,27 @@ SQL;
             $market = in_array($code, ['1X', 'X2', '12'], true) ? 'double_chance' : '1x2';
         }
 
-        $conf = $row['research_confidence'] ?? $row['prediction_confidence'] ?? 50;
+        $hProb = (int) ($row['home_prob'] ?? 0);
+        $dProb = (int) ($row['draw_prob'] ?? 0);
+        $aProb = (int) ($row['away_prob'] ?? 0);
+        // Tip-aligned model share — same figure on the card pill and in the reason line.
+        // Prefer this over prediction_confidence: upstream often stores a bogus 100 ceiling
+        // that reads as a guarantee (RG / trust risk on jackpot pages).
+        $leanShare = match ($code) {
+            '1' => $hProb,
+            '2' => $aProb,
+            'X' => $dProb,
+            '1X' => max($hProb, $dProb),
+            'X2' => max($dProb, $aProb),
+            '12' => max($hProb, $aProb),
+            default => 0,
+        };
+        $rawStored = $row['research_confidence'] ?? null;
+        if ($rawStored === null || $rawStored === '') {
+            $rawStored = $row['prediction_confidence'] ?? null;
+        }
+        $conf = $leanShare > 0 ? $leanShare : (int) ($rawStored ?? 50);
+
         $kickoffRaw = (string) ($row['kickoff'] ?? '');
         $when = DateTimeHelper::formatKickoff($kickoffRaw, (string) ($row['timezone'] ?? DateTimeHelper::SOURCE_TZ));
         $goalsHome = $row['goals_home'] ?? null;
@@ -1672,8 +1712,8 @@ SQL;
             'pick' => $this->tipLabel($code),
             'pick_code' => $code,
             'odds' => $odd,
-            'confidence' => (int) $conf,
-            'reason' => $this->selectionAdviceLine($row, $code, $market, $odd, $pos),
+            'confidence' => $this->clampPublishedConfidence($conf),
+            'reason' => $this->selectionAdviceLine($row, $code, $market, $odd, $pos, $this->clampPublishedConfidence($conf)),
             'category' => (string) ($row['category'] ?? ''),
             'jackpot_name' => (string) ($row['jackpot_name'] ?? ''),
             'jackpot_tips_id' => (string) ($row['jackpot_tips_id'] ?? ''),
@@ -1684,19 +1724,32 @@ SQL;
     /**
      * Jackpot/selection card reason — aligned to published tip, never upstream
      * "revised / research vs system" winner_reason strings.
+     *
+     * $publishedConfidence is the same % shown on the card pill (tip-aligned share).
      */
     private function selectionAdviceLine(
         array $row,
         string $code,
         string $market,
         ?string $odd,
-        int $pos
+        int $pos,
+        int $publishedConfidence = 0
     ): string {
         $home = trim((string) ($row['home_team_name'] ?? 'Home'));
         $away = trim((string) ($row['away_team_name'] ?? 'Away'));
         $h = (int) ($row['home_prob'] ?? 0);
         $d = (int) ($row['draw_prob'] ?? 0);
         $a = (int) ($row['away_prob'] ?? 0);
+        // Keep relative draw/other context, but force the lean % to match the card pill.
+        if ($publishedConfidence > 0) {
+            if ($code === '1') {
+                $h = $publishedConfidence;
+            } elseif ($code === '2') {
+                $a = $publishedConfidence;
+            } elseif ($code === 'X') {
+                $d = $publishedConfidence;
+            }
+        }
         $price = $this->oddFloat($odd) !== null ? number_format((float) $odd, 2) : null;
         $seed = (int) ($row['fixture_id'] ?? 0) + $pos * 17 + ord($code[0] ?? '1');
 
@@ -1704,7 +1757,7 @@ SQL;
             return $this->doubleChanceAdviceLine($code, $home, $away, $h, $d, $a, $price, $seed);
         }
 
-        if ($h + $d + $a >= 50) {
+        if ($h + $d + $a >= 50 || $publishedConfidence >= 40) {
             return match ($code) {
                 '1' => $this->winnerAdviceLine($home, 'home', $h, $d, $a, $price, $seed),
                 '2' => $this->winnerAdviceLine($away, 'away', $a, $d, $h, $price, $seed),

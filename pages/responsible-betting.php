@@ -17,7 +17,7 @@
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Responsible Betting | Bao Predictions">
   <meta name="twitter:description" content="Responsible gambling guidance and support resources — read this before betting on any prediction published on this site. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/responsible-betting/">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/responsible-betting">
   <!--BAO_HEAD_EXTRA_END-->
   
   <meta property="og:title" content="Responsible Betting | Bao Predictions">
