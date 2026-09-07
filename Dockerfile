@@ -67,8 +67,11 @@ RUN printf '%s\n' \
 # Ensure PHP / Apache logs are captured by the container (kubectl logs)
 ENV LOG_CHANNEL=stderr
 ENV APACHE_LOG_DIR=/var/log/apache2
-# Prefer process env from k8s secrets; do not rely on a baked .env
-ENV BAO_LOAD_DOTENV=0
+# Secrets are not baked in (.dockerignore). Runtime env comes from k8s:
+# - flat keys via envFrom, and/or
+# - a ".env" secret key (parsed by config/load-env.php), and/or
+# - a mounted .env file
+# Set BAO_LOAD_DOTENV=0 only if you must ignore a mounted file.
 
 # Set a volume mount point for your code
 VOLUME /var/www/html

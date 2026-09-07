@@ -23,6 +23,17 @@ $router = new Router();
 // —— JSON API ——
 $router->get('/api/health', function () {
     require_once __DIR__ . '/../src/Api/bootstrap.php';
+    require_once __DIR__ . '/../config/load-env.php';
+
+    $envProbe = [
+        'db_host_set' => bao_env('DB_HOST') !== null && (string) bao_env('DB_HOST') !== '',
+        'db_name_set' => bao_env('DB_DATABASE') !== null && (string) bao_env('DB_DATABASE') !== '',
+        'db_user_set' => bao_env('DB_USERNAME') !== null && (string) bao_env('DB_USERNAME') !== '',
+        'has_dotenv_blob' => (isset($_ENV['.env']) && is_string($_ENV['.env']) && $_ENV['.env'] !== '')
+            || (is_string(getenv('.env')) && getenv('.env') !== ''),
+        'has_dotenv_file' => is_file(dirname(__DIR__) . '/.env'),
+    ];
+
     try {
         $pdo = \App\Database::connection();
         $pdo->query('SELECT 1');
@@ -33,10 +44,15 @@ $router->get('/api/health', function () {
             'ok' => true,
             'db' => 'up',
             'cache' => $cacheDriver,
+            'env' => $envProbe,
             'time' => date('c'),
         ]);
     } catch (Throwable $e) {
-        bao_api_error('db down: ' . $e->getMessage(), 503);
+        bao_log_exception($e, 'Health check DB failed', $envProbe);
+        bao_api_error('db down: ' . $e->getMessage(), 503, [
+            'env' => $envProbe,
+            'hint' => 'Set DB_* via flat secret keys, or a laravel-env ".env" blob/file. Image does not bake .env.',
+        ]);
     }
 });
 
