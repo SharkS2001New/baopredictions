@@ -19,7 +19,6 @@
           <a href="/over-under-predictions">Over / Under</a>
           <a href="/btts-predictions">BTTS</a>
           <a href="/ht-ft-predictions">HT / FT</a>
-          <a href="/betnumbers-tips">BetNumbers</a>
         </div>
       </details>
       <a href="/jackpot-predictions">Jackpots</a>

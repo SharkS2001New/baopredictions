@@ -236,6 +236,11 @@ $router->get('/jackpot-predictions', function () {
     include __DIR__ . '/../pages/jackpot-predictions.php';
 });
 
+$router->get('/jackpot-predictions/', function () {
+    header('Location: /jackpot-predictions', true, 301);
+    exit;
+});
+
 $jackpotPages = [
     'sportpesa-mega-jackpot-predictions',
     'sportpesa-midweek-jackpot-predictions',

@@ -147,14 +147,14 @@ function bao_match_card(array $g): string {
     $html .= '<div class="at-card-teams">';
     $html .= '<div class="at-team">';
     if ($homeLogo !== '') {
-        $html .= '<img class="at-crest" src="' . bao_h($homeLogo) . '" alt="" width="28" height="28" loading="lazy" decoding="async">';
+        $html .= '<img class="at-crest" src="' . bao_h($homeLogo) . '" alt="' . bao_h($home . ' badge') . '" width="24" height="24" loading="lazy" decoding="async">';
     } else {
         $html .= '<span class="at-crest at-crest-fallback" aria-hidden="true">' . bao_h(bao_team_initials($home)) . '</span>';
     }
     $html .= '<span class="at-team-name">' . bao_h($home) . '</span></div>';
     $html .= '<div class="at-team">';
     if ($awayLogo !== '') {
-        $html .= '<img class="at-crest" src="' . bao_h($awayLogo) . '" alt="" width="28" height="28" loading="lazy" decoding="async">';
+        $html .= '<img class="at-crest" src="' . bao_h($awayLogo) . '" alt="' . bao_h($away . ' badge') . '" width="24" height="24" loading="lazy" decoding="async">';
     } else {
         $html .= '<span class="at-crest at-crest-fallback" aria-hidden="true">' . bao_h(bao_team_initials($away)) . '</span>';
     }

@@ -806,6 +806,77 @@ main:has(.bao-faq) + .site-footer {
   margin-bottom: var(--space-xs);
 }
 
+.jackpot-hub-list {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  display: grid;
+  gap: 0.75rem;
+}
+
+.jackpot-hub-list a {
+  display: block;
+  padding: 0.85rem 1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  text-decoration: none;
+  color: inherit;
+  line-height: 1.45;
+}
+
+.jackpot-hub-list a:hover {
+  border-color: var(--card-accent, var(--amber));
+}
+
+.jackpot-hub-list strong {
+  color: var(--card-accent, var(--ink));
+}
+
+
+.home-performance {
+  margin-top: 1.75rem;
+  padding-top: 1.25rem;
+  border-top: 1px solid var(--line);
+}
+
+.home-performance-title {
+  margin: 0 0 0.75rem;
+  font-size: 1.05rem;
+}
+
+.home-performance-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem 1.25rem;
+  margin: 0 0 0.75rem;
+  padding: 0;
+  list-style: none;
+}
+
+.home-performance-list li {
+  display: flex;
+  flex-direction: column;
+  gap: 0.15rem;
+  min-width: 4.5rem;
+}
+
+.home-performance-list span {
+  font-size: 0.72rem;
+  color: var(--ink-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+
+.home-performance-list strong {
+  font-size: 1rem;
+}
+
+.home-performance-note {
+  margin: 0 0 0.5rem;
+  color: var(--ink-muted);
+  font-size: 0.9rem;
+}
+
 .jackpot-fixture {
   padding: 0.85rem 0;
   border-bottom: 1px solid var(--line);
@@ -1661,8 +1732,8 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .at-crest {
-  width: 1.75rem;
-  height: 1.75rem;
+  width: 1.5rem;
+  height: 1.5rem;
   border-radius: 50%;
   object-fit: contain;
   background: var(--card-crest-bg);

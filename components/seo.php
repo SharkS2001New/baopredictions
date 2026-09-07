@@ -13,7 +13,8 @@ if (!function_exists('bao_h')) {
 function bao_last_updated_html(?string $iso = null): string {
     $iso = $iso ?: date('c');
     $label = date('j M Y, H:i', strtotime($iso)) . ' EAT';
-    return '<p class="last-updated">Last updated: <time datetime="' . bao_h($iso) . '">' . bao_h($label) . '</time> · Bao Predictions Analysis Team</p>';
+    return '<p class="last-updated">Last updated <time datetime="' . bao_h($iso) . '">' . bao_h($label) . '</time>'
+        . ' · By <a href="/about-us">Bao Predictions Analysis Team</a></p>';
 }
 
 function bao_rg_notice_html(): string {
