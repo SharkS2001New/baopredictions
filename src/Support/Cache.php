@@ -318,9 +318,18 @@ final class Cache
         }
     }
 
+    /**
+     * Laravel RedisStore::setPrefix — cache prefix is always followed by ":".
+     * Full Redis key = REDIS_PREFIX + CACHE_PREFIX + ":" + key
+     * e.g. pitch_predictions_database_pitch_predictions_cache_:todays_football_fixtures_…_json_v2
+     */
     private function prefixed(string $key): string
     {
-        return (string) ($this->cacheCfg['prefix'] ?? 'pitch_predictions_cache_') . $key;
+        $prefix = (string) ($this->cacheCfg['prefix'] ?? 'pitch_predictions_cache_');
+        if ($prefix !== '' && !str_ends_with($prefix, ':')) {
+            $prefix .= ':';
+        }
+        return $prefix . $key;
     }
 
     private static function ttlSeconds(DateTimeInterface|DateInterval|int $ttl): int
