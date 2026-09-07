@@ -149,7 +149,7 @@ if ($payload === null) {
     <p>We also watch the market. When our own read on a match disagrees sharply with the bookmakers' price, that's usually the game worth a second look, not the one to skip.</p>
     <p>And motivation counts for something the stats sheet won't show you — a team fighting relegation plays differently than one with nothing left to play for. That's why Must-Win Teams gets its own list instead of getting mixed in with everything else.</p>
     <h3>What the confidence numbers mean</h3>
-    <p>85% and up is as sure as we get. 70–84% is a solid lean, still not a lock. 50–69% is close to a coin flip where we still see something worth noting — better for an accumulator leg than a bet on its own. Below 50%, we don't publish it. If the data doesn't point anywhere, we'd rather say nothing than guess and call it analysis.</p>
+    <p>75–85% is as sure as we publish — we never show 100%, because that would read as a guarantee. 60–74% is a solid lean, still not a lock. 40–59% is closer to a coin flip where we still see something worth noting — better for an accumulator leg than a heavy single. Below 40%, we don't publish it. If the data doesn't point anywhere, we'd rather say nothing than guess and call it analysis.</p>
     <p>None of this is a guarantee. Football doesn't work that way, and our best picks still lose sometimes. The <a href="/results">results page</a> shows exactly how often — we'd rather you see the real numbers than take our word for it. If you want the longer version of all this, it's on <a href="/how-we-predict">How We Predict</a>.</p>
     <p><strong>Jackpots:</strong> we cover SportPesa Mega and Midweek, Betika Midweek, SportyBet Daily, and Odibets Laki Tatu. Every game on every sheet gets its own note — a 17-game jackpot only needs one bad line to fall apart, so we don't phone in the analysis on any single match.</p>
     <p><strong>One more thing:</strong> we're not a bookmaker, and nothing here is financial advice. Bet with licensed operators, stay 18+, and have a read of our <a href="/responsible-betting">responsible betting guide</a> if you haven't already.</p>
@@ -162,7 +162,7 @@ if ($payload === null) {
     <ul class="faq-list">
       <li><details><summary>Are Bao Predictions free?</summary><p>Yes. Every tip, jackpot sheet, and result is free to view.</p></details></li>
       <li><details><summary>How accurate are your football tips?</summary><p>Check the results page — we publish every settled pick, wins and losses. That's the real number, not a marketing line.</p></details></li>
-      <li><details><summary>What do the confidence ratings mean?</summary><p>85%+ is our strongest lean. 70–84% is solid. 50–69% is close to a toss-up and better suited to an accumulator than a single bet. None of it's a guarantee.</p></details></li>
+      <li><details><summary>What do the confidence ratings mean?</summary><p>75–85% is our strongest published lean. 60–74% is solid. 40–59% is closer to a toss-up and better suited to an accumulator than a heavy single. We never publish 100%. None of it is a guarantee.</p></details></li>
       <li><details><summary>Do you cover Kenyan jackpots?</summary><p>Yes — SportPesa Mega and Midweek, Betika Midweek, SportyBet Daily, and Odibets Laki Tatu, with notes on every game.</p></details></li>
       <li><details><summary>How often do tips get updated?</summary><p>Usually the evening before, then again on matchday if team news changes anything.</p></details></li>
       <li><details><summary>Is this financial advice?</summary><p>No. These are opinions, not advice. Bet only with licensed operators, only what you can afford to lose, and only if you're 18 or over.</p></details></li>
@@ -181,7 +181,7 @@ require_once __DIR__ . '/../components/seo.php';
 $baoHomeFaqs = [
   ['q' => 'Are Bao Predictions free?', 'a' => 'Yes. Every tip, jackpot sheet, and result is free to view.'],
   ['q' => 'How accurate are your football tips?', 'a' => 'Check the results page — we publish every settled pick, wins and losses. That\'s the real number, not a marketing line.'],
-  ['q' => 'What do the confidence ratings mean?', 'a' => '85%+ is our strongest lean. 70–84% is solid. 50–69% is close to a toss-up and better suited to an accumulator than a single bet. None of it\'s a guarantee.'],
+  ['q' => 'What do the confidence ratings mean?', 'a' => '75–85% is our strongest published lean. 60–74% is solid. 40–59% is closer to a toss-up and better suited to an accumulator than a heavy single. We never publish 100%. None of it is a guarantee.'],
   ['q' => 'Do you cover Kenyan jackpots?', 'a' => 'Yes — SportPesa Mega and Midweek, Betika Midweek, SportyBet Daily, and Odibets Laki Tatu, with notes on every game.'],
   ['q' => 'How often do tips get updated?', 'a' => 'Usually the evening before, then again on matchday if team news changes anything.'],
   ['q' => 'Is this financial advice?', 'a' => 'No. These are opinions, not advice. Bet only with licensed operators, only what you can afford to lose, and only if you\'re 18 or over.'],

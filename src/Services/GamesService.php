@@ -1143,6 +1143,7 @@ SQL;
         }
         $avg = isset($row['avg_goals']) ? (float) $row['avg_goals'] : 0.0;
         $bttsProb = isset($row['both_teams_percentage_prob']) ? (int) $row['both_teams_percentage_prob'] : 0;
+        $league = trim((string) ($row['league_name'] ?? ''));
         $price = $odd !== null ? number_format($odd, 2) : null;
         $seed = (int) ($row['fixture_id'] ?? 0)
             + strlen($home) * 7
@@ -1150,7 +1151,7 @@ SQL;
             + ord($code[0] ?? '1');
 
         $line = match ($market) {
-            'double_chance' => $this->doubleChanceAdviceLine($code, $home, $away, $h, $d, $a, $price, $seed),
+            'double_chance' => $this->doubleChanceAdviceLine($code, $home, $away, $h, $d, $a, $price, $seed, $league),
             'over_under' => $this->overUnderAdviceLine(
                 $code,
                 $home,
@@ -1158,14 +1159,15 @@ SQL;
                 $avg,
                 $price,
                 $seed,
-                $published
+                $published,
+                $league
             ),
-            'btts' => $this->bttsAdviceLine($code, $bttsProb, $price, $seed),
+            'btts' => $this->bttsAdviceLine($code, $bttsProb, $price, $seed, $home, $away, $league),
             'ht_ft', 'correct_score' => trim((string) ($pickMeta['pick'] ?? '')),
             default => match ($code) {
-                '1' => $this->winnerAdviceLine($home, 'home', $h, $d, $a, $price, $seed),
-                '2' => $this->winnerAdviceLine($away, 'away', $a, $d, $h, $price, $seed),
-                'X' => $this->drawAdviceLine($h, $d, $a, $price, $seed),
+                '1' => $this->winnerAdviceLine($home, 'home', $h, $d, $a, $price, $seed, $away, $league),
+                '2' => $this->winnerAdviceLine($away, 'away', $a, $d, $h, $price, $seed, $home, $league),
+                'X' => $this->drawAdviceLine($h, $d, $a, $price, $seed, $home, $away, $league),
                 default => trim((string) ($pickMeta['pick'] ?? '')),
             },
         };
@@ -1188,28 +1190,37 @@ SQL;
 
     private function priceClause(?string $price, int $variant): string
     {
-        if ($price === null) {
+        if ($price === null || ($variant % 5) === 0) {
             return '';
         }
         return match ($variant % 3) {
-            1 => '; available around ' . $price,
-            2 => '; shortlist price near ' . $price,
-            default => '; priced around ' . $price,
+            1 => ' Price near ' . $price . '.',
+            2 => ' Shortlist around ' . $price . '.',
+            default => ' About ' . $price . ' on the board.',
         };
     }
 
     private function cautionClause(int $variant): string
     {
-        return match ($variant % 4) {
-            1 => ' — opinion only, not a win rate.',
-            2 => ' — margins can flip on the day.',
-            3 => ' — informational lean, not certainty.',
-            default => ' — still not a guarantee.',
+        // Only append on some cards — repeating the same disclaimer on every tip is itself a template signal.
+        return match ($variant % 5) {
+            1 => ' Opinion only.',
+            2 => ' Can flip on the day.',
+            default => '',
         };
     }
 
+    private function leagueCue(string $league, int $seed): string
+    {
+        $league = trim($league);
+        if ($league === '' || ($seed % 3) === 0) {
+            return '';
+        }
+        return $league . ': ';
+    }
+
     /**
-     * Soft 1X2 winner line — model lean, not a win promise.
+     * Soft 1X2 winner line — structurally varied so cards do not share one skeleton.
      */
     private function winnerAdviceLine(
         string $team,
@@ -1218,52 +1229,79 @@ SQL;
         int $drawPct,
         int $otherPct,
         ?string $price,
-        int $seed
+        int $seed,
+        string $opponent = '',
+        string $league = ''
     ): string {
         $sideLabel = $side === 'away' ? 'away' : 'home';
         $gap = $leanPct - max($drawPct, $otherPct);
-        $v = $this->adviceVariant($seed, 4);
-        $tail = $this->priceClause($price, $seed) . $this->cautionClause($seed);
+        $v = $this->adviceVariant($seed, 8);
+        $cue = $this->leagueCue($league, $seed);
+        $vs = $opponent !== '' ? (' vs ' . $opponent) : '';
+        $tail = $this->priceClause($price, $seed) . $this->cautionClause($seed + 1);
 
+        // Strong lean: avoid dumping draw%/reverse% on every card.
         if ($leanPct >= 62 && $gap >= 12) {
-            $templates = [
-                'Model lean: %s (%s) at %d%%, ahead of draw %d%% / other %d%%%s',
-                '%s favoured on the %s side in our model (%d%%) versus draw %d%% and reverse %d%%%s',
-                'Stronger model share sits with %s %s (%d%%); draw %d%% and other %d%% trail%s',
-                'Data lean toward %s to take it %s — model %d%% with draw %d%% / reverse %d%%%s',
-            ];
-            return sprintf($templates[$v], $team, $sideLabel, $leanPct, $drawPct, $otherPct, $tail);
+            return match ($v) {
+                1 => sprintf('%s%s look clear enough %s (%d%% model share)%s', $cue, $team, $sideLabel, $leanPct, $tail),
+                2 => sprintf('%sFavouring %s on the %s side — about %d points clear of the next outcome%s', $cue, $team, $sideLabel, $gap, $tail),
+                3 => sprintf('%sOur strongest read here is %s (%s, %d%%)%s', $cue, $team, $sideLabel, $leanPct, $tail),
+                4 => sprintf('%s%s%s: edge sits with the %s side at %d%%%s', $cue, $team, $vs, $sideLabel, $leanPct, $tail),
+                5 => sprintf('%sBanker-ish lean on %s — model %d%%, draw only %d%%%s', $cue, $team, $leanPct, $drawPct, $tail),
+                6 => sprintf('%s%s should control this %s fixture more often than not (%d%%)%s', $cue, $team, $sideLabel, $leanPct, $tail),
+                7 => sprintf('%sClear model preference for %s; reverse outcome only %d%%%s', $cue, $team, $otherPct, $tail),
+                default => sprintf('%s%s (%s) carry the published lean at %d%%%s', $cue, $team, $sideLabel, $leanPct, $tail),
+            };
         }
 
         if ($leanPct >= 55) {
-            $templates = [
-                'Model lean: %s at %s (%d%%) — modest edge over draw %d%% / other %d%%%s',
-                '%s carry a mild %s edge in the model (%d%%); draw %d%% and reverse %d%% keep risk in play%s',
-                'Slight model tilt to %s (%s, %d%%) rather than draw %d%% or the other side %d%%%s',
-                'Working lean is %s %s at %d%% model share — not a lock with draw %d%% / other %d%%%s',
-            ];
-            return sprintf($templates[$v], $team, $sideLabel, $leanPct, $drawPct, $otherPct, $tail);
+            return match ($v) {
+                1 => sprintf('%sMild edge to %s %s (%d%%) — draw still %d%%%s', $cue, $team, $sideLabel, $leanPct, $drawPct, $tail),
+                2 => sprintf('%s%s get the nod%s, but it is not a separation you stake heavily (%d%%)%s', $cue, $team, $vs, $leanPct, $tail),
+                3 => sprintf('%sWorking pick: %s %s. Gap over the field is only about %d points%s', $cue, $team, $sideLabel, max(0, $gap), $tail),
+                4 => sprintf('%sLean %s without calling it settled — model %d%%, other side %d%%%s', $cue, $team, $leanPct, $otherPct, $tail),
+                5 => sprintf('%s%s at %s feels like the better side of a close game (%d%%)%s', $cue, $team, $sideLabel, $leanPct, $tail),
+                6 => sprintf('%sSlight tilt to %s; keep the draw (%d%%) in mind if you stack this%s', $cue, $team, $drawPct, $tail),
+                7 => sprintf('%s%s%s is a soft favourite in our sheet at %d%%%s', $cue, $team, $vs, $leanPct, $tail),
+                default => sprintf('%sPublished lean is %s (%s, %d%%)%s', $cue, $team, $sideLabel, $leanPct, $tail),
+            };
         }
 
-        $templates = [
-            'Narrow model lean on %s (%s, %d%%) — draw %d%% and reverse %d%% make this a tight call%s',
-            '%s only shade it %s in the model (%d%%); treat draw %d%% / other %d%% as live threats%s',
-            'Soft lean for %s (%s, %d%%) — margins are thin vs draw %d%% and reverse %d%%%s',
-            'Provisional lean: %s %s (%d%%). Draw %d%% and other %d%% leave little room for error%s',
-        ];
-        return sprintf($templates[$v], $team, $sideLabel, $leanPct, $drawPct, $otherPct, $tail);
+        return match ($v) {
+            1 => sprintf('%sTight call, slight nod to %s %s (%d%%) with draw %d%%%s', $cue, $team, $sideLabel, $leanPct, $drawPct, $tail),
+            2 => sprintf('%s%s only shade it%s — treat as fragile at %d%%%s', $cue, $team, $vs, $leanPct, $tail),
+            3 => sprintf('%sProvisional lean: %s. Margins are thin (draw %d%% / reverse %d%%)%s', $cue, $team, $drawPct, $otherPct, $tail),
+            4 => sprintf('%sIf you need a side, %s %s is ours — barely (%d%%)%s', $cue, $team, $sideLabel, $leanPct, $tail),
+            5 => sprintf('%sCoin-flip territory; %s get a soft %s lean at %d%%%s', $cue, $team, $sideLabel, $leanPct, $tail),
+            6 => sprintf('%s%s%s: published tip is thin — better as an acca filler than a single%s', $cue, $team, $vs, $tail),
+            7 => sprintf('%sSmall model preference for %s over a live draw risk (%d%%)%s', $cue, $team, $drawPct, $tail),
+            default => sprintf('%sNarrow lean on %s (%s, %d%%)%s', $cue, $team, $sideLabel, $leanPct, $tail),
+        };
     }
 
-    private function drawAdviceLine(int $h, int $d, int $a, ?string $price, int $seed): string
-    {
-        $v = $this->adviceVariant($seed, 3);
-        $tail = $this->priceClause($price, $seed) . $this->cautionClause($seed);
-        $templates = [
-            'Model lean toward a draw (%d%%) with home %d%% / away %d%%%s',
-            'Split looks balanced enough for a draw lean — model draw %d%% vs home %d%% and away %d%%%s',
-            'Draw is the working lean at %d%% model share; home %d%% and away %d%% stay close%s',
-        ];
-        return sprintf($templates[$v], $d, $h, $a, $tail);
+    private function drawAdviceLine(
+        int $h,
+        int $d,
+        int $a,
+        ?string $price,
+        int $seed,
+        string $home = '',
+        string $away = '',
+        string $league = ''
+    ): string {
+        $v = $this->adviceVariant($seed, 6);
+        $cue = $this->leagueCue($league, $seed);
+        $pair = ($home !== '' && $away !== '') ? ($home . ' vs ' . $away) : 'this fixture';
+        $tail = $this->priceClause($price, $seed) . $this->cautionClause($seed + 2);
+
+        return match ($v) {
+            1 => sprintf('%s%s looks level enough for a draw lean (%d%%)%s', $cue, $pair, $d, $tail),
+            2 => sprintf('%sNeither side separates cleanly — draw is the published pick at %d%%%s', $cue, $d, $tail),
+            3 => sprintf('%sWorking lean is the draw; home %d%% and away %d%% stay close%s', $cue, $h, $a, $tail),
+            4 => sprintf('%s%s: stalemate profile in the model (draw %d%%)%s', $cue, $pair, $d, $tail),
+            5 => sprintf('%sBalanced match-up — we take the draw rather than force a winner%s', $cue, $tail),
+            default => sprintf('%sDraw lean at %d%% model share for %s%s', $cue, $d, $pair, $tail),
+        };
     }
 
     private function doubleChanceAdviceLine(
@@ -1274,36 +1312,38 @@ SQL;
         int $d,
         int $a,
         ?string $price,
-        int $seed
+        int $seed,
+        string $league = ''
     ): string {
-        $v = $this->adviceVariant($seed, 3);
-        $tail = $this->priceClause($price, $seed) . ' — cover only, not certainty.';
+        $v = $this->adviceVariant($seed, 4);
+        $cue = $this->leagueCue($league, $seed);
+        $tail = $this->priceClause($price, $seed) . ' Cover only.';
 
         if ($code === '1X') {
-            $templates = [
-                'Model lean: %s or draw as a two-way cover; away win is the softest share (%d%%)%s',
-                'Safer read is %s / draw — model rates the away win lowest at %d%%%s',
-                'Double-chance cover on %s or draw while the away outcome sits near %d%%%s',
-            ];
-            return sprintf($templates[$v], $home, $a, $tail);
+            return match ($v) {
+                1 => sprintf('%sSafer ticket is %s or draw — away win is the outcome we are least keen on (%d%%)%s', $cue, $home, $a, $tail),
+                2 => sprintf('%s%s / draw cover while the reverse result stays soft%s', $cue, $home, $tail),
+                3 => sprintf('%sDouble chance on the home side of %s vs %s%s', $cue, $home, $away, $tail),
+                default => sprintf('%s1X lean: protect against %s failing to win outright%s', $cue, $home, $tail),
+            };
         }
         if ($code === 'X2') {
-            $templates = [
-                'Model lean: draw or %s; home win is the weakest share (%d%%)%s',
-                'Two-way cover on draw / %s while home sits near %d%% in the model%s',
-                'Working cover is draw or %s — model keeps the home win softest (%d%%)%s',
-            ];
-            return sprintf($templates[$v], $away, $h, $tail);
+            return match ($v) {
+                1 => sprintf('%sCover draw or %s — home win is the softer share (%d%%)%s', $cue, $away, $h, $tail),
+                2 => sprintf('%sX2 on %s while we stay wary of a home result%s', $cue, $away, $tail),
+                3 => sprintf('%sTwo-way cover against %s winning this one%s', $cue, $home, $tail),
+                default => sprintf('%sWorking cover: draw / %s%s', $cue, $away, $tail),
+            };
         }
         if ($code === '12') {
-            $templates = [
-                'Model lean against a draw — either side to win while draw share is %d%%%s',
-                'Prefer a winner either way; model draw probability sits around %d%%%s',
-                '12 cover: model sees the draw as the softer path at %d%%%s',
-            ];
-            return sprintf($templates[$v], $d, $tail);
+            return match ($v) {
+                1 => sprintf('%sExpect a winner either way — draw share only %d%%%s', $cue, $d, $tail),
+                2 => sprintf('%s%s vs %s: 12 cover while the stalemate looks less likely%s', $cue, $home, $away, $tail),
+                3 => sprintf('%sPrefer a decisive result over the draw in this match-up%s', $cue, $tail),
+                default => sprintf('%s12 lean — model keeps the draw as the softer path (%d%%)%s', $cue, $d, $tail),
+            };
         }
-        return 'Double-chance lean' . ($price !== null ? ' around ' . $price : '') . ' — cover only, not certainty.';
+        return 'Double-chance lean' . ($price !== null ? ' around ' . $price : '') . ' — cover only.';
     }
 
     private function overUnderAdviceLine(
@@ -1313,77 +1353,87 @@ SQL;
         float $avg,
         ?string $price,
         int $seed,
-        int $conf = 0
+        int $conf = 0,
+        string $league = ''
     ): string {
-        // More variants + fixture names so O/U cards do not share one template with only odds swapped.
-        $v = $this->adviceVariant($seed + (int) round($avg * 10) + $conf, 5);
-        $tail = $this->priceClause($price, $seed) . ' — goals markets swing.';
+        $v = $this->adviceVariant($seed + (int) round($avg * 10) + $conf, 6);
+        $cue = $this->leagueCue($league, $seed);
+        $tail = $this->priceClause($price, $seed);
         $pair = $home . ' vs ' . $away;
-        $atConf = $conf > 0 ? (' at ' . $conf . '% confidence') : '';
+        $confBit = $conf > 0 ? sprintf(' (%d%% confidence)', $conf) : '';
 
         if ($code === 'O2.5') {
             if ($avg > 0) {
                 return match ($v) {
-                    1 => sprintf('Higher-event read on %s — projected total around %.1f backs Over 2.5%s%s', $pair, $avg, $atConf, $tail),
-                    2 => sprintf('Working over tip for %s: expected goals sit near %.1f, so Over 2.5 is the lean%s%s', $pair, $avg, $atConf, $tail),
-                    3 => sprintf('%s looks open in the data (xg ~%.1f); Over 2.5 is the published lean%s%s', $pair, $avg, $atConf, $tail),
-                    4 => sprintf('Goals lean over the line in %s — model total near %.1f supports Over 2.5%s%s', $pair, $avg, $atConf, $tail),
-                    default => sprintf('%s: Over 2.5 lean with expected goals near %.1f%s%s', $pair, $avg, $atConf, $tail),
+                    1 => sprintf('%s%s should see enough chances — projected total ~%.1f backs Over 2.5%s%s', $cue, $pair, $avg, $confBit, $tail),
+                    2 => sprintf('%sOpen-game lean for %s: Over 2.5 with expected goals near %.1f%s', $cue, $pair, $avg, $tail),
+                    3 => sprintf('%sOver the line in %s — model total %.1f%s%s', $cue, $pair, $avg, $confBit, $tail),
+                    4 => sprintf('%sBoth sides look capable of contributing in %s; Over 2.5 is the pick%s', $cue, $pair, $tail),
+                    5 => sprintf('%sGoals market: Over 2.5 for %s (xg ~%.1f)%s', $cue, $pair, $avg, $tail),
+                    default => sprintf('%sPublished goals lean is Over 2.5 in %s%s%s', $cue, $pair, $confBit, $tail),
                 };
             }
             return match ($v) {
-                1 => sprintf('Model tips Over 2.5 for %s — open-game profile in the published data%s%s', $pair, $atConf, $tail),
-                2 => sprintf('Over 2.5 is the shortlist pick for %s%s%s', $pair, $atConf, $tail),
-                3 => sprintf('%s: both sides look capable of contributing; Over 2.5 is the lean%s%s', $pair, $atConf, $tail),
-                4 => sprintf('Goals market lean on %s is Over 2.5%s%s', $pair, $atConf, $tail),
-                default => sprintf('%s: working lean is Over 2.5 on the goals line%s%s', $pair, $atConf, $tail),
+                1 => sprintf('%s%s: Over 2.5 on an open-game profile%s%s', $cue, $pair, $confBit, $tail),
+                2 => sprintf('%sShortlist Over 2.5 for %s%s', $cue, $pair, $tail),
+                default => sprintf('%sWorking goals tip is Over 2.5 — %s%s', $cue, $pair, $tail),
             };
         }
 
         if ($avg > 0) {
             return match ($v) {
-                1 => sprintf('Lower-event read on %s — projected total around %.1f backs Under 2.5%s%s', $pair, $avg, $atConf, $tail),
-                2 => sprintf('Working under tip for %s: expected goals sit near %.1f, so Under 2.5 is the lean%s%s', $pair, $avg, $atConf, $tail),
-                3 => sprintf('%s looks tighter in the data (xg ~%.1f); Under 2.5 is the published lean%s%s', $pair, $avg, $atConf, $tail),
-                4 => sprintf('Goals lean under the line in %s — model total near %.1f supports Under 2.5%s%s', $pair, $avg, $atConf, $tail),
-                default => sprintf('%s: Under 2.5 lean with expected goals near %.1f%s%s', $pair, $avg, $atConf, $tail),
+                1 => sprintf('%s%s looks tighter — projected total ~%.1f backs Under 2.5%s%s', $cue, $pair, $avg, $confBit, $tail),
+                2 => sprintf('%sLower-event lean for %s: Under 2.5 with expected goals near %.1f%s', $cue, $pair, $avg, $tail),
+                3 => sprintf('%sUnder the line in %s — model total %.1f%s%s', $cue, $pair, $avg, $confBit, $tail),
+                4 => sprintf('%sFewer clear chances in %s; Under 2.5 is the pick%s', $cue, $pair, $tail),
+                5 => sprintf('%sGoals market: Under 2.5 for %s (xg ~%.1f)%s', $cue, $pair, $avg, $tail),
+                default => sprintf('%sPublished goals lean is Under 2.5 in %s%s%s', $cue, $pair, $confBit, $tail),
             };
         }
         return match ($v) {
-            1 => sprintf('Model tips Under 2.5 for %s — lower-event profile in the published data%s%s', $pair, $atConf, $tail),
-            2 => sprintf('Under 2.5 is the shortlist pick for %s%s%s', $pair, $atConf, $tail),
-            3 => sprintf('%s: fewer clear chances in the model; Under 2.5 is the lean%s%s', $pair, $atConf, $tail),
-            4 => sprintf('Goals market lean on %s is Under 2.5%s%s', $pair, $atConf, $tail),
-            default => sprintf('%s: working lean is Under 2.5 on the goals line%s%s', $pair, $atConf, $tail),
+            1 => sprintf('%s%s: Under 2.5 on a lower-event profile%s%s', $cue, $pair, $confBit, $tail),
+            2 => sprintf('%sShortlist Under 2.5 for %s%s', $cue, $pair, $tail),
+            default => sprintf('%sWorking goals tip is Under 2.5 — %s%s', $cue, $pair, $tail),
         };
     }
 
-    private function bttsAdviceLine(string $code, int $bttsProb, ?string $price, int $seed): string
-    {
-        $v = $this->adviceVariant($seed, 3);
-        $tail = $this->priceClause($price, $seed) . ' — not a lock.';
+    private function bttsAdviceLine(
+        string $code,
+        int $bttsProb,
+        ?string $price,
+        int $seed,
+        string $home = '',
+        string $away = '',
+        string $league = ''
+    ): string {
+        $v = $this->adviceVariant($seed, 5);
+        $cue = $this->leagueCue($league, $seed);
+        $pair = ($home !== '' && $away !== '') ? ($home . ' vs ' . $away) : 'this match';
+        $tail = $this->priceClause($price, $seed);
 
         if ($code === 'BTTS_YES') {
             if ($bttsProb > 0) {
-                $templates = [
-                    'Model lean BTTS Yes — both-teams share near %d%%%s',
-                    'Both to score is the working lean (model BTTS ~%d%%)%s',
-                    'Data tilt to BTTS Yes with model probability around %d%%%s',
-                ];
-                return sprintf($templates[$v], $bttsProb, $tail);
+                return match ($v) {
+                    1 => sprintf('%sBoth sides to score in %s — model BTTS near %d%%%s', $cue, $pair, $bttsProb, $tail),
+                    2 => sprintf('%sBTTS Yes is the lean; neither defence looks airtight here (~%d%%)%s', $cue, $bttsProb, $tail),
+                    3 => sprintf('%s%s: expect goals at both ends (BTTS ~%d%%)%s', $cue, $pair, $bttsProb, $tail),
+                    4 => sprintf('%sWorking pick is both teams to score — probability around %d%%%s', $cue, $bttsProb, $tail),
+                    default => sprintf('%sBTTS Yes lean for %s%s', $cue, $pair, $tail),
+                };
             }
-            return 'Model lean Both teams to score Yes' . $tail;
+            return $cue . 'Both teams to score Yes for ' . $pair . $tail;
         }
 
         if ($bttsProb > 0) {
-            $templates = [
-                'Model lean BTTS No — both-teams share still around %d%%%s',
-                'Working lean against both scoring (model BTTS ~%d%%)%s',
-                'BTTS No lean while the model keeps both-score chance near %d%%%s',
-            ];
-            return sprintf($templates[$v], $bttsProb, $tail);
+            return match ($v) {
+                1 => sprintf('%sLean against both scoring in %s (BTTS still ~%d%%)%s', $cue, $pair, $bttsProb, $tail),
+                2 => sprintf('%sBTTS No — one side looks likelier to blank (~%d%% both-score chance)%s', $cue, $bttsProb, $tail),
+                3 => sprintf('%s%s: cleaner-sheet path is the published lean%s', $cue, $pair, $tail),
+                4 => sprintf('%sWorking pick is BTTS No while both-score chance sits near %d%%%s', $cue, $bttsProb, $tail),
+                default => sprintf('%sBTTS No lean for %s%s', $cue, $pair, $tail),
+            };
         }
-        return 'Model lean Both teams to score No' . $tail;
+        return $cue . 'Both teams to score No for ' . $pair . $tail;
     }
 
     /**
@@ -1774,16 +1824,17 @@ SQL;
         }
         $price = $this->oddFloat($odd) !== null ? number_format((float) $odd, 2) : null;
         $seed = (int) ($row['fixture_id'] ?? 0) + $pos * 17 + ord($code[0] ?? '1');
+        $league = trim((string) ($row['league_name'] ?? ''));
 
         if ($market === 'double_chance') {
-            return $this->doubleChanceAdviceLine($code, $home, $away, $h, $d, $a, $price, $seed);
+            return $this->doubleChanceAdviceLine($code, $home, $away, $h, $d, $a, $price, $seed, $league);
         }
 
         if ($h + $d + $a >= 50 || $publishedConfidence >= 40) {
             return match ($code) {
-                '1' => $this->winnerAdviceLine($home, 'home', $h, $d, $a, $price, $seed),
-                '2' => $this->winnerAdviceLine($away, 'away', $a, $d, $h, $price, $seed),
-                'X' => $this->drawAdviceLine($h, $d, $a, $price, $seed),
+                '1' => $this->winnerAdviceLine($home, 'home', $h, $d, $a, $price, $seed, $away, $league),
+                '2' => $this->winnerAdviceLine($away, 'away', $a, $d, $h, $price, $seed, $home, $league),
+                'X' => $this->drawAdviceLine($h, $d, $a, $price, $seed, $home, $away, $league),
                 default => $this->jackpotFallbackAdvice($code, $home, $away, $price, $pos, $seed),
             };
         }
