@@ -19,11 +19,10 @@
 </IfModule>
 
 <IfModule mod_headers.c>
+  # Dynamic tip HTML (front controller) — never long-cache in the browser.
+  Header set Cache-Control "no-store"
   <FilesMatch "\.(css|js|svg|png|jpe?g|webp|ico|woff2?)$">
     Header set Cache-Control "public, max-age=604800, immutable"
-  </FilesMatch>
-  <FilesMatch "\.(html?|php)$">
-    Header set Cache-Control "public, max-age=60, stale-while-revalidate=300"
   </FilesMatch>
   Header unset ETag
 </IfModule>

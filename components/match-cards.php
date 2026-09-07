@@ -1,6 +1,8 @@
 <?php
 /**
- * Accuratetip-style match cards (dark tip cards, 3-col grid).
+ * Match cards (default fixture format) + optional tips table.
+ * Games are rendered inline where the page calls bao_matches_html() —
+ * not injected later via JS.
  */
 
 if (!function_exists('bao_h')) {
@@ -32,21 +34,64 @@ function bao_guess_confidence(string $pick, ?string $score = null): int {
 }
 
 /**
- * @param array{
- *   time?: string,
- *   date_label?: string,
- *   league?: string,
- *   home: string,
- *   away: string,
- *   home_logo?: string,
- *   away_logo?: string,
- *   odds?: string|float,
- *   pick: string,
- *   confidence?: int,
- *   reason?: string,
- *   score?: string,
- *   won?: bool|null
- * } $g
+ * Kick-off label: time only for single-day boards; date + time when games span days (jackpots).
+ *
+ * @param array<string,mixed> $g
+ */
+function bao_kickoff_label(array $g, bool $withDate = false): string
+{
+    $clock = trim((string) ($g['time_clock'] ?? ''));
+    if ($clock === '') {
+        $raw = trim((string) ($g['time'] ?? ''));
+        // If time already looks like "Sat · 7:30 PM" or "Sat 5 Sep · 7:30 PM", take the clock part.
+        if (str_contains($raw, '·')) {
+            $parts = explode('·', $raw);
+            $clock = trim((string) end($parts));
+        } else {
+            $clock = $raw;
+        }
+    }
+    if ($clock === '') {
+        return '—';
+    }
+    if (!$withDate) {
+        $time = trim((string) ($g['time'] ?? ''));
+        return $time !== '' ? $time : $clock;
+    }
+
+    $dateLabel = trim((string) ($g['date_label'] ?? ''));
+    if ($dateLabel === '' && !empty($g['date'])) {
+        try {
+            $dateLabel = (new DateTimeImmutable((string) $g['date']))->format('D j M');
+        } catch (Throwable $e) {
+            $dateLabel = (string) $g['date'];
+        }
+    }
+    if ($dateLabel === '') {
+        return $clock;
+    }
+    return $dateLabel . ' · ' . $clock;
+}
+
+/**
+ * True when the fixture list covers more than one calendar day.
+ *
+ * @param list<array<string,mixed>> $games
+ */
+function bao_games_span_days(array $games): bool
+{
+    $dates = [];
+    foreach ($games as $g) {
+        $d = trim((string) ($g['date'] ?? ''));
+        if ($d !== '') {
+            $dates[$d] = true;
+        }
+    }
+    return count($dates) > 1;
+}
+
+/**
+ * @param array<string,mixed> $g
  */
 function bao_match_card(array $g): string {
     $home = $g['home'] ?? 'Home';
@@ -54,6 +99,8 @@ function bao_match_card(array $g): string {
     $league = $g['league'] ?? '';
     $time = $g['time'] ?? '';
     $kickoffIso = trim((string) ($g['kickoff_iso'] ?? ''));
+    $showDate = !empty($g['_show_date']);
+    $kickLabel = bao_kickoff_label($g, $showDate);
     $pick = $g['pick'] ?? '—';
     $odds = isset($g['odds']) ? (string) $g['odds'] : '';
     $confidence = isset($g['confidence']) ? (int) $g['confidence'] : bao_guess_confidence($pick, $g['score'] ?? null);
@@ -87,7 +134,6 @@ function bao_match_card(array $g): string {
         . ($showLost ? ' is-tip-lost' : '');
     $html = '<article class="' . $cardClass . '" aria-label="' . $aria . '">';
 
-    // League row
     $html .= '<div class="at-card-league">';
     $html .= '<span class="at-league-dot" aria-hidden="true"></span>';
     $html .= '<span class="at-league-name">' . bao_h($league !== '' ? $league : 'Football') . '</span>';
@@ -98,56 +144,44 @@ function bao_match_card(array $g): string {
     }
     $html .= '</div>';
 
-    // Teams row
     $html .= '<div class="at-card-teams">';
-    $html .= '<div class="at-team at-team-home">';
+    $html .= '<div class="at-team">';
     if ($homeLogo !== '') {
-        $html .= '<img class="at-crest" src="' . bao_h($homeLogo) . '" alt="" width="28" height="28" loading="lazy">';
+        $html .= '<img class="at-crest" src="' . bao_h($homeLogo) . '" alt="" width="28" height="28" loading="lazy" decoding="async">';
     } else {
-        $html .= '<span class="at-crest at-crest-fallback">' . bao_h(bao_team_initials($home)) . '</span>';
+        $html .= '<span class="at-crest at-crest-fallback" aria-hidden="true">' . bao_h(bao_team_initials($home)) . '</span>';
     }
-    $html .= '<span class="at-team-name">' . bao_h($home) . '</span>';
-    $html .= '</div>';
-
-    $html .= '<span class="at-vs">VS</span>';
-
-    $html .= '<div class="at-team at-team-away">';
-    $html .= '<span class="at-team-name">' . bao_h($away) . '</span>';
+    $html .= '<span class="at-team-name">' . bao_h($home) . '</span></div>';
+    $html .= '<div class="at-team">';
     if ($awayLogo !== '') {
-        $html .= '<img class="at-crest" src="' . bao_h($awayLogo) . '" alt="" width="28" height="28" loading="lazy">';
+        $html .= '<img class="at-crest" src="' . bao_h($awayLogo) . '" alt="" width="28" height="28" loading="lazy" decoding="async">';
     } else {
-        $html .= '<span class="at-crest at-crest-fallback">' . bao_h(bao_team_initials($away)) . '</span>';
+        $html .= '<span class="at-crest at-crest-fallback" aria-hidden="true">' . bao_h(bao_team_initials($away)) . '</span>';
     }
-    $html .= '</div>';
+    $html .= '<span class="at-team-name">' . bao_h($away) . '</span></div>';
     $html .= '</div>';
 
-    // Time / score (+ win/lost next to score)
     $html .= '<div class="at-card-meta">';
-    if ($score && $score !== '—' && $score !== '-') {
+    if ($score !== null && $score !== '' && $score !== '—') {
         $html .= '<span class="at-score-row">';
-        $html .= '<span class="at-score' . ($isLive ? ' is-live' : '') . '">' . bao_h($score) . '</span>';
+        $html .= '<span class="at-score">' . bao_h((string) $score) . '</span>';
         if ($showTick) {
-            $html .= '<span class="at-outcome-tick" title="' . bao_h($tickTitle) . '" aria-label="' . bao_h($tickTitle) . '">'
-                . '<svg viewBox="0 0 24 24" width="16" height="16" aria-hidden="true" focusable="false">'
-                . '<circle cx="12" cy="12" r="11" fill="currentColor"/>'
-                . '<path d="M7 12.5l3 3 7-7" fill="none" stroke="#fff" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"/>'
-                . '</svg>'
-                . '</span>';
+            $html .= '<span class="at-outcome-tick" title="' . bao_h($tickTitle) . '" aria-label="' . bao_h($tickTitle) . '">✅</span>';
         } elseif ($showLost) {
             $html .= '<span class="at-outcome-lost" title="Lost" aria-label="Lost">❌</span>';
         }
         $html .= '</span>';
-    } elseif ($time !== '') {
+    } elseif ($kickLabel !== '' && $kickLabel !== '—') {
         $html .= '<span class="at-time bao-kickoff-time"'
             . ($kickoffIso !== '' ? ' data-kickoff-utc="' . bao_h($kickoffIso) . '"' : '')
+            . ($showDate ? ' data-show-date="1"' : '')
             . ' title="Kick-off time (shown in your timezone)">';
         $html .= '<span class="at-clock" aria-hidden="true"></span>';
-        $html .= '<span class="bao-kickoff-label">' . bao_h($time) . '</span>';
+        $html .= '<span class="bao-kickoff-label">' . bao_h($kickLabel) . '</span>';
         $html .= '</span>';
     }
     $html .= '</div>';
 
-    // Tip footer
     $html .= '<div class="at-card-tip">';
     $html .= '<div class="at-tip-left">';
     if ($marketLabel !== '') {
@@ -172,21 +206,125 @@ function bao_match_card(array $g): string {
 }
 
 /**
- * @param list<array> $games
- * @param array{title?: string, class?: string} $opts
+ * Fixture list for this page's games (server-rendered in place — not late-injected).
+ *
+ * @param list<array<string,mixed>> $games
+ * @param array{title?: string, class?: string, layout?: string, show_date?: bool} $opts
+ *        layout: 'cards' (default) | 'table'
+ *        show_date: force date+time (jackpots); auto when games span multiple days
  */
 function bao_matches_html(array $games, array $opts = []): string {
     $title = $opts['title'] ?? '';
     $class = $opts['class'] ?? '';
+    $layout = $opts['layout'] ?? 'cards';
+    $showDate = array_key_exists('show_date', $opts)
+        ? (bool) $opts['show_date']
+        : bao_games_span_days($games);
+
+    if ($layout === 'table') {
+        return bao_matches_table_html($games, $title, $class, $showDate);
+    }
+
     $html = '<div class="matches-block' . ($class ? ' ' . bao_h($class) : '') . '">';
     if ($title !== '') {
         $html .= '<h2 class="at-matches-title">' . bao_h($title) . '</h2>';
     }
     $html .= '<div class="matches-container at-matches-grid">';
     foreach ($games as $g) {
-        $html .= bao_match_card($g);
+        $html .= bao_match_card($g + ['_show_date' => $showDate]);
     }
     $html .= '</div></div>';
+    return $html;
+}
+
+/**
+ * Optional tips-table layout (not the default fixture format).
+ *
+ * @param list<array<string,mixed>> $games
+ */
+function bao_matches_table_html(array $games, string $title, string $class, bool $showDate): string
+{
+    $html = '<div class="matches-block tips-table-block' . ($class ? ' ' . bao_h($class) : '') . '">';
+    if ($title !== '') {
+        $html .= '<h2 class="at-matches-title">' . bao_h($title) . '</h2>';
+    }
+    $html .= '<div class="tips-table-wrap">';
+    $html .= '<table class="tips-table">';
+    $html .= '<thead><tr>';
+    $html .= '<th scope="col">' . ($showDate ? 'Kick-off' : 'Time') . '</th>';
+    $html .= '<th scope="col">League</th>';
+    $html .= '<th scope="col">Match</th>';
+    $html .= '<th scope="col">Tip</th>';
+    $html .= '<th scope="col">Odds</th>';
+    $html .= '<th scope="col">Model %</th>';
+    $html .= '<th scope="col">Notes</th>';
+    $html .= '</tr></thead><tbody>';
+
+    foreach ($games as $g) {
+        $home = (string) ($g['home'] ?? 'Home');
+        $away = (string) ($g['away'] ?? 'Away');
+        $league = (string) ($g['league'] ?? 'Football');
+        $kickoffIso = trim((string) ($g['kickoff_iso'] ?? ''));
+        $pick = (string) ($g['pick'] ?? '—');
+        $odds = isset($g['odds']) && $g['odds'] !== '' && $g['odds'] !== null ? (string) $g['odds'] : '—';
+        $confidence = isset($g['confidence']) ? (int) $g['confidence'] : bao_guess_confidence($pick, $g['score'] ?? null);
+        $reason = trim((string) ($g['reason'] ?? ''));
+        $score = $g['score'] ?? null;
+        $won = $g['won'] ?? null;
+        $isLive = !empty($g['is_live']);
+        $marketLabel = trim((string) ($g['market_label'] ?? ''));
+        $kickLabel = bao_kickoff_label($g, $showDate);
+
+        $rowClass = 'tips-row';
+        if ($isLive) {
+            $rowClass .= ' is-live';
+        }
+        if ($won === true) {
+            $rowClass .= ' is-won';
+        } elseif ($won === false) {
+            $rowClass .= ' is-lost';
+        }
+
+        $html .= '<tr class="' . $rowClass . '">';
+
+        $html .= '<td class="tips-col-time">';
+        if ($score !== null && $score !== '' && $score !== '—') {
+            $html .= '<span class="tips-score">' . bao_h((string) $score) . '</span>';
+        } else {
+            $html .= '<span class="bao-kickoff-time"'
+                . ($kickoffIso !== '' ? ' data-kickoff-utc="' . bao_h($kickoffIso) . '"' : '')
+                . ($showDate ? ' data-show-date="1"' : '')
+                . '><span class="bao-kickoff-label">' . bao_h($kickLabel) . '</span></span>';
+        }
+        if ($isLive) {
+            $html .= ' <span class="tips-live">LIVE</span>';
+        }
+        $html .= '</td>';
+
+        $html .= '<td class="tips-col-league">' . bao_h($league) . '</td>';
+        $html .= '<td class="tips-col-match"><span class="tips-home">' . bao_h($home) . '</span>'
+            . ' <span class="tips-vs">vs</span> '
+            . '<span class="tips-away">' . bao_h($away) . '</span></td>';
+
+        $html .= '<td class="tips-col-tip">';
+        if ($marketLabel !== '') {
+            $html .= '<span class="tips-market">' . bao_h($marketLabel) . '</span> ';
+        }
+        $html .= '<strong class="tips-pick">' . bao_h($pick) . '</strong>';
+        if ($won === true) {
+            $html .= ' <span class="tips-outcome won" title="Won">✅</span>';
+        } elseif ($won === false) {
+            $html .= ' <span class="tips-outcome lost" title="Lost">❌</span>';
+        }
+        $html .= '</td>';
+
+        $html .= '<td class="tips-col-odds">' . bao_h($odds) . '</td>';
+        $html .= '<td class="tips-col-conf" title="Model lean — not a win guarantee">' . $confidence . '%</td>';
+        $html .= '<td class="tips-col-notes">' . ($reason !== '' ? bao_h($reason) : '—') . '</td>';
+        $html .= '</tr>';
+    }
+
+    $html .= '</tbody></table></div></div>';
     return $html;
 }
 

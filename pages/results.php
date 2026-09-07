@@ -89,7 +89,6 @@ $baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
 <section class="section">
   <div class="wrap wrap-wide">
     <div class="main-grid">
-<?php require __DIR__ . '/../components/sidebar.php'; ?>
 <div class="matches-area">
     <h2 class="section-title">Yesterday's settled tips</h2>
 
@@ -105,6 +104,8 @@ if ($payload === null) {
 }
 ?>
 </div><!-- /.matches-area -->
+<?php require __DIR__ . '/../components/sidebar.php'; ?>
+
 </div><!-- /.main-grid -->
   </div>
 </section>

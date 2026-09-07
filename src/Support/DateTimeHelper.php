@@ -75,6 +75,7 @@ final class DateTimeHelper
             'date' => null,
             'time' => '',
             'time_clock' => '',
+            'date_label' => '',
             'kickoff' => '',
             'kickoff_utc' => '',
             'iso' => '',
@@ -106,15 +107,16 @@ final class DateTimeHelper
             $clock = $local->format('g:i A'); // e.g. 2:30 PM
             $siteToday = self::siteToday();
             $localDate = $local->format('Y-m-d');
-            // Prefix weekday when not today so weekend/tomorrow cards stay scannable.
+            // Include weekday + calendar date when not today (jackpots / weekend span days).
             $timeLabel = ($localDate === $siteToday)
                 ? $clock
-                : ($local->format('D') . ' · ' . $clock);
+                : ($local->format('D j M') . ' · ' . $clock);
 
             return [
                 'date' => $localDate,
                 'time' => $timeLabel,
                 'time_clock' => $clock,
+                'date_label' => $local->format('D j M'),
                 'kickoff' => $local->format('Y-m-d H:i:s'),
                 'kickoff_utc' => $utc->format('Y-m-d H:i:s'),
                 'iso' => $utc->format('Y-m-d\TH:i:s\Z'),

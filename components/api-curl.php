@@ -1,14 +1,59 @@
 <?php
 /**
  * Server-side page data helpers.
- * Caching mirrors pitchpredictionsbackend: Cache::get/put/remember via Predis
- * (CACHE_DRIVER=redis, REDIS_CACHE_DB) with file fallback — same k3s Redis service.
+ * Caching mirrors pitchpredictionsbackend FixtureApiHelpers:
+ *   past → 12h | today → 10m | tomorrow → 1h | weekend → 5h | jackpot → 10m
+ *   live → no cache (scores change; set CACHE_TTL_LIVE=60 to match pitch's 1m)
  */
 require_once __DIR__ . '/match-cards.php';
 require_once dirname(__DIR__) . '/src/Api/bootstrap.php';
 
 use App\Support\Cache;
 use App\Support\DateTimeHelper;
+
+/**
+ * Pitch-aligned cache key + TTL for an API page path (no /api/ prefix).
+ *
+ * @return array{key:string,ttl:int} ttl 0 = do not read/write cache
+ */
+function bao_api_cache_meta(string $path): array
+{
+    $today = DateTimeHelper::siteToday();
+    $cacheKey = 'bao_api_' . str_replace('-', '_', $path) . '_' . $today;
+
+    if ($path === 'stats') {
+        return ['key' => $cacheKey, 'ttl' => Cache::ttlStats()];
+    }
+
+    $pages = require dirname(__DIR__) . '/config/api-pages.php';
+    $def = is_array($pages[$path] ?? null) ? $pages[$path] : [];
+
+    // Live board — never cache by default (pitch uses ~1m; we skip unless CACHE_TTL_LIVE>0).
+    if (!empty($def['live_only']) || str_contains($path, 'live')) {
+        return ['key' => $cacheKey, 'ttl' => Cache::ttlLive()];
+    }
+
+    if (($def['range'] ?? '') === 'weekend') {
+        return ['key' => $cacheKey, 'ttl' => Cache::ttlWeekend()];
+    }
+
+    $source = strtolower((string) ($def['source'] ?? 'fixtures'));
+    if ($source === 'selections' || $source === 'jackpot_hub' || str_contains($path, 'jackpot')) {
+        return ['key' => $cacheKey, 'ttl' => Cache::ttlJackpot()];
+    }
+
+    // Resolve the page's calendar day (not always "today") — pitch fixtureCacheTtlForDate.
+    $dayMod = strtolower((string) ($def['day'] ?? 'today'));
+    if ($dayMod === '' || isset($def['date'])) {
+        $fixtureDate = isset($def['date']) && is_string($def['date']) && $def['date'] !== ''
+            ? $def['date']
+            : $today;
+    } else {
+        $fixtureDate = DateTimeHelper::siteDate($dayMod);
+    }
+
+    return ['key' => $cacheKey, 'ttl' => Cache::ttlForSiteDate($fixtureDate)];
+}
 
 /**
  * Load a page API payload in-process, e.g. /api/1x2-predictions or homepage.
@@ -25,21 +70,16 @@ function bao_curl_api(string $apiPath): ?array
         return null;
     }
 
-    $day = DateTimeHelper::siteToday();
-    // Laravel-style versioned JSON keys + date-based TTL (FixtureApiHelpers pattern).
-    $cacheKey = 'bao_api_' . str_replace('-', '_', $path) . '_' . $day;
-    if ($path === 'stats') {
-        $ttl = Cache::ttlStats();
-    } elseif (str_contains($path, 'live')) {
-        $ttl = Cache::ttlLive();
-    } else {
-        $ttl = Cache::ttlForSiteDate($day);
-    }
+    $meta = bao_api_cache_meta($path);
+    $ttl = (int) $meta['ttl'];
+    $cacheKey = $meta['key'];
 
     try {
-        $cached = Cache::getCachedJsonPayload($cacheKey);
-        if (is_array($cached) && ($cached['ok'] ?? false) === true) {
-            return $cached;
+        if ($ttl > 0) {
+            $cached = Cache::getCachedJsonPayload($cacheKey);
+            if (is_array($cached) && ($cached['ok'] ?? false) === true) {
+                return $cached;
+            }
         }
 
         if ($path === 'stats') {
@@ -52,7 +92,7 @@ function bao_curl_api(string $apiPath): ?array
             $payload = $api->payload($path);
         }
 
-        if (is_array($payload) && ($payload['ok'] ?? true)) {
+        if ($ttl > 0 && is_array($payload) && ($payload['ok'] ?? true)) {
             Cache::putCachedJsonPayload($cacheKey, $payload, $ttl);
         }
 

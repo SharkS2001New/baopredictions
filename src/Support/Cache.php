@@ -109,36 +109,60 @@ final class Cache
     }
 
     /**
-     * Same TTL bands as pitchpredictionsbackend FixtureApiHelpers::fixtureCacheTtlForDate.
-     * Override with CACHE_TTL_PAGE (seconds) when set.
+     * Pitch FixtureApiHelpers::fixtureCacheTtlForDate — same bands:
+     * past → 12h, today → 10m, tomorrow → 1h, else → 12h.
+     * Optional env: CACHE_TTL_TODAY / CACHE_TTL_TOMORROW / CACHE_TTL_PAST (seconds).
+     * Do NOT use a blanket CACHE_TTL_PAGE — that broke date-based rules.
      */
     public static function ttlForSiteDate(string $siteDate): int
     {
-        $override = self::envTtl('CACHE_TTL_PAGE');
-        if ($override !== null) {
-            return $override;
-        }
         $today = DateTimeHelper::siteToday();
         $tomorrow = DateTimeHelper::siteDate('tomorrow');
+
         if ($siteDate === $today) {
-            return 10 * 60;
+            return self::envTtl('CACHE_TTL_TODAY') ?? (10 * 60);
         }
         if ($siteDate === $tomorrow) {
-            return 60 * 60;
+            return self::envTtl('CACHE_TTL_TOMORROW') ?? (60 * 60);
         }
-        return 12 * 60 * 60;
+        // Past or further future — pitch uses 12h either side of today/tomorrow
+        return self::envTtl('CACHE_TTL_PAST') ?? (12 * 60 * 60);
     }
 
-    /** Stats board refreshes a bit faster than tip pages. Override: CACHE_TTL_STATS */
+    /** Weekend board — pitch weekend endpoint uses 5 hours. */
+    public static function ttlWeekend(): int
+    {
+        return self::envTtl('CACHE_TTL_WEEKEND') ?? (5 * 60 * 60);
+    }
+
+    /** Jackpot / selections sheets — pitch often uses 5–10 minutes. */
+    public static function ttlJackpot(): int
+    {
+        return self::envTtl('CACHE_TTL_JACKPOT') ?? (10 * 60);
+    }
+
+    /** Stats board — short refresh (not a full-day cache). */
     public static function ttlStats(): int
     {
-        return self::envTtl('CACHE_TTL_STATS') ?? (10 * 60);
+        return self::envTtl('CACHE_TTL_STATS') ?? (5 * 60);
     }
 
-    /** Live tips TTL. Override: CACHE_TTL_LIVE */
+    /**
+     * Live tips — pitch caches ~1 minute; we default to no cache (scores change constantly).
+     * Set CACHE_TTL_LIVE=60 to match pitch's 1-minute live cache, or any seconds > 0.
+     * CACHE_TTL_LIVE=0 or unset → skip cache.
+     */
     public static function ttlLive(): int
     {
-        return self::envTtl('CACHE_TTL_LIVE') ?? (2 * 60);
+        if (!function_exists('bao_env')) {
+            require_once dirname(__DIR__, 2) . '/config/load-env.php';
+        }
+        $raw = bao_env('CACHE_TTL_LIVE');
+        if ($raw === null || $raw === '') {
+            return 0; // no cache by default
+        }
+        $n = (int) $raw;
+        return max(0, $n);
     }
 
     private static function envTtl(string $key): ?int

@@ -76,7 +76,6 @@
 <section class="section-tight">
   <div class="wrap wrap-wide">
 <div class="main-grid">
-<?php require __DIR__ . '/../components/sidebar.php'; ?>
 <div class="matches-area">
 
     
@@ -92,6 +91,8 @@ if ($payload === null) {
 }
 ?>
 </div><!-- /.matches-area -->
+<?php require __DIR__ . '/../components/sidebar.php'; ?>
+
 </div><!-- /.main-grid -->
 </div>
 </section>

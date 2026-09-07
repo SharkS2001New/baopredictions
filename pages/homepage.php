@@ -78,7 +78,6 @@ $baoToday = is_array($baoStats['today'] ?? null) ? $baoStats['today'] : [];
 <section class="section-tight">
   <div class="wrap wrap-wide">
 <div class="main-grid">
-<?php require __DIR__ . '/../components/sidebar.php'; ?>
 <div class="matches-area">
 
     <?php
@@ -98,6 +97,8 @@ if ($payload === null) {
       <a class="btn btn-outline" href="/accumulator-tips" style="margin-left:0.5rem">Accumulator tips</a>
     </p>
   </div><!-- /.matches-area -->
+<?php require __DIR__ . '/../components/sidebar.php'; ?>
+
 </div><!-- /.main-grid -->
 </div>
 </section>

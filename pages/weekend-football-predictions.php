@@ -76,7 +76,6 @@
 <section class="section-tight">
   <div class="wrap wrap-wide">
 <div class="main-grid">
-<?php require __DIR__ . '/../components/sidebar.php'; ?>
 <div class="matches-area">
 
 
@@ -88,10 +87,12 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games']);
+  echo bao_matches_html($payload['games'], ['show_date' => true]);
 }
 ?>
   </div><!-- /.matches-area -->
+<?php require __DIR__ . '/../components/sidebar.php'; ?>
+
 </div><!-- /.main-grid -->
 </div>
 </section>
