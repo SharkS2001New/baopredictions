@@ -93,7 +93,7 @@ if ($payload === null) {
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['show_date' => true]);
+  echo bao_matches_html($payload['games'], ['show_date' => true, 'page' => (string)($payload['page'] ?? '')]);
 }
 ?>
   </div><!-- /.matches-area -->
@@ -126,6 +126,7 @@ if ($payload === null) {
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/timezone.js" defer></script>
+<script src="/assets/js/load-more.js" defer></script>
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_faq_schema(array (

@@ -100,7 +100,8 @@ foreach ($pageApiKeys as $pageKey) {
     $router->get('/api/' . $pageKey, function () use ($pageKey) {
         require_once __DIR__ . '/../components/api-curl.php';
         try {
-            $hasOverrides = isset($_GET['limit']) || isset($_GET['date']);
+            $hasOverrides = isset($_GET['limit']) || isset($_GET['date'])
+                || isset($_GET['start_index']) || isset($_GET['end_index']);
             if (!$hasOverrides) {
                 $payload = bao_curl_api('/api/' . $pageKey);
                 if ($payload === null) {
@@ -116,8 +117,33 @@ foreach ($pageApiKeys as $pageKey) {
             if (isset($_GET['date'])) {
                 $overrides['date'] = (string) $_GET['date'];
             }
+            if (isset($_GET['start_index'])) {
+                $overrides['start_index'] = (int) $_GET['start_index'];
+            }
+            if (isset($_GET['end_index'])) {
+                $overrides['end_index'] = (int) $_GET['end_index'];
+            }
             $api = new \App\Services\PageApiService();
-            bao_api_json($api->payload($pageKey, $overrides));
+            $payload = $api->payload($pageKey, $overrides);
+            if (($payload['source'] ?? '') !== 'jackpot_hub'
+                && ($_GET['format'] ?? '') === 'html'
+                && !empty($payload['games'])
+                && is_array($payload['games'])) {
+                require_once __DIR__ . '/../components/match-cards.php';
+                $showDate = isset($_GET['show_date']) && (string) $_GET['show_date'] === '1';
+                if (!$showDate) {
+                    $showDate = bao_games_span_days($payload['games']);
+                }
+                $html = '';
+                foreach ($payload['games'] as $g) {
+                    if (!is_array($g)) {
+                        continue;
+                    }
+                    $html .= bao_match_card($g + ['_show_date' => $showDate]);
+                }
+                $payload['html'] = $html;
+            }
+            bao_api_json($payload);
         } catch (Throwable $e) {
             bao_api_error($e->getMessage(), 500);
         }

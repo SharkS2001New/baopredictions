@@ -207,19 +207,31 @@ function bao_match_card(array $g): string {
 
 /**
  * Fixture list for this page's games (server-rendered in place — not late-injected).
+ * Shows at most 20 cards initially; optional Show More refetches the next window from /api/{page}.
  *
  * @param list<array<string,mixed>> $games
- * @param array{title?: string, class?: string, layout?: string, show_date?: bool} $opts
+ * @param array{title?: string, class?: string, layout?: string, show_date?: bool, page?: string, page_size?: int, chunk_size?: int, load_more?: bool} $opts
  *        layout: 'cards' (default) | 'table'
  *        show_date: force date+time (jackpots); auto when games span multiple days
+ *        page: api-pages key (e.g. football-predictions-today) — enables Show More
  */
 function bao_matches_html(array $games, array $opts = []): string {
     $title = $opts['title'] ?? '';
     $class = $opts['class'] ?? '';
     $layout = $opts['layout'] ?? 'cards';
+    $page = trim((string) ($opts['page'] ?? ''));
+    $pageSize = max(1, (int) ($opts['page_size'] ?? 20));
+    $chunkSize = max(1, (int) ($opts['chunk_size'] ?? 20));
+    $loadMore = ($opts['load_more'] ?? true) !== false;
     $showDate = array_key_exists('show_date', $opts)
         ? (bool) $opts['show_date']
         : bao_games_span_days($games);
+
+    $total = count($games);
+    $visible = ($loadMore && $page !== '' && $layout === 'cards' && $total > $pageSize)
+        ? array_slice($games, 0, $pageSize)
+        : $games;
+    $hasMore = $loadMore && $page !== '' && $layout === 'cards' && $total > count($visible);
 
     if ($layout === 'table') {
         return bao_matches_table_html($games, $title, $class, $showDate);
@@ -229,11 +241,35 @@ function bao_matches_html(array $games, array $opts = []): string {
     if ($title !== '') {
         $html .= '<h2 class="at-matches-title">' . bao_h($title) . '</h2>';
     }
-    $html .= '<div class="matches-container at-matches-grid">';
-    foreach ($games as $g) {
+    $html .= '<div class="matches-container at-matches-grid" data-bao-matches>';
+    foreach ($visible as $g) {
         $html .= bao_match_card($g + ['_show_date' => $showDate]);
     }
-    $html .= '</div></div>';
+    $html .= '</div>';
+    if ($hasMore) {
+        $html .= bao_load_more_html($page, $pageSize, $chunkSize, $showDate, $total);
+    }
+    $html .= '</div>';
+    return $html;
+}
+
+/**
+ * Show More Matches control (pitch-style).
+ */
+function bao_load_more_html(string $page, int $nextStart, int $chunkSize, bool $showDate, int $knownTotal = 0): string
+{
+    $api = '/api/' . ltrim($page, '/');
+    $html = '<div class="bao-load-more-wrap">';
+    $html .= '<button type="button" class="bao-load-more"'
+        . ' data-api="' . bao_h($api) . '"'
+        . ' data-start="' . (int) $nextStart . '"'
+        . ' data-chunk="' . (int) $chunkSize . '"'
+        . ($showDate ? ' data-show-date="1"' : '')
+        . ($knownTotal > 0 ? ' data-known-total="' . (int) $knownTotal . '"' : '')
+        . '>';
+    $html .= '<span class="bao-load-more-label">Show More Matches</span>';
+    $html .= '<span class="bao-load-more-busy" hidden>Loading…</span>';
+    $html .= '</button></div>';
     return $html;
 }
 

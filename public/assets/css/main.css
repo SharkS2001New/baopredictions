@@ -1399,6 +1399,34 @@ main:has(.bao-faq) + .site-footer {
   margin: 0 0 1.5rem;
 }
 
+.bao-load-more-wrap {
+  display: flex;
+  justify-content: center;
+  margin: 1.25rem 0 0.25rem;
+}
+
+.bao-load-more {
+  min-width: 10rem;
+  padding: 0.55rem 1.1rem;
+  border: 1px solid var(--line);
+  border-radius: 0.35rem;
+  background: transparent;
+  color: var(--card-accent, var(--accent, #b11111));
+  font-family: inherit;
+  font-size: 0.85rem;
+  font-weight: 700;
+  cursor: pointer;
+}
+
+.bao-load-more:hover:not(:disabled) {
+  border-color: currentColor;
+}
+
+.bao-load-more:disabled {
+  opacity: 0.65;
+  cursor: wait;
+}
+
 /* —— Per-page tips table (server-rendered in matches-area) —— */
 .tips-table-wrap {
   width: 100%;

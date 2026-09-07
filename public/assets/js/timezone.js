@@ -97,4 +97,6 @@
   } else {
     applyKickoffTimes();
   }
+
+  window.baoApplyKickoffTimes = applyKickoffTimes;
 })();
