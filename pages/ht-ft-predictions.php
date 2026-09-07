@@ -46,22 +46,10 @@
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-
-    <li>
-
-      <a href="/">Home</a>
-
-    </li>
-
-    <li>
-
-      <span aria-current="page">HT/FT Predictions</span>
-
-    </li>
-
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">HT/FT Predictions</span></li>
   </ol>
 </nav>
-
 
 <header class="page-hero">
     <h1>HT/FT Predictions Today</h1>
@@ -96,27 +84,25 @@ if ($payload === null) {
 </div><!-- /.main-grid -->
 </div>
 </section>
-<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
 <section class="section section-muted bao-seo-stack">
-  <div class="wrap prose bao-writeup">
-<p class="seo-unique">Half-time/full-time betting requires predicting both the result at half-time and the result at full-time — for example, a draw at half-time followed by a home win at full-time. It&#039;s a higher-odds market than straight 1X2 because you&#039;re right about two separate points in the match, not one. We look specifically at teams&#039; patterns of starting slowly or finishing strongly when building these predictions, since some sides are consistently stronger in one half than the other.</p>
-<!--BAO_FEATURED_START-->
-<aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Half-time / full-time patterns</p><p class="featured-text">HT/FT needs two correct results. We look for sides that start slow or finish strong — X/1 and 1/1 profiles are the most common published leans.</p></aside>
-<!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2</a> · <a href="/how-we-predict">How we predict</a></p>
+  <div class="wrap prose">
+    <h2>How HT/FT works</h2>
+    <p>Half-time/full-time betting requires predicting both the result at half-time and the result at full-time — for example, a draw at half-time followed by a home win at full-time. It&#039;s a higher-odds market than straight 1X2 because you&#039;re right about two separate points in the match, not one. We look specifically at teams&#039; patterns of starting slowly or finishing strongly when building these predictions, since some sides are consistently stronger in one half than the other.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2</a> · <a href="/how-we-predict">How we predict</a></p>
   </div>
-  <div class="wrap prose bao-seo-howto">
-<h2>HT/FT explained</h2>
-    <p>HT/FT asks you to get both the half-time and full-time 1X2 right (e.g. 1/1). Home favourites that start fast are the most common 1/1 leans.</p>
-  </div>
-<!--BAO_ARTICLE_START-->
-  <div class="wrap seo-article-block">
-<article class="content-article prose"><header class="article-header"><h2 class="article-title">How HT/FT differs from 1X2</h2></header><div class="article-content"><p>A team can trail or draw at the break and still win — that X/1 shape is a classic HT/FT angle for favourites who dominate late. Straight 1X2 home win does not capture the half-time path. Odds are higher because you must be right twice.</p></div></article>
-  </div>
-<!--BAO_ARTICLE_END-->
 </section>
+
 <section class="section section-tight bao-faq">
-  <div class="wrap"><h2 class="section-title">HT/FT Predictions FAQ</h2><ul class="faq-list"><li><details><summary>What is HT/FT?</summary><p>You pick the half-time result and the full-time result — both must be correct.</p></details></li><li><details><summary>Why is X/1 common?</summary><p>Favourites often draw or trail early then dominate late.</p></details></li><li><details><summary>Is HT/FT harder than 1X2?</summary><p>Yes — you must be right twice, which is why odds are higher.</p></details></li><li><details><summary>Do you tip HT/FT on every game?</summary><p>Only when the half-time path is a clear part of the match story.</p></details></li><li><details><summary>Can I combine HT/FT with goals?</summary><p>You can, but correlated legs raise variance. Keep stakes small.</p></details></li><li><details><summary>Where else to look?</summary><p>1X2 for the final result only if you do not need the half-time path.</p></details></li></ul>
+  <div class="wrap">
+    <h2 class="section-title">HT/FT Predictions FAQ</h2>
+    <ul class="faq-list">
+      <li><details><summary>What is HT/FT?</summary><p>You pick the half-time result and the full-time result — both must be correct.</p></details></li>
+      <li><details><summary>Why is X/1 common?</summary><p>Favourites often draw or trail early then dominate late.</p></details></li>
+      <li><details><summary>Is HT/FT harder than 1X2?</summary><p>Yes — you must be right twice, which is why odds are higher.</p></details></li>
+      <li><details><summary>Do you tip HT/FT on every game?</summary><p>Only when the half-time path is a clear part of the match story.</p></details></li>
+      <li><details><summary>Can I combine HT/FT with goals?</summary><p>You can, but correlated legs raise variance. Keep stakes small.</p></details></li>
+      <li><details><summary>Where else to look?</summary><p>1X2 for the final result only if you do not need the half-time path.</p></details></li>
+    </ul>
   </div>
 </section>
 
@@ -168,7 +154,7 @@ if ($payload === null) {
     'name' => 'HT/FT',
     'url' => '/ht-ft-predictions',
   ),
-)); echo bao_article_schema('How HT/FT differs from 1X2', 'Half-time / full-time predictions for slow starters and late finishers. Two results, higher odds. 18+ only.', '/ht-ft-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

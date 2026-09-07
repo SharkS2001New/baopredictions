@@ -46,22 +46,10 @@
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-
-    <li>
-
-      <a href="/">Home</a>
-
-    </li>
-
-    <li>
-
-      <span aria-current="page">Double Chance Predictions</span>
-
-    </li>
-
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Double Chance Predictions</span></li>
   </ol>
 </nav>
-
 
 <header class="page-hero">
     <h1>Double Chance Predictions Today</h1>
@@ -96,28 +84,25 @@ if ($payload === null) {
 </div><!-- /.main-grid -->
 </div>
 </section>
-<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
 <section class="section section-muted bao-seo-stack">
-  <div class="wrap prose bao-writeup">
-<p class="seo-unique">Double chance lets you cover two of the three possible 1X2 outcomes in a single bet — 1X (home win or draw), X2 (draw or away win), or 12 (either team wins, no draw). It pays lower odds than a straight match-result bet because you&#039;re covering more ground, but it&#039;s a genuine way to reduce risk on matches where you&#039;re confident about ruling out one specific outcome rather than picking the exact result.</p>
-<!--BAO_FEATURED_START-->
-<aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Cover two outcomes when the exact result is unclear</p><p class="featured-text">Double chance (1X, X2, or 12) lowers variance when you can rule one result out but not nail the precise 1X2. Odds are shorter — use it as risk control, not a free lunch.</p></aside>
-<!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2 predictions</a> · <a href="/sure-bets-today">Sure bets</a> · <a href="/responsible-betting">Responsible betting</a></p>
+  <div class="wrap prose">
+    <h2>How double chance works</h2>
+    <p>Double chance lets you cover two of the three possible 1X2 outcomes in a single bet — 1X (home win or draw), X2 (draw or away win), or 12 (either team wins, no draw). It pays lower odds than a straight match-result bet because you&#039;re covering more ground, but it&#039;s a genuine way to reduce risk on matches where you&#039;re confident about ruling out one specific outcome rather than picking the exact result.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2 predictions</a> · <a href="/sure-bets-today">Sure bets</a> · <a href="/responsible-betting">Responsible betting</a></p>
   </div>
-  <div class="wrap prose bao-seo-howto">
-<h2>When double chance makes sense</h2>
-    <p>Double chance is useful when you like a side but want draw insurance, or when you want to fade a heavy favourite. We do not spam DC on every favourite — that destroys price.</p>
-  </div>
-<!--BAO_ARTICLE_START-->
-  <div class="wrap seo-article-block">
-<article class="content-article prose"><header class="article-header"><h2 class="article-title">When double chance beats straight 1X2</h2></header><div class="article-content"><p>Double chance is best when your football read is asymmetric: you are confident the away side will not win, but less sure whether the home side closes the game out or settles for a point. 1X covers that story in one selection.</p>
-<p>It is a poor fit when the match is a true coin flip between two attack-minded teams — then 12 (no draw) or a goals market may express the view better. Always compare the double-chance price to backing the two outcomes separately as a Dutch; if the book is offering almost no premium for the convenience, skip it.</p></div></article>
-  </div>
-<!--BAO_ARTICLE_END-->
 </section>
+
 <section class="section section-tight bao-faq">
-  <div class="wrap"><h2 class="section-title">Double Chance FAQ</h2><ul class="faq-list"><li><details><summary>When is double chance better than 1X2?</summary><p>When you can rule one result out but not nail the exact scoreline path — e.g. 1X when an away win looks unlikely.</p></details></li><li><details><summary>Why are the odds shorter?</summary><p>You cover two of three outcomes, so the book pays less than a straight 1X2.</p></details></li><li><details><summary>What is 12?</summary><p>Either team wins — no draw. Useful when both sides attack and a draw looks least likely.</p></details></li><li><details><summary>Can I Dutch the two outcomes instead?</summary><p>Sometimes. Compare prices; if double chance offers almost no convenience premium, skip it.</p></details></li><li><details><summary>Is double chance risk-free?</summary><p>No. You can still lose if the uncovered outcome lands.</p></details></li><li><details><summary>Do you publish 1X and X2 both?</summary><p>We publish the lean that matches our read — not every variant on every match.</p></details></li></ul>
+  <div class="wrap">
+    <h2 class="section-title">Double Chance FAQ</h2>
+    <ul class="faq-list">
+      <li><details><summary>When is double chance better than 1X2?</summary><p>When you can rule one result out but not nail the exact scoreline path — e.g. 1X when an away win looks unlikely.</p></details></li>
+      <li><details><summary>Why are the odds shorter?</summary><p>You cover two of three outcomes, so the book pays less than a straight 1X2.</p></details></li>
+      <li><details><summary>What is 12?</summary><p>Either team wins — no draw. Useful when both sides attack and a draw looks least likely.</p></details></li>
+      <li><details><summary>Can I Dutch the two outcomes instead?</summary><p>Sometimes. Compare prices; if double chance offers almost no convenience premium, skip it.</p></details></li>
+      <li><details><summary>Is double chance risk-free?</summary><p>No. You can still lose if the uncovered outcome lands.</p></details></li>
+      <li><details><summary>Do you publish 1X and X2 both?</summary><p>We publish the lean that matches our read — not every variant on every match.</p></details></li>
+    </ul>
   </div>
 </section>
 
@@ -169,7 +154,7 @@ if ($payload === null) {
     'name' => 'Double Chance',
     'url' => '/double-chance-predictions',
   ),
-)); echo bao_article_schema('When double chance beats straight 1X2', 'Today\'s double chance predictions — cover two outcomes when the exact 1X2 is unclear. Lower variance, shorter odds. 18+ only.', '/double-chance-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

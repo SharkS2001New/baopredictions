@@ -46,22 +46,10 @@
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-
-    <li>
-
-      <a href="/">Home</a>
-
-    </li>
-
-    <li>
-
-      <span aria-current="page">Over/Under Predictions</span>
-
-    </li>
-
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Over/Under Predictions</span></li>
   </ol>
 </nav>
-
 
 <header class="page-hero">
     <h1>Over/Under Predictions Today</h1>
@@ -96,28 +84,25 @@ if ($payload === null) {
 </div><!-- /.main-grid -->
 </div>
 </section>
-<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
 <section class="section section-muted bao-seo-stack">
-  <div class="wrap prose bao-writeup">
-<p class="seo-unique">Over/under betting is on total goals in a match, not who wins. The most common line is 2.5 goals — bet &quot;over&quot; if you expect 3 or more goals combined, &quot;under&quot; if you expect 2 or fewer. We base these predictions on both teams&#039; recent scoring and conceding rates, not just one side&#039;s attack, since a high-scoring team facing a very defensive opponent can still produce a low-scoring match.</p>
-<!--BAO_FEATURED_START-->
-<aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Goals lines from both teams&#039; scoring profiles</p><p class="featured-text">Over/under tips look at combined expected goals, not just who wins. A high-scoring favourite against a parked bus can still land under 2.5 — we model both attacks and both defences.</p></aside>
-<!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/btts-predictions">BTTS predictions</a> · <a href="/football-predictions-today">Today&#039;s tips</a></p>
+  <div class="wrap prose">
+    <h2>How over/under works</h2>
+    <p>Over/under betting is on total goals in a match, not who wins. The most common line is 2.5 goals — bet &quot;over&quot; if you expect 3 or more goals combined, &quot;under&quot; if you expect 2 or fewer. We base these predictions on both teams&#039; recent scoring and conceding rates, not just one side&#039;s attack, since a high-scoring team facing a very defensive opponent can still produce a low-scoring match.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/btts-predictions">BTTS predictions</a> · <a href="/football-predictions-today">Today&#039;s tips</a></p>
   </div>
-  <div class="wrap prose bao-seo-howto">
-<h2>Reading over/under</h2>
-    <p>We look at scoring rates, xG where available, and whether both sides need points. Bundesliga and some UCL ties skew over; many Serie A and KPL games skew under.</p>
-  </div>
-<!--BAO_ARTICLE_START-->
-  <div class="wrap seo-article-block">
-<article class="content-article prose"><header class="article-header"><h2 class="article-title">How Bao builds over/under goals predictions</h2></header><div class="article-content"><p>The 2.5 line remains the most liquid goals market. We also publish 1.5 and 3.5 when the profile is extreme. Home advantage usually lifts totals; cup rotation and heavy weather usually suppress them.</p>
-<p>Pairing over 2.5 with BTTS yes is common but not automatic — a 3-0 is over without BTTS. Read each card's pick text carefully before combining markets on the same match.</p></div></article>
-  </div>
-<!--BAO_ARTICLE_END-->
 </section>
+
 <section class="section section-tight bao-faq">
-  <div class="wrap"><h2 class="section-title">Over/Under FAQ</h2><ul class="faq-list"><li><details><summary>What line do you use most?</summary><p>Over/under 2.5 is the default liquid line; we also publish 1.5 and 3.5 when profiles are extreme.</p></details></li><li><details><summary>Does a favourite always go over?</summary><p>No. A strong favourite can win 1-0. We model both attacks and both defences.</p></details></li><li><details><summary>Can I pair over 2.5 with BTTS?</summary><p>Common, but a 3-0 is over without BTTS. Read each pick carefully.</p></details></li><li><details><summary>Do cup games go under more?</summary><p>Often yes when rotation and caution suppress open play — we note that when material.</p></details></li><li><details><summary>Are totals updated for team news?</summary><p>Yes when a key striker or centre-back absence clearly changes the goals profile.</p></details></li><li><details><summary>Where else are goals tips?</summary><p>On Today&#039;s board and in BTTS when both markets apply.</p></details></li></ul>
+  <div class="wrap">
+    <h2 class="section-title">Over/Under FAQ</h2>
+    <ul class="faq-list">
+      <li><details><summary>What line do you use most?</summary><p>Over/under 2.5 is the default liquid line; we also publish 1.5 and 3.5 when profiles are extreme.</p></details></li>
+      <li><details><summary>Does a favourite always go over?</summary><p>No. A strong favourite can win 1-0. We model both attacks and both defences.</p></details></li>
+      <li><details><summary>Can I pair over 2.5 with BTTS?</summary><p>Common, but a 3-0 is over without BTTS. Read each pick carefully.</p></details></li>
+      <li><details><summary>Do cup games go under more?</summary><p>Often yes when rotation and caution suppress open play — we note that when material.</p></details></li>
+      <li><details><summary>Are totals updated for team news?</summary><p>Yes when a key striker or centre-back absence clearly changes the goals profile.</p></details></li>
+      <li><details><summary>Where else are goals tips?</summary><p>On Today&#039;s board and in BTTS when both markets apply.</p></details></li>
+    </ul>
   </div>
 </section>
 
@@ -169,7 +154,7 @@ if ($payload === null) {
     'name' => 'Over/Under',
     'url' => '/over-under-predictions',
   ),
-)); echo bao_article_schema('How Bao builds over/under goals predictions', 'Over and under goals predictions from both teams\' scoring and conceding profiles, not just the match winner. 18+ only.', '/over-under-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

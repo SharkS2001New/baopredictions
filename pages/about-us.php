@@ -44,33 +44,21 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">About Us</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">About Us</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
     <h1>About Bao Predictions</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="seo-unique">Bao Predictions publishes daily football predictions backed by statistical analysis and human review — with a public track record that includes losses.</p>
+<p class="lede">Daily football predictions backed by statistical analysis and human review — with a public track record that includes losses.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/how-we-predict">How we predict</a> · <a href="/faq">FAQ</a> · <a href="/contact-us">Contact</a></p>
 
 </header>
   <article class="prose">
 <p>Bao Predictions publishes daily football predictions backed by statistical analysis and human review. We built this site because most prediction sites either hide their losses or bury their reasoning behind vague confidence claims — we do neither. Every pick we publish stays visible whether it wins or loses, and every prediction includes the reasoning behind it, not just a result.</p>
 <p>We cover single-match predictions across major betting markets, plus the football jackpots run by Kenya's major bookmakers, with the same standard applied throughout: real reasoning, honest track record, no guarantees.</p>
-<p><!--Add real founder/team bio once available — even a short one materially helps E-E-A-T.--></p>
 <p>If you have questions about how we work, our <a href="/how-we-predict">How We Predict</a> page has the full breakdown, and our <a href="/results">results page</a> has the numbers.</p>
 </article>
 </div>

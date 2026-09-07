@@ -46,19 +46,8 @@
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-
-    <li>
-
-      <a href="/">Home</a>
-
-    </li>
-
-    <li>
-
-      <span aria-current="page">Results</span>
-
-    </li>
-
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Results</span></li>
   </ol>
 </nav>
 
@@ -109,23 +98,25 @@ if ($payload === null) {
 </div><!-- /.main-grid -->
   </div>
 </section>
-<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
 <section class="section section-muted bao-seo-stack">
-  <div class="wrap prose bao-writeup">
-<p class="seo-unique">We track every published prediction from the moment it goes live. Wins and losses both stay visible. Use yesterday&#039;s page for the most recent matchday, and this page for the longer-term picture by market and over time.</p>
-<!--BAO_FEATURED_START-->
-<aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Wins and losses — both stay published</p><p class="featured-text">Audit our settled tips before you trust today&#039;s board. Past performance is not a guarantee of future results.</p></aside>
-<!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday&#039;s results</a> · <a href="/how-we-predict">How we predict</a> · <a href="/about-us">About us</a></p>
+  <div class="wrap prose">
+    <h2>How to read our track record</h2>
+    <p>We track every published prediction from the moment it goes live. Wins and losses both stay visible. Use yesterday&#039;s page for the most recent matchday, and this page for the longer-term picture by market and over time. Win rate counts only settled predictions where the specific market outcome matched the result; postponements are excluded. Past performance is not a guarantee of future results.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday&#039;s results</a> · <a href="/how-we-predict">How we predict</a> · <a href="/about-us">About us</a></p>
   </div>
-<!--BAO_ARTICLE_START-->
-  <div class="wrap seo-article-block">
-<article class="content-article prose"><header class="article-header"><h2 class="article-title">How to read Bao&#039;s track record</h2></header><div class="article-content"><p>Win rate counts only settled predictions where the specific market outcome matched the result. Postponements are excluded. ROI, when shown, uses published odds at tip time — not closing lines after the fact.</p></div></article>
-  </div>
-<!--BAO_ARTICLE_END-->
 </section>
+
 <section class="section section-tight bao-faq">
-  <div class="wrap"><h2 class="section-title">Results FAQ</h2><ul class="faq-list"><li><details><summary>Do you hide losing tips?</summary><p>No. Wins and losses both stay published.</p></details></li><li><details><summary>How is win rate calculated?</summary><p>Settled predictions where the specific market outcome matched the result. Postponements are excluded.</p></details></li><li><details><summary>Is past performance a guarantee?</summary><p>No. It is a transparency tool only.</p></details></li><li><details><summary>What odds do you use for ROI?</summary><p>Published odds at tip time when shown — not closing lines after the fact.</p></details></li><li><details><summary>How often is Results updated?</summary><p>After matchdays as fixtures settle.</p></details></li><li><details><summary>Where are yesterday&#039;s tips?</summary><p>On the Yesterday predictions page for a daily verification layer.</p></details></li></ul>
+  <div class="wrap">
+    <h2 class="section-title">Results FAQ</h2>
+    <ul class="faq-list">
+      <li><details><summary>Do you hide losing tips?</summary><p>No. Wins and losses both stay published.</p></details></li>
+      <li><details><summary>How is win rate calculated?</summary><p>Settled predictions where the specific market outcome matched the result. Postponements are excluded.</p></details></li>
+      <li><details><summary>Is past performance a guarantee?</summary><p>No. It is a transparency tool only.</p></details></li>
+      <li><details><summary>What odds do you use for ROI?</summary><p>Published odds at tip time when shown — not closing lines after the fact.</p></details></li>
+      <li><details><summary>How often is Results updated?</summary><p>After matchdays as fixtures settle.</p></details></li>
+      <li><details><summary>Where are yesterday&#039;s tips?</summary><p>On the Yesterday predictions page for a daily verification layer.</p></details></li>
+    </ul>
   </div>
 </section>
 
@@ -177,7 +168,7 @@ if ($payload === null) {
     'name' => 'Results',
     'url' => '/results',
   ),
-)); echo bao_article_schema('How to read Bao\'s track record', 'Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.', '/results'); echo bao_organization_schema(); ?>
+)); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

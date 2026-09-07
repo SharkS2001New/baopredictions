@@ -46,22 +46,10 @@
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-
-    <li>
-
-      <a href="/">Home</a>
-
-    </li>
-
-    <li>
-
-      <span aria-current="page">BTTS Predictions</span>
-
-    </li>
-
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">BTTS Predictions</span></li>
   </ol>
 </nav>
-
 
 <header class="page-hero">
     <h1>BTTS Predictions Today</h1>
@@ -96,28 +84,25 @@ if ($payload === null) {
 </div><!-- /.main-grid -->
 </div>
 </section>
-<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
 <section class="section section-muted bao-seo-stack">
-  <div class="wrap prose bao-writeup">
-<p class="seo-unique">Both Teams to Score (BTTS) is a bet on whether both sides find the net, regardless of the final result — a 2-1 or a 1-1 both count as &quot;yes,&quot; a 3-0 counts as &quot;no.&quot; It&#039;s a market that rewards looking at both teams&#039; attack and defence together, since a strong home attack against a leaky away defence can produce a BTTS &quot;yes&quot; even in a match one side is heavily expected to win overall.</p>
-<!--BAO_FEATURED_START-->
-<aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">Both teams to score — attack meets defence</p><p class="featured-text">BTTS ignores the final result. We favour yes when both attacks create chances and both defences concede regularly; no when one side keeps clean sheets against this level of opponent.</p></aside>
-<!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/over-under-predictions">Over/under</a> · <a href="/1x2-predictions">1X2 predictions</a> · <a href="/accumulator-tips">Accumulator tips</a></p>
+  <div class="wrap prose">
+    <h2>How BTTS works</h2>
+    <p>Both Teams to Score (BTTS) is a bet on whether both sides find the net, regardless of the final result — a 2-1 or a 1-1 both count as &quot;yes,&quot; a 3-0 counts as &quot;no.&quot; It&#039;s a market that rewards looking at both teams&#039; attack and defence together, since a strong home attack against a leaky away defence can produce a BTTS &quot;yes&quot; even in a match one side is heavily expected to win overall.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/over-under-predictions">Over/under</a> · <a href="/1x2-predictions">1X2 predictions</a> · <a href="/accumulator-tips">Accumulator tips</a></p>
   </div>
-  <div class="wrap prose bao-seo-howto">
-<h2>How we approach BTTS</h2>
-    <p>BTTS Yes thrives when both sides create chances and neither keeps clean sheets. Clean-sheet monsters and low-block derbies are where we stay away or lean No.</p>
-  </div>
-<!--BAO_ARTICLE_START-->
-  <div class="wrap seo-article-block">
-<article class="content-article prose"><header class="article-header"><h2 class="article-title">Reading BTTS beyond win rates</h2></header><div class="article-content"><p>A team can win often and still concede weekly — that profile produces BTTS yes even in comfortable victories. Conversely, low-block away underdogs can frustrate BTTS yes tickets despite occasional shocks.</p>
-<p>Derbies and cup ties with extra motivation sometimes suppress open play; we note that when it is material to the lean.</p></div></article>
-  </div>
-<!--BAO_ARTICLE_END-->
 </section>
+
 <section class="section section-tight bao-faq">
-  <div class="wrap"><h2 class="section-title">BTTS Predictions FAQ</h2><ul class="faq-list"><li><details><summary>What does BTTS mean?</summary><p>Both teams to score — yes or no — regardless of who wins.</p></details></li><li><details><summary>When do you lean BTTS yes?</summary><p>When both attacks create chances and both defences concede regularly against this level of opponent.</p></details></li><li><details><summary>Can a team win and kill BTTS?</summary><p>Yes — a 2-0 or 3-0 wins 1X2 but fails BTTS yes.</p></details></li><li><details><summary>Do derbies suppress BTTS?</summary><p>Sometimes. Extra caution can reduce open play; we note it when it matters.</p></details></li><li><details><summary>Is BTTS easier than 1X2?</summary><p>Different, not easier. You ignore the result but still need both nets to move.</p></details></li><li><details><summary>Are tips free?</summary><p>Yes — free BTTS leans with confidence ratings.</p></details></li></ul>
+  <div class="wrap">
+    <h2 class="section-title">BTTS Predictions FAQ</h2>
+    <ul class="faq-list">
+      <li><details><summary>What does BTTS mean?</summary><p>Both teams to score — yes or no — regardless of who wins.</p></details></li>
+      <li><details><summary>When do you lean BTTS yes?</summary><p>When both attacks create chances and both defences concede regularly against this level of opponent.</p></details></li>
+      <li><details><summary>Can a team win and kill BTTS?</summary><p>Yes — a 2-0 or 3-0 wins 1X2 but fails BTTS yes.</p></details></li>
+      <li><details><summary>Do derbies suppress BTTS?</summary><p>Sometimes. Extra caution can reduce open play; we note it when it matters.</p></details></li>
+      <li><details><summary>Is BTTS easier than 1X2?</summary><p>Different, not easier. You ignore the result but still need both nets to move.</p></details></li>
+      <li><details><summary>Are tips free?</summary><p>Yes — free BTTS leans with confidence ratings.</p></details></li>
+    </ul>
   </div>
 </section>
 
@@ -169,7 +154,7 @@ if ($payload === null) {
     'name' => 'BTTS',
     'url' => '/btts-predictions',
   ),
-)); echo bao_article_schema('Reading BTTS beyond win rates', 'Both teams to score tips based on attack output and defensive leaks — yes and no leans with confidence ratings. 18+ only.', '/btts-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

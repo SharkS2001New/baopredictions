@@ -44,26 +44,15 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">Responsible Betting</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Responsible Betting</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
     <h1>Responsible Betting</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="seo-unique">Predictions on this site are informational, not a guarantee. Read this before betting on any tip we publish.</p>
+<p class="lede">Predictions on this site are informational, not a guarantee. Read this before betting on any tip we publish.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/faq">FAQ</a> · <a href="/about-us">About us</a> · <a href="/">Home</a></p>
 
 </header>
@@ -78,7 +67,7 @@
   <li>Take breaks — if it stops being enjoyable, that's a sign to step away</li>
   <li>Only use licensed, regulated bookmakers</li>
 </ul>
-<p>If gambling is affecting your life, support is available. Contact <a href="https://www.begambleaware.org/" rel="noopener noreferrer" target="_blank">BeGambleAware.org</a>, GamCare, or your local gambling support service. <!--Add a Kenya-specific helpline if one becomes available at launch.--></p>
+<p>If gambling is affecting your life, support is available. Contact <a href="https://www.begambleaware.org/" rel="noopener noreferrer" target="_blank">BeGambleAware.org</a>, GamCare, or your local gambling support service.</p>
 <p>This site is intended for users 18 and older, or the legal betting age in your jurisdiction if higher.</p>
 </article>
 </div>

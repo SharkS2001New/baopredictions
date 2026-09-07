@@ -46,18 +46,10 @@
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-
-    <li>
-      <a href="/">Home</a>
-    </li>
-
-    <li>
-      <span aria-current="page">BetNumbers Tips</span>
-    </li>
-
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">BetNumbers Tips</span></li>
   </ol>
 </nav>
-
 
 <header class="page-hero">
     <h1>BetNumbers Tips Today</h1>
@@ -87,38 +79,30 @@ if ($payload === null) {
 }
 ?>
 
-    <div class="acca-ticket" style="margin-bottom:1.75rem;border-top-color:var(--pitch)">
-      <h2 class="mt-0" style="font-size:1rem">How BetNumbers picks work</h2>
-      <p class="mb-0 text-muted">For each fixture we score the four main markets and keep one tip — highest model chance first, then the price that best fits that chance (roughly 1.18–3.80). Market badges on cards show which market won.</p>
-    </div>
-
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>
 
 </div><!-- /.main-grid -->
 </div>
 </section>
-<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
 <section class="section section-muted bao-seo-stack">
-  <div class="wrap prose bao-writeup">
-<p class="seo-unique">BetNumbers tips are not locked to match result. Some games are clearer on goals or both teams to score than on 1X2 — locking every card to home/draw/away wastes that edge. We still show confidence and a book price so you can judge the stake yourself. Nothing here is guaranteed; check Results for how mixed-market leans land.</p>
-<!--BAO_FEATURED_START-->
-<aside class="featured-banner" aria-label="Editor note"><p class="featured-kicker">One tip per game — best market wins</p><p class="featured-text">We compare 1X2, BTTS, Over/Under 2.5, and Double Chance, then keep the lean with the strongest win chance and a price that fits the model.</p></aside>
-<!--BAO_FEATURED_END-->
-<p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure bets today</a> · <a href="/must-win-teams-today">Must-win teams</a> · <a href="/1x2-predictions">1X2 predictions</a></p>
+  <div class="wrap prose">
+    <h2>How BetNumbers picks work</h2>
+    <p>BetNumbers tips are not locked to match result. For each fixture we score 1X2, BTTS, Over/Under 2.5, and Double Chance, then keep one tip — highest model chance first, then the price that best fits that chance (roughly 1.18–3.80). Market badges on cards show which market won. Some games are clearer on goals or both teams to score than on 1X2 — locking every card to home/draw/away wastes that edge. Nothing here is guaranteed; check Results for how mixed-market leans land.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure bets today</a> · <a href="/must-win-teams-today">Must-win teams</a> · <a href="/1x2-predictions">1X2 predictions</a></p>
   </div>
-  <div class="wrap prose bao-seo-howto">
-<h2>Why mix markets?</h2>
-    <p>A 75% Over 2.5 at 1.70 can be a cleaner number tip than a muddy 55% home win at 1.95. Mixing markets keeps the board useful when the match story is about goals or both teams scoring rather than a pure favourite.</p>
-  </div>
-<!--BAO_ARTICLE_START-->
-  <div class="wrap seo-article-block">
-<article class="content-article prose"><header class="article-header"><h2 class="article-title">BetNumbers: strongest chance, sensible price</h2></header><div class="article-content"><p>Each card picks one market. We rank by model confidence, then by how closely the book odds sit to a fair price for that chance. Short Double Chance tickets can look “safe” on paper — we soft-penalise them in ranking so the list stays a genuine mix, not a wall of 1X/X2.</p></div></article>
-  </div>
-<!--BAO_ARTICLE_END-->
 </section>
+
 <section class="section section-tight bao-faq">
-  <div class="wrap"><h2 class="section-title">BetNumbers Tips FAQ</h2><ul class="faq-list"><li><details><summary>Which markets are compared?</summary><p>1X2, BTTS, Over/Under 2.5, and Double Chance — one tip published per fixture.</p></details></li><li><details><summary>How is the winning market chosen?</summary><p>Highest winning chance first; if two are close, the odds that better fit the model probability win.</p></details></li><li><details><summary>Why skip some odds?</summary><p>We ignore prices outside a usable band (about 1.18–3.80) so tips stay stakeable.</p></details></li><li><details><summary>Is this the same as Sure Bets?</summary><p>Same mixed-market engine; Sure Bets and Must-Win apply higher confidence filters.</p></details></li><li><details><summary>18+?</summary><p>Yes. Informational only — bet responsibly with licensed operators.</p></details></li></ul>
+  <div class="wrap">
+    <h2 class="section-title">BetNumbers Tips FAQ</h2>
+    <ul class="faq-list">
+      <li><details><summary>Which markets are compared?</summary><p>1X2, BTTS, Over/Under 2.5, and Double Chance — one tip published per fixture.</p></details></li>
+      <li><details><summary>How is the winning market chosen?</summary><p>Highest winning chance first; if two are close, the odds that better fit the model probability win.</p></details></li>
+      <li><details><summary>Why skip some odds?</summary><p>We ignore prices outside a usable band (about 1.18–3.80) so tips stay stakeable.</p></details></li>
+      <li><details><summary>Is this the same as Sure Bets?</summary><p>Same mixed-market engine; Sure Bets and Must-Win apply higher confidence filters.</p></details></li>
+      <li><details><summary>18+?</summary><p>Yes. Informational only — bet responsibly with licensed operators.</p></details></li>
+    </ul>
   </div>
 </section>
 
@@ -165,7 +149,7 @@ if ($payload === null) {
     'name' => 'BetNumbers Tips',
     'url' => '/betnumbers-tips',
   ),
-)); echo bao_article_schema('BetNumbers: strongest chance, sensible price', 'BetNumbers tips: each fixture picks the strongest lean across 1X2, BTTS, Over/Under 2.5, and Double Chance — best win chance with a fitting price. 18+ only.', '/betnumbers-tips'); echo bao_organization_schema(); ?>
+)); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

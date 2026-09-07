@@ -31,23 +31,15 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">Terms of Service</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Terms of Service</span></li>
   </ol>
 </nav>
 
-  <header class="page-hero"><h1>Terms of Service</h1></header>
+  <header class="page-hero">
+    <h1>Terms of Service</h1>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+  </header>
   <article class="prose">
     <p>Last updated: 4 September 2026. Content on Bao Predictions is for information and entertainment. We are not a bookmaker and do not accept stakes. You are responsible for complying with gambling laws where you live. You must be 18+ to use betting-related content.</p>
     <p>Tips can lose. We are not liable for betting losses. Site content may change without notice as fixtures update.</p>

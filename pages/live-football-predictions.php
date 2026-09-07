@@ -86,15 +86,23 @@ if ($payload === null) {
 </div><!-- /.main-grid -->
 </div>
 </section>
-<!-- Page write-up: edit this block in this PHP file only (source of truth). -->
 <section class="section section-muted bao-seo-stack">
-  <div class="wrap prose bao-writeup">
-<p class="seo-unique">Live football predictions show tips for matches that are already underway — first half, half-time, second half, extra time, or penalties. Scores update from our fixture feed; a green tick means the tip matches the current scoreline (provisional while the match is live) or the final result once the game is finished. In-play leanings change quickly: treat every tip as analysis, not a guarantee, and never chase losses.</p>
-<p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Today&#039;s tips</a> · <a href="/1x2-predictions">1X2 predictions</a> · <a href="/results">Results</a></p>
+  <div class="wrap prose">
+    <h2>How live predictions work</h2>
+    <p>Live football predictions show tips for matches that are already underway — first half, half-time, second half, extra time, or penalties. Scores update from our fixture feed; a green tick means the tip matches the current scoreline (provisional while the match is live) or the final result once the game is finished. In-play leanings change quickly: treat every tip as analysis, not a guarantee, and never chase losses.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Today&#039;s tips</a> · <a href="/1x2-predictions">1X2 predictions</a> · <a href="/results">Results</a></p>
   </div>
 </section>
+
 <section class="section section-tight bao-faq">
-  <div class="wrap"><h2 class="section-title">Live Predictions FAQ</h2><ul class="faq-list"><li><details><summary>How often do live scores update?</summary><p>This page reloads about every 90 seconds. Scores come from our fixture feed — there can be a short delay versus TV.</p></details></li><li><details><summary>What does the green tick mean on a live match?</summary><p>The published tip matches the current scoreline. It is provisional until full time; a late goal can reverse it.</p></details></li><li><details><summary>Are live tips safer than pre-match tips?</summary><p>No. In-play football is volatile. Use the same stake discipline as any other tip page.</p></details></li><li><details><summary>Where do finished results go?</summary><p>Settled tips stay on Results and Yesterday with a permanent win or loss mark.</p></details></li></ul>
+  <div class="wrap">
+    <h2 class="section-title">Live Predictions FAQ</h2>
+    <ul class="faq-list">
+      <li><details><summary>How often do live scores update?</summary><p>This page reloads about every 90 seconds. Scores come from our fixture feed — there can be a short delay versus TV.</p></details></li>
+      <li><details><summary>What does the green tick mean on a live match?</summary><p>The published tip matches the current scoreline. It is provisional until full time; a late goal can reverse it.</p></details></li>
+      <li><details><summary>Are live tips safer than pre-match tips?</summary><p>No. In-play football is volatile. Use the same stake discipline as any other tip page.</p></details></li>
+      <li><details><summary>Where do finished results go?</summary><p>Settled tips stay on Results and Yesterday with a permanent win or loss mark.</p></details></li>
+    </ul>
   </div>
 </section>
 
@@ -136,7 +144,7 @@ if ($payload === null) {
     'name' => 'Live Predictions',
     'url' => '/live-football-predictions',
   ),
-)); echo bao_article_schema('Live football predictions: in-play tips and scores', 'Live football predictions with in-play scores and tips that are currently winning or settled. Updated while matches are underway. 18+ only.', '/live-football-predictions'); echo bao_organization_schema(); ?>
+)); echo bao_organization_schema(); ?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

@@ -31,33 +31,16 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <a href="/blog">Blog</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">Mega Jackpot Strategy</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><span aria-current="page">Mega Jackpot Strategy</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
     <h1>Mega Jackpot Strategy Guide</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="seo-unique">Built for the long-tail search “sportpesa mega jackpot rules explained” and strategy readers who then open the live <a href="/jackpots/sportpesa-mega-jackpot-predictions">Mega Jackpot predictions</a> sheet.</p>
-    <p class="lede text-muted">Updated 1 Sep 2026</p>
+<p class="lede">Strategy notes for SportPesa Mega Jackpot readers who then open the live <a href="/jackpots/sportpesa-mega-jackpot-predictions">Mega Jackpot predictions</a> sheet.</p>
   </header>
   <article class="prose">
     <p>A 17-game Mega Jackpot is not seventeen independent singles — it is one ticket that dies on the weakest pick. Treat sub-60% confidence games as the places you might personally override, double-check lineups, or accept as lottery variance.</p>

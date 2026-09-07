@@ -46,26 +46,15 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">How We Predict</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">How We Predict</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
     <h1>How We Predict</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="seo-unique">The canonical, most-detailed version of our methodology — data sources, human review, confidence ratings, and what we refuse to publish.</p>
+<p class="lede">Data sources, human review, confidence ratings, and what we refuse to publish — the full methodology behind every tip on this site.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/results">Results</a> · <a href="/about-us">About us</a> · <a href="/responsible-betting">Responsible betting</a></p>
 
 </header>
@@ -83,10 +72,10 @@
 
 <h2>What our confidence ratings mean</h2>
 <ul>
-  <li><strong>85–100%</strong> — our strongest picks, where form, history, and team news all point the same direction</li>
-  <li><strong>70–84%</strong> — solid predictions with good reasoning behind them, but not without risk</li>
-  <li><strong>50–69%</strong> — genuine 50/50 territory where we still see an edge, best suited to accumulators rather than single bets</li>
-  <li><strong>Below 50%</strong> — we generally don't publish these; if the data doesn't support a clear lean, we say so rather than guessing</li>
+  <li><strong>75–85%</strong> — our strongest published picks, where form, history, and team news all point the same direction. We never publish 100% — that would read as a guarantee.</li>
+  <li><strong>60–74%</strong> — solid predictions with good reasoning behind them, but not without risk</li>
+  <li><strong>40–59%</strong> — genuine toss-up territory where we still see an edge; best suited to accumulators rather than heavy singles</li>
+  <li><strong>Below 40%</strong> — we don't publish these; if the data doesn't support a clear lean, we leave the fixture off the board rather than dressing up a guess</li>
 </ul>
 <p>Confidence is relative to our own process that day — it is not a promise of hit rate. Football is unpredictable; even our highest-confidence picks lose sometimes.</p>
 
@@ -100,7 +89,7 @@
 </div>
 
   
-  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>Is confidence a win probability?</summary><p>No. It is our internal strength score for publishing and filtering (e.g. Must-Win at 85%+).</p></details></li><li><details><summary>Do humans review every tip?</summary><p>Yes — data starts the process; an analyst checks team news and publishes the final lean.</p></details></li><li><details><summary>Where can I see accuracy?</summary><p>On the Results page and Yesterday&#039;s Predictions — wins and losses both stay visible.</p></details></li></ul></div></section>
+  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>Is confidence a win probability?</summary><p>No. It is our internal strength score for publishing and filtering (e.g. Must-Win at 75%+).</p></details></li><li><details><summary>Do humans review every tip?</summary><p>Yes — data starts the process; an analyst checks team news and publishes the final lean.</p></details></li><li><details><summary>Where can I see accuracy?</summary><p>On the Results page and Yesterday&#039;s Predictions — wins and losses both stay visible.</p></details></li></ul></div></section>
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js" defer></script>
@@ -109,7 +98,7 @@
   0 => 
   array (
     'q' => 'Is confidence a win probability?',
-    'a' => 'No. It is our internal strength score for publishing and filtering (e.g. Must-Win at 85%+).',
+    'a' => 'No. It is our internal strength score for publishing and filtering (e.g. Must-Win at 75%+).',
   ),
   1 => 
   array (

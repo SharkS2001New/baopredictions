@@ -44,29 +44,16 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">Contact</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Contact</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
     <h1>Contact Us</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="seo-unique">For tip corrections, partnership enquiries, or press, use the form or email below. We read every message; response times vary on matchdays.</p>
+<p class="lede">For tip corrections, partnership enquiries, or press — we read every message; response times vary on matchdays.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/about-us">About us</a> · <a href="/faq">FAQ</a> · <a href="/how-we-predict">How we predict</a></p>
-
-<p class="lede">Corrections, data issues, and press — we read every message.</p>
   </header>
   <div class="prose">
     <p>Email: <a href="mailto:hello@baopredictions.com">hello@baopredictions.com</a></p>

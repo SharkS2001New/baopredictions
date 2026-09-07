@@ -44,29 +44,16 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">FAQ</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">FAQ</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
     <h1>Frequently Asked Questions</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="seo-unique">Straight answers about how we work, how accurate we are, and how to use our predictions responsibly.</p>
+<p class="lede">Straight answers about how we work, how accurate we are, and how to use our predictions responsibly.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/responsible-betting">Responsible betting</a> · <a href="/how-we-predict">How we predict</a> · <a href="/results">Results</a></p>
-
-<p class="lede">Straight answers about tips, accuracy, and how to use the site.</p>
   </header>
   
   <ul class="faq-list"><li><details><summary>What makes Bao Predictions different from other prediction sites?</summary><p>We publish our full track record, including losses, and every prediction comes with the reasoning behind it rather than just a pick and a percentage.</p></details></li><li><details><summary>Can any football prediction be guaranteed?</summary><p>No. Football has genuine unpredictability built in — a single goal, red card, or refereeing call can change a result regardless of how strong the underlying data looked beforehand. Treat every prediction, including our highest-confidence ones, as informed analysis, not a certainty.</p></details></li><li><details><summary>Is Bao Predictions free to use?</summary><p>Yes, all predictions on the site are free to view.</p></details></li><li><details><summary>How often are predictions updated?</summary><p>Daily, with jackpot pages updated according to each jackpot&#039;s own schedule (weekly for most, daily for SportyBet&#039;s).</p></details></li><li><details><summary>Do you encourage betting?</summary><p>We publish analysis for people who are already choosing to bet. We&#039;re not encouraging anyone to start, and we take responsible gambling seriously — see our responsible betting page.</p></details></li></ul>

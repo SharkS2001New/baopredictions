@@ -31,33 +31,16 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <a href="/blog">Blog</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">How to Read BTTS Odds</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><a href="/blog">Blog</a></li>
+    <li><span aria-current="page">How to Read BTTS Odds</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
     <h1>How to Read BTTS Odds</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="seo-unique">This guide answers the informational query behind BTTS tips: how to read the price, not just copy a Yes/No lean. When you are done, apply it on our <a href="/btts-predictions">BTTS predictions</a> page.</p>
-    <p class="lede text-muted">Updated 2 Sep 2026 · Published 20 Aug 2026</p>
+<p class="lede">How to read the BTTS price, not just copy a Yes/No lean — then apply it on our <a href="/btts-predictions">BTTS predictions</a> page.</p>
   </header>
   <article class="prose">
     <p>Both Teams to Score (BTTS) looks simple — Yes or No — but the price embeds how often the market expects each side to find the net. A 1.50 BTTS Yes is not \"more correct\" than 1.90; it is the bookmaker's view of likelihood plus margin.</p>

@@ -31,23 +31,15 @@
   
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">Privacy Policy</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Privacy Policy</span></li>
   </ol>
 </nav>
 
-  <header class="page-hero"><h1>Privacy Policy</h1></header>
+  <header class="page-hero">
+    <h1>Privacy Policy</h1>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+  </header>
   <article class="prose">
     <p>Last updated: 4 September 2026. Bao Predictions runs a static site. We may collect basic analytics (pages viewed, approximate region) via our host or analytics provider. We do not sell personal data.</p>
     <p>Contact <a href="mailto:hello@baopredictions.com">hello@baopredictions.com</a> for privacy requests. If we add accounts later, this policy will be updated before launch.</p>

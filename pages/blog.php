@@ -28,49 +28,39 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 <div class="wrap">
-  
+
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
-    
-    <li>
-      
-      <a href="/">Home</a>
-      
-    </li>
-    
-    <li>
-      
-      <span aria-current="page">Blog</span>
-      
-    </li>
-    
+    <li><a href="/">Home</a></li>
+    <li><span aria-current="page">Blog</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
     <h1>Blog</h1>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
     <p class="lede">Editorial guides that build topical authority — strategy, markets, and matchweek form.</p>
   </header>
   <ul class="blog-list">
-    
+
     <li>
-      <time datetime="Tue Sep 01 2026 03:00:00 GMT+0300 (East Africa Time)">1 Sep 2026</time>
-      <h2 style="margin:0.35rem 0"><a href="/premier-league-form-guide-matchweek-4">Premier League Form Guide Matchweek 4 | Bao Predictions</a></h2>
-      <p class="text-muted mb-0">Premier League form guide for matchweek 4 — home/away trends, confidence leans, and which sides are overperforming early.</p>
+      <time datetime="2026-09-01">1 Sep 2026</time>
+      <h2 style="margin:0.35rem 0"><a href="/premier-league-form-guide-matchweek-4">Premier League Form Guide for Accumulators</a></h2>
+      <p class="text-muted mb-0">How to read Premier League home/away form when building accumulators — sample size, motivation, and when early-season trends mislead.</p>
     </li>
-    
+
     <li>
-      <time datetime="Wed Aug 12 2026 03:00:00 GMT+0300 (East Africa Time)">12 Aug 2026</time>
-      <h2 style="margin:0.35rem 0"><a href="/mega-jackpot-strategy-guide">Mega Jackpot Strategy Guide | Bao Predictions</a></h2>
+      <time datetime="2026-08-12">12 Aug 2026</time>
+      <h2 style="margin:0.35rem 0"><a href="/mega-jackpot-strategy-guide">Mega Jackpot Strategy Guide</a></h2>
       <p class="text-muted mb-0">SportPesa Mega Jackpot strategy — how to use confidence tiers, where to hedge mentally, and why one weak leg ends the ticket.</p>
     </li>
-    
+
     <li>
-      <time datetime="Thu Aug 20 2026 03:00:00 GMT+0300 (East Africa Time)">20 Aug 2026</time>
-      <h2 style="margin:0.35rem 0"><a href="/how-to-read-btts-odds">How to Read BTTS Odds | Bao Predictions</a></h2>
+      <time datetime="2026-08-20">20 Aug 2026</time>
+      <h2 style="margin:0.35rem 0"><a href="/how-to-read-btts-odds">How to Read BTTS Odds</a></h2>
       <p class="text-muted mb-0">Learn how to read both-teams-to-score odds — when BTTS Yes is value, when to pass, and how confidence differs from price.</p>
     </li>
-    
+
   </ul>
 </div>
 
