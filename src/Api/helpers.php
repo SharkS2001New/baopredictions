@@ -14,6 +14,11 @@ function bao_api_json(array $payload, int $status = 200): void
 
 function bao_api_error(string $message, int $status = 500, array $extra = []): void
 {
+    if ($status >= 500) {
+        bao_log('error', 'API error', ['status' => $status, 'error' => $message] + $extra);
+    } elseif ($status >= 400) {
+        bao_log('warning', 'API client error', ['status' => $status, 'error' => $message] + $extra);
+    }
     bao_api_json(array_merge([
         'ok' => false,
         'error' => $message,

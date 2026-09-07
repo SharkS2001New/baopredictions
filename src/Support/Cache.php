@@ -211,6 +211,7 @@ final class Cache
             } catch (Throwable $e) {
                 self::$redisOk = false;
                 self::$activeDriver = 'file';
+                self::logRedisFallback($e, 'get');
             }
         }
         return $this->fileGet($full);
@@ -229,6 +230,7 @@ final class Cache
             } catch (Throwable $e) {
                 self::$redisOk = false;
                 self::$activeDriver = 'file';
+                self::logRedisFallback($e, 'put');
             }
         }
         $this->filePut($full, $value, $seconds);
@@ -243,6 +245,7 @@ final class Cache
             } catch (Throwable $e) {
                 self::$redisOk = false;
                 self::$activeDriver = 'file';
+                self::logRedisFallback($e, 'forget');
             }
         }
         $path = $this->filePath($full);
@@ -296,7 +299,22 @@ final class Cache
         } catch (Throwable $e) {
             self::$redis = null;
             self::$redisOk = false;
+            self::logRedisFallback($e, 'connect');
             return null;
+        }
+    }
+
+    private static function logRedisFallback(Throwable $e, string $op): void
+    {
+        static $logged = [];
+        if (isset($logged[$op])) {
+            return;
+        }
+        $logged[$op] = true;
+        if (function_exists('bao_log_exception')) {
+            bao_log_exception($e, 'Redis unavailable; falling back to file cache', ['op' => $op]);
+        } else {
+            error_log('[bao] Redis ' . $op . ' failed: ' . $e->getMessage());
         }
     }
 

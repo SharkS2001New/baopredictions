@@ -33,6 +33,8 @@ RUN docker-php-ext-install -j$(nproc) \
 
 # Production OPcache (no timestamp validation — rebuild image to pick up PHP changes)
 COPY docker/php/opcache.ini /usr/local/etc/php/conf.d/opcache.ini
+# PHP errors → container stderr (kubectl/docker logs)
+COPY docker/php/logging.ini /usr/local/etc/php/conf.d/logging.ini
 
 # Install Composer (Dependency Manager for PHP)
 COPY --from=composer:latest /usr/bin/composer /usr/bin/composer
@@ -62,8 +64,11 @@ RUN printf '%s\n' \
   > /etc/apache2/conf-available/bao-perf.conf \
   && a2enconf bao-perf
 
-# Ensure PHP logs are captured by the container
+# Ensure PHP / Apache logs are captured by the container (kubectl logs)
 ENV LOG_CHANNEL=stderr
+ENV APACHE_LOG_DIR=/var/log/apache2
+# Prefer process env from k8s secrets; do not rely on a baked .env
+ENV BAO_LOAD_DOTENV=0
 
 # Set a volume mount point for your code
 VOLUME /var/www/html

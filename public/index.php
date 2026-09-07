@@ -14,6 +14,7 @@ if ($uri !== '/' && $uri !== '' && file_exists(__DIR__ . $uri) && !is_dir(__DIR_
 }
 
 require_once __DIR__ . '/../src/Facades/Router.php';
+require_once __DIR__ . '/../src/Api/bootstrap.php';
 
 use App\Facades\Router;
 

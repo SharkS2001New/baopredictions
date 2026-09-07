@@ -98,6 +98,7 @@ function bao_curl_api(string $apiPath): ?array
 
         return $payload;
     } catch (Throwable $e) {
+        bao_log_exception($e, 'bao_curl_api failed', ['path' => $path]);
         return null;
     }
 }

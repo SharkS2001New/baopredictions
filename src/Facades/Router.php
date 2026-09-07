@@ -26,7 +26,28 @@ class Router {
 
         foreach ($this->routes as $route) {
             if ($method === $route['method'] && $this->matchPath($route['path'], $requestUri, $params)) {
-                call_user_func_array($route['callback'], $params);
+                try {
+                    call_user_func_array($route['callback'], $params);
+                } catch (\Throwable $e) {
+                    if (function_exists('bao_log_exception')) {
+                        bao_log_exception($e, 'Route handler failed', [
+                            'route' => $route['path'],
+                            'method' => $method,
+                        ]);
+                    } else {
+                        error_log('[bao] Route handler failed: ' . $e->getMessage());
+                    }
+                    if (!headers_sent()) {
+                        http_response_code(500);
+                        $isApi = str_starts_with((string) $requestUri, '/api/');
+                        if ($isApi) {
+                            header('Content-Type: application/json; charset=utf-8');
+                            echo json_encode(['ok' => false, 'error' => 'Internal server error']);
+                            return;
+                        }
+                    }
+                    echo 'Internal server error';
+                }
                 return;
             }
         }
