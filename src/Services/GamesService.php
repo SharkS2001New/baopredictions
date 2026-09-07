@@ -1151,7 +1151,15 @@ SQL;
 
         $line = match ($market) {
             'double_chance' => $this->doubleChanceAdviceLine($code, $home, $away, $h, $d, $a, $price, $seed),
-            'over_under' => $this->overUnderAdviceLine($code, $avg, $price, $seed),
+            'over_under' => $this->overUnderAdviceLine(
+                $code,
+                $home,
+                $away,
+                $avg,
+                $price,
+                $seed,
+                $published
+            ),
             'btts' => $this->bttsAdviceLine($code, $bttsProb, $price, $seed),
             'ht_ft', 'correct_score' => trim((string) ($pickMeta['pick'] ?? '')),
             default => match ($code) {
@@ -1298,42 +1306,56 @@ SQL;
         return 'Double-chance lean' . ($price !== null ? ' around ' . $price : '') . ' — cover only, not certainty.';
     }
 
-    private function overUnderAdviceLine(string $code, float $avg, ?string $price, int $seed): string
-    {
-        $v = $this->adviceVariant($seed, 3);
+    private function overUnderAdviceLine(
+        string $code,
+        string $home,
+        string $away,
+        float $avg,
+        ?string $price,
+        int $seed,
+        int $conf = 0
+    ): string {
+        // More variants + fixture names so O/U cards do not share one template with only odds swapped.
+        $v = $this->adviceVariant($seed + (int) round($avg * 10) + $conf, 5);
         $tail = $this->priceClause($price, $seed) . ' — goals markets swing.';
+        $pair = $home . ' vs ' . $away;
+        $atConf = $conf > 0 ? (' at ' . $conf . '% confidence') : '';
 
         if ($code === 'O2.5') {
             if ($avg > 0) {
-                $templates = [
-                    'Model lean Over 2.5 with expected goals near %.1f%s',
-                    'Goals lean over the 2.5 line — projected total around %.1f%s',
-                    'Working over tip: model expected goals sit near %.1f%s',
-                ];
-                return sprintf($templates[$v], $avg, $tail);
+                return match ($v) {
+                    1 => sprintf('Higher-event read on %s — projected total around %.1f backs Over 2.5%s%s', $pair, $avg, $atConf, $tail),
+                    2 => sprintf('Working over tip for %s: expected goals sit near %.1f, so Over 2.5 is the lean%s%s', $pair, $avg, $atConf, $tail),
+                    3 => sprintf('%s looks open in the data (xg ~%.1f); Over 2.5 is the published lean%s%s', $pair, $avg, $atConf, $tail),
+                    4 => sprintf('Goals lean over the line in %s — model total near %.1f supports Over 2.5%s%s', $pair, $avg, $atConf, $tail),
+                    default => sprintf('%s: Over 2.5 lean with expected goals near %.1f%s%s', $pair, $avg, $atConf, $tail),
+                };
             }
-            $templates = [
-                'Model lean Over 2.5 goals%s',
-                'Goals profile supports an over 2.5 lean%s',
-                'Working tip is Over 2.5 on this matchup%s',
-            ];
-            return sprintf($templates[$v], $tail);
+            return match ($v) {
+                1 => sprintf('Model tips Over 2.5 for %s — open-game profile in the published data%s%s', $pair, $atConf, $tail),
+                2 => sprintf('Over 2.5 is the shortlist pick for %s%s%s', $pair, $atConf, $tail),
+                3 => sprintf('%s: both sides look capable of contributing; Over 2.5 is the lean%s%s', $pair, $atConf, $tail),
+                4 => sprintf('Goals market lean on %s is Over 2.5%s%s', $pair, $atConf, $tail),
+                default => sprintf('%s: working lean is Over 2.5 on the goals line%s%s', $pair, $atConf, $tail),
+            };
         }
 
         if ($avg > 0) {
-            $templates = [
-                'Model lean Under 2.5 with expected goals near %.1f%s',
-                'Lower-event lean: projected total around %.1f supports under 2.5%s',
-                'Working under tip — model expected goals sit near %.1f%s',
-            ];
-            return sprintf($templates[$v], $avg, $tail);
+            return match ($v) {
+                1 => sprintf('Lower-event read on %s — projected total around %.1f backs Under 2.5%s%s', $pair, $avg, $atConf, $tail),
+                2 => sprintf('Working under tip for %s: expected goals sit near %.1f, so Under 2.5 is the lean%s%s', $pair, $avg, $atConf, $tail),
+                3 => sprintf('%s looks tighter in the data (xg ~%.1f); Under 2.5 is the published lean%s%s', $pair, $avg, $atConf, $tail),
+                4 => sprintf('Goals lean under the line in %s — model total near %.1f supports Under 2.5%s%s', $pair, $avg, $atConf, $tail),
+                default => sprintf('%s: Under 2.5 lean with expected goals near %.1f%s%s', $pair, $avg, $atConf, $tail),
+            };
         }
-        $templates = [
-            'Model lean Under 2.5 goals%s',
-            'Goals profile supports an under 2.5 lean%s',
-            'Working tip is Under 2.5 on this matchup%s',
-        ];
-        return sprintf($templates[$v], $tail);
+        return match ($v) {
+            1 => sprintf('Model tips Under 2.5 for %s — lower-event profile in the published data%s%s', $pair, $atConf, $tail),
+            2 => sprintf('Under 2.5 is the shortlist pick for %s%s%s', $pair, $atConf, $tail),
+            3 => sprintf('%s: fewer clear chances in the model; Under 2.5 is the lean%s%s', $pair, $atConf, $tail),
+            4 => sprintf('Goals market lean on %s is Under 2.5%s%s', $pair, $atConf, $tail),
+            default => sprintf('%s: working lean is Under 2.5 on the goals line%s%s', $pair, $atConf, $tail),
+        };
     }
 
     private function bttsAdviceLine(string $code, int $bttsProb, ?string $price, int $seed): string

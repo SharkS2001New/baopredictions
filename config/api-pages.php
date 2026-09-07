@@ -51,7 +51,8 @@ return [
         'title' => 'Must-win teams today',
         'day' => 'today',
         'limit' => 30,
-        'market' => 'best',
+        // Match-result leans only — distinct from sure-bets (all-market high-confidence band).
+        'market' => '1x2',
         'min_confidence' => 75,
         'order' => 'confidence_desc',
     ],
@@ -60,8 +61,9 @@ return [
         'title' => 'Sure bets today',
         'day' => 'today',
         'limit' => 30,
+        // Highest-confidence band across 1X2 / O/U / BTTS / DC — not the same list as must-win.
         'market' => 'best',
-        'min_confidence' => 70,
+        'min_confidence' => 78,
         'order' => 'confidence_desc',
     ],
 

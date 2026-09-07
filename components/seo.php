@@ -59,6 +59,41 @@ function bao_jackpot_lede_html(array $sheet): string {
         . bao_h((string) $sheet['prize_label']) . '</p>';
 }
 
+/**
+ * Dynamic one-liner naming the actual top picks on a shortlist page
+ * (never hardcoded example clubs).
+ *
+ * @param list<array<string,mixed>> $games
+ */
+function bao_shortlist_summary_html(array $games, string $label = 'shortlist'): string {
+    if (!$games) {
+        return '<p>No ' . bao_h($label) . ' picks published for this board yet.</p>';
+    }
+    $top = array_slice($games, 0, 3);
+    $bits = [];
+    foreach ($top as $g) {
+        $home = trim((string) ($g['home'] ?? 'Home'));
+        $away = trim((string) ($g['away'] ?? 'Away'));
+        $pick = trim((string) ($g['pick'] ?? 'lean'));
+        $conf = (int) ($g['confidence'] ?? 0);
+        $bits[] = bao_h($home) . ' vs ' . bao_h($away)
+            . ' (' . bao_h($pick) . ($conf > 0 ? ', ' . $conf . '%' : '') . ')';
+    }
+    $n = count($games);
+    if (count($bits) === 1) {
+        $lead = 'Today\'s ' . bao_h($label) . ' is led by ' . $bits[0] . '.';
+    } elseif (count($bits) === 2) {
+        $lead = 'Today\'s ' . bao_h($label) . ' is led by ' . $bits[0] . ' and ' . $bits[1] . '.';
+    } else {
+        $lead = 'Today\'s ' . bao_h($label) . ' is led by ' . $bits[0]
+            . ', then ' . $bits[1] . ', with ' . $bits[2] . ' also clearing the bar.';
+    }
+    if ($n > 3) {
+        $lead .= ' ' . $n . ' picks published on this board.';
+    }
+    return '<p>' . $lead . '</p>';
+}
+
 function bao_faq_schema(array $faqs): string {
     if (!$faqs) {
         return '';

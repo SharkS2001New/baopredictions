@@ -285,10 +285,12 @@ final class StatsService
         $accaEligible = 0;
         foreach ($pool as $g) {
             $c = (int) ($g['confidence'] ?? 0);
-            if ($c >= 75) {
+            $market = strtolower((string) ($g['market'] ?? '1x2'));
+            // Align sidebar counts with page filters (must-win = 1X2 @75+, sure = best @78+).
+            if ($c >= 75 && ($market === '1x2' || $market === '')) {
                 $must++;
             }
-            if ($c >= 70) {
+            if ($c >= 78) {
                 $sure++;
             }
             // Same usable band as buildAccumulators (odds + confidence proxy).

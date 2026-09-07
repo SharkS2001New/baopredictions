@@ -96,13 +96,6 @@ $a = $bao_sidebar_active;
             </span>
             <span class="market-count"><?= htmlspecialchars($mc($baoMarkets, 'sure-bets-today')) ?></span>
           </a>
-          <a href="/betnumbers-tips" class="market-item-link<?= bao_sidebar_active('betnumbers-tips', $a) ?>">
-            <span class="market-info">
-              <span class="market-icon">BN</span>
-              <span class="market-name">BetNumbers Tips</span>
-            </span>
-            <span class="market-count"><?= htmlspecialchars($mc($baoMarkets, 'betnumbers-tips')) ?></span>
-          </a>
           <a href="/accumulator-tips" class="market-item-link<?= bao_sidebar_active('accumulator-tips', $a) ?>">
             <span class="market-info">
               <span class="market-icon">AC</span>
