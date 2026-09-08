@@ -22,7 +22,8 @@ function bao_api_cache_meta(string $path): array
     $cacheKey = 'bao_api_' . str_replace('-', '_', $path) . '_' . $today;
 
     if ($path === 'stats') {
-        return ['key' => $cacheKey, 'ttl' => Cache::ttlStats()];
+        // v3: market badges counted from real page APIs (must-win / sure bets fix).
+        return ['key' => $cacheKey . '_v3', 'ttl' => Cache::ttlStats()];
     }
 
     $pages = require dirname(__DIR__) . '/config/api-pages.php';

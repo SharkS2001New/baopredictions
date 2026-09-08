@@ -263,66 +263,44 @@ final class StatsService
      */
     public function marketCounts(): array
     {
-        $pool = $this->games->listGames([
-            'day' => 'today',
-            'limit' => 80,
-            'market' => '1x2',
-            'order' => 'confidence_desc',
-        ]);
-        return $this->marketCountsFromPool($pool);
+        return $this->marketCountsFromPool([]);
     }
 
     /**
-     * @param list<array<string,mixed>> $pool
+     * Sidebar badges must match the corresponding /api/{page} game lists.
+     * Do not approximate Must-Win / Sure Bets from the capped today 1X2 board —
+     * that pool is kickoff-ordered and often has zero tips at the shortlist thresholds.
+     *
+     * @param list<array<string,mixed>> $todayPool unused (kept for call-site compatibility)
      * @return array<string,int>
      */
-    private function marketCountsFromPool(array $pool): array
+    private function marketCountsFromPool(array $todayPool): array
     {
-        $n = count($pool);
+        $pageCount = function (string $key): int {
+            return count($this->listPageGames($key, []));
+        };
 
-        $must = 0;
-        $sure = 0;
-        $accaEligible = 0;
-        foreach ($pool as $g) {
-            $c = (int) ($g['confidence'] ?? 0);
-            $market = strtolower((string) ($g['market'] ?? '1x2'));
-            // Align sidebar counts with page filters (must-win = 1X2 @75+, sure = best @78+).
-            if ($c >= 75 && ($market === '1x2' || $market === '')) {
-                $must++;
-            }
-            if ($c >= 78) {
-                $sure++;
-            }
-            // Same usable band as buildAccumulators (odds + confidence proxy).
-            $odds = isset($g['odds']) ? (float) $g['odds'] : 0;
-            if ($c >= 58 && $odds >= 1.20 && $odds <= 3.50 && !empty($g['pick'])) {
-                $accaEligible++;
-            }
-        }
-
-        // Cheap ticket estimate: up to three tickets (3/5/8) when pool is deep enough.
-        $acc = 0;
-        if ($accaEligible >= 3) {
-            $acc++;
-        }
-        if ($accaEligible >= 8) {
-            $acc++;
-        }
-        if ($accaEligible >= 16) {
-            $acc++;
-        }
+        $accaGames = $this->listPageGames('accumulator-tips', [
+            'day' => 'today',
+            'limit' => 80,
+            'market' => 'best',
+            'min_confidence' => 58,
+            'order' => 'confidence_desc',
+            'upcoming_only' => true,
+        ]);
+        $tickets = $this->games->buildAccumulators($accaGames);
 
         return [
-            '1x2-predictions' => min(60, $n),
-            'over-under-predictions' => min(60, $n),
-            'btts-predictions' => min(60, $n),
-            'double-chance-predictions' => min(60, $n),
-            'ht-ft-predictions' => min(40, $n),
+            '1x2-predictions' => $pageCount('1x2-predictions'),
+            'over-under-predictions' => $pageCount('over-under-predictions'),
+            'btts-predictions' => $pageCount('btts-predictions'),
+            'double-chance-predictions' => $pageCount('double-chance-predictions'),
+            'ht-ft-predictions' => $pageCount('ht-ft-predictions'),
             'live-football-predictions' => min(80, $this->countLiveFixturesToday()),
-            'must-win-teams-today' => min(30, $must),
-            'sure-bets-today' => min(30, $sure),
-            'betnumbers-tips' => min(40, $n),
-            'accumulator-tips' => $acc,
+            'must-win-teams-today' => $pageCount('must-win-teams-today'),
+            'sure-bets-today' => $pageCount('sure-bets-today'),
+            'betnumbers-tips' => $pageCount('betnumbers-tips'),
+            'accumulator-tips' => count($tickets),
         ];
     }
 
