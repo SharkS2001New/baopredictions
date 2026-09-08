@@ -178,10 +178,20 @@ SQL;
             $sql .= " AND f.status_short NOT IN ('FT','AET','PEN','PST','CANC','ABD','AWD','WO')";
         }
 
-        // Prefer popular leagues in the fetch pool; final order still applied in sortGames.
+        // Prefer popular leagues, then strongest model lean, so high-chance non-popular
+        // games still enter the fetch window when popular slates are thin.
         // Keep the SQL window proportional to the page limit (avoid mapping 200 rows for an 18-card board).
-        $fetchLimit = min(500, max($limit * 3, $limit + 40));
-        $sql .= ' ORDER BY COALESCE(l.popular_status, 0) DESC, f.date ASC, f.fixture_id ASC LIMIT ' . $fetchLimit;
+        $confidenceBoard = $order === 'confidence_desc' || $minConf > 0;
+        $fetchLimit = $confidenceBoard
+            ? min(500, max($limit * 6, $limit + 100))
+            : min(500, max($limit * 3, $limit + 40));
+        $sql .= ' ORDER BY COALESCE(l.popular_status, 0) DESC,'
+            . ' GREATEST('
+            . 'COALESCE(pc.percent_pred_home, 0),'
+            . 'COALESCE(pc.percent_pred_draw, 0),'
+            . 'COALESCE(pc.percent_pred_away, 0)'
+            . ') DESC,'
+            . ' f.date ASC, f.fixture_id ASC LIMIT ' . $fetchLimit;
 
         $stmt = $this->db->prepare($sql);
         $stmt->execute($params);
@@ -209,8 +219,7 @@ SQL;
             $out[] = $game;
         }
 
-        $out = $this->sortGames($out, $order);
-        return array_slice($out, 0, $limit);
+        return $this->selectBoardGames($out, $limit, $order);
     }
 
     /**
@@ -609,18 +618,60 @@ SQL;
     }
 
     /**
+     * Popular leagues first; if that slate is empty or thin, fill remaining slots
+     * with the strongest model leans (home/draw/away %).
+     *
      * @param list<array<string,mixed>> $games
      * @return list<array<string,mixed>>
      */
-    private function sortGames(array $games, string $order): array
+    private function selectBoardGames(array $games, int $limit, string $order): array
+    {
+        if ($games === [] || $limit <= 0) {
+            return [];
+        }
+
+        $popular = [];
+        $rest = [];
+        foreach ($games as $g) {
+            if ((int) ($g['popular'] ?? 0) > 0) {
+                $popular[] = $g;
+            } else {
+                $rest[] = $g;
+            }
+        }
+
+        // Within each bucket, apply the page order (no hard popular boost here).
+        $popular = $this->sortGamesWithinBucket($popular, $order);
+        // Fillers always prefer high win-chance when the board ranks by confidence,
+        // or when kickoff boards need padding beyond a thin popular slate.
+        $fillOrder = $order === 'confidence_desc' ? 'confidence_desc' : $order;
+        $rest = $this->sortGamesWithinBucket($rest, $fillOrder);
+        if ($order === 'confidence_desc' || count($popular) < $limit) {
+            $rest = $this->sortByLeanStrength($rest);
+        }
+
+        $out = $popular;
+        if (count($out) < $limit) {
+            foreach ($rest as $g) {
+                $out[] = $g;
+                if (count($out) >= $limit) {
+                    break;
+                }
+            }
+        }
+
+        return array_slice($out, 0, $limit);
+    }
+
+    /**
+     * Sort within one league-popularity bucket (popular OR non-popular).
+     *
+     * @param list<array<string,mixed>> $games
+     * @return list<array<string,mixed>>
+     */
+    private function sortGamesWithinBucket(array $games, string $order): array
     {
         usort($games, static function ($a, $b) use ($order) {
-            // leagues.popular_status = 1 always ranks above everything else (all tip pages)
-            $pa = (int) ($a['popular'] ?? 0) > 0 ? 1 : 0;
-            $pb = (int) ($b['popular'] ?? 0) > 0 ? 1 : 0;
-            if ($pa !== $pb) {
-                return $pb <=> $pa;
-            }
             if ($order === 'confidence_desc') {
                 $ca = (int) ($a['confidence'] ?? 0);
                 $cb = (int) ($b['confidence'] ?? 0);
@@ -636,6 +687,53 @@ SQL;
             return ((int) ($a['fixture_id'] ?? 0)) <=> ((int) ($b['fixture_id'] ?? 0));
         });
         return $games;
+    }
+
+    /**
+     * Strongest 1X2 model share first (home/draw/away %), then published confidence.
+     *
+     * @param list<array<string,mixed>> $games
+     * @return list<array<string,mixed>>
+     */
+    private function sortByLeanStrength(array $games): array
+    {
+        usort($games, function ($a, $b) {
+            $sa = $this->leanStrength($a);
+            $sb = $this->leanStrength($b);
+            if ($sa !== $sb) {
+                return $sb <=> $sa;
+            }
+            $ca = (int) ($a['confidence'] ?? 0);
+            $cb = (int) ($b['confidence'] ?? 0);
+            if ($ca !== $cb) {
+                return $cb <=> $ca;
+            }
+            $ka = (string) ($a['kickoff'] ?? '');
+            $kb = (string) ($b['kickoff'] ?? '');
+            if ($ka !== $kb) {
+                return $ka <=> $kb;
+            }
+            return ((int) ($a['fixture_id'] ?? 0)) <=> ((int) ($b['fixture_id'] ?? 0));
+        });
+        return $games;
+    }
+
+    /**
+     * Best available win chance from model home/draw/away %, else tip confidence.
+     *
+     * @param array<string,mixed> $g
+     */
+    private function leanStrength(array $g): int
+    {
+        $probs = is_array($g['probs'] ?? null) ? $g['probs'] : [];
+        $h = (int) ($probs['home'] ?? 0);
+        $d = (int) ($probs['draw'] ?? 0);
+        $a = (int) ($probs['away'] ?? 0);
+        $max = max($h, $d, $a);
+        if ($max > 0) {
+            return $max;
+        }
+        return (int) ($g['confidence'] ?? 0);
     }
 
     /**
