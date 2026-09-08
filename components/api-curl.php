@@ -22,8 +22,8 @@ function bao_api_cache_meta(string $path): array
     $cacheKey = 'bao_api_' . str_replace('-', '_', $path) . '_' . $today;
 
     if ($path === 'stats') {
-        // v3: market badges counted from real page APIs (must-win / sure bets fix).
-        return ['key' => $cacheKey . '_v3', 'ttl' => Cache::ttlStats()];
+        // v7: track/results exclude incomplete 1X2 model stubs; win rate null at 0/0 settled.
+        return ['key' => $cacheKey . '_v7', 'ttl' => Cache::ttlStats()];
     }
 
     $pages = require dirname(__DIR__) . '/config/api-pages.php';
@@ -36,6 +36,11 @@ function bao_api_cache_meta(string $path): array
 
     if (($def['range'] ?? '') === 'weekend') {
         return ['key' => $cacheKey, 'ttl' => Cache::ttlWeekend()];
+    }
+
+    // Rolling settled archive (Results) — refresh like "today" so new FT rows appear.
+    if (!empty($def['lookback_days'])) {
+        return ['key' => $cacheKey . '_v3', 'ttl' => Cache::ttlForSiteDate($today)];
     }
 
     $source = strtolower((string) ($def['source'] ?? 'fixtures'));
@@ -53,7 +58,8 @@ function bao_api_cache_meta(string $path): array
         $fixtureDate = DateTimeHelper::siteDate($dayMod);
     }
 
-    return ['key' => $cacheKey, 'ttl' => Cache::ttlForSiteDate($fixtureDate)];
+    // v2: skip market tips without book prices (BTTS/O/U/DC partial feeds).
+    return ['key' => $cacheKey . '_v2', 'ttl' => Cache::ttlForSiteDate($fixtureDate)];
 }
 
 /**

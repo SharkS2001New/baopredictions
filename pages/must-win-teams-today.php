@@ -92,7 +92,7 @@ if ($payload === null) {
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
     <h2>What makes a must-win?</h2>
-    <p>A must-win pick here is one of today's strongest published <strong>1X2</strong> leans — we require roughly 75%+ confidence on the match-result market before anything appears on this shortlist. Goals and double-chance tips live on <a href="/sure-bets-today">Sure Bets Today</a> instead, so the two pages stay distinct. It is not a guarantee, and it is not limited to famous clubs. A big club can be favourite and still miss this list if the lean is soft.</p>
+    <p>A must-win pick here is one of today's strongest published <strong>1X2</strong> leans — we require roughly 75%+ confidence on the match-result market before anything appears on this shortlist. It is a filter on the <a href="/1x2-predictions">1X2 board</a> (and a narrower slice than <a href="/football-predictions-today">Today&#039;s mixed board</a>), not a separate fixture universe. Goals and double-chance tips live on <a href="/sure-bets-today">Sure Bets Today</a> instead, so the two shortlists stay distinct. It is not a guarantee, and it is not limited to famous clubs.</p>
     <h2>Today's must-win shortlist</h2>
     <?php echo bao_shortlist_summary_html($games, 'must-win shortlist'); ?>
     <p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure bets today</a> · <a href="/football-predictions-today">Today's full list</a> · <a href="/accumulator-tips">Accumulator tips</a></p>

@@ -72,12 +72,12 @@
 
 <h2>What our confidence ratings mean</h2>
 <ul>
-  <li><strong>75–85%</strong> — our strongest published picks, where form, history, and team news all point the same direction. We never publish 100% — that would read as a guarantee.</li>
+  <li><strong>75–85%</strong> — our strongest published picks, where form, history, and team news all point the same direction. Published cards are hard-capped at 85%; we never show 100%, because that would read as a guarantee.</li>
   <li><strong>60–74%</strong> — solid predictions with good reasoning behind them, but not without risk</li>
-  <li><strong>40–59%</strong> — genuine toss-up territory where we still see an edge; best suited to accumulators rather than heavy singles</li>
-  <li><strong>Below 40%</strong> — we don't publish these; if the data doesn't support a clear lean, we leave the fixture off the board rather than dressing up a guess</li>
+  <li><strong>55–59%</strong> — thinner edges that still clear our publish floor; better as accumulator legs than heavy singles</li>
+  <li><strong>Below 55%</strong> — we don't publish these on tip boards; if the data doesn't support a clear lean, we leave the fixture off rather than dressing up a guess</li>
 </ul>
-<p>Confidence is relative to our own process that day — it is not a promise of hit rate. Football is unpredictable; even our highest-confidence picks lose sometimes.</p>
+<p>Confidence is relative to our own process that day — it is not a promise of hit rate. Football is unpredictable; even our highest-confidence picks lose sometimes. Shortlists apply higher bars on top of this scale: <a href="/must-win-teams-today">Must-Win</a> is match-result (1X2) tips at <strong>75%+</strong>; <a href="/sure-bets-today">Sure Bets</a> is the mixed-market band at roughly <strong>78%+</strong>.</p>
 
 <h2>Where our data comes from</h2>
 <p>We pull fixture and statistical data from our fixtures feed, covering team form, head-to-head records, and league standings. This is combined with manually tracked team news — injuries, suspensions, and confirmed lineups — checked as close to kickoff as the data allows.</p>
@@ -89,7 +89,7 @@
 </div>
 
   
-  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>Is confidence a win probability?</summary><p>No. It is our internal strength score for publishing and filtering (e.g. Must-Win at 75%+).</p></details></li><li><details><summary>Do humans review every tip?</summary><p>Yes — data starts the process; an analyst checks team news and publishes the final lean.</p></details></li><li><details><summary>Where can I see accuracy?</summary><p>On the Results page and Yesterday&#039;s Predictions — wins and losses both stay visible.</p></details></li></ul></div></section>
+  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>Is confidence a win probability?</summary><p>No. It is our internal strength score for publishing and filtering — for example Must-Win is 1X2 tips at 75%+, and Sure Bets is the mixed-market band at roughly 78%+. Cards never display above 85% or at 100%.</p></details></li><li><details><summary>Do humans review every tip?</summary><p>Yes — data starts the process; an analyst checks team news and publishes the final lean.</p></details></li><li><details><summary>Where can I see accuracy?</summary><p>On the Results page and Yesterday&#039;s Predictions — wins and losses both stay visible.</p></details></li></ul></div></section>
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js" defer></script>
@@ -98,7 +98,7 @@
   0 => 
   array (
     'q' => 'Is confidence a win probability?',
-    'a' => 'No. It is our internal strength score for publishing and filtering (e.g. Must-Win at 75%+).',
+    'a' => 'No. It is our internal strength score for publishing and filtering — for example Must-Win is 1X2 tips at 75%+, and Sure Bets is the mixed-market band at roughly 78%+. Cards never display above 85% or at 100%.',
   ),
   1 => 
   array (

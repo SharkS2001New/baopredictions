@@ -79,7 +79,8 @@ $baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
   <div class="wrap wrap-wide">
     <div class="main-grid">
 <div class="matches-area">
-    <h2 class="section-title">Yesterday's settled tips</h2>
+    <h2 class="section-title">Recent settled tips (last 7 days)</h2>
+    <p class="text-muted" style="margin:0 0 1rem">Rolling week of published 1X2 tips that settled — newest first. For a single matchday only, use <a href="/football-predictions-yesterday">Yesterday</a>.</p>
 
   <?php
 require_once __DIR__ . '/../components/api-curl.php';
@@ -101,7 +102,7 @@ if ($payload === null) {
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
     <h2>How to read our track record</h2>
-    <p>We track every published prediction from the moment it goes live. Wins and losses both stay visible. Use yesterday&#039;s page for the most recent matchday, and this page for the longer-term picture by market and over time. Win rate counts only settled predictions where the specific market outcome matched the result; postponements are excluded. Past performance is not a guarantee of future results.</p>
+    <p>We track every published prediction from the moment it goes live. Wins and losses both stay visible. <a href="/football-predictions-yesterday">Yesterday</a> is the single-day verification slice; this page shows a rolling week of settled tips plus the longer headline sample in the strip above. The headline win rate and ROI only count 1X2 tips that had a full home/draw/away model split (roughly 55%+ lean) and a real book price — fixtures with missing model probabilities are not counted and are not shown as settled tips. Postponements are excluded. Past performance is not a guarantee of future results.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday&#039;s results</a> · <a href="/how-we-predict">How we predict</a> · <a href="/about-us">About us</a></p>
   </div>
 </section>
@@ -110,8 +111,9 @@ if ($payload === null) {
   <div class="wrap">
     <h2 class="section-title">Results FAQ</h2>
     <ul class="faq-list">
+      <li><details><summary>Is this the same as Yesterday?</summary><p>No. Yesterday is one matchday; this list is the last seven settled days, plus the headline track-record strip above.</p></details></li>
       <li><details><summary>Do you hide losing tips?</summary><p>No. Wins and losses both stay published.</p></details></li>
-      <li><details><summary>How is win rate calculated?</summary><p>Settled predictions where the specific market outcome matched the result. Postponements are excluded.</p></details></li>
+      <li><details><summary>How is win rate calculated?</summary><p>Settled 1X2 tips with a full home/draw/away model split and a book price, where the tipped outcome matched the result. Incomplete model stubs and postponements are excluded.</p></details></li>
       <li><details><summary>Is past performance a guarantee?</summary><p>No. It is a transparency tool only.</p></details></li>
       <li><details><summary>What odds do you use for ROI?</summary><p>Published odds at tip time when shown — not closing lines after the fact.</p></details></li>
       <li><details><summary>How often is Results updated?</summary><p>After matchdays as fixtures settle.</p></details></li>
@@ -129,30 +131,35 @@ if ($payload === null) {
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_faq_schema(array (
   0 =>
   array (
-    'q' => 'Do you hide losing tips?',
-    'a' => 'No. Wins and losses both stay published.',
+    'q' => 'Is this the same as Yesterday?',
+    'a' => 'No. Yesterday is one matchday; this list is the last seven settled days, plus the headline track-record strip above.',
   ),
   1 =>
   array (
-    'q' => 'How is win rate calculated?',
-    'a' => 'Settled predictions where the specific market outcome matched the result. Postponements are excluded.',
+    'q' => 'Do you hide losing tips?',
+    'a' => 'No. Wins and losses both stay published.',
   ),
   2 =>
+  array (
+    'q' => 'How is win rate calculated?',
+    'a' => 'Settled 1X2 tips with a full home/draw/away model split and a book price, where the tipped outcome matched the result. Incomplete model stubs and postponements are excluded.',
+  ),
+  3 =>
   array (
     'q' => 'Is past performance a guarantee?',
     'a' => 'No. It is a transparency tool only.',
   ),
-  3 =>
+  4 =>
   array (
     'q' => 'What odds do you use for ROI?',
     'a' => 'Published odds at tip time when shown — not closing lines after the fact.',
   ),
-  4 =>
+  5 =>
   array (
     'q' => 'How often is Results updated?',
     'a' => 'After matchdays as fixtures settle.',
   ),
-  5 =>
+  6 =>
   array (
     'q' => 'Where are yesterday\'s tips?',
     'a' => 'On the Yesterday predictions page for a daily verification layer.',

@@ -93,7 +93,7 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>Weekend planning</h2>
     <p>Saturday and Sunday fixtures are grouped here so you can build weekend tickets without hopping between daily pages. Predictions use the latest team news available and will be reviewed again closer to kickoff — re-check lineups Saturday morning, because Friday tips can move.</p>
-    <?php echo bao_shortlist_summary_html($games, 'weekend board'); ?>
+    <?php echo bao_shortlist_summary_html($games, 'board', "This weekend's"); ?>
     <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Today</a> · <a href="/football-predictions-tomorrow">Tomorrow</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></p>
   </div>
 </section>

@@ -4,7 +4,7 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Today's Football Predictions & Sure Tips, <?php echo date('l j F Y'); ?> | Bao Predictions</title>
-  <meta name="description" content="Today's football predictions — every fixture, pick, and confidence rating across the leagues we cover. Updated live. 18+ only.">
+  <meta name="description" content="Today's football predictions across 1X2, BTTS, over/under and double chance — strongest lean per fixture, ranked by confidence. 18+ only.">
   <link rel="canonical" href="https://www.baopredictions.com/football-predictions-today">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
@@ -17,12 +17,12 @@
   <meta property="article:author" content="Bao Predictions">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Today's Football Predictions & Sure Tips, <?php echo date('l j F Y'); ?> | Bao Predictions">
-  <meta name="twitter:description" content="Today's football predictions — every fixture, pick, and confidence rating across the leagues we cover. Updated live. 18+ only.">
+  <meta name="twitter:description" content="Today's football predictions across 1X2, BTTS, over/under and double chance — strongest lean per fixture, ranked by confidence. 18+ only.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-today">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="Today's Football Predictions & Sure Tips, <?php echo date('l j F Y'); ?> | Bao Predictions">
-  <meta property="og:description" content="Today's football predictions — every fixture, pick, and confidence rating across the leagues we cover. Updated live. 18+ only.">
+  <meta property="og:description" content="Today's football predictions across 1X2, BTTS, over/under and double chance — strongest lean per fixture, ranked by confidence. 18+ only.">
   <meta property="og:url" content="https://www.baopredictions.com/football-predictions-today">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
@@ -56,7 +56,7 @@ $todayLabel = date('l j F Y');
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
     <li><a href="/">Home</a></li>
-    <li><span aria-current="page">Football Predictions for <?php echo bao_h($todayLabel); ?></span></li>
+    <li><span aria-current="page">Today</span></li>
   </ol>
 </nav>
 
@@ -65,7 +65,7 @@ $todayLabel = date('l j F Y');
 <?php echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
 
-<p class="lede">Today's full slate ranked by confidence within each league. Kickoff times adjust to your local timezone.</p>
+<p class="lede">Today's master tip board — strongest published lean per fixture across 1X2, BTTS, over/under, and double chance. Ranked by confidence.</p>
   </header>
 
 </div>
@@ -93,9 +93,9 @@ if ($payload === null) {
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
     <h2>Today's board</h2>
-    <p>Here's every match we're covering today, sorted by confidence. Each pick includes the reasoning behind it — recent form, head-to-head record, and any team news that affects the outcome. Check back through the day; we update predictions if late team news changes the picture before kickoff.</p>
+    <p>This is the day&#039;s master feed: for each fixture we publish the strongest stakeable lean across markets (1X2, BTTS, over/under 2.5, double chance) — not a locked match-result list. Want home/draw/away only? Use <a href="/1x2-predictions">1X2 Predictions</a>. Shortlists go further: <a href="/must-win-teams-today">Must-Win</a> is high-confidence 1X2, <a href="/sure-bets-today">Sure Bets</a> is the highest-confidence band across markets, and <a href="/betnumbers-tips">BetNumbers</a> is the mixed-market picker with a wider confidence band. Each card includes the reasoning behind the lean.</p>
     <?php echo bao_shortlist_summary_html($games, 'board'); ?>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-tomorrow">Tomorrow</a> · <a href="/must-win-teams-today">Must-win today</a> · <a href="/1x2-predictions">1X2 predictions</a></p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2 predictions</a> · <a href="/must-win-teams-today">Must-win today</a> · <a href="/betnumbers-tips">BetNumbers</a> · <a href="/football-predictions-tomorrow">Tomorrow</a></p>
   </div>
 </section>
 
@@ -104,7 +104,7 @@ if ($payload === null) {
     <h2 class="section-title">Today's Predictions FAQ</h2>
     <ul class="faq-list">
       <li><details><summary>How many matches are predicted today?</summary><p>It varies by matchday — the cards above list every published pick across the leagues we cover today.</p></details></li>
-      <li><details><summary>What is today's most confident pick?</summary><p>Scan the cards for the highest confidence percentage, or open Must-Win Teams / Sure Bets for filtered shortlists.</p></details></li>
+      <li><details><summary>What is today's most confident pick?</summary><p>The shortlist line above names the top confidence tips on this board. For filtered views, open Must-Win (1X2 only) or Sure Bets (best market across 1X2 / O/U / BTTS / DC).</p></details></li>
       <li><details><summary>When are predictions updated?</summary><p>We publish initial predictions the evening before, then review through matchday if there is late team news.</p></details></li>
       <li><details><summary>Can I use these tips for jackpots?</summary><p>Yes — map 1X2 leans onto your operator sheet, and use jackpot pages for full cards with reasons.</p></details></li>
       <li><details><summary>Do kickoff times follow my timezone?</summary><p>Displayed times follow the site clock; convert if your bookmaker shows a different zone.</p></details></li>
@@ -122,7 +122,7 @@ if ($payload === null) {
 <?php
 $baoTodayFaqs = [
   ['q' => 'How many matches are predicted today?', 'a' => 'It varies by matchday — the cards above list every published pick across the leagues we cover today.'],
-  ['q' => 'What is today\'s most confident pick?', 'a' => 'Scan the cards for the highest confidence percentage, or open Must-Win Teams / Sure Bets for filtered shortlists.'],
+  ['q' => 'What is today\'s most confident pick?', 'a' => 'The shortlist line on this page names the top confidence tips on the board. For filtered views, open Must-Win (1X2 only) or Sure Bets (best market across 1X2 / O/U / BTTS / DC).'],
   ['q' => 'When are predictions updated?', 'a' => 'We publish initial predictions the evening before, then review through matchday if there is late team news.'],
   ['q' => 'Can I use these tips for jackpots?', 'a' => 'Yes — map 1X2 leans onto your operator sheet, and use jackpot pages for full cards with reasons.'],
   ['q' => 'Do kickoff times follow my timezone?', 'a' => 'Displayed times follow the site clock; convert if your bookmaker shows a different zone.'],

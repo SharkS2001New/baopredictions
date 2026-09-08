@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Accumulator Tips Today — Acca Folds | Bao Predictions</title>
+  <title>3-Fold, 5-Fold &amp; 8-Fold Accumulator Tips | Bao Predictions</title>
   <meta name="description" content="Pre-built accumulator tips at different risk levels, plus plain-language maths on why long accas fail. 18+ only.">
   <link rel="canonical" href="https://www.baopredictions.com/accumulator-tips">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Accumulator Tips Today — Acca Folds | Bao Predictions">
+  <meta name="title" content="3-Fold, 5-Fold &amp; 8-Fold Accumulator Tips | Bao Predictions">
   <meta name="keywords" content="accumulator tips today, acca tips, 3 fold 5 fold tips">
   <meta name="author" content="Bao Predictions Analysis Team">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
@@ -16,12 +16,12 @@
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
   <meta property="article:author" content="Bao Predictions">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Accumulator Tips Today — Acca Folds | Bao Predictions">
+  <meta name="twitter:title" content="3-Fold, 5-Fold &amp; 8-Fold Accumulator Tips | Bao Predictions">
   <meta name="twitter:description" content="Pre-built accumulator tips at different risk levels, plus plain-language maths on why long accas fail. 18+ only.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/accumulator-tips">
   <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Accumulator Tips Today — Acca Folds | Bao Predictions">
+  <meta property="og:title" content="3-Fold, 5-Fold &amp; 8-Fold Accumulator Tips | Bao Predictions">
   <meta property="og:description" content="Pre-built accumulator tips at different risk levels, plus plain-language maths on why long accas fail. 18+ only.">
   <meta property="og:url" content="https://www.baopredictions.com/accumulator-tips">
   <meta property="og:type" content="article">

@@ -17,6 +17,17 @@ require_once __DIR__ . '/api-curl.php';
 $baoStats = bao_api_stats();
 $baoMarkets = is_array($baoStats['markets'] ?? null) ? $baoStats['markets'] : [];
 $baoToday = is_array($baoStats['today'] ?? null) ? $baoStats['today'] : [];
+// Defense in depth: never show a win rate / units / avg odds when nothing has settled today.
+$baoTodaySettled = (int) ($baoToday['settled_total'] ?? 0);
+$baoTodayWinRate = $baoTodaySettled > 0 && isset($baoToday['win_rate']) && $baoToday['win_rate'] !== null
+    ? (float) $baoToday['win_rate']
+    : null;
+$baoTodayUnits = $baoTodaySettled > 0 && isset($baoToday['units']) && $baoToday['units'] !== null
+    ? (float) $baoToday['units']
+    : null;
+$baoTodayAvgOdds = $baoTodaySettled > 0 && isset($baoToday['avg_odds']) && $baoToday['avg_odds'] !== null
+    ? (float) $baoToday['avg_odds']
+    : null;
 
 $mc = static function (array $markets, string $key): string {
     $n = isset($markets[$key]) ? (int) $markets[$key] : 0;
@@ -119,15 +130,15 @@ $a = $bao_sidebar_active;
           </div>
           <div class="quick-stat">
             <dt class="quick-stat-label">Win Rate</dt>
-            <dd class="quick-stat-value"><?= htmlspecialchars(bao_fmt_pct(isset($baoToday['win_rate']) ? (float) $baoToday['win_rate'] : null, 0)) ?></dd>
+            <dd class="quick-stat-value"><?= htmlspecialchars(bao_fmt_pct($baoTodayWinRate, 0)) ?></dd>
           </div>
           <div class="quick-stat">
             <dt class="quick-stat-label">Units</dt>
-            <dd class="quick-stat-value"><?= htmlspecialchars(bao_fmt_units(isset($baoToday['units']) ? (float) $baoToday['units'] : null)) ?></dd>
+            <dd class="quick-stat-value"><?= htmlspecialchars(bao_fmt_units($baoTodayUnits)) ?></dd>
           </div>
           <div class="quick-stat">
             <dt class="quick-stat-label">Avg Odds</dt>
-            <dd class="quick-stat-value"><?= htmlspecialchars(isset($baoToday['avg_odds']) && $baoToday['avg_odds'] !== null ? number_format((float) $baoToday['avg_odds'], 2) : '—') ?></dd>
+            <dd class="quick-stat-value"><?= htmlspecialchars($baoTodayAvgOdds !== null ? number_format($baoTodayAvgOdds, 2) : '—') ?></dd>
           </div>
         </dl>
       </div>

@@ -56,7 +56,7 @@
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
 
-<p class="lede">Classic match-winner market: 1 (home), X (draw), or 2 (away). Filtered to selections tagged for 1X2.</p>
+<p class="lede">Match-result market only: 1 (home), X (draw), or 2 (away) — ranked by confidence. For mixed markets on the same fixtures, see <a href="/football-predictions-today">Today&#039;s board</a>.</p>
   </header>
 
 </div>
@@ -69,13 +69,17 @@
 
   <?php
 require_once __DIR__ . '/../components/api-curl.php';
+require_once __DIR__ . '/../components/seo.php';
 $payload = bao_curl_api('/api/1x2-predictions');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
 if ($payload === null) {
   echo bao_api_fail_msg();
-} elseif (empty($payload['games'])) {
+} elseif (!$games) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['page' => (string)($payload['page'] ?? '')]);
+  echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
 ?>
   </div><!-- /.matches-area -->
@@ -88,7 +92,10 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>How 1X2 works</h2>
     <p>1X2 is the simplest football bet: pick the match result — 1 for a home win, X for a draw, 2 for an away win. It&#039;s the most heavily bet-on market because it&#039;s the most intuitive, but it&#039;s also the hardest to get consistently right, since a draw is always a live outcome even when one team is clearly stronger. Our 1X2 predictions weigh recent form and head-to-head history specifically for draw frequency, not just which team is &quot;better,&quot; since plenty of strong favourites still draw against well-organised weaker sides.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/double-chance-predictions">Double chance</a> · <a href="/must-win-teams-today">Must-win teams</a> · <a href="/how-we-predict">How we predict</a></p>
+    <p>This page is intentionally narrower than <a href="/football-predictions-today">Today&#039;s predictions</a>: every card here is locked to match result, even when a goals or double-chance lean would score higher on BetNumbers. That is the point — searchers looking for 1X2 tips get a clean home/draw/away board.</p>
+    <h2>Today&#039;s 1X2 shortlist</h2>
+    <?php echo bao_shortlist_summary_html($games, '1X2 shortlist'); ?>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Today&#039;s board</a> · <a href="/double-chance-predictions">Double chance</a> · <a href="/must-win-teams-today">Must-win teams</a> · <a href="/how-we-predict">How we predict</a></p>
   </div>
 </section>
 

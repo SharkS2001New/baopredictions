@@ -56,7 +56,7 @@
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
 
-<p class="lede">Half-time/full-time combination markets. Sparse list — only when first-half patterns are strong.</p>
+<p class="lede">Half-time/full-time combination markets. Sparse list — only when first-half patterns are strong. Prices shown are the first-half book quote for the HT leg (full HT/FT combo prices are not always in the feed).</p>
   </header>
 
 </div>
@@ -87,7 +87,7 @@ if ($payload === null) {
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
     <h2>How HT/FT works</h2>
-    <p>Half-time/full-time betting requires predicting both the result at half-time and the result at full-time — for example, a draw at half-time followed by a home win at full-time. It&#039;s a higher-odds market than straight 1X2 because you&#039;re right about two separate points in the match, not one. We look specifically at teams&#039; patterns of starting slowly or finishing strongly when building these predictions, since some sides are consistently stronger in one half than the other.</p>
+    <p>Half-time/full-time betting requires predicting both the result at half-time and the result at full-time — for example, a draw at half-time followed by a home win at full-time. It&#039;s a higher-odds market than straight 1X2 because you&#039;re right about two separate points in the match, not one. We look specifically at first-half model shares and slow-start / strong-finish paths when building these predictions. Where the feed quotes a first-half 1X2 price for the HT leg, we show that; true HT/FT combo odds are often missing from the same source, so treat the listed price as the HT leg, not a full combo payout.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2</a> · <a href="/how-we-predict">How we predict</a></p>
   </div>
 </section>
@@ -98,6 +98,7 @@ if ($payload === null) {
     <ul class="faq-list">
       <li><details><summary>What is HT/FT?</summary><p>You pick the half-time result and the full-time result — both must be correct.</p></details></li>
       <li><details><summary>Why is X/1 common?</summary><p>Favourites often draw or trail early then dominate late.</p></details></li>
+      <li><details><summary>What odds are shown?</summary><p>First-half book prices for the HT leg when available — not always the full HT/FT combo quote.</p></details></li>
       <li><details><summary>Is HT/FT harder than 1X2?</summary><p>Yes — you must be right twice, which is why odds are higher.</p></details></li>
       <li><details><summary>Do you tip HT/FT on every game?</summary><p>Only when the half-time path is a clear part of the match story.</p></details></li>
       <li><details><summary>Can I combine HT/FT with goals?</summary><p>You can, but correlated legs raise variance. Keep stakes small.</p></details></li>
@@ -125,20 +126,25 @@ if ($payload === null) {
   ),
   2 =>
   array (
+    'q' => 'What odds are shown?',
+    'a' => 'First-half book prices for the HT leg when available — not always the full HT/FT combo quote.',
+  ),
+  3 =>
+  array (
     'q' => 'Is HT/FT harder than 1X2?',
     'a' => 'Yes — you must be right twice, which is why odds are higher.',
   ),
-  3 =>
+  4 =>
   array (
     'q' => 'Do you tip HT/FT on every game?',
     'a' => 'Only when the half-time path is a clear part of the match story.',
   ),
-  4 =>
+  5 =>
   array (
     'q' => 'Can I combine HT/FT with goals?',
     'a' => 'You can, but correlated legs raise variance. Keep stakes small.',
   ),
-  5 =>
+  6 =>
   array (
     'q' => 'Where else to look?',
     'a' => '1X2 for the final result only if you do not need the half-time path.',

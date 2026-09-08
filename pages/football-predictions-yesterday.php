@@ -56,7 +56,7 @@ $yesterdayLabel = date('l j F Y', strtotime('-1 day'));
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
     <li><a href="/">Home</a></li>
-    <li><span aria-current="page">Football Prediction Results for <?php echo bao_h($yesterdayLabel); ?></span></li>
+    <li><span aria-current="page">Yesterday</span></li>
   </ol>
 </nav>
 
@@ -94,7 +94,7 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>Why we keep losing tips visible</h2>
     <p>This is where you can check our track record before trusting today's picks. Every prediction we made yesterday stays listed with the outcome — wins and losses both. If a pick didn't work out, we don't remove it. For the longer-term picture, use the full <a href="/results">results and statistics page</a>.</p>
-    <?php echo bao_shortlist_summary_html($games, 'settled board'); ?>
+    <?php echo bao_shortlist_summary_html($games, 'settled board', "Yesterday's"); ?>
     <p class="seo-related"><strong>Related:</strong> <a href="/results">Full results</a> · <a href="/football-predictions-today">Today's predictions</a> · <a href="/how-we-predict">How we predict</a></p>
   </div>
 </section>

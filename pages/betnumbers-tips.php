@@ -69,13 +69,17 @@
 
   <?php
 require_once __DIR__ . '/../components/api-curl.php';
+require_once __DIR__ . '/../components/seo.php';
 $payload = bao_curl_api('/api/betnumbers-tips');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
 if ($payload === null) {
   echo bao_api_fail_msg();
-} elseif (empty($payload['games'])) {
+} elseif (!$games) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['page' => (string)($payload['page'] ?? '')]);
+  echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
 ?>
 
@@ -88,8 +92,10 @@ if ($payload === null) {
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
     <h2>How BetNumbers picks work</h2>
-    <p>BetNumbers tips are not locked to match result. For each fixture we score 1X2, BTTS, Over/Under 2.5, and Double Chance, then keep one tip — highest model chance first, then the price that best fits that chance (roughly 1.18–3.80). Market badges on cards show which market won. Some games are clearer on goals or both teams to score than on 1X2 — locking every card to home/draw/away wastes that edge. Nothing here is guaranteed; check Results for how mixed-market leans land.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure bets today</a> · <a href="/must-win-teams-today">Must-win teams</a> · <a href="/1x2-predictions">1X2 predictions</a></p>
+    <p>BetNumbers is not a second copy of <a href="/football-predictions-today">Today&#039;s 1X2 board</a>. For each fixture we score 1X2, BTTS, Over/Under 2.5, and Double Chance, then keep one tip — and when a goals or double-chance lean is competitive, we prefer that over a soft match-result favourite. Market badges on cards show which market won. Prices outside about 1.18–3.80 are skipped so tips stay stakeable. Nothing here is guaranteed; check Results for how mixed-market leans land.</p>
+    <h2>Today&#039;s BetNumbers shortlist</h2>
+    <?php echo bao_shortlist_summary_html($games, 'BetNumbers shortlist'); ?>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Today&#039;s full list</a> · <a href="/sure-bets-today">Sure bets today</a> · <a href="/must-win-teams-today">Must-win teams</a></p>
   </div>
 </section>
 

@@ -65,11 +65,28 @@ function bao_jackpot_lede_html(array $sheet): string {
  *
  * @param list<array<string,mixed>> $games
  */
-function bao_shortlist_summary_html(array $games, string $label = 'shortlist'): string {
+/**
+ * Dynamic shortlist lead-in for SEO sections.
+ *
+ * @param list<array<string,mixed>> $games
+ * @param string $label e.g. "early board", "must-win shortlist"
+ * @param string $dayPossessive e.g. "Today's", "Tomorrow's", "Yesterday's", "This weekend's"
+ */
+function bao_shortlist_summary_html(array $games, string $label = 'shortlist', string $dayPossessive = "Today's"): string {
     if (!$games) {
         return '<p>No ' . bao_h($label) . ' picks published for this board yet.</p>';
     }
-    $top = array_slice($games, 0, 3);
+    // Always name the strongest published leans — not whatever order the board uses (kickoff vs confidence).
+    $ranked = $games;
+    usort($ranked, static function (array $a, array $b): int {
+        $ca = (int) ($a['confidence'] ?? 0);
+        $cb = (int) ($b['confidence'] ?? 0);
+        if ($ca !== $cb) {
+            return $cb <=> $ca;
+        }
+        return ((int) ($a['fixture_id'] ?? 0)) <=> ((int) ($b['fixture_id'] ?? 0));
+    });
+    $top = array_slice($ranked, 0, 3);
     $bits = [];
     foreach ($top as $g) {
         $home = trim((string) ($g['home'] ?? 'Home'));
@@ -80,12 +97,13 @@ function bao_shortlist_summary_html(array $games, string $label = 'shortlist'): 
             . ' (' . bao_h($pick) . ($conf > 0 ? ', ' . $conf . '%' : '') . ')';
     }
     $n = count($games);
+    $prefix = bao_h($dayPossessive) . ' ' . bao_h($label);
     if (count($bits) === 1) {
-        $lead = 'Today\'s ' . bao_h($label) . ' is led by ' . $bits[0] . '.';
+        $lead = $prefix . ' is led by ' . $bits[0] . '.';
     } elseif (count($bits) === 2) {
-        $lead = 'Today\'s ' . bao_h($label) . ' is led by ' . $bits[0] . ' and ' . $bits[1] . '.';
+        $lead = $prefix . ' is led by ' . $bits[0] . ' and ' . $bits[1] . '.';
     } else {
-        $lead = 'Today\'s ' . bao_h($label) . ' is led by ' . $bits[0]
+        $lead = $prefix . ' is led by ' . $bits[0]
             . ', then ' . $bits[1] . ', with ' . $bits[2] . ' also clearing the bar.';
     }
     if ($n > 3) {
@@ -141,10 +159,19 @@ function bao_organization_schema(): string {
         '@context' => 'https://schema.org',
         '@type' => 'Organization',
         'name' => 'Bao Predictions',
+        'alternateName' => 'Bao Predictions Analysis Team',
         'url' => 'https://www.baopredictions.com',
         'logo' => 'https://www.baopredictions.com/assets/img/logo-mark.png',
+        'description' => 'Kenya-facing football predictions and jackpot analysis with a public track record of wins and losses.',
+        'areaServed' => 'KE',
+        'knowsAbout' => [
+            'Football predictions',
+            'SportPesa Mega Jackpot',
+            'Betika Midweek Jackpot',
+            'FKF Premier League',
+        ],
     ];
-    return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES) . '</script>';
+    return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 }
 
 function bao_article_schema(string $headline, string $description, string $url): string {

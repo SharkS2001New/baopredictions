@@ -18,8 +18,9 @@ return [
         'title' => "Today's football predictions",
         'day' => 'today',
         'limit' => 60,
-        'market' => '1x2',
-        'order' => 'kickoff_asc',
+        // Mixed best-market board — distinct from /1x2-predictions (pure match-result).
+        'market' => 'best',
+        'order' => 'confidence_desc',
     ],
 
     'football-predictions-tomorrow' => [
@@ -138,11 +139,12 @@ return [
 
     'results' => [
         'title' => 'Settled results',
-        'day' => 'yesterday',
-        'limit' => 80,
+        // Distinct from Yesterday (single day): rolling week of settled 1X2 tips.
+        'lookback_days' => 7,
+        'limit' => 200,
         'market' => '1x2',
         'status' => 'FT',
-        'order' => 'kickoff_asc',
+        'order' => 'kickoff_desc',
     ],
 
     'jackpot-predictions' => [

@@ -58,12 +58,19 @@
 </header>
   <article class="prose">
 <p>Bao Predictions publishes daily football predictions backed by statistical analysis and human review. We built this site because most prediction sites either hide their losses or bury their reasoning behind vague confidence claims — we do neither. Every pick we publish stays visible whether it wins or loses, and every prediction includes the reasoning behind it, not just a result.</p>
-<p>We cover single-match predictions across major betting markets, plus the football jackpots run by Kenya's major bookmakers, with the same standard applied throughout: real reasoning, honest track record, no guarantees.</p>
-<p>If you have questions about how we work, our <a href="/how-we-predict">How We Predict</a> page has the full breakdown, and our <a href="/results">results page</a> has the numbers.</p>
+
+<h2>Who is behind Bao Predictions</h2>
+<p>Tips are researched and signed off by the <strong>Bao Predictions Analysis Team</strong> — a small Kenya-facing group that has followed football markets and local bookmaker jackpots (SportPesa, Betika, SportyBet, Odibets) for years before this site went live. The team combines match-data modelling with a human pass for team news, cup rotation, and price context; nothing is auto-published solely because a fixture exists on the calendar.</p>
+<p>We publish as a named editorial desk rather than anonymous tips because you should know there is a review standard behind each card. For methodology, see <a href="/how-we-predict">How We Predict</a>; for the numbers, see our <a href="/results">results</a>.</p>
+
+<h2>What we cover</h2>
+<p>Day to day we publish single-match tips across 1X2, BTTS, over/under, and double chance on major European and global leagues, plus the multi-game jackpot sheets Kenyan bettors actually fill. We also ingest <strong>FKF Premier League</strong> fixtures from our Kenya feed — they appear on tip boards when the model split and book prices clear the same publish bar we use everywhere else. Sparse KPL odds and soft model rows mean those cards show up less often than Premier League or Champions League tips; we would rather leave a match off than invent a lean.</p>
+<p>Same standard throughout: real reasoning, honest track record, no guarantees.</p>
+<p>Questions about partnerships or corrections go through our <a href="/contact-us">Contact</a> page.</p>
 </article>
 </div>
 
-  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>Are you a bookmaker?</summary><p>No. We publish analysis only.</p></details></li><li><details><summary>Where are you focused?</summary><p>Kenya-facing bookmakers and readers, with major European leagues plus Kenyan Premier League coverage.</p></details></li><li><details><summary>How do I contact you?</summary><p>Use the Contact page for partnerships and corrections.</p></details></li></ul></div></section>
+  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>Are you a bookmaker?</summary><p>No. We publish analysis only.</p></details></li><li><details><summary>Where are you focused?</summary><p>Kenya-facing readers and jackpot operators, with tip boards weighted to major European and global leagues. FKF Premier League fixtures are in our feed and publish when model and odds clear the bar.</p></details></li><li><details><summary>Who writes the tips?</summary><p>The Bao Predictions Analysis Team — a Kenya-facing editorial desk that reviews model output against team news before publishing.</p></details></li><li><details><summary>How do I contact you?</summary><p>Use the Contact page for partnerships and corrections.</p></details></li></ul></div></section>
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js" defer></script>
@@ -77,9 +84,14 @@
   1 => 
   array (
     'q' => 'Where are you focused?',
-    'a' => 'Kenya-facing bookmakers and readers, with major European leagues plus Kenyan Premier League coverage.',
+    'a' => 'Kenya-facing readers and jackpot operators, with tip boards weighted to major European and global leagues. FKF Premier League fixtures are in our feed and publish when model and odds clear the bar.',
   ),
   2 => 
+  array (
+    'q' => 'Who writes the tips?',
+    'a' => 'The Bao Predictions Analysis Team — a Kenya-facing editorial desk that reviews model output against team news before publishing.',
+  ),
+  3 => 
   array (
     'q' => 'How do I contact you?',
     'a' => 'Use the Contact page for partnerships and corrections.',

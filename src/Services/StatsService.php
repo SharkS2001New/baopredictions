@@ -30,11 +30,12 @@ final class StatsService
         date_default_timezone_set('Africa/Nairobi');
 
         // One shared today pool for hero tip count + sidebar market counts (avoids duplicate listGames).
+        // Today board is mixed-market (best); settled track record stays 1X2 via fetchSettled*.
         $todayPool = $this->listPageGames('football-predictions-today', [
             'day' => 'today',
             'limit' => 60,
-            'market' => '1x2',
-            'order' => 'kickoff_asc',
+            'market' => 'best',
+            'order' => 'confidence_desc',
         ]);
 
         $track = $this->trackRecord(90, 800);
@@ -43,11 +44,10 @@ final class StatsService
         $recent = $this->recentPerformance(3);
         $markets = $this->marketCountsFromPool($todayPool);
 
-        // Hero accuracy + streak use last 3 days (larger settled sample).
-        $today['accuracy'] = $recent['accuracy'];
-        $today['win_rate'] = $recent['accuracy'];
-        $today['accuracy_window_days'] = 3;
-        $today['win_streak'] = $recent['win_streak'];
+        // Keep today.win_rate tied to today's settled tips only (null when 0/0).
+        // Hero "3-day accuracy" reads from recent — do not overwrite today's rate.
+        $today['accuracy_window_days'] = 1;
+        $today['best_streak_3d'] = $recent['win_streak'];
 
         $payload = [
             'ok' => true,
@@ -216,8 +216,8 @@ final class StatsService
         $todayPool = $this->listPageGames('football-predictions-today', [
             'day' => 'today',
             'limit' => 60,
-            'market' => '1x2',
-            'order' => 'kickoff_asc',
+            'market' => 'best',
+            'order' => 'confidence_desc',
         ]);
         return $this->todayPerformanceFromPool($todayPool);
     }
@@ -250,8 +250,8 @@ final class StatsService
                 ? ($settledWon . '/' . $settledTotal)
                 : '0/0',
             'win_rate' => $accuracy,
-            'units' => $summary['units'],
-            'avg_odds' => $summary['avg_odds'],
+            'units' => $settledTotal > 0 ? $summary['units'] : null,
+            'avg_odds' => $settledTotal > 0 ? $summary['avg_odds'] : null,
             'win_streak' => $summary['win_streak'],
         ];
     }
@@ -312,8 +312,8 @@ final class StatsService
         return count($this->listPageGames('football-predictions-today', [
             'day' => 'today',
             'limit' => 60,
-            'market' => '1x2',
-            'order' => 'kickoff_asc',
+            'market' => 'best',
+            'order' => 'confidence_desc',
         ]));
     }
 
@@ -526,6 +526,14 @@ SQL;
         $h = (int) ($row['percent_pred_home'] ?? 0);
         $d = (int) ($row['percent_pred_draw'] ?? 0);
         $a = (int) ($row['percent_pred_away'] ?? 0);
+        // Same quality bar as published 1X2 tips — incomplete splits never enter the track sample.
+        if ($h <= 0 || $d <= 0 || $a <= 0) {
+            return '';
+        }
+        $sum = $h + $d + $a;
+        if ($sum < 70 || $sum > 130) {
+            return '';
+        }
         $max = max($h, $d, $a);
         // Skip coin-flip leans — they are not published tips and inflate losing ROI.
         if ($max < 55) {

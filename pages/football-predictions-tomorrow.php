@@ -56,7 +56,7 @@ $tomorrowLabel = date('l j F Y', strtotime('+1 day'));
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
     <li><a href="/">Home</a></li>
-    <li><span aria-current="page">Football Predictions for <?php echo bao_h($tomorrowLabel); ?></span></li>
+    <li><span aria-current="page">Tomorrow</span></li>
   </ol>
 </nav>
 
@@ -94,7 +94,7 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>Tomorrow's early board</h2>
     <p>Planning ahead of matchday? These predictions use the latest team news available today and will be reviewed again closer to kickoff — check the &quot;last updated&quot; time before you rely on any pick that involves a late fitness call. Fitness calls and cup rotation can still move a lean overnight.</p>
-    <?php echo bao_shortlist_summary_html($games, 'early board'); ?>
+    <?php echo bao_shortlist_summary_html($games, 'early board', "Tomorrow's"); ?>
     <p class="seo-related"><strong>Related:</strong> <a href="/weekend-football-predictions">Weekend predictions</a> · <a href="/football-predictions-today">Today</a> · <a href="/btts-predictions">BTTS predictions</a></p>
   </div>
 </section>
