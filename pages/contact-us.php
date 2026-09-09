@@ -173,7 +173,7 @@ $formStartedAt = time();
           name="message"
           required
           maxlength="5000"
-          rows="7"
+          rows="10"
           placeholder="Include fixture details for score corrections when you can."
         ><?php echo htmlspecialchars($old['message'], ENT_QUOTES, 'UTF-8'); ?></textarea>
       </div>
@@ -181,13 +181,6 @@ $formStartedAt = time();
       <button type="submit" class="btn btn-primary contact-submit">Send message</button>
       <p class="contact-form-note">We do not provide private “fixed” tips or guaranteed scores. 18+ only.</p>
     </form>
-
-    <aside class="contact-aside prose">
-      <h2>Other ways to reach us</h2>
-      <p>Prefer email directly? Write to <a href="mailto:hello@baopredictions.com">hello@baopredictions.com</a>.</p>
-      <p>Telegram: <a href="https://t.me/baopredictions" rel="noopener noreferrer">t.me/baopredictions</a></p>
-      <p>For responsible gambling help, see <a href="/responsible-betting">Responsible betting</a>.</p>
-    </aside>
   </div>
 </div>
 

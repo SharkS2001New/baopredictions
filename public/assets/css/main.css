@@ -1199,34 +1199,34 @@ main:has(.bao-faq) + .site-footer {
 
 /* —— Contact form —— */
 .contact-layout {
-  display: grid;
-  grid-template-columns: 1fr;
-  gap: var(--space-xl);
+  display: flex;
+  justify-content: center;
   margin-bottom: var(--space-xl);
 }
 
-@media (min-width: 900px) {
-  .contact-layout {
-    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.9fr);
-    align-items: start;
+.contact-form {
+  width: 100%;
+  max-width: 44rem;
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 1.75rem 1.5rem 2rem;
+}
+
+@media (min-width: 700px) {
+  .contact-form {
+    padding: 2.25rem 2.5rem 2.5rem;
   }
 }
 
-.contact-form {
-  background: var(--surface);
-  border: 1px solid var(--line);
-  padding: 1.35rem 1.25rem 1.5rem;
-}
-
 .contact-field {
-  margin-bottom: 1rem;
+  margin-bottom: 1.15rem;
 }
 
 .contact-field label {
   display: block;
   font-weight: 600;
-  font-size: 0.9rem;
-  margin-bottom: 0.35rem;
+  font-size: 1rem;
+  margin-bottom: 0.4rem;
   color: var(--ink);
 }
 
@@ -1239,13 +1239,14 @@ main:has(.bao-faq) + .site-footer {
   background: var(--surface-elevated);
   color: var(--ink);
   font: inherit;
-  padding: 0.7rem 0.8rem;
+  font-size: 1.05rem;
+  padding: 0.85rem 1rem;
   border-radius: var(--radius);
 }
 
 .contact-field textarea {
   resize: vertical;
-  min-height: 9rem;
+  min-height: 14rem;
 }
 
 .contact-field input:focus,
@@ -1257,12 +1258,14 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .contact-submit {
-  margin-top: 0.35rem;
+  margin-top: 0.5rem;
+  padding: 0.85rem 1.6rem;
+  font-size: 1rem;
 }
 
 .contact-form-note {
-  margin: 0.85rem 0 0;
-  font-size: 0.85rem;
+  margin: 1rem 0 0;
+  font-size: 0.9rem;
   color: var(--ink-muted);
 }
 
@@ -1276,10 +1279,14 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .contact-alert {
+  max-width: 44rem;
+  margin-left: auto;
+  margin-right: auto;
   padding: 0.9rem 1rem;
-  margin: 0 0 var(--space-lg);
+  margin-bottom: var(--space-lg);
   border: 1px solid var(--line);
   font-weight: 600;
+  text-align: center;
 }
 
 .contact-alert-success {
@@ -1292,11 +1299,6 @@ main:has(.bao-faq) + .site-footer {
   background: color-mix(in srgb, var(--loss) 12%, var(--surface));
   border-color: color-mix(in srgb, var(--loss) 40%, var(--line));
   color: var(--loss);
-}
-
-.contact-aside h2 {
-  margin-top: 0;
-  font-size: 1.15rem;
 }
 
 .btn-outline {
