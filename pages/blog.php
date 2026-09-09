@@ -1,3 +1,83 @@
+<?php
+require_once __DIR__ . '/../config/load-env.php';
+require_once __DIR__ . '/../src/Api/bootstrap.php';
+
+use App\Services\BlogService;
+
+$posts = [];
+$apiPayload = (new BlogService())->list(1, 'ALL', 50);
+foreach (($apiPayload['data'] ?? []) as $row) {
+    if (! is_array($row)) {
+        continue;
+    }
+    $slug = trim((string) ($row['slug'] ?? ''));
+    if ($slug === '') {
+        continue;
+    }
+    $published = (string) ($row['published_at'] ?? $row['created_at'] ?? '');
+    $posts[$slug] = [
+        'title' => (string) ($row['title'] ?? 'Untitled'),
+        'slug' => $slug,
+        'url' => '/blog/' . rawurlencode($slug),
+        'excerpt' => (string) ($row['excerpt'] ?? $row['meta_description'] ?? ''),
+        'published_at' => $published,
+        'source' => 'api',
+    ];
+}
+
+$static = require __DIR__ . '/../config/static-blog-posts.php';
+if (is_array($static)) {
+    foreach ($static as $row) {
+        if (! is_array($row)) {
+            continue;
+        }
+        $slug = trim((string) ($row['slug'] ?? ''));
+        if ($slug === '' || isset($posts[$slug])) {
+            continue;
+        }
+        $posts[$slug] = [
+            'title' => (string) ($row['title'] ?? 'Untitled'),
+            'slug' => $slug,
+            'url' => (string) ($row['url'] ?? ('/blog/' . rawurlencode($slug))),
+            'excerpt' => (string) ($row['excerpt'] ?? ''),
+            'published_at' => (string) ($row['published_at'] ?? ''),
+            'source' => 'static',
+        ];
+    }
+}
+
+uasort($posts, static function (array $a, array $b): int {
+    return strcmp((string) ($b['published_at'] ?? ''), (string) ($a['published_at'] ?? ''));
+});
+
+function bao_blog_list_format_date(string $raw): string
+{
+    $raw = trim($raw);
+    if ($raw === '') {
+        return '';
+    }
+    $ts = strtotime($raw);
+    if ($ts === false) {
+        return $raw;
+    }
+
+    return date('j M Y', $ts);
+}
+
+function bao_blog_list_datetime_attr(string $raw): string
+{
+    $raw = trim($raw);
+    if ($raw === '') {
+        return '';
+    }
+    $ts = strtotime($raw);
+    if ($ts === false) {
+        return htmlspecialchars(substr($raw, 0, 10), ENT_QUOTES, 'UTF-8');
+    }
+
+    return date('Y-m-d', $ts);
+}
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -42,25 +122,27 @@
     <p class="lede">Editorial guides that build topical authority — strategy, markets, and matchweek form.</p>
   </header>
   <ul class="blog-list">
-
+<?php if ($posts === []): ?>
     <li>
-      <time datetime="2026-09-01">1 Sep 2026</time>
-      <h2 style="margin:0.35rem 0"><a href="/premier-league-form-guide-matchweek-4">Premier League Form Guide for Accumulators</a></h2>
-      <p class="text-muted mb-0">How to read Premier League home/away form when building accumulators — sample size, motivation, and when early-season trends mislead.</p>
+      <p class="text-muted mb-0">No posts published yet. Check back soon.</p>
     </li>
-
+<?php else: ?>
+<?php foreach ($posts as $post): ?>
     <li>
-      <time datetime="2026-08-12">12 Aug 2026</time>
-      <h2 style="margin:0.35rem 0"><a href="/mega-jackpot-strategy-guide">Mega Jackpot Strategy Guide</a></h2>
-      <p class="text-muted mb-0">SportPesa Mega Jackpot strategy — how to use confidence tiers, where to hedge mentally, and why one weak leg ends the ticket.</p>
+<?php
+  $dt = bao_blog_list_datetime_attr((string) ($post['published_at'] ?? ''));
+  $label = bao_blog_list_format_date((string) ($post['published_at'] ?? ''));
+?>
+<?php if ($dt !== ''): ?>
+      <time datetime="<?php echo htmlspecialchars($dt, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?></time>
+<?php endif; ?>
+      <h2 style="margin:0.35rem 0"><a href="<?php echo htmlspecialchars((string) $post['url'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string) $post['title'], ENT_QUOTES, 'UTF-8'); ?></a></h2>
+<?php if (trim((string) ($post['excerpt'] ?? '')) !== ''): ?>
+      <p class="text-muted mb-0"><?php echo htmlspecialchars((string) $post['excerpt'], ENT_QUOTES, 'UTF-8'); ?></p>
+<?php endif; ?>
     </li>
-
-    <li>
-      <time datetime="2026-08-20">20 Aug 2026</time>
-      <h2 style="margin:0.35rem 0"><a href="/how-to-read-btts-odds">How to Read BTTS Odds</a></h2>
-      <p class="text-muted mb-0">Learn how to read both-teams-to-score odds — when BTTS Yes is value, when to pass, and how confidence differs from price.</p>
-    </li>
-
+<?php endforeach; ?>
+<?php endif; ?>
   </ul>
 </div>
 

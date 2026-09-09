@@ -276,6 +276,156 @@ $router->get('/blog', function () {
     include __DIR__ . '/../pages/blog.php';
 });
 
+$router->get('/blog/{slug}', function ($slug) {
+    include __DIR__ . '/../pages/blog-post.php';
+});
+
+// —— Admin blog cache clear + footer sponsors (pitchpredictionsadmin) ——
+$router->get('/api/blog-list', function () {
+    require_once __DIR__ . '/../config/load-env.php';
+    require_once __DIR__ . '/../src/Api/bootstrap.php';
+    $page = max(1, (int) ($_GET['page'] ?? 1));
+    $category = (string) ($_GET['category'] ?? 'ALL');
+    $payload = (new \App\Services\BlogService())->list($page, $category, 20);
+    header('Content-Type: application/json; charset=utf-8');
+    header('Cache-Control: public, max-age=60, must-revalidate');
+    echo json_encode($payload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+});
+
+$router->get('/api/clear-blog-list-cache', function () {
+    require_once __DIR__ . '/../config/load-env.php';
+    require_once __DIR__ . '/../src/Api/bootstrap.php';
+    require_once __DIR__ . '/../components/blog-cache-auth.php';
+    header('Content-Type: application/json; charset=utf-8');
+    if (! bao_blog_cache_clear_key()) {
+        http_response_code(503);
+        echo json_encode(['error' => 'BLOG_CACHE_CLEAR_KEY must be set to exactly ' . BAO_BLOG_CACHE_CLEAR_KEY_LENGTH . ' characters']);
+        return;
+    }
+    if (! bao_blog_cache_clear_authorized()) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Unauthorized']);
+        return;
+    }
+    $cleared = (new \App\Services\BlogService())->clearListCaches();
+    echo json_encode($cleared + [
+        'revalidated' => true,
+        'message' => 'Blog list caches cleared. The next visit will fetch fresh posts.',
+    ], JSON_UNESCAPED_SLASHES);
+});
+
+$router->get('/api/clear-blog-cache/{slug}', function ($slug) {
+    require_once __DIR__ . '/../config/load-env.php';
+    require_once __DIR__ . '/../src/Api/bootstrap.php';
+    require_once __DIR__ . '/../components/blog-cache-auth.php';
+    header('Content-Type: application/json; charset=utf-8');
+    if (! bao_blog_cache_clear_key()) {
+        http_response_code(503);
+        echo json_encode(['error' => 'BLOG_CACHE_CLEAR_KEY must be set to exactly ' . BAO_BLOG_CACHE_CLEAR_KEY_LENGTH . ' characters']);
+        return;
+    }
+    if (! bao_blog_cache_clear_authorized()) {
+        http_response_code(401);
+        echo json_encode(['error' => 'Unauthorized']);
+        return;
+    }
+    $slug = trim(rawurldecode((string) $slug));
+    if ($slug === '') {
+        http_response_code(400);
+        echo json_encode(['error' => 'Slug is required']);
+        return;
+    }
+    $cleared = (new \App\Services\BlogService())->clearPostCache($slug);
+    echo json_encode($cleared + [
+        'revalidated' => true,
+        'message' => 'Blog cache cleared. The next visit will fetch a fresh post.',
+    ], JSON_UNESCAPED_SLASHES);
+});
+
+$handleFooterSponsors = function () {
+    require_once __DIR__ . '/../config/load-env.php';
+    require_once __DIR__ . '/../src/Api/bootstrap.php';
+    require_once __DIR__ . '/../components/blog-cache-auth.php';
+    header('Content-Type: application/json; charset=utf-8');
+    $service = new \App\Services\FooterSponsorsService();
+    $method = strtoupper((string) ($_SERVER['REQUEST_METHOD'] ?? 'GET'));
+
+    if ($method === 'GET') {
+        $wantAll = in_array(strtolower((string) ($_GET['all'] ?? '')), ['1', 'true'], true);
+        if ($wantAll) {
+            header('Cache-Control: no-store, no-cache, must-revalidate');
+            echo json_encode([
+                'success' => true,
+                'data' => $service->readDocument(),
+            ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+            return;
+        }
+        $document = $service->readDocument();
+        $links = $service->visibleLinks();
+        header('Cache-Control: public, max-age=0, s-maxage=0, must-revalidate');
+        echo json_encode([
+            'success' => true,
+            'updated_at' => $document['updated_at'],
+            'links' => $links,
+        ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        return;
+    }
+
+    if ($method === 'PUT' || $method === 'POST') {
+        if (! bao_blog_cache_clear_key()) {
+            http_response_code(503);
+            echo json_encode([
+                'error' => 'BLOG_CACHE_CLEAR_KEY must be set to exactly ' . BAO_BLOG_CACHE_CLEAR_KEY_LENGTH . ' characters on this host before footer links can be saved.',
+            ]);
+            return;
+        }
+        if (! bao_blog_cache_clear_authorized()) {
+            http_response_code(401);
+            echo json_encode(['error' => 'Unauthorized']);
+            return;
+        }
+
+        $rawBody = file_get_contents('php://input');
+        $body = json_decode((string) $rawBody, true);
+        if (! is_array($body)) {
+            http_response_code(422);
+            echo json_encode(['success' => false, 'error' => 'Invalid JSON body.']);
+            return;
+        }
+        $incoming = (isset($body['data']) && is_array($body['data'])) ? $body['data'] : $body;
+        if (! isset($incoming['links']) || ! is_array($incoming['links'])) {
+            http_response_code(422);
+            echo json_encode(['success' => false, 'error' => 'Body must include a links array.']);
+            return;
+        }
+
+        try {
+            $saved = $service->writeDocument($incoming);
+            header('Cache-Control: no-store, no-cache, must-revalidate');
+            echo json_encode([
+                'success' => true,
+                'message' => 'Footer sponsor links saved.',
+                'data' => $saved,
+            ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);
+        } catch (Throwable $e) {
+            http_response_code(500);
+            echo json_encode([
+                'success' => false,
+                'error' => $e->getMessage() ?: 'Failed to write footer-sponsors.json',
+            ]);
+        }
+        return;
+    }
+
+    http_response_code(405);
+    header('Allow: GET, PUT, POST');
+    echo json_encode(['error' => 'Method not allowed']);
+};
+
+$router->get('/api/site-content/footer-sponsors', $handleFooterSponsors);
+$router->put('/api/site-content/footer-sponsors', $handleFooterSponsors);
+$router->post('/api/site-content/footer-sponsors', $handleFooterSponsors);
+
 $router->get('/how-to-read-btts-odds', function () {
     include __DIR__ . '/../pages/how-to-read-btts-odds.php';
 });
