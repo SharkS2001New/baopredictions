@@ -286,7 +286,7 @@ $router->get('/api/blog-list', function () {
     require_once __DIR__ . '/../src/Api/bootstrap.php';
     $page = max(1, (int) ($_GET['page'] ?? 1));
     $category = (string) ($_GET['category'] ?? 'ALL');
-    $payload = (new \App\Services\BlogService())->list($page, $category, 20);
+    $payload = (new \App\Services\BlogService())->list($page, $category, 6);
     header('Content-Type: application/json; charset=utf-8');
     header('Cache-Control: public, max-age=60, must-revalidate');
     echo json_encode($payload, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE);

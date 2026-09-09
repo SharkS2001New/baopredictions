@@ -17,22 +17,6 @@ if ($slug === '' || ! preg_match('/^[a-z0-9][a-z0-9\-]{0,190}$/i', $slug)) {
 
 $blog = (new BlogService())->post($slug);
 if ($blog === null) {
-    // Fall back to known legacy static URLs when slug matches.
-    $static = require __DIR__ . '/../config/static-blog-posts.php';
-    if (is_array($static)) {
-        foreach ($static as $row) {
-            if (! is_array($row)) {
-                continue;
-            }
-            if (strcasecmp((string) ($row['slug'] ?? ''), $slug) === 0) {
-                $target = (string) ($row['url'] ?? '');
-                if ($target !== '' && $target !== '/blog/' . $slug) {
-                    header('Location: ' . $target, true, 302);
-                    return;
-                }
-            }
-        }
-    }
     http_response_code(404);
     include __DIR__ . '/404.php';
     return;

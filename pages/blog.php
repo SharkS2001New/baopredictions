@@ -9,7 +9,7 @@ $category = trim((string) ($_GET['category'] ?? 'ALL'));
 if ($category === '') {
     $category = 'ALL';
 }
-$perPage = 6;
+$perPage = 6; // at least 3 cards per page (matches Pitch list size)
 
 $apiPayload = (new BlogService())->list($page, $category, $perPage);
 $apiPosts = is_array($apiPayload['data'] ?? null) ? $apiPayload['data'] : [];
@@ -22,10 +22,10 @@ $total = (int) ($apiPayload['total'] ?? count($apiPosts));
  * @param  array<string,mixed>  $row
  * @return array<string,mixed>|null
  */
-function bao_blog_normalize_card(array $row, string $source = 'api'): ?array
+function bao_blog_normalize_card(array $row): ?array
 {
     $slug = trim((string) ($row['slug'] ?? ''));
-    if ($slug === '') {
+    if ($slug === '' || ! preg_match('/^[a-z0-9][a-z0-9\-]{0,190}$/i', $slug)) {
         return null;
     }
 
@@ -43,67 +43,29 @@ function bao_blog_normalize_card(array $row, string $source = 'api'): ?array
         $author = trim((string) $row['author']);
     }
 
-    $url = (string) ($row['url'] ?? '');
-    if ($url === '') {
-        $url = $source === 'static' && ! empty($row['legacy_url'])
-            ? (string) $row['legacy_url']
-            : '/blog/' . rawurlencode($slug);
-    }
-
     return [
         'id' => (string) ($row['id'] ?? $slug),
         'title' => (string) ($row['title'] ?? 'Untitled'),
         'slug' => $slug,
-        'url' => $url,
+        'url' => '/blog/' . rawurlencode($slug),
         'excerpt' => (string) ($row['excerpt'] ?? $row['meta_description'] ?? ''),
         'published_at' => (string) ($row['published_at'] ?? $row['created_at'] ?? ''),
         'category' => $categoryName !== '' ? $categoryName : 'Articles',
         'author' => $author,
         'read_time' => max(1, (int) ($row['read_time'] ?? 5)),
-        'source' => $source,
     ];
 }
 
 $posts = [];
-$seenSlugs = [];
 foreach ($apiPosts as $row) {
     if (! is_array($row)) {
         continue;
     }
-    $card = bao_blog_normalize_card($row, 'api');
+    $card = bao_blog_normalize_card($row);
     if ($card === null) {
         continue;
     }
     $posts[] = $card;
-    $seenSlugs[$card['slug']] = true;
-}
-
-// Legacy static guides only on page 1 when they are not already in the API list.
-if ($currentPage === 1 && strtoupper($category) === 'ALL') {
-    $static = require __DIR__ . '/../config/static-blog-posts.php';
-    if (is_array($static)) {
-        foreach ($static as $row) {
-            if (! is_array($row)) {
-                continue;
-            }
-            $slug = trim((string) ($row['slug'] ?? ''));
-            if ($slug === '' || isset($seenSlugs[$slug])) {
-                continue;
-            }
-            $card = bao_blog_normalize_card([
-                'slug' => $slug,
-                'title' => $row['title'] ?? 'Untitled',
-                'excerpt' => $row['excerpt'] ?? '',
-                'published_at' => $row['published_at'] ?? '',
-                'legacy_url' => $row['url'] ?? '',
-                'category' => ['name' => 'Guides'],
-                'read_time' => $row['read_time'] ?? 5,
-            ], 'static');
-            if ($card !== null) {
-                $posts[] = $card;
-            }
-        }
-    }
 }
 
 function bao_blog_list_format_date(string $raw): string
