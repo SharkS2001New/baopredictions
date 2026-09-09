@@ -69,25 +69,32 @@
         $baoFooterSponsors = [];
     }
 ?>
+    <div class="footer-disclaimer">
+      <p>Predictions are for informational purposes only and do not guarantee outcomes. Betting involves financial risk — please gamble responsibly and only with money you can afford to lose. Must be 18+ (or the legal age in your jurisdiction). If gambling is affecting your life, contact <a href="https://www.begambleaware.org/" rel="noopener noreferrer" target="_blank">BeGambleAware.org</a> or your local support service.</p>
+    </div>
 <?php if (!empty($baoFooterSponsors)): ?>
     <div class="footer-sponsors">
-      <p class="footer-sponsors-label">Partners</p>
+      <p class="footer-sponsors-label">Our Partners and Sponsors</p>
       <ul class="footer-sponsor-links">
 <?php foreach ($baoFooterSponsors as $sponsor): ?>
+<?php
+  $sponsorLabel = rtrim((string) ($sponsor['label'] ?? ''), " \t.");
+  $sponsorUrl = rtrim((string) ($sponsor['url'] ?? ''), " \t.");
+  if ($sponsorLabel === '') {
+      $sponsorLabel = $sponsorUrl;
+  }
+?>
         <li>
           <a
-            href="<?php echo htmlspecialchars((string) $sponsor['url'], ENT_QUOTES, 'UTF-8'); ?>"
+            href="<?php echo htmlspecialchars($sponsorUrl !== '' ? $sponsorUrl : (string) $sponsor['url'], ENT_QUOTES, 'UTF-8'); ?>"
             rel="<?php echo htmlspecialchars(implode(' ', $sponsor['rel'] ?? ['noopener', 'noreferrer']), ENT_QUOTES, 'UTF-8'); ?>"
             target="_blank"
-          ><?php echo htmlspecialchars((string) $sponsor['label'], ENT_QUOTES, 'UTF-8'); ?></a>
+          ><?php echo htmlspecialchars($sponsorLabel, ENT_QUOTES, 'UTF-8'); ?></a>
         </li>
 <?php endforeach; ?>
       </ul>
     </div>
 <?php endif; ?>
-    <div class="footer-disclaimer">
-      <p>Predictions are for informational purposes only and do not guarantee outcomes. Betting involves financial risk — please gamble responsibly and only with money you can afford to lose. Must be 18+ (or the legal age in your jurisdiction). If gambling is affecting your life, contact <a href="https://www.begambleaware.org/" rel="noopener noreferrer" target="_blank">BeGambleAware.org</a> or your local support service.</p>
-    </div>
     <p class="footer-copy">&copy; <?php echo date('Y'); ?> Bao Predictions. All rights reserved.</p>
   </div>
 </footer>
