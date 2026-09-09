@@ -29,20 +29,13 @@ final class StatsService
         $prevTz = date_default_timezone_get();
         date_default_timezone_set('Africa/Nairobi');
 
-        // One shared today pool for hero tip count + sidebar market counts (avoids duplicate listGames).
-        // Today board is mixed-market (best); settled track record stays 1X2 via fetchSettled*.
-        $todayPool = $this->listPageGames('football-predictions-today', [
-            'day' => 'today',
-            'limit' => 60,
-            'market' => 'best',
-            'order' => 'confidence_desc',
-        ]);
-
+        // Hero "Predictions today" + sidebar badges use full publishable counts (not the
+        // first-page display cap). Settled track record stays 1X2 via fetchSettled*.
         $track = $this->trackRecord(90, 800);
-        $today = $this->todayPerformanceFromPool($todayPool);
+        $today = $this->todayPerformanceSummary($this->countPageGames('football-predictions-today'));
         $yesterday = $this->yesterdayPerformance();
         $recent = $this->recentPerformance(3);
-        $markets = $this->marketCountsFromPool($todayPool);
+        $markets = $this->marketCountsFromPool([]);
 
         // Keep today.win_rate tied to today's settled tips only (null when 0/0).
         // Hero "3-day accuracy" reads from recent — do not overwrite today's rate.
@@ -207,29 +200,21 @@ final class StatsService
     }
 
     /**
-     * Today's settled + open board performance (1X2).
+     * Today's settled + open board performance (1X2 settled; open tip count from board).
      *
      * @return array<string,mixed>
      */
     public function todayPerformance(): array
     {
-        $todayPool = $this->listPageGames('football-predictions-today', [
-            'day' => 'today',
-            'limit' => 60,
-            'market' => 'best',
-            'order' => 'confidence_desc',
-        ]);
-        return $this->todayPerformanceFromPool($todayPool);
+        return $this->todayPerformanceSummary($this->countPageGames('football-predictions-today'));
     }
 
     /**
-     * @param list<array<string,mixed>> $todayPool
      * @return array<string,mixed>
      */
-    private function todayPerformanceFromPool(array $todayPool): array
+    private function todayPerformanceSummary(int $predictionsToday): array
     {
         $today = date('Y-m-d');
-        $predictionsToday = count($todayPool);
 
         $settledRows = $this->fetchSettled1x2ForDate($today);
         $summary = $this->summarizeRows($settledRows);
@@ -242,7 +227,7 @@ final class StatsService
 
         return [
             'date' => $today,
-            'predictions' => $predictionsToday,
+            'predictions' => max(0, $predictionsToday),
             'accuracy' => $accuracy,
             'settled_won' => $settledWon,
             'settled_total' => $settledTotal,
@@ -257,6 +242,16 @@ final class StatsService
     }
 
     /**
+     * @param list<array<string,mixed>> $todayPool
+     * @return array<string,mixed>
+     * @deprecated Prefer todayPerformanceSummary()
+     */
+    private function todayPerformanceFromPool(array $todayPool): array
+    {
+        return $this->todayPerformanceSummary(count($todayPool));
+    }
+
+    /**
      * Sidebar market tip counts — one shared today pool (same filters as page APIs).
      *
      * @return array<string,int>
@@ -267,9 +262,8 @@ final class StatsService
     }
 
     /**
-     * Sidebar badges must match the corresponding /api/{page} game lists.
-     * Do not approximate Must-Win / Sure Bets from the capped today 1X2 board —
-     * that pool is kickoff-ordered and often has zero tips at the shortlist thresholds.
+     * Sidebar badges must match each market board's publishable tip total — not the
+     * first-page display cap (previously every busy market showed "60").
      *
      * @param list<array<string,mixed>> $todayPool unused (kept for call-site compatibility)
      * @return array<string,int>
@@ -277,12 +271,12 @@ final class StatsService
     private function marketCountsFromPool(array $todayPool): array
     {
         $pageCount = function (string $key): int {
-            return count($this->listPageGames($key, []));
+            return $this->countPageGames($key);
         };
 
         $accaGames = $this->listPageGames('accumulator-tips', [
             'day' => 'today',
-            'limit' => 80,
+            'limit' => 200,
             'market' => 'best',
             'min_confidence' => 58,
             'order' => 'confidence_desc',
@@ -296,7 +290,7 @@ final class StatsService
             'btts-predictions' => $pageCount('btts-predictions'),
             'double-chance-predictions' => $pageCount('double-chance-predictions'),
             'ht-ft-predictions' => $pageCount('ht-ft-predictions'),
-            'live-football-predictions' => min(80, $this->countLiveFixturesToday()),
+            'live-football-predictions' => $this->countLiveFixturesToday(),
             'must-win-teams-today' => $pageCount('must-win-teams-today'),
             'sure-bets-today' => $pageCount('sure-bets-today'),
             'betnumbers-tips' => $pageCount('betnumbers-tips'),
@@ -305,16 +299,26 @@ final class StatsService
     }
 
     /**
-     * @deprecated Prefer todayPerformanceFromPool — kept for callers.
+     * @deprecated Prefer todayPerformanceSummary — kept for callers.
      */
     private function countDisplayedTodayTips(): int
     {
-        return count($this->listPageGames('football-predictions-today', [
-            'day' => 'today',
-            'limit' => 60,
-            'market' => 'best',
-            'order' => 'confidence_desc',
-        ]));
+        return $this->countPageGames('football-predictions-today');
+    }
+
+    /**
+     * Publishable tip total for a page key (ignores the public display cap).
+     */
+    private function countPageGames(string $pageKey): int
+    {
+        $pages = require dirname(__DIR__, 2) . '/config/api-pages.php';
+        $def = is_array($pages[$pageKey] ?? null) ? $pages[$pageKey] : [];
+        $filters = $def;
+        unset($filters['title'], $filters['extra']);
+        // High ceiling so sidebar / hero counts reflect the full slate, not page size.
+        $filters['limit'] = 500;
+
+        return count($this->games->listGames($filters));
     }
 
     /**

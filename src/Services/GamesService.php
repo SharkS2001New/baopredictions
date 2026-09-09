@@ -81,7 +81,7 @@ final class GamesService
     public function listFromFixtures(array $filters = []): array
     {
         $range = $this->resolveDateRange($filters);
-        $limit = max(1, min(200, (int) ($filters['limit'] ?? 50)));
+        $limit = max(1, min(500, (int) ($filters['limit'] ?? 50)));
         $leagueId = isset($filters['league_id']) ? (int) $filters['league_id'] : 0;
         $status = trim((string) ($filters['status'] ?? ''));
         $market = strtolower((string) ($filters['market'] ?? '1x2'));
@@ -190,14 +190,14 @@ SQL;
         $confidenceBoard = $order === 'confidence_desc' || $minConf > 0;
         $chronoBoard = $order === 'kickoff_asc' || $order === 'kickoff_desc';
         $fetchLimit = $confidenceBoard
-            ? min(500, max($limit * 6, $limit + 100))
-            : min(500, max($limit * 3, $limit + 40));
+            ? min(1500, max($limit * 6, $limit + 100))
+            : min(1000, max($limit * 3, $limit + 40));
         if ($chronoBoard) {
             // Settled / dated boards: fetch by kickoff so the archive window is real.
             // Lookback archives need a wider SQL window — odds/model filters drop many FT rows.
             $fetchLimit = !empty($filters['lookback_days'])
-                ? min(1200, max($limit * 6, 600))
-                : min(500, max($limit * 3, $limit + 40));
+                ? min(2000, max($limit * 6, 600))
+                : min(1000, max($limit * 3, $limit + 40));
             $dir = $order === 'kickoff_desc' ? 'DESC' : 'ASC';
             $sql .= " ORDER BY f.date {$dir}, f.fixture_id {$dir} LIMIT " . $fetchLimit;
         } else {

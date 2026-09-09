@@ -17,7 +17,7 @@ return [
     'football-predictions-today' => [
         'title' => "Today's football predictions",
         'day' => 'today',
-        'limit' => 60,
+        'limit' => 150,
         // Mixed best-market board — distinct from /1x2-predictions (pure match-result).
         'market' => 'best',
         'order' => 'confidence_desc',
@@ -26,7 +26,7 @@ return [
     'football-predictions-tomorrow' => [
         'title' => "Tomorrow's football predictions",
         'day' => 'tomorrow',
-        'limit' => 60,
+        'limit' => 150,
         'market' => '1x2',
         'order' => 'kickoff_asc',
     ],
@@ -80,7 +80,7 @@ return [
     '1x2-predictions' => [
         'title' => '1X2 predictions',
         'day' => 'today',
-        'limit' => 60,
+        'limit' => 150,
         'market' => '1x2',
         'order' => 'confidence_desc',
     ],
@@ -88,7 +88,7 @@ return [
     'double-chance-predictions' => [
         'title' => 'Double chance predictions',
         'day' => 'today',
-        'limit' => 60,
+        'limit' => 150,
         'market' => 'double_chance',
         'order' => 'confidence_desc',
     ],
@@ -96,7 +96,7 @@ return [
     'over-under-predictions' => [
         'title' => 'Over/Under predictions',
         'day' => 'today',
-        'limit' => 60,
+        'limit' => 150,
         'market' => 'over_under',
         'order' => 'confidence_desc',
     ],
@@ -104,7 +104,7 @@ return [
     'btts-predictions' => [
         'title' => 'BTTS predictions',
         'day' => 'today',
-        'limit' => 60,
+        'limit' => 150,
         'market' => 'btts',
         'order' => 'confidence_desc',
     ],
@@ -121,7 +121,7 @@ return [
     'ht-ft-predictions' => [
         'title' => 'HT/FT predictions',
         'day' => 'today',
-        'limit' => 40,
+        'limit' => 120,
         'market' => 'ht_ft',
         'order' => 'confidence_desc',
     ],

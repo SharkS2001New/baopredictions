@@ -22,8 +22,8 @@ function bao_api_cache_meta(string $path): array
     $cacheKey = 'bao_api_' . str_replace('-', '_', $path) . '_' . $today;
 
     if ($path === 'stats') {
-        // v7: track/results exclude incomplete 1X2 model stubs; win rate null at 0/0 settled.
-        return ['key' => $cacheKey . '_v7', 'ttl' => Cache::ttlStats()];
+        // v8: sidebar/hero tip counts use full publishable totals (not the old 60-cap).
+        return ['key' => $cacheKey . '_v8', 'ttl' => Cache::ttlStats()];
     }
 
     $pages = require dirname(__DIR__) . '/config/api-pages.php';
@@ -58,8 +58,8 @@ function bao_api_cache_meta(string $path): array
         $fixtureDate = DateTimeHelper::siteDate($dayMod);
     }
 
-    // v2: skip market tips without book prices (BTTS/O/U/DC partial feeds).
-    return ['key' => $cacheKey . '_v2', 'ttl' => Cache::ttlForSiteDate($fixtureDate)];
+    // v3: higher board limits + wider SQL fetch windows (was hard-capped ~60).
+    return ['key' => $cacheKey . '_v3', 'ttl' => Cache::ttlForSiteDate($fixtureDate)];
 }
 
 /**
