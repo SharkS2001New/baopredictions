@@ -4,51 +4,107 @@ require_once __DIR__ . '/../src/Api/bootstrap.php';
 
 use App\Services\BlogService;
 
-$posts = [];
-$apiPayload = (new BlogService())->list(1, 'ALL', 50);
-foreach (($apiPayload['data'] ?? []) as $row) {
-    if (! is_array($row)) {
-        continue;
-    }
+$page = max(1, (int) ($_GET['page'] ?? 1));
+$category = trim((string) ($_GET['category'] ?? 'ALL'));
+if ($category === '') {
+    $category = 'ALL';
+}
+$perPage = 6;
+
+$apiPayload = (new BlogService())->list($page, $category, $perPage);
+$apiPosts = is_array($apiPayload['data'] ?? null) ? $apiPayload['data'] : [];
+
+$currentPage = (int) ($apiPayload['current_page'] ?? $page);
+$lastPage = max(1, (int) ($apiPayload['last_page'] ?? 1));
+$total = (int) ($apiPayload['total'] ?? count($apiPosts));
+
+/**
+ * @param  array<string,mixed>  $row
+ * @return array<string,mixed>|null
+ */
+function bao_blog_normalize_card(array $row, string $source = 'api'): ?array
+{
     $slug = trim((string) ($row['slug'] ?? ''));
     if ($slug === '') {
-        continue;
+        return null;
     }
-    $published = (string) ($row['published_at'] ?? $row['created_at'] ?? '');
-    $posts[$slug] = [
+
+    $categoryName = '';
+    if (isset($row['category']) && is_array($row['category'])) {
+        $categoryName = trim((string) ($row['category']['name'] ?? $row['category']['blogs_category_title'] ?? ''));
+    } elseif (isset($row['category_name'])) {
+        $categoryName = trim((string) $row['category_name']);
+    }
+
+    $author = 'Admin';
+    if (isset($row['user']) && is_array($row['user'])) {
+        $author = trim((string) ($row['user']['name'] ?? '')) ?: 'Admin';
+    } elseif (! empty($row['author'])) {
+        $author = trim((string) $row['author']);
+    }
+
+    $url = (string) ($row['url'] ?? '');
+    if ($url === '') {
+        $url = $source === 'static' && ! empty($row['legacy_url'])
+            ? (string) $row['legacy_url']
+            : '/blog/' . rawurlencode($slug);
+    }
+
+    return [
+        'id' => (string) ($row['id'] ?? $slug),
         'title' => (string) ($row['title'] ?? 'Untitled'),
         'slug' => $slug,
-        'url' => '/blog/' . rawurlencode($slug),
+        'url' => $url,
         'excerpt' => (string) ($row['excerpt'] ?? $row['meta_description'] ?? ''),
-        'published_at' => $published,
-        'source' => 'api',
+        'published_at' => (string) ($row['published_at'] ?? $row['created_at'] ?? ''),
+        'category' => $categoryName !== '' ? $categoryName : 'Articles',
+        'author' => $author,
+        'read_time' => max(1, (int) ($row['read_time'] ?? 5)),
+        'source' => $source,
     ];
 }
 
-$static = require __DIR__ . '/../config/static-blog-posts.php';
-if (is_array($static)) {
-    foreach ($static as $row) {
-        if (! is_array($row)) {
-            continue;
-        }
-        $slug = trim((string) ($row['slug'] ?? ''));
-        if ($slug === '' || isset($posts[$slug])) {
-            continue;
-        }
-        $posts[$slug] = [
-            'title' => (string) ($row['title'] ?? 'Untitled'),
-            'slug' => $slug,
-            'url' => (string) ($row['url'] ?? ('/blog/' . rawurlencode($slug))),
-            'excerpt' => (string) ($row['excerpt'] ?? ''),
-            'published_at' => (string) ($row['published_at'] ?? ''),
-            'source' => 'static',
-        ];
+$posts = [];
+$seenSlugs = [];
+foreach ($apiPosts as $row) {
+    if (! is_array($row)) {
+        continue;
     }
+    $card = bao_blog_normalize_card($row, 'api');
+    if ($card === null) {
+        continue;
+    }
+    $posts[] = $card;
+    $seenSlugs[$card['slug']] = true;
 }
 
-uasort($posts, static function (array $a, array $b): int {
-    return strcmp((string) ($b['published_at'] ?? ''), (string) ($a['published_at'] ?? ''));
-});
+// Legacy static guides only on page 1 when they are not already in the API list.
+if ($currentPage === 1 && strtoupper($category) === 'ALL') {
+    $static = require __DIR__ . '/../config/static-blog-posts.php';
+    if (is_array($static)) {
+        foreach ($static as $row) {
+            if (! is_array($row)) {
+                continue;
+            }
+            $slug = trim((string) ($row['slug'] ?? ''));
+            if ($slug === '' || isset($seenSlugs[$slug])) {
+                continue;
+            }
+            $card = bao_blog_normalize_card([
+                'slug' => $slug,
+                'title' => $row['title'] ?? 'Untitled',
+                'excerpt' => $row['excerpt'] ?? '',
+                'published_at' => $row['published_at'] ?? '',
+                'legacy_url' => $row['url'] ?? '',
+                'category' => ['name' => 'Guides'],
+                'read_time' => $row['read_time'] ?? 5,
+            ], 'static');
+            if ($card !== null) {
+                $posts[] = $card;
+            }
+        }
+    }
+}
 
 function bao_blog_list_format_date(string $raw): string
 {
@@ -61,7 +117,7 @@ function bao_blog_list_format_date(string $raw): string
         return $raw;
     }
 
-    return date('j M Y', $ts);
+    return date('M j, Y', $ts);
 }
 
 function bao_blog_list_datetime_attr(string $raw): string
@@ -77,19 +133,81 @@ function bao_blog_list_datetime_attr(string $raw): string
 
     return date('Y-m-d', $ts);
 }
+
+function bao_blog_title_case(string $value): string
+{
+    $value = trim($value);
+    if ($value === '') {
+        return 'Articles';
+    }
+
+    return mb_strtoupper(mb_substr($value, 0, 1)) . mb_strtolower(mb_substr($value, 1));
+}
+
+/**
+ * @return list<int|string>
+ */
+function bao_blog_pagination_window(int $current, int $last): array
+{
+    if ($last <= 1) {
+        return [];
+    }
+    $window = [];
+    $start = max(1, $current - 2);
+    $end = min($last, $start + 4);
+    $start = max(1, $end - 4);
+
+    if ($start > 1) {
+        $window[] = 1;
+        if ($start > 2) {
+            $window[] = '…';
+        }
+    }
+    for ($i = $start; $i <= $end; $i++) {
+        $window[] = $i;
+    }
+    if ($end < $last) {
+        if ($end < $last - 1) {
+            $window[] = '…';
+        }
+        $window[] = $last;
+    }
+
+    return $window;
+}
+
+$paginationPages = bao_blog_pagination_window($currentPage, $lastPage);
+$canonical = 'https://www.baopredictions.com/blog';
+if ($currentPage > 1) {
+    $canonical .= '?page=' . $currentPage;
+}
+
+function bao_blog_page_url(int $pageNum, string $category): string
+{
+    $params = [];
+    if ($pageNum > 1) {
+        $params['page'] = $pageNum;
+    }
+    if (strtoupper($category) !== 'ALL') {
+        $params['category'] = $category;
+    }
+    $qs = http_build_query($params);
+
+    return $qs !== '' ? '/blog?' . $qs : '/blog';
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Football Betting Blog | Bao Predictions</title>
+  <title>Bao Predictions Blog – Expert Tips, Predictions &amp; Football Insights</title>
   <meta name="description" content="Bao Predictions blog — jackpot strategy, BTTS odds, Premier League form guides, and practical betting education.">
-  <link rel="canonical" href="https://www.baopredictions.com/blog">
+  <link rel="canonical" href="<?php echo htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8'); ?>">
   <meta name="robots" content="index,follow">
-  <meta property="og:title" content="Football Betting Blog | Bao Predictions">
+  <meta property="og:title" content="Bao Predictions Blog – Expert Tips, Predictions &amp; Football Insights">
   <meta property="og:description" content="Bao Predictions blog — jackpot strategy, BTTS odds, Premier League form guides, and practical betting education.">
-  <meta property="og:url" content="https://www.baopredictions.com/blog">
+  <meta property="og:url" content="<?php echo htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8'); ?>">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
@@ -106,7 +224,7 @@ function bao_blog_list_datetime_attr(string $raw): string
   </head>
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
-<main id="main">
+<main id="main" class="blogs-page">
 <div class="wrap">
 
   <nav aria-label="Breadcrumb">
@@ -116,34 +234,69 @@ function bao_blog_list_datetime_attr(string $raw): string
   </ol>
 </nav>
 
-  <header class="page-hero">
-    <h1>Blog</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-    <p class="lede">Editorial guides that build topical authority — strategy, markets, and matchweek form.</p>
+  <header class="blogs-page-title">
+    <h1>Bao Predictions Blog – Expert Tips, Predictions &amp; Football Insights</h1>
   </header>
-  <ul class="blog-list">
+
 <?php if ($posts === []): ?>
-    <li>
-      <p class="text-muted mb-0">No posts published yet. Check back soon.</p>
-    </li>
+  <div class="blogs-empty">
+    <p>No blogs available.</p>
+  </div>
 <?php else: ?>
+  <div class="blog-list-grid">
 <?php foreach ($posts as $post): ?>
-    <li>
 <?php
   $dt = bao_blog_list_datetime_attr((string) ($post['published_at'] ?? ''));
-  $label = bao_blog_list_format_date((string) ($post['published_at'] ?? ''));
+  $dateLabel = bao_blog_list_format_date((string) ($post['published_at'] ?? ''));
+  $href = htmlspecialchars((string) $post['url'], ENT_QUOTES, 'UTF-8');
 ?>
-<?php if ($dt !== ''): ?>
-      <time datetime="<?php echo htmlspecialchars($dt, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($label, ENT_QUOTES, 'UTF-8'); ?></time>
+    <article class="blog-card">
+      <div class="blog-content">
+        <small class="blog-category"><?php echo htmlspecialchars(bao_blog_title_case((string) $post['category']), ENT_QUOTES, 'UTF-8'); ?></small>
+        <a href="<?php echo $href; ?>" class="blog-title"><?php echo htmlspecialchars((string) $post['title'], ENT_QUOTES, 'UTF-8'); ?></a>
+        <div class="blog-meta">
+          <?php echo htmlspecialchars((string) $post['author'], ENT_QUOTES, 'UTF-8'); ?>
+<?php if ($dateLabel !== ''): ?>
+          &nbsp;/&nbsp;
+          <time datetime="<?php echo htmlspecialchars($dt, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($dateLabel, ENT_QUOTES, 'UTF-8'); ?></time>
 <?php endif; ?>
-      <h2 style="margin:0.35rem 0"><a href="<?php echo htmlspecialchars((string) $post['url'], ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars((string) $post['title'], ENT_QUOTES, 'UTF-8'); ?></a></h2>
+        </div>
 <?php if (trim((string) ($post['excerpt'] ?? '')) !== ''): ?>
-      <p class="text-muted mb-0"><?php echo htmlspecialchars((string) $post['excerpt'], ENT_QUOTES, 'UTF-8'); ?></p>
+        <p class="blog-excerpt"><?php echo htmlspecialchars((string) $post['excerpt'], ENT_QUOTES, 'UTF-8'); ?></p>
 <?php endif; ?>
-    </li>
+      </div>
+      <div class="blog-footer">
+        <a href="<?php echo $href; ?>" class="read-more-btn" rel="bookmark">Read More →</a>
+        <div class="blog-read-time">
+          <span><?php echo (int) $post['read_time']; ?> Minutes</span>
+        </div>
+      </div>
+    </article>
 <?php endforeach; ?>
+  </div>
+
+<?php if ($lastPage > 1): ?>
+  <nav class="pagination-container" aria-label="Blog pages">
+<?php if ($currentPage > 1): ?>
+    <a class="page-btn" href="<?php echo htmlspecialchars(bao_blog_page_url($currentPage - 1, $category), ENT_QUOTES, 'UTF-8'); ?>">Previous</a>
 <?php endif; ?>
-  </ul>
+<?php foreach ($paginationPages as $p): ?>
+<?php if ($p === '…'): ?>
+    <span class="page-ellipsis" aria-hidden="true">…</span>
+<?php else: ?>
+    <a
+      class="page-btn<?php echo ((int) $p === $currentPage) ? ' active' : ''; ?>"
+      href="<?php echo htmlspecialchars(bao_blog_page_url((int) $p, $category), ENT_QUOTES, 'UTF-8'); ?>"
+      <?php echo ((int) $p === $currentPage) ? 'aria-current="page"' : ''; ?>
+    ><?php echo (int) $p; ?></a>
+<?php endif; ?>
+<?php endforeach; ?>
+<?php if ($currentPage < $lastPage): ?>
+    <a class="page-btn" href="<?php echo htmlspecialchars(bao_blog_page_url($currentPage + 1, $category), ENT_QUOTES, 'UTF-8'); ?>">Next</a>
+<?php endif; ?>
+  </nav>
+<?php endif; ?>
+<?php endif; ?>
 </div>
 
   </main>
