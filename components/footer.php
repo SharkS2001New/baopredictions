@@ -75,24 +75,33 @@
 <?php if (!empty($baoFooterSponsors)): ?>
     <div class="footer-sponsors">
       <p class="footer-sponsors-label">Our Partners and Sponsors</p>
-      <ul class="footer-sponsor-links">
+      <div class="footer-sponsor-links">
 <?php foreach ($baoFooterSponsors as $sponsor): ?>
 <?php
-  $sponsorLabel = rtrim((string) ($sponsor['label'] ?? ''), " \t.");
-  $sponsorUrl = rtrim((string) ($sponsor['url'] ?? ''), " \t.");
+  $sponsorUrl = trim((string) ($sponsor['url'] ?? ''));
+  $sponsorUrl = preg_replace('#\./+#', '/', $sponsorUrl) ?? $sponsorUrl;
+  $sponsorUrl = rtrim($sponsorUrl, " \t.");
+  $sponsorLabel = trim((string) ($sponsor['label'] ?? ''));
+  $sponsorLabel = preg_replace('#\./+#', '/', $sponsorLabel) ?? $sponsorLabel;
+  $sponsorLabel = rtrim($sponsorLabel, " \t.");
   if ($sponsorLabel === '') {
       $sponsorLabel = $sponsorUrl;
   }
+  // Prefer a clean hostname when the admin label is just the raw URL.
+  if ($sponsorLabel === $sponsorUrl || preg_match('#^https?://#i', $sponsorLabel)) {
+      $host = parse_url($sponsorUrl !== '' ? $sponsorUrl : $sponsorLabel, PHP_URL_HOST);
+      if (is_string($host) && $host !== '') {
+          $sponsorLabel = $host;
+      }
+  }
 ?>
-        <li>
-          <a
-            href="<?php echo htmlspecialchars($sponsorUrl !== '' ? $sponsorUrl : (string) $sponsor['url'], ENT_QUOTES, 'UTF-8'); ?>"
-            rel="<?php echo htmlspecialchars(implode(' ', $sponsor['rel'] ?? ['noopener', 'noreferrer']), ENT_QUOTES, 'UTF-8'); ?>"
-            target="_blank"
-          ><?php echo htmlspecialchars($sponsorLabel, ENT_QUOTES, 'UTF-8'); ?></a>
-        </li>
+        <a
+          href="<?php echo htmlspecialchars($sponsorUrl !== '' ? $sponsorUrl : (string) ($sponsor['url'] ?? '#'), ENT_QUOTES, 'UTF-8'); ?>"
+          rel="<?php echo htmlspecialchars(implode(' ', $sponsor['rel'] ?? ['noopener', 'noreferrer']), ENT_QUOTES, 'UTF-8'); ?>"
+          target="_blank"
+        ><?php echo htmlspecialchars($sponsorLabel, ENT_QUOTES, 'UTF-8'); ?></a>
 <?php endforeach; ?>
-      </ul>
+      </div>
     </div>
 <?php endif; ?>
     <p class="footer-copy">&copy; <?php echo date('Y'); ?> Bao Predictions. All rights reserved.</p>

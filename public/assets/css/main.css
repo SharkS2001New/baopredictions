@@ -1324,14 +1324,17 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .footer-sponsors {
-  border-top: none;
-  padding-top: var(--space-md);
-  margin-bottom: 0;
+  border-top: 1px solid rgba(233, 238, 243, 0.12);
+  padding-top: var(--space-lg);
+  margin: var(--space-xl) 0 0;
   text-align: center;
+  width: 100%;
 }
 
 .footer-sponsors-label {
-  margin: 0 0 0.5rem;
+  display: block;
+  width: 100%;
+  margin: 0 0 0.65rem;
   font-size: 0.75rem;
   letter-spacing: 0.04em;
   text-transform: uppercase;
@@ -1340,23 +1343,14 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .footer-sponsor-links {
-  list-style: none;
-  margin: 0;
-  padding: 0;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
-  gap: 0.65rem 1rem;
-}
-
-.footer-sponsor-links li {
-  list-style: none;
+  align-items: center;
+  gap: 0.65rem 1.25rem;
   margin: 0;
   padding: 0;
-}
-
-.footer-sponsor-links li::marker {
-  content: none;
+  text-align: center;
 }
 
 .footer-sponsor-links a {
