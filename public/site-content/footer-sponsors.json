@@ -1,14 +1,14 @@
 {
-    "updated_at": "2026-09-10T01:12:52+03:00",
+    "updated_at": "2026-09-10T01:12:59+03:00",
     "links": [
         {
             "id": "httpswwwxsbaltimorecom",
             "label": "https://www.xsbaltimore.com/",
             "url": "https://www.xsbaltimore.com/",
             "starts_at": "2026-09-01",
-            "expires_at": "2026-09-01",
+            "expires_at": "2026-09-08",
             "notes": "https://www.xsbaltimore.com/",
-            "active": true,
+            "active": false,
             "rel": [
                 "noopener",
                 "noreferrer"
