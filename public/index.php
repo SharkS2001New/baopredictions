@@ -449,6 +449,9 @@ $router->get('/faq', function () {
 $router->get('/contact-us', function () {
     include __DIR__ . '/../pages/contact-us.php';
 });
+$router->post('/contact-us', function () {
+    include __DIR__ . '/../pages/contact-us.php';
+});
 
 $router->get('/responsible-betting', function () {
     include __DIR__ . '/../pages/responsible-betting.php';

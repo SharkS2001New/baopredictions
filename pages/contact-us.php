@@ -1,3 +1,69 @@
+<?php
+require_once __DIR__ . '/../config/load-env.php';
+require_once __DIR__ . '/../src/Api/bootstrap.php';
+
+use App\Services\ContactFormGuard;
+use App\Services\ContactMailService;
+
+$flashOk = false;
+$flashError = '';
+$old = [
+    'name' => '',
+    'email' => '',
+    'subject' => 'General enquiry',
+    'message' => '',
+];
+
+$subjects = [
+    'General enquiry',
+    'Tip correction / wrong score',
+    'Partnership enquiry',
+    'Press / media',
+    'League request',
+    'Other',
+];
+
+if (strtoupper((string) ($_SERVER['REQUEST_METHOD'] ?? 'GET')) === 'POST') {
+    $old = [
+        'name' => trim((string) ($_POST['name'] ?? '')),
+        'email' => trim((string) ($_POST['email'] ?? '')),
+        'subject' => trim((string) ($_POST['subject'] ?? 'General enquiry')),
+        'message' => trim((string) ($_POST['message'] ?? '')),
+    ];
+    if (! in_array($old['subject'], $subjects, true)) {
+        $old['subject'] = 'General enquiry';
+    }
+
+    $guard = new ContactFormGuard();
+    if ($guard->isHoneypotTripped($_POST) || $guard->isTooFast($_POST)) {
+        // Pretend success to bots.
+        header('Location: /contact-us?sent=1', true, 303);
+        exit;
+    }
+    if (! $guard->allowRequest()) {
+        $flashError = 'Too many messages from your network. Please wait a few minutes and try again.';
+    } else {
+        $result = (new ContactMailService())->send($old);
+        if (! empty($result['ok'])) {
+            header('Location: /contact-us?sent=1', true, 303);
+            exit;
+        }
+        $flashError = (string) ($result['error'] ?? 'Could not send your message. Please try again.');
+    }
+}
+
+if (isset($_GET['sent']) && (string) $_GET['sent'] === '1') {
+    $flashOk = true;
+    $old = [
+        'name' => '',
+        'email' => '',
+        'subject' => 'General enquiry',
+        'message' => '',
+    ];
+}
+
+$formStartedAt = time();
+?>
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -7,23 +73,12 @@
   <meta name="description" content="Contact Bao Predictions — partnerships, corrections, and media enquiries. 18+ only.">
   <link rel="canonical" href="https://www.baopredictions.com/contact-us">
   <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Contact Us | Bao Predictions">
   <meta name="author" content="Bao Predictions Analysis Team">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Contact Us | Bao Predictions">
-  <meta name="twitter:description" content="Contact Bao Predictions — partnerships, corrections, and media enquiries. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/contact-us">
-  <!--BAO_HEAD_EXTRA_END-->
-  
   <meta property="og:title" content="Contact Us | Bao Predictions">
   <meta property="og:description" content="Contact Bao Predictions — partnerships, corrections, and media enquiries. 18+ only.">
   <meta property="og:url" content="https://www.baopredictions.com/contact-us">
-  <meta property="og:type" content="article">
+  <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {
@@ -41,7 +96,7 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 <div class="wrap">
-  
+
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
     <li><a href="/">Home</a></li>
@@ -52,49 +107,121 @@
   <header class="page-hero">
     <h1>Contact Us</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="lede">For tip corrections, partnership enquiries, or press — we read every message; response times vary on matchdays.</p>
+<p class="lede">For tip corrections, partnership enquiries, or press — send a message below. We read every note; response times vary on matchdays.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/about-us">About us</a> · <a href="/faq">FAQ</a> · <a href="/how-we-predict">How we predict</a></p>
   </header>
-  <div class="prose">
-    <p>Email: <a href="mailto:hello@baopredictions.com">hello@baopredictions.com</a></p>
-    <p>Telegram: <a href="https://t.me/baopredictions" rel="noopener noreferrer">https://t.me/baopredictions</a></p>
-    <p>We do not provide private \"fixed\" tips or guaranteed scores. For responsible gambling help, see <a href="/responsible-betting">Responsible betting</a>.</p>
+
+<?php if ($flashOk): ?>
+  <div class="contact-alert contact-alert-success" role="status">
+    Thanks — your message was sent. We’ll get back to you as soon as we can.
+  </div>
+<?php elseif ($flashError !== ''): ?>
+  <div class="contact-alert contact-alert-error" role="alert">
+    <?php echo htmlspecialchars($flashError, ENT_QUOTES, 'UTF-8'); ?>
+  </div>
+<?php endif; ?>
+
+  <div class="contact-layout">
+    <form class="contact-form" method="post" action="/contact-us" novalidate>
+      <input type="hidden" name="form_started_at" value="<?php echo (int) $formStartedAt; ?>">
+      <p class="contact-honeypot" aria-hidden="true">
+        <label for="company_website">Company website</label>
+        <input type="text" id="company_website" name="company_website" tabindex="-1" autocomplete="off">
+      </p>
+
+      <div class="contact-field">
+        <label for="contact_name">Name</label>
+        <input
+          type="text"
+          id="contact_name"
+          name="name"
+          required
+          maxlength="120"
+          autocomplete="name"
+          value="<?php echo htmlspecialchars($old['name'], ENT_QUOTES, 'UTF-8'); ?>"
+        >
+      </div>
+
+      <div class="contact-field">
+        <label for="contact_email">Email</label>
+        <input
+          type="email"
+          id="contact_email"
+          name="email"
+          required
+          maxlength="180"
+          autocomplete="email"
+          value="<?php echo htmlspecialchars($old['email'], ENT_QUOTES, 'UTF-8'); ?>"
+        >
+      </div>
+
+      <div class="contact-field">
+        <label for="contact_subject">Subject</label>
+        <select id="contact_subject" name="subject" required>
+<?php foreach ($subjects as $subjectOption): ?>
+          <option value="<?php echo htmlspecialchars($subjectOption, ENT_QUOTES, 'UTF-8'); ?>"<?php echo $old['subject'] === $subjectOption ? ' selected' : ''; ?>>
+            <?php echo htmlspecialchars($subjectOption, ENT_QUOTES, 'UTF-8'); ?>
+          </option>
+<?php endforeach; ?>
+        </select>
+      </div>
+
+      <div class="contact-field">
+        <label for="contact_message">Message</label>
+        <textarea
+          id="contact_message"
+          name="message"
+          required
+          maxlength="5000"
+          rows="7"
+          placeholder="Include fixture details for score corrections when you can."
+        ><?php echo htmlspecialchars($old['message'], ENT_QUOTES, 'UTF-8'); ?></textarea>
+      </div>
+
+      <button type="submit" class="btn btn-primary contact-submit">Send message</button>
+      <p class="contact-form-note">We do not provide private “fixed” tips or guaranteed scores. 18+ only.</p>
+    </form>
+
+    <aside class="contact-aside prose">
+      <h2>Other ways to reach us</h2>
+      <p>Prefer email directly? Write to <a href="mailto:hello@baopredictions.com">hello@baopredictions.com</a>.</p>
+      <p>Telegram: <a href="https://t.me/baopredictions" rel="noopener noreferrer">t.me/baopredictions</a></p>
+      <p>For responsible gambling help, see <a href="/responsible-betting">Responsible betting</a>.</p>
+    </aside>
   </div>
 </div>
 
-  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>How fast do you reply?</summary><p>Usually within a few business days; slower on heavy match weekends.</p></details></li><li><details><summary>Can I request a league?</summary><p>Yes — tell us which competition and why it matters to Kenyan bettors.</p></details></li><li><details><summary>Where do I report a wrong score?</summary><p>Email us with the fixture, published tip, and correct result — we fix settled records promptly.</p></details></li></ul></div></section>
+  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>How fast do you reply?</summary><p>Usually within a few business days; slower on heavy match weekends.</p></details></li><li><details><summary>Can I request a league?</summary><p>Yes — tell us which competition and why it matters to Kenyan bettors.</p></details></li><li><details><summary>Where do I report a wrong score?</summary><p>Use the form above with the fixture, published tip, and correct result — we fix settled records promptly.</p></details></li></ul></div></section>
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js" defer></script>
-<!--BAO_SCHEMA_START-->
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_faq_schema(array (
-  0 => 
+  0 =>
   array (
     'q' => 'How fast do you reply?',
     'a' => 'Usually within a few business days; slower on heavy match weekends.',
   ),
-  1 => 
+  1 =>
   array (
     'q' => 'Can I request a league?',
     'a' => 'Yes — tell us which competition and why it matters to Kenyan bettors.',
   ),
-  2 => 
+  2 =>
   array (
     'q' => 'Where do I report a wrong score?',
-    'a' => 'Email us with the fixture, published tip, and correct result — we fix settled records promptly.',
+    'a' => 'Use the contact form with the fixture, published tip, and correct result — we fix settled records promptly.',
   ),
 )); echo bao_breadcrumb_schema(array (
-  0 => 
+  0 =>
   array (
     'name' => 'Home',
     'url' => '/',
   ),
-  1 => 
+  1 =>
   array (
     'name' => 'Contact',
     'url' => '/contact-us',
   ),
 )); echo bao_article_schema('Contact Us', 'Contact Bao Predictions — partnerships, corrections, and media enquiries. 18+ only.', '/contact-us'); echo bao_organization_schema(); ?>
-<!--BAO_SCHEMA_END-->
 </body>
 </html>

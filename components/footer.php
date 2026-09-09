@@ -74,7 +74,7 @@
     </div>
 <?php if (!empty($baoFooterSponsors)): ?>
     <div class="footer-sponsors">
-      <p class="footer-sponsors-label">Our Partners and Sponsors</p>
+      <p class="footer-sponsors-label">Our Partners &amp; Sponsors</p>
       <div class="footer-sponsor-links">
 <?php foreach ($baoFooterSponsors as $sponsor): ?>
 <?php

@@ -1192,6 +1192,108 @@ main:has(.bao-faq) + .site-footer {
   color: var(--amber);
 }
 
+/* —— Contact form —— */
+.contact-layout {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: var(--space-xl);
+  margin-bottom: var(--space-xl);
+}
+
+@media (min-width: 900px) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 1.4fr) minmax(0, 0.9fr);
+    align-items: start;
+  }
+}
+
+.contact-form {
+  background: var(--surface);
+  border: 1px solid var(--line);
+  padding: 1.35rem 1.25rem 1.5rem;
+}
+
+.contact-field {
+  margin-bottom: 1rem;
+}
+
+.contact-field label {
+  display: block;
+  font-weight: 600;
+  font-size: 0.9rem;
+  margin-bottom: 0.35rem;
+  color: var(--ink);
+}
+
+.contact-field input,
+.contact-field select,
+.contact-field textarea {
+  width: 100%;
+  box-sizing: border-box;
+  border: 1px solid var(--line);
+  background: var(--surface-elevated);
+  color: var(--ink);
+  font: inherit;
+  padding: 0.7rem 0.8rem;
+  border-radius: var(--radius);
+}
+
+.contact-field textarea {
+  resize: vertical;
+  min-height: 9rem;
+}
+
+.contact-field input:focus,
+.contact-field select:focus,
+.contact-field textarea:focus {
+  outline: 2px solid color-mix(in srgb, var(--pitch) 45%, transparent);
+  outline-offset: 1px;
+  border-color: var(--pitch);
+}
+
+.contact-submit {
+  margin-top: 0.35rem;
+}
+
+.contact-form-note {
+  margin: 0.85rem 0 0;
+  font-size: 0.85rem;
+  color: var(--ink-muted);
+}
+
+.contact-honeypot {
+  position: absolute;
+  left: -10000px;
+  top: auto;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+}
+
+.contact-alert {
+  padding: 0.9rem 1rem;
+  margin: 0 0 var(--space-lg);
+  border: 1px solid var(--line);
+  font-weight: 600;
+}
+
+.contact-alert-success {
+  background: color-mix(in srgb, var(--win) 14%, var(--surface));
+  border-color: color-mix(in srgb, var(--win) 45%, var(--line));
+  color: var(--win);
+}
+
+.contact-alert-error {
+  background: color-mix(in srgb, var(--loss) 12%, var(--surface));
+  border-color: color-mix(in srgb, var(--loss) 40%, var(--line));
+  color: var(--loss);
+}
+
+.contact-aside h2 {
+  margin-top: 0;
+  font-size: 1.15rem;
+}
+
 .btn-outline {
   background: transparent;
   color: var(--pitch);
@@ -1526,11 +1628,13 @@ main:has(.bao-faq) + .site-footer {
 .footer-sponsors-label {
   display: block;
   width: 100%;
-  margin: 0 0 0.65rem;
-  font-size: 0.75rem;
+  margin: 0 0 0.75rem;
+  font-family: var(--font-display);
+  font-size: 1.15rem;
+  font-weight: 700;
   letter-spacing: 0.04em;
   text-transform: uppercase;
-  color: #8a939e;
+  color: #e9eef3;
   text-align: center;
 }
 
