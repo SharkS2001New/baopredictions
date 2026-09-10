@@ -266,6 +266,8 @@ SQL;
         $category = trim((string) ($filters['category'] ?? ''));
         $jackpot = trim((string) ($filters['jackpot'] ?? ''));
         $latestRound = !empty($filters['latest_round']);
+        $previousRound = !empty($filters['previous_round']);
+        $explicitTipsId = trim((string) ($filters['jackpot_tips_id'] ?? ''));
 
         $params = [];
         $sql = <<<SQL
@@ -277,6 +279,7 @@ SELECT
   s.fixture_date AS kickoff,
   s.tip,
   s.revised_tip,
+  s.research_tip,
   s.odd,
   s.category,
   s.`group` AS tip_group,
@@ -315,7 +318,18 @@ SQL;
             $params[':category'] = $category;
         }
 
-        if ($latestRound && $jackpot !== '') {
+        if ($explicitTipsId !== '') {
+            $sql .= ' AND s.jackpot_tips_id = :tips_id';
+            $params[':tips_id'] = $explicitTipsId;
+        } elseif ($previousRound && $jackpot !== '') {
+            $roundId = $this->previousJackpotTipsId($jackpot);
+            if ($roundId !== null) {
+                $sql .= ' AND s.jackpot_tips_id = :tips_id';
+                $params[':tips_id'] = $roundId;
+            } else {
+                return [];
+            }
+        } elseif ($latestRound && $jackpot !== '') {
             $roundId = $this->latestJackpotTipsId($jackpot);
             if ($roundId !== null) {
                 $sql .= ' AND s.jackpot_tips_id = :tips_id';
@@ -381,18 +395,25 @@ SQL;
      * Prioritises main leagues and avoids repeating fixtures across tickets.
      *
      * @param list<array<string,mixed>> $games
+     * @param array{include_settled?: bool} $opts include_settled=true keeps FT legs (for yesterday results)
      * @return list<array<string,mixed>>
      */
-    public function buildAccumulators(array $games): array
+    public function buildAccumulators(array $games, array $opts = []): array
     {
-        $usable = array_values(array_filter($games, function ($g) {
+        $includeSettled = !empty($opts['include_settled']);
+        $usable = array_values(array_filter($games, function ($g) use ($includeSettled) {
             $odds = isset($g['odds']) ? (float) $g['odds'] : 0;
             if ($odds < 1.20 || $odds > 3.50 || empty($g['pick'])) {
                 return false;
             }
-            // Skip settled matches — accas are for upcoming / live tips
             $status = strtoupper((string) ($g['status'] ?? ''));
-            if (in_array($status, ['FT', 'AET', 'PEN', 'PST', 'CANC', 'ABD', 'AWD', 'WO'], true)) {
+            if ($includeSettled) {
+                // Historical reconstruct: keep FT, drop voids / abandoned.
+                if (in_array($status, ['PST', 'CANC', 'ABD'], true)) {
+                    return false;
+                }
+            } elseif (in_array($status, ['FT', 'AET', 'PEN', 'PST', 'CANC', 'ABD', 'AWD', 'WO'], true)) {
+                // Live board: skip settled matches — accas are for upcoming / live tips
                 return false;
             }
             // Skip reserves / youth / most women's sides for published tickets
@@ -436,10 +457,16 @@ SQL;
                 'combined_odds' => round($combined, 2),
                 'blended_confidence' => (int) round($confSum / $legs),
                 'picks' => array_map(static function (array $g): array {
+                    $market = (string) ($g['market'] ?? '1x2');
+                    if (in_array($market, ['best', 'mixed', 'betnumbers', ''], true)) {
+                        $market = '1x2';
+                    }
                     return [
                         'home' => $g['home'],
                         'away' => $g['away'],
                         'pick' => $g['pick'],
+                        'pick_code' => $g['pick_code'] ?? null,
+                        'market' => $market,
                         'odds' => $g['odds'],
                         'confidence' => $g['confidence'],
                         'league' => $g['league'] ?? '',
@@ -448,7 +475,143 @@ SQL;
                 }, $picks),
             ];
         }
-        return $tickets;
+        return $this->enrichAccumulatorTickets($tickets);
+    }
+
+    /**
+     * Reconstruct yesterday-style accumulator tickets from a calendar day's fixtures.
+     * Prefer a frozen snapshot when present; otherwise build from that day's tips and freeze it.
+     *
+     * @param array<string,mixed> $pageDef accumulator-tips page filters
+     * @return list<array<string,mixed>>
+     */
+    public function buildAccumulatorsForDate(string $dateYmd, array $pageDef = []): array
+    {
+        if (!preg_match('/^\d{4}-\d{2}-\d{2}$/', $dateYmd)) {
+            return [];
+        }
+        $games = $this->listGames([
+            'date' => $dateYmd,
+            'limit' => max(40, min(120, (int) ($pageDef['limit'] ?? 80))),
+            'market' => $pageDef['market'] ?? 'best',
+            'min_confidence' => $pageDef['min_confidence'] ?? 58,
+            'order' => $pageDef['order'] ?? 'confidence_desc',
+            // No upcoming_only — we need finished matches for results.
+        ]);
+        return $this->buildAccumulators($games, ['include_settled' => true]);
+    }
+
+    /**
+     * Attach live/FT scores and ✅/❌ settlement onto accumulator legs.
+     *
+     * @param list<array<string,mixed>> $tickets
+     * @return list<array<string,mixed>>
+     */
+    public function enrichAccumulatorTickets(array $tickets): array
+    {
+        $ids = [];
+        foreach ($tickets as $ticket) {
+            foreach (($ticket['picks'] ?? []) as $pick) {
+                $fid = (int) ($pick['fixture_id'] ?? 0);
+                if ($fid > 0) {
+                    $ids[$fid] = $fid;
+                }
+            }
+        }
+        if ($ids === []) {
+            return $tickets;
+        }
+
+        $fixtures = $this->fixtureRowsByIds(array_values($ids));
+        $out = [];
+        foreach ($tickets as $ticket) {
+            $picks = [];
+            $settled = 0;
+            $hits = 0;
+            $misses = 0;
+            foreach (($ticket['picks'] ?? []) as $pick) {
+                if (!is_array($pick)) {
+                    continue;
+                }
+                $fid = (int) ($pick['fixture_id'] ?? 0);
+                $row = $fixtures[$fid] ?? null;
+                if ($row === null) {
+                    $picks[] = $pick;
+                    continue;
+                }
+                $market = (string) ($pick['market'] ?? '1x2');
+                if (in_array($market, ['best', 'mixed', 'betnumbers', ''], true)) {
+                    $market = '1x2';
+                }
+                $code = (string) ($pick['pick_code'] ?? $pick['pick'] ?? '');
+                $status = strtoupper(trim((string) ($row['status_short'] ?? '')));
+                $gh = $row['goals_home'];
+                $ga = $row['goals_away'];
+                $score = ($gh !== null && $ga !== null) ? ((int) $gh . '-' . (int) $ga) : null;
+                $won = null;
+                $winning = null;
+                if ($gh !== null && $ga !== null) {
+                    if (in_array($status, ['FT', 'AET', 'PEN', 'AWD', 'WO'], true)) {
+                        $won = $this->tipMatchesScore($code, $market, (int) $gh, (int) $ga, $row);
+                    } elseif ($this->isLiveStatus($status)) {
+                        $winning = $this->tipMatchesScore($code, $market, (int) $gh, (int) $ga, $row);
+                    }
+                }
+                $pick['score'] = $score;
+                $pick['status'] = $status;
+                $pick['won'] = $won;
+                $pick['winning'] = $winning;
+                if ($won === true) {
+                    $settled++;
+                    $hits++;
+                } elseif ($won === false) {
+                    $settled++;
+                    $misses++;
+                }
+                $picks[] = $pick;
+            }
+            $ticket['picks'] = $picks;
+            $ticket['legs_settled'] = $settled;
+            $ticket['legs_hit'] = $hits;
+            $ticket['legs_missed'] = $misses;
+            $legCount = count($picks);
+            $ticket['won'] = ($legCount > 0 && $settled === $legCount)
+                ? ($misses === 0)
+                : null;
+            $out[] = $ticket;
+        }
+        return $out;
+    }
+
+    /**
+     * @param list<int> $fixtureIds
+     * @return array<int,array<string,mixed>>
+     */
+    private function fixtureRowsByIds(array $fixtureIds): array
+    {
+        $fixtureIds = array_values(array_unique(array_filter(array_map('intval', $fixtureIds))));
+        if ($fixtureIds === []) {
+            return [];
+        }
+        $placeholders = implode(',', array_fill(0, count($fixtureIds), '?'));
+        $sql = "SELECT fixture_id, status_short, goals_home, goals_away,
+                       ht_goals_home, ht_goals_away
+                FROM fixtures WHERE fixture_id IN ($placeholders)";
+        try {
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute($fixtureIds);
+        } catch (\Throwable $e) {
+            // Older schemas may lack HT columns — fall back to FT fields only.
+            $sql = "SELECT fixture_id, status_short, goals_home, goals_away
+                    FROM fixtures WHERE fixture_id IN ($placeholders)";
+            $stmt = $this->db->prepare($sql);
+            $stmt->execute($fixtureIds);
+        }
+        $map = [];
+        foreach ($stmt->fetchAll() as $row) {
+            $map[(int) $row['fixture_id']] = $row;
+        }
+        return $map;
     }
 
     /**
@@ -629,14 +792,43 @@ SQL;
 
     private function latestJackpotTipsId(string $jackpot): ?string
     {
+        $ids = $this->recentJackpotTipsIds($jackpot, 1);
+        return $ids[0] ?? null;
+    }
+
+    private function previousJackpotTipsId(string $jackpot): ?string
+    {
+        $ids = $this->recentJackpotTipsIds($jackpot, 2);
+        return $ids[1] ?? null;
+    }
+
+    /**
+     * Distinct jackpot round ids, newest first (by latest fixture date in the round).
+     *
+     * @return list<string>
+     */
+    private function recentJackpotTipsIds(string $jackpot, int $limit = 2): array
+    {
+        $limit = max(1, min(10, $limit));
         $stmt = $this->db->prepare(
-            'SELECT jackpot_tips_id FROM pp_fixtures_selections
-             WHERE jackpot_name = :j AND status = 1 AND jackpot_tips_id IS NOT NULL AND jackpot_tips_id != ""
-             ORDER BY fixture_date DESC, id DESC LIMIT 1'
+            'SELECT jackpot_tips_id
+             FROM pp_fixtures_selections
+             WHERE jackpot_name = :j
+               AND status = 1
+               AND jackpot_tips_id IS NOT NULL
+               AND jackpot_tips_id != ""
+             GROUP BY jackpot_tips_id
+             ORDER BY MAX(fixture_date) DESC, MAX(id) DESC
+             LIMIT ' . $limit
         );
         $stmt->execute([':j' => $jackpot]);
-        $id = $stmt->fetchColumn();
-        return $id !== false && $id !== null && $id !== '' ? (string) $id : null;
+        $out = [];
+        foreach ($stmt->fetchAll(\PDO::FETCH_COLUMN) as $id) {
+            if ($id !== null && $id !== '') {
+                $out[] = (string) $id;
+            }
+        }
+        return $out;
     }
 
     private function jackpotSlug(string $name): string
@@ -2314,17 +2506,21 @@ SQL;
             $tip = trim((string) ($row['revised_tip'] ?: $row['tip'] ?: ''));
         }
 
-        // Normalise occasional DB labels like DC1X / DCX2 on tip/revised.
-        $upper = strtoupper(str_replace([' ', '-'], '', $tip));
-        if (preg_match('/^DC?(1X|X2|12)$/', $upper, $m)) {
-            $code = $m[1];
-            $market = 'double_chance';
-        } elseif (in_array($upper, ['1X', 'X2', '12'], true)) {
-            $code = $upper;
-            $market = 'double_chance';
-        } else {
-            $code = $this->normalizePickCode($tip !== '' ? $tip : '1', '1x2');
-            $market = in_array($code, ['1X', 'X2', '12'], true) ? 'double_chance' : '1x2';
+        [$code, $market] = $this->parseSelectionTip($tip !== '' ? $tip : '1');
+
+        // Jackpot coupons: always expose both 1X2 + Double Chance (Pitch-style).
+        $pickDcCode = null;
+        $pick1x2Code = null;
+        if ($isJackpot) {
+            if ($market === 'double_chance') {
+                $pickDcCode = $code;
+                $pick1x2Code = $this->jackpotOneX2FromRow($row, $tip);
+                $code = $pick1x2Code;
+                $market = '1x2';
+            } else {
+                $pick1x2Code = $code;
+                $pickDcCode = $this->jackpotDoubleChanceCode($code, $row);
+            }
         }
 
         $hProb = (int) ($row['home_prob'] ?? 0);
@@ -2373,15 +2569,25 @@ SQL;
         $isLive = $this->isLiveStatus($statusShort);
         $won = null;
         $winning = null;
+        $wonDc = null;
+        $winningDc = null;
         if ($goalsHome !== null && $goalsAway !== null) {
+            $gh = (int) $goalsHome;
+            $ga = (int) $goalsAway;
             if (in_array($statusShort, ['FT', 'AET', 'PEN', 'AWD', 'WO'], true)) {
-                $won = $this->tipMatchesScore($code, $market, (int) $goalsHome, (int) $goalsAway, $row);
+                $won = $this->tipMatchesScore($code, $market, $gh, $ga, $row);
+                if ($pickDcCode !== null) {
+                    $wonDc = $this->tipMatchesScore($pickDcCode, 'double_chance', $gh, $ga, $row);
+                }
             } elseif ($isLive) {
-                $winning = $this->tipMatchesScore($code, $market, (int) $goalsHome, (int) $goalsAway, $row);
+                $winning = $this->tipMatchesScore($code, $market, $gh, $ga, $row);
+                if ($pickDcCode !== null) {
+                    $winningDc = $this->tipMatchesScore($pickDcCode, 'double_chance', $gh, $ga, $row);
+                }
             }
         }
 
-        return [
+        $out = [
             'id' => (int) $row['id'],
             'fixture_id' => (int) $row['fixture_id'],
             'league' => $league,
@@ -2412,8 +2618,111 @@ SQL;
             'category' => (string) ($row['category'] ?? ''),
             'jackpot_name' => (string) ($row['jackpot_name'] ?? ''),
             'jackpot_tips_id' => (string) ($row['jackpot_tips_id'] ?? ''),
+            'market' => $market,
+            'market_label' => $this->marketLabel($market),
             'source' => 'selections',
         ];
+
+        if ($pickDcCode !== null) {
+            $dcLean = match ($pickDcCode) {
+                '1X' => max($hProb, $dProb),
+                'X2' => max($dProb, $aProb),
+                '12' => max($hProb, $aProb),
+                default => 0,
+            };
+            $out['pick_dc'] = $this->tipLabel($pickDcCode);
+            $out['pick_dc_code'] = $pickDcCode;
+            $out['pick_dc_short'] = $pickDcCode;
+            $out['won_dc'] = $wonDc;
+            $out['winning_dc'] = $winningDc;
+            $out['confidence_dc'] = $this->clampPublishedConfidence(
+                $dcLean > 0 ? $dcLean : max(50, (int) round($conf * 0.92))
+            );
+        }
+        if ($pick1x2Code !== null) {
+            $out['pick_1x2_code'] = $pick1x2Code;
+        }
+
+        return $out;
+    }
+
+    /**
+     * @return array{0:string,1:string} [code, market]
+     */
+    private function parseSelectionTip(string $tip): array
+    {
+        $upper = strtoupper(str_replace([' ', '-'], '', $tip));
+        if (preg_match('/^DC?(1X|X2|12)$/', $upper, $m)) {
+            return [$m[1], 'double_chance'];
+        }
+        if (in_array($upper, ['1X', 'X2', '12'], true)) {
+            return [$upper, 'double_chance'];
+        }
+        $code = $this->normalizePickCode($tip !== '' ? $tip : '1', '1x2');
+        $market = in_array($code, ['1X', 'X2', '12'], true) ? 'double_chance' : '1x2';
+        return [$code, $market];
+    }
+
+    /**
+     * Companion DC for a jackpot 1X2 tip (1→1X, 2→X2, X→stronger side cover).
+     * Prefer an explicit DC in revised_tip / research_tip when present.
+     *
+     * @param array<string,mixed> $row
+     */
+    private function jackpotDoubleChanceCode(string $oneX2Code, array $row): string
+    {
+        foreach (['revised_tip', 'research_tip'] as $key) {
+            $raw = trim((string) ($row[$key] ?? ''));
+            if ($raw === '') {
+                continue;
+            }
+            [$code, $market] = $this->parseSelectionTip($raw);
+            if ($market === 'double_chance') {
+                return $code;
+            }
+        }
+
+        $code = strtoupper(trim($oneX2Code));
+        if ($code === '1') {
+            return '1X';
+        }
+        if ($code === '2') {
+            return 'X2';
+        }
+        // Draw tip: cover draw + the stronger side.
+        $h = (int) ($row['home_prob'] ?? 0);
+        $a = (int) ($row['away_prob'] ?? 0);
+        return $h >= $a ? '1X' : 'X2';
+    }
+
+    /**
+     * When the stored tip is already DC, recover a 1X2 lean from tip/probs.
+     *
+     * @param array<string,mixed> $row
+     */
+    private function jackpotOneX2FromRow(array $row, string $fallbackTip): string
+    {
+        $tip = trim((string) ($row['tip'] ?? ''));
+        if ($tip !== '') {
+            [$code, $market] = $this->parseSelectionTip($tip);
+            if ($market === '1x2' && in_array($code, ['1', 'X', '2'], true)) {
+                return $code;
+            }
+        }
+        $h = (int) ($row['home_prob'] ?? 0);
+        $d = (int) ($row['draw_prob'] ?? 0);
+        $a = (int) ($row['away_prob'] ?? 0);
+        if ($h >= $d && $h >= $a) {
+            return '1';
+        }
+        if ($a >= $d && $a >= $h) {
+            return '2';
+        }
+        if ($d > 0) {
+            return 'X';
+        }
+        [$code] = $this->parseSelectionTip($fallbackTip !== '' ? $fallbackTip : '1');
+        return in_array($code, ['1', 'X', '2'], true) ? $code : '1';
     }
 
     /**

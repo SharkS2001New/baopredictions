@@ -60,6 +60,52 @@ function bao_jackpot_lede_html(array $sheet): string {
 }
 
 /**
+ * Previous jackpot round with settled ✅/❌ (when a newer round has replaced it).
+ *
+ * @param array<string,mixed>|null $payload
+ */
+function bao_jackpot_previous_results_html(?array $payload): string {
+    if ($payload === null) {
+        return '';
+    }
+    $games = $payload['previous_games'] ?? null;
+    if (!is_array($games) || $games === []) {
+        return '';
+    }
+    require_once __DIR__ . '/match-cards.php';
+    $hits = 0;
+    $settled = 0;
+    foreach ($games as $g) {
+        if (!is_array($g)) {
+            continue;
+        }
+        $won = $g['won'] ?? null;
+        $wonDc = array_key_exists('won_dc', $g) ? $g['won_dc'] : null;
+        // Combined result: DC cover counts as a win for the game.
+        if ($won === true || $wonDc === true) {
+            $hits++;
+            $settled++;
+        } elseif ($won === false && ($wonDc === false || $wonDc === null)) {
+            $settled++;
+        } elseif ($won === null && $wonDc === false) {
+            $settled++;
+        }
+    }
+    $summary = $settled > 0
+        ? ($hits . '/' . $settled . ' correct (1X2 or DC)')
+        : 'Scores update as fixtures finish';
+    $html = '<section class="jackpot-previous section-tight" aria-labelledby="jackpot-previous-title">';
+    $html .= '<h2 id="jackpot-previous-title" class="at-matches-title">Previous round results</h2>';
+    $html .= '<p class="text-muted mb-md">' . bao_h($summary) . ' · Tip format 1 | 1X · ✅ hit · ❌ miss</p>';
+    $html .= bao_matches_html($games, [
+        'show_date' => true,
+        'page' => (string) ($payload['page'] ?? '') . '-previous',
+    ]);
+    $html .= '</section>';
+    return $html;
+}
+
+/**
  * Dynamic one-liner naming the actual top picks on a shortlist page
  * (never hardcoded example clubs).
  *

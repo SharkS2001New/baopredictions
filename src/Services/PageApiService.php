@@ -1,6 +1,8 @@
 <?php
 namespace App\Services;
 
+use App\Support\DateTimeHelper;
+
 /**
  * Resolve page-specific API payloads from config/api-pages.php
  */
@@ -99,7 +101,52 @@ final class PageApiService
 
         if (($def['extra'] ?? '') === 'accumulators') {
             // Accumulators use the full fetched pool (before pagination slice).
-            $payload['accumulators'] = $this->games->buildAccumulators($gamesOrHub);
+            $tickets = $this->games->buildAccumulators($gamesOrHub);
+            $snapshots = new AccumulatorSnapshotService();
+            $snapshots->rememberToday($tickets);
+            $payload['accumulators'] = $tickets;
+
+            $yesterday = DateTimeHelper::siteDate('yesterday');
+            $yTickets = $snapshots->ticketsForDate($yesterday);
+            if ($yTickets !== null && $yTickets !== []) {
+                $payload['yesterday_date'] = $yesterday;
+                $payload['yesterday_accumulators'] = $this->games->enrichAccumulatorTickets($yTickets);
+                $payload['yesterday_source'] = 'snapshot';
+            } else {
+                // No frozen snapshot yet — reconstruct from yesterday's tip pool + scores.
+                $constructed = $this->games->buildAccumulatorsForDate($yesterday, $def);
+                if ($constructed !== []) {
+                    $snapshots->rememberForDate($yesterday, $constructed);
+                    $payload['yesterday_date'] = $yesterday;
+                    $payload['yesterday_accumulators'] = $constructed;
+                    $payload['yesterday_source'] = 'constructed';
+                }
+            }
+        }
+
+        if ($source === 'selections'
+            && !empty($def['latest_round'])
+            && trim((string) ($def['jackpot'] ?? '')) !== ''
+        ) {
+            $previous = $this->games->listFromSelections([
+                'jackpot' => (string) $def['jackpot'],
+                'previous_round' => true,
+                'limit' => $maxLimit,
+            ]);
+            if ($previous !== []) {
+                $latestIds = [];
+                foreach ($gamesOrHub as $g) {
+                    $tid = (string) ($g['jackpot_tips_id'] ?? '');
+                    if ($tid !== '') {
+                        $latestIds[$tid] = true;
+                    }
+                }
+                $prevId = (string) ($previous[0]['jackpot_tips_id'] ?? '');
+                if ($prevId === '' || !isset($latestIds[$prevId])) {
+                    $payload['previous_games'] = $previous;
+                    $payload['previous_count'] = count($previous);
+                }
+            }
         }
 
         return $payload;

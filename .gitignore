@@ -10,3 +10,5 @@ storage/cache/*.json
 /storage/framework/cache/data/*
 !/storage/framework/cache/data/.gitkeep
 /storage/cache/
+/public/site-content/accumulator-snapshots/*.json
+!/public/site-content/accumulator-snapshots/.gitkeep

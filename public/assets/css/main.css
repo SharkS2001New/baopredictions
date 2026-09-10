@@ -1001,6 +1001,10 @@ main:has(.bao-faq) + .site-footer {
   font-size: 0.92rem;
 }
 
+.acca-legs-results .acca-leg {
+  grid-template-columns: minmax(0, 1.5fr) minmax(0, 1fr) 4rem 4rem 3rem;
+}
+
 .acca-leg:last-child {
   border-bottom: 0;
   padding-bottom: 0;
@@ -1030,7 +1034,9 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .acca-leg-odds,
-.acca-leg-win {
+.acca-leg-win,
+.acca-leg-score,
+.acca-leg-result {
   font-variant-numeric: tabular-nums;
   font-weight: 700;
   text-align: right;
@@ -1038,12 +1044,42 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .acca-leg-head span:nth-child(3),
-.acca-leg-head span:nth-child(4) {
+.acca-leg-head span:nth-child(4),
+.acca-legs-results .acca-leg-head span:nth-child(5) {
   text-align: right;
 }
 
 .acca-leg-win {
   color: var(--ink-muted);
+}
+
+.acca-leg-result {
+  font-size: 1.05rem;
+  line-height: 1;
+}
+
+.acca-ticket.is-tip-hit {
+  border-top-color: color-mix(in srgb, #1a7f37 70%, var(--amber));
+}
+
+.acca-ticket.is-tip-lost {
+  border-top-color: color-mix(in srgb, #b42318 55%, var(--amber));
+}
+
+.jackpot-previous {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--line);
+}
+
+.jackpot-previous .at-matches-title {
+  margin-bottom: 0.35rem;
+}
+
+.acca-yesterday {
+  margin-top: var(--space-xl);
+  padding-top: var(--space-lg);
+  border-top: 1px solid var(--line);
 }
 
 @media (max-width: 640px) {
@@ -1060,6 +1096,13 @@ main:has(.bao-faq) + .site-footer {
     padding: 0.85rem 0;
   }
 
+  .acca-legs-results .acca-leg {
+    grid-template-columns: 1fr auto auto;
+    grid-template-areas:
+      "game game game"
+      "tip score result";
+  }
+
   .acca-leg-game {
     grid-area: game;
   }
@@ -1074,6 +1117,14 @@ main:has(.bao-faq) + .site-footer {
 
   .acca-leg-win {
     grid-area: win;
+  }
+
+  .acca-leg-score {
+    grid-area: score;
+  }
+
+  .acca-leg-result {
+    grid-area: result;
   }
 }
 

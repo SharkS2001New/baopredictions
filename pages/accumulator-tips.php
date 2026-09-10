@@ -73,7 +73,29 @@ if ($payload === null) {
 } elseif (empty($payload['accumulators'])) {
   echo bao_api_empty_msg('accumulator tickets');
 } else {
-  echo bao_accumulators_html($payload['accumulators']);
+  $todaySettled = false;
+  foreach ($payload['accumulators'] as $t) {
+    if (is_array($t) && (int) ($t['legs_settled'] ?? 0) > 0) {
+      $todaySettled = true;
+      break;
+    }
+  }
+  echo bao_accumulators_html($payload['accumulators'], [
+    'title' => "Today's tickets",
+    'show_results' => $todaySettled,
+  ]);
+}
+$yTickets = is_array($payload) ? ($payload['yesterday_accumulators'] ?? null) : null;
+if (is_array($yTickets) && $yTickets !== []) {
+  $yLabel = !empty($payload['yesterday_date'])
+    ? date('j M Y', strtotime((string) $payload['yesterday_date']))
+    : 'Yesterday';
+  echo '<div class="acca-yesterday">';
+  echo bao_accumulators_html($yTickets, [
+    'title' => 'Yesterday\'s results · ' . $yLabel,
+    'show_results' => true,
+  ]);
+  echo '</div>';
 }
 ?>
 </div><!-- /.matches-area -->

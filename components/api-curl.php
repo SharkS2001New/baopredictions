@@ -45,7 +45,8 @@ function bao_api_cache_meta(string $path): array
 
     $source = strtolower((string) ($def['source'] ?? 'fixtures'));
     if ($source === 'selections' || $source === 'jackpot_hub' || str_contains($path, 'jackpot')) {
-        return ['key' => $cacheKey, 'ttl' => Cache::ttlJackpot()];
+        // v3: jackpot cards publish both 1X2 + Double Chance with separate results.
+        return ['key' => $cacheKey . '_jp_v3', 'ttl' => Cache::ttlJackpot()];
     }
 
     // Resolve the page's calendar day (not always "today") — pitch fixtureCacheTtlForDate.
@@ -58,8 +59,8 @@ function bao_api_cache_meta(string $path): array
         $fixtureDate = DateTimeHelper::siteDate($dayMod);
     }
 
-    // v3: higher board limits + wider SQL fetch windows (was hard-capped ~60).
-    return ['key' => $cacheKey . '_v3', 'ttl' => Cache::ttlForSiteDate($fixtureDate)];
+    // v5: reconstruct yesterday accas when no snapshot exists.
+    return ['key' => $cacheKey . '_v5', 'ttl' => Cache::ttlForSiteDate($fixtureDate)];
 }
 
 /**

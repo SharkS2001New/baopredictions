@@ -121,9 +121,6 @@ function bao_match_card(array $g): string {
     $statusLong = trim((string) ($g['status_long'] ?? ''));
     $homeLogo = $g['home_logo'] ?? '';
     $awayLogo = $g['away_logo'] ?? '';
-    $showTick = ($won === true) || ($winning === true);
-    $showLost = ($won === false);
-    $tickTitle = ($won === true) ? 'Won' : 'Tip currently winning';
     $marketLabel = trim((string) ($g['market_label'] ?? ''));
     if ($marketLabel === '' && !empty($g['market'])) {
         $marketLabel = match ((string) $g['market']) {
@@ -133,6 +130,34 @@ function bao_match_card(array $g): string {
             'ht_ft' => 'HT/FT',
             default => '1X2',
         };
+    }
+
+    // Jackpot: compact "1 | 1X" with one % and one combined ✅/❌ (DC counts as a win).
+    $pickCode = strtoupper(trim((string) ($g['pick_code'] ?? '')));
+    $pickDc = strtoupper(trim((string) ($g['pick_dc_short'] ?? $g['pick_dc_code'] ?? '')));
+    $hasDualJackpotTips = $pickCode !== '' && $pickDc !== '';
+    $wonDc = $g['won_dc'] ?? null;
+    $winningDc = $g['winning_dc'] ?? null;
+    if ($hasDualJackpotTips) {
+        $pick = $pickCode . ' | ' . $pickDc;
+        $marketLabel = '1X2 | DC';
+        $combinedHit = ($won === true) || ($wonDc === true) || ($winning === true) || ($winningDc === true);
+        $combinedLost = !$combinedHit
+            && $won === false
+            && ($wonDc === false || $wonDc === null);
+        // Prefer both-miss when DC settled too.
+        if ($won === false && $wonDc === false) {
+            $combinedLost = true;
+        }
+        $showTick = $combinedHit;
+        $showLost = $combinedLost;
+        $tickTitle = $combinedHit
+            ? (($won === true || $winning === true) ? 'Won' : 'Won on double chance')
+            : 'Tip currently winning';
+    } else {
+        $showTick = ($won === true) || ($winning === true);
+        $showLost = ($won === false);
+        $tickTitle = ($won === true) ? 'Won' : 'Tip currently winning';
     }
 
     $aria = bao_h($home . ' vs ' . $away);
@@ -378,7 +403,7 @@ function bao_matches_table_html(array $games, string $title, string $class, bool
  * Pre-built accumulator tickets (3/5/8-fold).
  *
  * @param list<array<string,mixed>> $tickets
- * @param array{title?: string} $opts
+ * @param array{title?: string, show_results?: bool} $opts
  */
 function bao_accumulators_html(array $tickets, array $opts = []): string
 {
@@ -386,28 +411,51 @@ function bao_accumulators_html(array $tickets, array $opts = []): string
         return '';
     }
     $title = $opts['title'] ?? '';
+    $showResults = !empty($opts['show_results']);
     $html = '<div class="matches-block">';
     if ($title !== '') {
         $html .= '<h2 class="at-matches-title">' . bao_h($title) . '</h2>';
     }
     $html .= '<ul class="acca-list">';
     foreach ($tickets as $t) {
-        $html .= '<li><article class="acca-ticket">';
+        $ticketWon = $t['won'] ?? null;
+        $ticketClass = 'acca-ticket';
+        if ($ticketWon === true) {
+            $ticketClass .= ' is-tip-hit';
+        } elseif ($ticketWon === false) {
+            $ticketClass .= ' is-tip-lost';
+        }
+        $html .= '<li><article class="' . $ticketClass . '">';
         $html .= '<header class="acca-header"><div>';
-        $html .= '<h3 class="mt-0 mb-0">' . bao_h((string) ($t['name'] ?? 'Accumulator')) . '</h3>';
-        $html .= '<p class="text-muted mb-0">' . (int) ($t['legs'] ?? 0) . '-fold · '
-            . (int) ($t['blended_confidence'] ?? 0) . '% blended model lean</p>';
+        $html .= '<h3 class="mt-0 mb-0">' . bao_h((string) ($t['name'] ?? 'Accumulator'));
+        if ($ticketWon === true) {
+            $html .= ' <span class="at-outcome-tick" title="All legs won" aria-label="Won">✅</span>';
+        } elseif ($ticketWon === false) {
+            $html .= ' <span class="at-outcome-lost" title="Ticket lost" aria-label="Lost">❌</span>';
+        }
+        $html .= '</h3>';
+        $legMeta = (int) ($t['legs'] ?? 0) . '-fold · '
+            . (int) ($t['blended_confidence'] ?? 0) . '% blended model lean';
+        if ($showResults && isset($t['legs_settled']) && (int) $t['legs_settled'] > 0) {
+            $legMeta .= ' · ' . (int) ($t['legs_hit'] ?? 0) . '/' . (int) $t['legs_settled'] . ' legs correct';
+        }
+        $html .= '<p class="text-muted mb-0">' . bao_h($legMeta) . '</p>';
         $html .= '</div><div class="acca-header-odds">';
         $html .= '<span class="acca-odds">' . bao_h((string) ($t['combined_odds'] ?? '—')) . '</span>';
         $html .= '<span class="acca-odds-label">Combined odds</span>';
         $html .= '</div></header>';
 
-        $html .= '<div class="acca-legs" role="table" aria-label="Accumulator legs">';
+        $html .= '<div class="acca-legs' . ($showResults ? ' acca-legs-results' : '') . '" role="table" aria-label="Accumulator legs">';
         $html .= '<div class="acca-leg acca-leg-head" role="row">';
         $html .= '<span role="columnheader">Game</span>';
         $html .= '<span role="columnheader">Tip</span>';
         $html .= '<span role="columnheader">Odds</span>';
-        $html .= '<span role="columnheader">Model %</span>';
+        if ($showResults) {
+            $html .= '<span role="columnheader">Score</span>';
+            $html .= '<span role="columnheader">Result</span>';
+        } else {
+            $html .= '<span role="columnheader">Model %</span>';
+        }
         $html .= '</div>';
         foreach (($t['picks'] ?? []) as $p) {
             $home = trim((string) ($p['home'] ?? ''));
@@ -416,11 +464,34 @@ function bao_accumulators_html(array $tickets, array $opts = []): string
             $pick = (string) ($p['pick'] ?? '—');
             $odds = (string) ($p['odds'] ?? '—');
             $win = (int) ($p['confidence'] ?? 0);
-            $html .= '<div class="acca-leg" role="row">';
+            $won = $p['won'] ?? null;
+            $winning = $p['winning'] ?? null;
+            $score = $p['score'] ?? null;
+            $rowClass = 'acca-leg';
+            if ($won === true || $winning === true) {
+                $rowClass .= ' is-tip-hit';
+            } elseif ($won === false) {
+                $rowClass .= ' is-tip-lost';
+            }
+            $html .= '<div class="' . $rowClass . '" role="row">';
             $html .= '<span class="acca-leg-game" role="cell">' . bao_h($game) . '</span>';
             $html .= '<span class="acca-leg-tip" role="cell">' . bao_h($pick) . '</span>';
             $html .= '<span class="acca-leg-odds" role="cell">' . bao_h($odds) . '</span>';
-            $html .= '<span class="acca-leg-win" role="cell" title="Model lean — not a win guarantee">' . $win . '%</span>';
+            if ($showResults) {
+                $scoreLabel = is_string($score) && $score !== '' ? $score : '—';
+                $html .= '<span class="acca-leg-score" role="cell">' . bao_h($scoreLabel) . '</span>';
+                $result = '—';
+                if ($won === true || $winning === true) {
+                    $result = '✅';
+                } elseif ($won === false) {
+                    $result = '❌';
+                }
+                $html .= '<span class="acca-leg-result" role="cell" aria-label="'
+                    . ($result === '✅' ? 'Hit' : ($result === '❌' ? 'Miss' : 'Pending'))
+                    . '">' . $result . '</span>';
+            } else {
+                $html .= '<span class="acca-leg-win" role="cell" title="Model lean — not a win guarantee">' . $win . '%</span>';
+            }
             $html .= '</div>';
         }
         $html .= '</div></article></li>';

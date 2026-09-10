@@ -77,8 +77,10 @@ if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (empty($payload['games'])) {
   echo bao_api_empty_msg('fixtures');
+  echo bao_jackpot_previous_results_html($payload);
 } else {
   echo bao_matches_html($payload['games'], ['show_date' => true, 'page' => (string)($payload['page'] ?? '')]);
+  echo bao_jackpot_previous_results_html($payload);
 }
 ?>
   </div><!-- /.matches-area -->
