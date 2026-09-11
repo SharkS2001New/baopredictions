@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets | Bao Predictions</title>
-  <meta name="description" content="Kenya jackpot predictions hub — SportPesa, Betika, SportyBet, and Odibets sheets with game-by-game reasoning. 18+ only.">
+  <title>Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets</title>
+  <meta name="description" content="Free jackpot predictions for SportPesa, Betika, SportyBet &amp; Odibets — current fixtures, per-game reasoning, and confidence levels. 18+.">
   <link rel="canonical" href="https://www.baopredictions.com/jackpot-predictions">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets | Bao Predictions">
-  <meta name="keywords" content="jackpot predictions kenya, sportpesa betika sportybet odibets jackpot tips">
+  <meta name="title" content="Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets">
+  <meta name="keywords" content="jackpot predictions kenya, free jackpot prediction, sportpesa mega jackpot, betika midweek jackpot, sportybet daily jackpot, odibets laki tatu">
   <meta name="author" content="Bao Predictions Analysis Team">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
   <meta property="article:author" content="Bao Predictions">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets | Bao Predictions">
-  <meta name="twitter:description" content="Kenya jackpot predictions hub — SportPesa, Betika, SportyBet, and Odibets sheets with game-by-game reasoning. 18+ only.">
+  <meta name="twitter:title" content="Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets">
+  <meta name="twitter:description" content="Free jackpot predictions for SportPesa, Betika, SportyBet &amp; Odibets — current fixtures, per-game reasoning, and confidence levels. 18+.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpot-predictions">
   <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets | Bao Predictions">
-  <meta property="og:description" content="Kenya jackpot predictions hub — SportPesa, Betika, SportyBet, and Odibets sheets with game-by-game reasoning. 18+ only.">
+  <meta property="og:title" content="Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets">
+  <meta property="og:description" content="Free jackpot predictions for SportPesa, Betika, SportyBet &amp; Odibets — current fixtures, per-game reasoning, and confidence levels. 18+.">
   <meta property="og:url" content="https://www.baopredictions.com/jackpot-predictions">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
@@ -55,28 +55,26 @@
     <h1>Jackpot Predictions</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">One hub for Kenya's main football jackpots — SportPesa, Betika, SportyBet, and Odibets. Each sheet below has ordered picks, a confidence read, and a reason for every single game, not a template with the team names swapped.</p>
+<p class="lede">Free jackpot prediction sheets for SportPesa, Betika, SportyBet, and Odibets — current fixtures, selections, and the reasoning behind them.</p>
   </header>
 
 </div>
 
 <section class="section-tight">
   <div class="wrap prose">
-    <p>A jackpot is a fixed card of matches — usually 13 to 17 games for the bigger weekly products, sometimes fewer for a short card — where you need to get every result right to win the top prize. One wrong pick and it's over, which is exactly why the prize pools get so large. Most operators also pay smaller bonuses for getting close but not perfect, though the exact rules for that, along with what happens if a match gets postponed, vary by bookmaker — always check the official terms before you stake, not just our sheet.</p>
-    <p>We publish confidence per game rather than one number for the whole card, so you can see exactly where a sheet is strong and where it's shakier.</p>
+    <p>Looking for a free jackpot prediction? Bao Predictions brings together football jackpot picks for bettors in Kenya and across Africa, covering SportPesa, Betika, SportyBet, and Odibets. Each prediction sheet shows the current fixtures, our selections, and the reasoning behind them — not just a list of picks. As of this week, five jackpots are live: the SportPesa Mega Jackpot (17 games, weekend), SportPesa Midweek Jackpot (13 games), Betika Midweek Jackpot (15 games), SportyBet Daily Jackpot (13 games), and Odibets Laki Tatu (10 games). Always use the active sheet for the operator you're playing rather than an old jackpot list, since fixtures and deadlines change every round.</p>
   </div>
 </section>
 
 <section class="section section-muted">
   <div class="wrap wrap-wide">
 <div class="matches-area">
-<h2 class="section-title">Open jackpots this week</h2>
+<h2 class="section-title">Current Jackpot Predictions</h2>
+<p class="text-muted">The jackpot pages linked below carry the current fixtures and selections for each operator. &quot;SportPesa Mega Jackpot&quot; commonly refers to the 17-game weekend coupon, while other operators run different formats, schedules, and game counts. Check the operator-specific sheet for this round's fixtures, deadline, and available prediction markets before placing a selection.</p>
 <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/jackpot-predictions');
 $apiItems = is_array($payload) ? ($payload['jackpots'] ?? []) : [];
-// Config is the SEO source of truth for labels/order; API overlays live row counts.
 $baoJackpots = require __DIR__ . '/../config/jackpots.php';
 $liveCounts = [];
 foreach ($apiItems as $jpItem) {
@@ -108,8 +106,21 @@ if ($payload === null && !$baoJackpots) {
   echo '</ul>';
 }
 ?>
-<p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega</a> · <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a> · <a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek</a> · <a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></p>
 </div><!-- /.matches-area -->
+  </div>
+</section>
+
+<section class="section section-muted bao-seo-stack">
+  <div class="wrap prose">
+    <h2>How Bao Predictions Analyses Jackpot Fixtures</h2>
+    <p>A strong jackpot prediction starts with the individual fixture, not the reputation of the club — a famous team can still be a risky selection if it's rotating players, struggling away from home, or facing an opponent with a strong defensive record. For each match, we review recent results, league position, home and away trends, head-to-head context, confirmed team news, and player availability, typically assessed across the last six matches where reliable data exists. We also weigh the competition and stakes involved, since a routine league match, a cup tie, and a relegation battle carry different levels of risk even when the underlying form looks similar.</p>
+
+    <h2>Why Bao Predictions Is Different</h2>
+    <p>Several well-known jackpot pages skip SportPesa entirely and only cover European-facing operators — a real gap given SportPesa Mega remains the jackpot Kenyan bettors search for most. Bao Predictions covers all five major Kenyan jackpots in one place, and each sheet carries a confidence read per game rather than one blanket number for the whole card. A match gets a stronger lean because of consistent home form and confirmed availability; another gets marked as genuinely close because the teams are evenly matched or key information isn't confirmed yet. Making that uncertainty visible, instead of presenting every pick as equally safe, is the difference between analysis and a coin flip dressed up as one.</p>
+
+    <h2>Freshness and Responsible Gambling</h2>
+    <p>Jackpot fixtures, team news, deadlines, and prize information change from one round to the next, so always check the date on the coupon before using any prediction. These selections are analytical opinions, not guarantees — no result is certain, and jackpots are long-shot entertainment products rather than a reliable income plan. 18+ only. Gamble responsibly and only stake what you can afford to lose.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">today's football predictions</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot predictions</a> · <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a> · <a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek</a> · <a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></p>
   </div>
 </section>
 
@@ -160,7 +171,7 @@ if (!empty($hubListForSchema)) {
   echo '<script type="application/ld+json">' . json_encode([
     '@context' => 'https://schema.org',
     '@type' => 'ItemList',
-    'name' => 'Open jackpots this week',
+    'name' => 'Current jackpot predictions',
     'itemListElement' => $itemList,
   ], JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 }

@@ -9,7 +9,7 @@ return [
         'label' => 'SportPesa Mega Jackpot',
         'schedule' => 'weekend',
         'expected_games' => 17,
-        'prize_label' => 'KES 150,000,000',
+        'prize_label' => 'from KES 100,000,000',
     ],
     'sportpesa-midweek-jackpot-predictions' => [
         'label' => 'SportPesa Midweek Jackpot',
@@ -22,7 +22,7 @@ return [
         'label' => 'Betika Midweek Jackpot',
         'schedule' => 'midweek',
         'expected_games' => 15,
-        'prize_label' => 'KES 25,000,000',
+        'prize_label' => 'KES 15,000,000',
     ],
     'sportybet-daily-jackpot-predictions' => [
         'label' => 'SportyBet Daily Jackpot',

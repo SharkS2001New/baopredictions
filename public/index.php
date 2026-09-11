@@ -268,6 +268,10 @@ $router->get('/how-we-predict', function () {
     include __DIR__ . '/../pages/how-we-predict.php';
 });
 
+$router->get('/sunpel-prediction', function () {
+    include __DIR__ . '/../pages/sunpel-prediction.php';
+});
+
 $router->get('/results', function () {
     include __DIR__ . '/../pages/results.php';
 });

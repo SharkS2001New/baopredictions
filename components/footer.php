@@ -38,6 +38,7 @@
         <h3>Site</h3>
         <ul>
           <li><a href="/how-we-predict">How We Predict</a></li>
+          <li><a href="/sunpel-prediction">Sunpel Prediction</a></li>
           <li><a href="/results">Results</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/about-us">About</a></li>
