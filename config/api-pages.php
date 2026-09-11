@@ -77,6 +77,16 @@ return [
         'order' => 'confidence_desc',
     ],
 
+    // Brand-comparison landing: same mixed-market engine as BetNumbers / Today.
+    'sunpel-prediction' => [
+        'title' => 'Sunpel prediction tips today',
+        'day' => 'today',
+        'limit' => 40,
+        'market' => 'best',
+        'min_confidence' => 58,
+        'order' => 'confidence_desc',
+    ],
+
     '1x2-predictions' => [
         'title' => '1X2 predictions',
         'day' => 'today',

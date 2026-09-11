@@ -51,16 +51,51 @@
   </ol>
 </nav>
 
-  <header class="page-hero">
+<header class="page-hero">
     <h1>Sunpel Prediction</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
-<p class="lede">A clear comparison guide for people searching Sunpel tips — what that brand covers, how to check freshness, and how Bao Predictions approaches the same markets.</p>
+<p class="lede">Today's free football tips for people searching Sunpel prediction — mixed markets with clear reasoning, plus how to check tip freshness against that brand.</p>
   </header>
 
-  <article class="prose">
-    <p>Sunpel prediction is a popular search among football bettors looking for daily football tips, jackpot selections and match analysis. The brand publishes predictions across markets such as 1X2, Double Chance, BTTS, Over/Under, correct score and jackpots. Its prediction pages also describe a methodology based on recent form, head-to-head records, home and away performance, team news and match trends.</p>
-    <p>For bettors comparing that site with other football prediction sites, the useful question is not simply whether a tip is labelled a “strong” pick. The better comparison is how current the fixture is, what evidence supports the selection and whether previous predictions can be checked.</p>
+</div>
+
+<section class="section-tight">
+  <div class="wrap wrap-wide">
+<div class="main-grid">
+<div class="matches-area">
+
+  <?php
+require_once __DIR__ . '/../components/api-curl.php';
+require_once __DIR__ . '/../components/seo.php';
+$payload = bao_curl_api('/api/sunpel-prediction');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+if ($payload === null) {
+  echo bao_api_fail_msg();
+} elseif (!$games) {
+  echo bao_api_empty_msg('fixtures');
+} else {
+  echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'sunpel-prediction')]);
+}
+?>
+
+  </div><!-- /.matches-area -->
+<?php
+$bao_sidebar_active = 'sunpel-prediction';
+require __DIR__ . '/../components/sidebar.php';
+?>
+
+</div><!-- /.main-grid -->
+</div>
+</section>
+
+<section class="section section-muted bao-seo-stack">
+  <div class="wrap prose">
+    <h2>Sunpel prediction today</h2>
+    <p>Sunpel prediction is a popular search among football bettors looking for daily football tips, jackpot selections and match analysis. The brand publishes predictions across markets such as 1X2, Double Chance, BTTS, Over/Under, correct score and jackpots. The board above is Bao Predictions' free alternative for the same day — strongest stakeable lean per fixture across markets, with reasoning on every card.</p>
+    <?php echo bao_shortlist_summary_html($games, 'Sunpel prediction shortlist'); ?>
 
     <h2>What does Sunpel offer?</h2>
     <p>Sunpel covers a broad range of football prediction markets. Its published categories include match results, Double Chance, BTTS, goal totals, correct scores, accumulators and jackpot predictions. The site also says its predictions are updated around the football schedule and can be adjusted when team news or fixture changes affect a match.</p>
@@ -69,7 +104,7 @@
 
     <h2>How to assess a Sunpel prediction today</h2>
     <p>A football prediction should be judged against the match itself, not just the name of the prediction provider.</p>
-    <p>For any <strong>Sunpel prediction today</strong>, check:</p>
+    <p>For any tip — including a <strong>Sunpel prediction today</strong> — check:</p>
     <ul>
       <li>Recent results and performance of both teams</li>
       <li>Home and away form</li>
@@ -91,23 +126,24 @@
     <ul>
       <li><strong>Daily board:</strong> <a href="/football-predictions-today">Football Predictions</a> publishes the strongest stakeable lean per fixture across markets.</li>
       <li><strong>Safer 1X2 cover:</strong> <a href="/double-chance-predictions">Double Chance Predictions</a> when the exact result is unclear.</li>
+      <li><strong>Mixed markets:</strong> <a href="/betnumbers-tips">BetNumbers tips</a> uses the same engine as this page's tip board.</li>
       <li><strong>Jackpots:</strong> current round on each sheet, with previous-round results kept separate so finished coupons are not mistaken for today's card.</li>
       <li><strong>Transparency:</strong> confidence is a model lean with a hard publish cap — never presented as a guarantee.</li>
     </ul>
 
     <p><strong>18+:</strong> Football predictions are not guarantees. Betting involves financial risk. Only bet what you can afford to lose and use licensed betting services where permitted. <a href="/responsible-betting">Responsible betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions</a> · <a href="/double-chance-predictions">Double Chance Predictions</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/how-we-predict">How We Predict</a> · <a href="/results">Results</a></p>
-  </article>
-</div>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions</a> · <a href="/double-chance-predictions">Double Chance Predictions</a> · <a href="/betnumbers-tips">BetNumbers tips</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/how-we-predict">How We Predict</a></p>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Sunpel Prediction FAQ</h2>
     <ul class="faq-list">
-      <li><details><summary>Is this an official Sunpel page?</summary><p>No. This is an independent Bao Predictions comparison guide for people searching that brand and looking for how to judge tips and jackpot freshness.</p></details></li>
+      <li><details><summary>Is this an official Sunpel page?</summary><p>No. This is an independent Bao Predictions page for people searching that brand — with today's free tip board and a freshness guide.</p></details></li>
+      <li><details><summary>Where do the tips on this page come from?</summary><p>From Bao Predictions' mixed-market engine (same family as BetNumbers / Today): one strongest lean per fixture across 1X2, BTTS, Over/Under and Double Chance.</p></details></li>
       <li><details><summary>Are Sunpel tips free?</summary><p>Some prediction content is published free on Sunpel properties, while related SunpelBets products also promote paid jackpot and multibet access. Always check which product you are on.</p></details></li>
       <li><details><summary>How do I know a jackpot tip is still current?</summary><p>Check the fixture date, round status and whether the coupon still matches the bookmaker's live card. Older indexed pages can outlive the round they were written for.</p></details></li>
-      <li><details><summary>Where are Bao's daily tips?</summary><p>Start with <a href="/football-predictions-today">Football Predictions today</a> and the market boards linked from the sidebar.</p></details></li>
       <li><details><summary>Do predictions guarantee a win?</summary><p>No. Neither Bao nor any tipster can guarantee football outcomes. Stake only what you can afford to lose.</p></details></li>
     </ul>
   </div>
@@ -115,15 +151,17 @@
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
+<script src="/assets/js/timezone.js" defer></script>
+<script src="/assets/js/load-more.js" defer></script>
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
 require_once __DIR__ . '/../components/seo.php';
 $baoSunpelFaqs = [
-  ['q' => 'Is this an official Sunpel page?', 'a' => 'No. This is an independent Bao Predictions comparison guide for people searching that brand and looking for how to judge tips and jackpot freshness.'],
+  ['q' => 'Is this an official Sunpel page?', 'a' => 'No. This is an independent Bao Predictions page for people searching that brand — with today\'s free tip board and a freshness guide.'],
+  ['q' => 'Where do the tips on this page come from?', 'a' => 'From Bao Predictions\' mixed-market engine (same family as BetNumbers / Today): one strongest lean per fixture across 1X2, BTTS, Over/Under and Double Chance.'],
   ['q' => 'Are Sunpel tips free?', 'a' => 'Some prediction content is published free on Sunpel properties, while related SunpelBets products also promote paid jackpot and multibet access. Always check which product you are on.'],
   ['q' => 'How do I know a jackpot tip is still current?', 'a' => 'Check the fixture date, round status and whether the coupon still matches the bookmaker\'s live card. Older indexed pages can outlive the round they were written for.'],
-  ['q' => 'Where are Bao\'s daily tips?', 'a' => 'Start with Football Predictions today and the market boards linked from the sidebar.'],
   ['q' => 'Do predictions guarantee a win?', 'a' => 'No. Neither Bao nor any tipster can guarantee football outcomes. Stake only what you can afford to lose.'],
 ];
 echo bao_faq_schema($baoSunpelFaqs);
