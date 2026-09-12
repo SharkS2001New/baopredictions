@@ -2470,38 +2470,6 @@ main:has(.bao-faq) + .site-footer {
   gap: 1rem;
 }
 
-.sidebar-toggle:checked ~ .sidebar-collapsible {
-  display: flex;
-}
-
-.sidebar-mobile-toggle {
-  display: none;
-  align-items: center;
-  justify-content: space-between;
-  gap: 0.75rem;
-  padding: 0.75rem 1rem;
-  background: var(--surface);
-  border: 1px solid var(--line);
-  border-radius: 8px;
-  font-weight: 600;
-  font-size: 0.9rem;
-  color: var(--pitch);
-  cursor: pointer;
-}
-
-.sidebar-toggle-chevron {
-  width: 0.55rem;
-  height: 0.55rem;
-  border-right: 2px solid var(--pitch);
-  border-bottom: 2px solid var(--pitch);
-  transform: rotate(45deg);
-  transition: transform 0.2s;
-}
-
-.sidebar-toggle:checked + .sidebar-mobile-toggle .sidebar-toggle-chevron {
-  transform: rotate(-135deg);
-}
-
 .sidebar-collapsible {
   display: flex;
   flex-direction: column;
@@ -2702,21 +2670,27 @@ main:has(.bao-faq) + .site-footer {
 
 @media (max-width: 960px) {
   .main-grid {
-    grid-template-columns: 1fr;
-    grid-template-areas:
-      "matches"
-      "sidebar";
+    display: flex;
+    flex-direction: column;
+    gap: 1.25rem;
   }
 
-  .sidebar-mobile-toggle {
-    display: flex;
+  /* Flatten sidebar so tip-day can sit above the match list */
+  .sidebar {
+    display: contents;
+  }
+
+  .tip-day {
+    order: -1;
+    margin-bottom: 0;
+  }
+
+  .matches-area {
+    order: 0;
   }
 
   .sidebar-collapsible {
-    display: none;
-  }
-
-  .sidebar-toggle:checked ~ .sidebar-collapsible {
+    order: 1;
     display: flex;
   }
 
@@ -2808,7 +2782,6 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .panel,
-.sidebar-mobile-toggle,
 .market-item-link,
 .league-item-link {
   transition: background-color 0.15s, border-color 0.15s, color 0.15s;
@@ -3121,10 +3094,4 @@ main:has(.bao-faq) + .site-footer {
   border-radius: 999px;
   background: #f5c518;
   color: #121820;
-}
-
-@media (max-width: 900px) {
-  .tip-day {
-    margin-bottom: 1rem;
-  }
 }

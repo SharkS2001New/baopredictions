@@ -40,12 +40,6 @@ require_once __DIR__ . '/tip-of-day.php';
 <aside class="sidebar" aria-label="Markets and statistics">
 <?php echo bao_tip_of_day_html(); ?>
 
-  <input type="checkbox" id="sidebar-toggle" class="sidebar-toggle" hidden>
-  <label for="sidebar-toggle" class="sidebar-mobile-toggle">
-    <span>Show Stats</span>
-    <span class="sidebar-toggle-chevron" aria-hidden="true"></span>
-  </label>
-
   <div class="sidebar-collapsible">
     <section class="panel sidebar-panel-markets">
       <header class="panel-header">
