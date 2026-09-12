@@ -2476,6 +2476,15 @@ main:has(.bao-faq) + .site-footer {
   gap: 1rem;
 }
 
+/* Prediction of the Day: sidebar on desktop, match list on mobile */
+.tip-day-slot--board {
+  display: none;
+}
+
+.tip-day-slot--sidebar {
+  display: block;
+}
+
 .panel {
   background: var(--surface);
   border: 1px solid var(--line);
@@ -2670,27 +2679,34 @@ main:has(.bao-faq) + .site-footer {
 
 @media (max-width: 960px) {
   .main-grid {
-    display: flex;
-    flex-direction: column;
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-areas:
+      "matches"
+      "sidebar";
+    align-items: stretch;
     gap: 1.25rem;
   }
 
-  /* Flatten sidebar so tip-day can sit above the match list */
+  .matches-area,
   .sidebar {
-    display: contents;
+    width: 100%;
+    max-width: 100%;
+    min-width: 0;
   }
 
-  .tip-day {
-    order: -1;
-    margin-bottom: 0;
+  /* Tip lives in the match list on mobile; hide the sidebar copy */
+  .tip-day-slot--sidebar {
+    display: none;
   }
 
-  .matches-area {
-    order: 0;
+  .tip-day-slot--board {
+    display: block;
+    width: 100%;
+    margin-bottom: 1rem;
   }
 
   .sidebar-collapsible {
-    order: 1;
     display: flex;
   }
 

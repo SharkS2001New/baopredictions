@@ -38,7 +38,9 @@ $a = $bao_sidebar_active;
 require_once __DIR__ . '/tip-of-day.php';
 ?>
 <aside class="sidebar" aria-label="Markets and statistics">
+  <div class="tip-day-slot tip-day-slot--sidebar">
 <?php echo bao_tip_of_day_html(); ?>
+  </div>
 
   <div class="sidebar-collapsible">
     <section class="panel sidebar-panel-markets">

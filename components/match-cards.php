@@ -270,7 +270,17 @@ function bao_matches_html(array $games, array $opts = []): string {
         return bao_matches_table_html($games, $title, $class, $showDate);
     }
 
-    $html = '<div class="matches-block' . ($class ? ' ' . bao_h($class) : '') . '">';
+    $tipSlot = '';
+    if (($opts['tip_of_day'] ?? true) !== false) {
+        require_once __DIR__ . '/tip-of-day.php';
+        $tipHtml = bao_tip_of_day_html();
+        if ($tipHtml !== '') {
+            $tipSlot = '<div class="tip-day-slot tip-day-slot--board">' . $tipHtml . '</div>';
+        }
+    }
+
+    $html = $tipSlot;
+    $html .= '<div class="matches-block' . ($class ? ' ' . bao_h($class) : '') . '">';
     if ($title !== '') {
         $html .= '<h2 class="at-matches-title">' . bao_h($title) . '</h2>';
     }
