@@ -81,8 +81,6 @@ $baoRecent = is_array($baoStats['recent'] ?? null) ? $baoStats['recent'] : [];
 <div class="main-grid">
 <div class="matches-area">
 
-  <p class="fixture-list-intro">Here's what we've got for today, sorted by confidence. Every pick comes with the reasoning behind it — not just a tip and a percentage. Full list and any late team-news changes are on the <a href="/football-predictions-today">today's predictions page</a>.</p>
-
     <?php
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/homepage');
