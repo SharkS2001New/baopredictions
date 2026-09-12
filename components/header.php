@@ -9,7 +9,7 @@
 
     <nav class="nav" aria-label="Primary">
       <a href="/football-predictions-today">Today</a>
-      <a href="/live-football-predictions">Live</a>
+      <a href="/live-football-predictions">Livescores</a>
       <a href="/football-predictions-tomorrow">Tomorrow</a>
       <details class="nav-drop">
         <summary>Markets</summary>

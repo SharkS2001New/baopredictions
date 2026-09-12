@@ -3,25 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>How We Predict | Bao Predictions</title>
-  <meta name="description" content="How Bao Predictions builds every football prediction — our data sources, review process, and what our confidence ratings actually mean. 18+ only.">
+  <title>How We Predict | Bao Predictions Methodology</title>
+  <meta name="description" content="How Bao Predictions builds football tips: form, home and away records, team news, model leans, publish floors, and a public results trail. 18+ only.">
   <link rel="canonical" href="https://www.baopredictions.com/how-we-predict">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="How We Predict | Bao Predictions">
+  <meta name="title" content="How We Predict | Bao Predictions Methodology">
+  <meta name="keywords" content="how we predict, bao predictions methodology, football prediction model, confidence ratings explained">
   <meta name="author" content="Bao Predictions Analysis Team">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
   <meta property="article:author" content="Bao Predictions">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="How We Predict | Bao Predictions">
-  <meta name="twitter:description" content="How Bao Predictions builds every football prediction — our data sources, review process, and what our confidence ratings actually mean. 18+ only.">
+  <meta name="twitter:title" content="How We Predict | Bao Predictions Methodology">
+  <meta name="twitter:description" content="How Bao Predictions builds football tips: form, home and away records, team news, model leans, publish floors, and a public results trail. 18+ only.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/how-we-predict">
   <!--BAO_HEAD_EXTRA_END-->
-  
-  <meta property="og:title" content="How We Predict | Bao Predictions">
-  <meta property="og:description" content="How Bao Predictions builds every football prediction — our data sources, review process, and what our confidence ratings actually mean. 18+ only.">
+
+  <meta property="og:title" content="How We Predict | Bao Predictions Methodology">
+  <meta property="og:description" content="How Bao Predictions builds football tips: form, home and away records, team news, model leans, publish floors, and a public results trail. 18+ only.">
   <meta property="og:url" content="https://www.baopredictions.com/how-we-predict">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
@@ -40,10 +41,23 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$stats = bao_api_stats();
+$updatedIso = is_array($stats) && !empty($stats['last_updated'])
+  ? (string) $stats['last_updated']
+  : date('c');
+$updatedDate = date('j F Y', strtotime($updatedIso));
+$updatedTime = date('H:i', strtotime($updatedIso));
+$track = is_array($stats) && is_array($stats['track'] ?? null) ? $stats['track'] : [];
+$settledTips = (int) ($track['settled_tips'] ?? $stats['settled_tips'] ?? 0);
+$winRate = $track['win_rate'] ?? ($stats['win_rate'] ?? null);
+$predToday = is_array($stats) ? (int) ($stats['today']['predictions'] ?? 0) : 0;
+?>
 
-    
 <div class="wrap">
-  
+
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
     <li><a href="/">Home</a></li>
@@ -53,75 +67,86 @@
 
   <header class="page-hero">
     <h1>How We Predict</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<p class="lede">Data sources, human review, confidence ratings, and what we refuse to publish — the full methodology behind every tip on this site.</p>
-<p class="seo-related"><strong>Related:</strong> <a href="/results">Results</a> · <a href="/about-us">About us</a> · <a href="/responsible-betting">Responsible betting</a></p>
+<?php echo bao_last_updated_html($updatedIso); ?>
+<p class="lede">What goes into a Bao tip, what a model lean means, and how you can check the published record afterwards.</p>
+  </header>
 
-</header>
   <article class="prose">
-<p>We combine statistical modelling with human review, not one or the other. Every prediction starts with data — recent form, head-to-head history, home and away splits, and current squad availability — and is then checked by an analyst before it's published, because injury news and tactical changes don't always show up in a spreadsheet.</p>
+<p>Bao Predictions builds every football tip from match data first, then a human check of team news before publish. We look at recent form (especially the last six matches where the data is reliable), home and away splits, league position, head-to-head where it still matters, and confirmed availability. The number on a card is a <strong>model lean</strong> — the strength of that day's published selection — not a win-rate promise and never a “sure win.”</p>
 
-<h2>What goes into every prediction</h2>
+<h2>What we weigh before a tip goes live</h2>
+<p>A useful lean needs more than a famous club name. We treat each fixture on its own evidence:</p>
 <ul>
-  <li><strong>Recent form.</strong> We weight a team's last six results more heavily when they came in the same competition and at the same venue as the upcoming fixture — a team's away form in cup competitions doesn't tell you much about how they'll play at home in the league. Home and away splits matter: a side that dominates at home but leaks goals on the road should not be treated the same in both venues.</li>
-  <li><strong>Head-to-head history.</strong> Past results between two sides, adjusted for the fact that squads and managers change — a rivalry's history matters less if half the players involved have moved on. We still read patterns (low-scoring derbies, perennial home dominance) when the current squads still look similar.</li>
-  <li><strong>Team news.</strong> Confirmed injuries, suspensions, and rotation risk, checked as close to kickoff as possible so a prediction made on Tuesday still holds up on Saturday. Cup midweeks and international breaks raise rotation risk; we flag when a pick is fragile until the lineup is out.</li>
-  <li><strong>Market odds.</strong> We compare our internal confidence rating against opening odds from major bookmakers — when the two disagree significantly, that's often the most interesting match to look at closely, not the one to ignore. Price movement after team news is part of the review, not a reason to flip a tip without a football reason.</li>
-  <li><strong>Competition context.</strong> Title races, relegation scraps, European qualification, and "nothing to play for" change motivation. That is why Must-Win Teams is a separate shortlist from raw favourites.</li>
+  <li><strong>Recent form</strong> — latest results, with more weight when they came in the same competition and venue as the upcoming match.</li>
+  <li><strong>Home and away form</strong> — a side that dominates at home but leaks goals on the road is not the same tip in both settings.</li>
+  <li><strong>League position and match context</strong> — title races, relegation scraps, European qualification, and “nothing left to play for” change how teams approach a game.</li>
+  <li><strong>Head-to-head</strong> — supporting context only when current squads and setups still look comparable.</li>
+  <li><strong>Team news</strong> — injuries, suspensions, and rotation risk, checked as late as the feed allows.</li>
+  <li><strong>Market and odds</strong> — when our lean disagrees sharply with the book price, we review again rather than auto-flipping the tip without a football reason.</li>
 </ul>
+<p>Jackpot sheets (SportPesa Mega Jackpot, SportyBet Daily, Odibets Laki Tatu, Mozzart Super Daily Jackpot, and the others we cover) use the same per-game standard: 1X2 plus Double Chance where the fixture is narrow, with weaker legs labelled instead of dressed up as bankers.</p>
 
-<h2>What our confidence ratings mean</h2>
+<h2>What the confidence number actually means</h2>
+<p>Published cards use a capped scale. We never show 100%, because that would read as a guarantee.</p>
 <ul>
-  <li><strong>75–85%</strong> — our strongest published picks, where form, history, and team news all point the same direction. Published cards are hard-capped at 85%; we never show 100%, because that would read as a guarantee.</li>
-  <li><strong>60–74%</strong> — solid predictions with good reasoning behind them, but not without risk</li>
-  <li><strong>55–59%</strong> — thinner edges that still clear our publish floor; better as accumulator legs than heavy singles</li>
-  <li><strong>Below 55%</strong> — we don't publish these on tip boards; if the data doesn't support a clear lean, we leave the fixture off rather than dressing up a guess</li>
+  <li><strong>75–85%</strong> — strongest published leans (hard-capped at 85%).</li>
+  <li><strong>60–74%</strong> — solid lean with clear reasoning, still not a lock.</li>
+  <li><strong>55–59%</strong> — thinner edge; often better as an accumulator leg than a heavy single.</li>
+  <li><strong>Below 55%</strong> — not published on tip boards. We leave the fixture off rather than invent a lean.</li>
 </ul>
-<p>Confidence is relative to our own process that day — it is not a promise of hit rate. Football is unpredictable; even our highest-confidence picks lose sometimes. Shortlists apply higher bars on top of this scale: <a href="/must-win-teams-today">Must-Win</a> is match-result (1X2) tips at <strong>75%+</strong>; <a href="/sure-bets-today">Sure Bets</a> is the mixed-market band at roughly <strong>78%+</strong>.</p>
+<p>Shortlists sit on top of that floor: <a href="/must-win-teams-today">Must Win Teams Today</a> is high-confidence 1X2 (roughly 75%+). <a href="/sure-bets-today">Sure Bets Today</a> is the strongest mixed-market band (roughly 78%+). Tomorrow's board is provisional — it can move after today's results and late lineups. Livescores is for matches already underway, not a second copy of the pre-match card.</p>
 
-<h2>Where our data comes from</h2>
-<p>We pull fixture and statistical data from our fixtures feed, covering team form, head-to-head records, and league standings. This is combined with manually tracked team news — injuries, suspensions, and confirmed lineups — checked as close to kickoff as the data allows.</p>
-
-<h2>What we don't do</h2>
-<p>We don't publish a prediction just to have one for every match on the calendar. If the data doesn't point clearly in a direction, we either publish it as a genuinely low-confidence pick and say so, or we leave it off the site entirely rather than dress up a guess as analysis.</p>
-<p>We are not a bookmaker. We do not take stakes. Tips are informational. If you bet, use a licensed operator, stay 18+, and read our <a href="/responsible-betting">responsible betting</a> guide. Full settled outcomes live on the <a href="/results">results page</a>.</p>
-</article>
+<h2>How you can check us after the match</h2>
+<p>As of <strong><?php echo bao_h($updatedDate); ?> at <?php echo bao_h($updatedTime); ?> EAT</strong><?php
+if ($predToday > 0) {
+  echo ", today's boards carry <strong>" . (int) $predToday . "</strong> published predictions";
+}
+if ($settledTips > 0 && $winRate !== null) {
+  echo ($predToday > 0 ? ', and ' : ', ') . 'the qualifying settled 1X2 sample stands at <strong>'
+    . (int) $settledTips . '</strong> tips with a headline win rate of <strong>'
+    . bao_h((string) $winRate) . '%</strong>';
+}
+?>. Those headline figures only count tips with a full model split and a book price; incomplete rows and postponements are excluded.</p>
+<p>Most tip sites stop at “here are today's picks.” Bao keeps the full loop visible: <a href="/football-predictions-today">Football Predictions Today</a> for the live board, <a href="/football-predictions-yesterday">Football Predictions Yesterday</a> for the daily audit, and <a href="/results">Football Results</a> for the rolling seven-day settled list plus the longer track strip. Wins and losses both stay published.</p>
+<p><strong>18+.</strong> Tips are informational opinions. Betting involves risk. Read <a href="/responsible-betting">Responsible Betting</a> before staking, and never bet money you cannot afford to lose.</p>
+  </article>
 </div>
 
-  
-  <section class="section"><div class="wrap"><h2 class="section-title">FAQ</h2><ul class="faq-list"><li><details><summary>Is confidence a win probability?</summary><p>No. It is our internal strength score for publishing and filtering — for example Must-Win is 1X2 tips at 75%+, and Sure Bets is the mixed-market band at roughly 78%+. Cards never display above 85% or at 100%.</p></details></li><li><details><summary>Do humans review every tip?</summary><p>Yes — data starts the process; an analyst checks team news and publishes the final lean.</p></details></li><li><details><summary>Where can I see accuracy?</summary><p>On the Results page and Yesterday&#039;s Predictions — wins and losses both stay visible.</p></details></li></ul></div></section>
+<section class="section section-tight bao-faq">
+  <div class="wrap">
+    <h2 class="section-title">How We Predict FAQ</h2>
+    <ul class="faq-list">
+      <li><details><summary>Is confidence a win probability?</summary><p>No. It is a model lean for publishing and filtering — never a guaranteed hit rate. Cards never display above 85% or at 100%.</p></details></li>
+      <li><details><summary>Do humans review every tip?</summary><p>Data starts the process; an analyst checks team news before the lean is published.</p></details></li>
+      <li><details><summary>Why are some matches missing?</summary><p>Below 55% we usually leave the fixture off rather than publish a thin guess.</p></details></li>
+      <li><details><summary>Where can I see accuracy?</summary><p>Yesterday for one matchday; Results for the seven-day list and longer qualifying sample.</p></details></li>
+    </ul>
+  </div>
+</section>
+
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_faq_schema(array (
-  0 => 
-  array (
-    'q' => 'Is confidence a win probability?',
-    'a' => 'No. It is our internal strength score for publishing and filtering — for example Must-Win is 1X2 tips at 75%+, and Sure Bets is the mixed-market band at roughly 78%+. Cards never display above 85% or at 100%.',
-  ),
-  1 => 
-  array (
-    'q' => 'Do humans review every tip?',
-    'a' => 'Yes — data starts the process; an analyst checks team news and publishes the final lean.',
-  ),
-  2 => 
-  array (
-    'q' => 'Where can I see accuracy?',
-    'a' => 'On the Results page and Yesterday\'s Predictions — wins and losses both stay visible.',
-  ),
-)); echo bao_breadcrumb_schema(array (
-  0 => 
-  array (
-    'name' => 'Home',
-    'url' => '/',
-  ),
-  1 => 
-  array (
-    'name' => 'How We Predict',
-    'url' => '/how-we-predict',
-  ),
-)); echo bao_article_schema('How We Predict', 'How Bao Predictions builds every football prediction — our data sources, review process, and what our confidence ratings actually mean. 18+ only.', '/how-we-predict'); echo bao_organization_schema(); ?>
+<?php
+$baoHowFaqs = [
+  ['q' => 'Is confidence a win probability?', 'a' => 'No. It is a model lean for publishing and filtering — never a guaranteed hit rate. Cards never display above 85% or at 100%.'],
+  ['q' => 'Do humans review every tip?', 'a' => 'Data starts the process; an analyst checks team news before the lean is published.'],
+  ['q' => 'Why are some matches missing?', 'a' => 'Below 55% we usually leave the fixture off rather than publish a thin guess.'],
+  ['q' => 'Where can I see accuracy?', 'a' => 'Yesterday for one matchday; Results for the seven-day list and longer qualifying sample.'],
+];
+echo bao_faq_schema($baoHowFaqs);
+echo bao_breadcrumb_schema([
+  ['name' => 'Home', 'url' => '/'],
+  ['name' => 'How We Predict', 'url' => '/how-we-predict'],
+]);
+echo bao_article_schema(
+  'How We Predict',
+  'How Bao Predictions builds football tips: form, home and away records, team news, model leans, publish floors, and a public results trail. 18+ only.',
+  '/how-we-predict'
+);
+echo bao_organization_schema();
+?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

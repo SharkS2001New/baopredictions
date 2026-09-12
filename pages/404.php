@@ -7,6 +7,12 @@ http_response_code(404);
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Page not found | Bao Predictions</title>
+  <meta name="description" content="That page is not on Bao Predictions. Try today's tips, results, or the jackpot hub.">
+  <meta name="robots" content="noindex,follow">
+  <meta property="og:title" content="Page not found | Bao Predictions">
+  <meta property="og:description" content="That page is not on Bao Predictions. Try today's tips, results, or the jackpot hub.">
+  <meta property="og:type" content="website">
+  <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {
     try {
@@ -16,15 +22,32 @@ http_response_code(404);
     } catch (e) {}
   })();
   </script>
-  <?php require __DIR__ . '/../components/head-assets.php'; ?>
+<?php require __DIR__ . '/../components/head-assets.php'; ?>
 <?php require __DIR__ . '/../components/favicon.php'; ?>
 </head>
 <body>
-  <main class="wrap" style="padding:4rem 1rem">
+    <?php require __DIR__ . '/../components/header.php'; ?>
+<main id="main">
+<div class="wrap">
+  <header class="page-hero">
     <h1>404 — Page not found</h1>
-    <p class="lede">That URL isn’t on Bao Predictions.</p>
+    <p class="lede">That URL is not on Bao Predictions. It may have moved, or the link is outdated.</p>
+  </header>
+
+  <article class="prose">
+    <p>Use one of the live boards below instead of refreshing a dead link. Jackpot sheets and tip pages change URLs rarely, but operator product names and old blog paths can still break bookmarks.</p>
+    <ul>
+      <li><a href="/football-predictions-today">Football Predictions Today</a> — main daily board</li>
+      <li><a href="/live-football-predictions">Livescores</a> — matches already underway</li>
+      <li><a href="/results">Football Results</a> — settled tips from the last seven days</li>
+      <li><a href="/jackpot-predictions">Jackpot Predictions</a> — SportPesa, Betika, SportyBet, Odibets, Mozzart</li>
+      <li><a href="/faq">FAQ</a> · <a href="/contact-us">Contact</a></li>
+    </ul>
     <p><a class="btn btn-primary" href="/">Back to homepage</a></p>
-  </main>
+  </article>
+</div>
+</main>
+  <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js" defer></script>
 </body>
 </html>

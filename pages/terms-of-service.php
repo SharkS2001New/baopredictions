@@ -4,11 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Terms of Service | Bao Predictions</title>
-  <meta name="description" content="Terms of service for Bao Predictions — informational tips only, no gambling service, 18+ audience.">
+  <meta name="description" content="Terms of service for Bao Predictions: informational football tips only, no bookmaker services, 18+ audience, and limits on liability.">
   <link rel="canonical" href="https://www.baopredictions.com/terms-of-service">
   <meta name="robots" content="index,follow">
+  <!--BAO_HEAD_EXTRA_START-->
+  <meta name="title" content="Terms of Service | Bao Predictions">
+  <meta name="keywords" content="bao predictions terms of service, terms and conditions, tip site terms">
+  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
+  <meta property="article:published_time" content="<?php echo date('c'); ?>">
+  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
+  <meta property="article:author" content="Bao Predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Terms of Service | Bao Predictions">
+  <meta name="twitter:description" content="Terms of service for Bao Predictions: informational football tips only, no bookmaker services, 18+ audience, and limits on liability.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/terms-of-service">
+  <!--BAO_HEAD_EXTRA_END-->
+
   <meta property="og:title" content="Terms of Service | Bao Predictions">
-  <meta property="og:description" content="Terms of service for Bao Predictions — informational tips only, no gambling service, 18+ audience.">
+  <meta property="og:description" content="Terms of service for Bao Predictions: informational football tips only, no bookmaker services, 18+ audience, and limits on liability.">
   <meta property="og:url" content="https://www.baopredictions.com/terms-of-service">
   <meta property="og:type" content="website">
   <meta property="og:site_name" content="Bao Predictions">
@@ -23,12 +37,18 @@
   </script>
 <?php require __DIR__ . '/../components/head-assets.php'; ?>
 <?php require __DIR__ . '/../components/favicon.php'; ?>
-  </head>
+</head>
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+$updatedIso = date('c');
+$updatedDate = date('j F Y');
+?>
+
 <div class="wrap">
-  
+
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
     <li><a href="/">Home</a></li>
@@ -38,16 +58,39 @@
 
   <header class="page-hero">
     <h1>Terms of Service</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+<?php echo bao_last_updated_html($updatedIso); ?>
+<p class="lede">These terms cover use of Bao Predictions. This page is also our terms and conditions for the site.</p>
   </header>
+
   <article class="prose">
-    <p>Last updated: 4 September 2026. Content on Bao Predictions is for information and entertainment. We are not a bookmaker and do not accept stakes. You are responsible for complying with gambling laws where you live. You must be 18+ to use betting-related content.</p>
-    <p>Tips can lose. We are not liable for betting losses. Site content may change without notice as fixtures update.</p>
+<p>By using baopredictions.com you agree to these terms. Bao Predictions publishes football predictions, livescores-related boards, jackpot sheets, and related editorial content for information and entertainment. We are not a bookmaker, we do not accept bets or stakes, and we do not provide financial, investment, or legal advice.</p>
+
+<h2>Who the site is for</h2>
+<p>Betting-related pages are aimed at people who are 18+ or the legal gambling age where they live, if that age is higher. You are responsible for knowing whether sports betting is legal for you and for using only licensed operators where required. If you are under age, do not use the tip or jackpot pages to place bets.</p>
+
+<h2>What the tips are — and are not</h2>
+<p>Published selections, model leans, odds shown on cards, and jackpot sheets (including SportPesa Mega Jackpot, SportyBet Daily, Odibets Laki Tatu, Mozzart Super Daily Jackpot, and others we list) are opinions based on available data at publish time. Fixtures, team news, stakes, and prize rules can change after we publish. Tips can lose. Confidence figures are not guaranteed probabilities.</p>
+<p>Third-party bookmakers and jackpot operators set their own rules, odds, voids, and deadlines. Confirm those on the operator's site or app before you play. Links to partners or sponsors, when shown, do not make Bao responsible for their products.</p>
+
+<h2>Your responsibilities and our limits</h2>
+<p>You agree not to misuse the site (scraping that harms service availability, attempting unauthorized access, or republishing large parts of our tip boards as if they were your own paid product without permission). Site content and branding belong to Bao Predictions unless otherwise stated.</p>
+<p>To the fullest extent allowed by law, Bao Predictions is not liable for betting losses, missed deadlines, delayed scores, or decisions you make after reading a tip. Content may be updated, corrected, or removed without notice as fixtures settle. These terms were last reviewed on <strong><?php echo bao_h($updatedDate); ?></strong>.</p>
+<p>Questions about the site: use <a href="/contact-us">Contact</a>. Privacy details sit on the <a href="/privacy-policy">Privacy Policy</a>. If you bet, read <a href="/responsible-betting">Responsible Betting</a> first.</p>
+<p><strong>18+ | Gamble responsibly.</strong></p>
   </article>
 </div>
 
-  </main>
+</main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js" defer></script>
+<!--BAO_SCHEMA_START-->
+<?php
+echo bao_breadcrumb_schema([
+  ['name' => 'Home', 'url' => '/'],
+  ['name' => 'Terms of Service', 'url' => '/terms-of-service'],
+]);
+echo bao_organization_schema();
+?>
+<!--BAO_SCHEMA_END-->
 </body>
 </html>

@@ -92,7 +92,7 @@ require_once __DIR__ . '/tip-of-day.php';
           <a href="/live-football-predictions" class="market-item-link<?= bao_sidebar_active('live-football-predictions', $a) ?>">
             <span class="market-info">
               <span class="market-icon">LV</span>
-              <span class="market-name">Live Now</span>
+              <span class="market-name">Livescores</span>
             </span>
             <span class="market-count"><?= htmlspecialchars($mc($baoMarkets, 'live-football-predictions')) ?></span>
           </a>
