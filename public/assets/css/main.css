@@ -2887,7 +2887,7 @@ main:has(.bao-faq) + .site-footer {
    ========================================================= */
 
 .tip-day {
-  background: var(--card-bg);
+  background: var(--card-tip-bg);
   color: var(--ink);
   border: 1px solid var(--card-border);
   border-radius: 12px;
@@ -2934,8 +2934,6 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .tip-day-match {
-  background: var(--card-tip-bg);
-  border: 1px solid var(--card-tip-border);
   border-radius: 10px;
   padding: 0.7rem 0.65rem 0.85rem;
   margin-bottom: 0.7rem;
