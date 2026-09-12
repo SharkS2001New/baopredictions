@@ -371,6 +371,7 @@ SQL;
             'Betika Midweek Jackpot',
             'Sporty bet Jackpot',
             'Odibet Laki Tatu Jackpot',
+            'Mozzart Super Daily Jackpot',
         ];
 
         $out = [];
@@ -839,6 +840,7 @@ SQL;
             'Betika Midweek Jackpot' => 'betika-midweek-jackpot-predictions',
             'Sporty bet Jackpot' => 'sportybet-daily-jackpot-predictions',
             'Odibet Laki Tatu Jackpot' => 'odibets-laki-tatu-predictions',
+            'Mozzart Super Daily Jackpot' => 'mozzart-super-daily-jackpot-predictions',
             default => strtolower(preg_replace('/[^a-z0-9]+/i', '-', $name) ?? 'jackpot'),
         };
     }

@@ -247,6 +247,7 @@ $jackpotPages = [
     'betika-midweek-jackpot-predictions',
     'sportybet-daily-jackpot-predictions',
     'odibets-laki-tatu-predictions',
+    'mozzart-super-daily-jackpot-predictions',
 ];
 foreach ($jackpotPages as $jackpotSlug) {
     $router->get('/jackpots/' . $jackpotSlug, function () use ($jackpotSlug) {

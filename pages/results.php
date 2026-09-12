@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Football Tip Results &amp; Track Record | Bao Predictions</title>
-  <meta name="description" content="Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.">
+  <title>Football Results | Recent Scores &amp; Prediction Results</title>
+  <meta name="description" content="Check recent football results from the last 7 days and compare Bao Predictions' 1X2 tips with the actual scores.">
   <link rel="canonical" href="https://www.baopredictions.com/results">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Football Tip Results &amp; Track Record | Bao Predictions">
-  <meta name="keywords" content="football tip results, prediction track record, tipster accuracy">
+  <meta name="title" content="Football Results | Recent Scores &amp; Prediction Results">
+  <meta name="keywords" content="football results, football results today, football results yesterday, yesterday football results, yesterday's football results, recent football results, football prediction results">
   <meta name="author" content="Bao Predictions Analysis Team">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
   <meta property="article:author" content="Bao Predictions">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Football Tip Results &amp; Track Record | Bao Predictions">
-  <meta name="twitter:description" content="Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.">
+  <meta name="twitter:title" content="Football Results | Recent Scores &amp; Prediction Results">
+  <meta name="twitter:description" content="Check recent football results from the last 7 days and compare Bao Predictions' 1X2 tips with the actual scores.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/results">
   <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Football Tip Results &amp; Track Record | Bao Predictions">
-  <meta property="og:description" content="Settled prediction results — wins and losses both stay published so you can audit our track record. 18+ only.">
+  <meta property="og:title" content="Football Results | Recent Scores &amp; Prediction Results">
+  <meta property="og:description" content="Check recent football results from the last 7 days and compare Bao Predictions' 1X2 tips with the actual scores.">
   <meta property="og:url" content="https://www.baopredictions.com/results">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
@@ -41,30 +41,40 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$baoStats = bao_api_stats();
+$baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
+$updatedIso = is_array($baoStats) && !empty($baoStats['last_updated'])
+  ? (string) $baoStats['last_updated']
+  : date('c');
+$updatedDate = date('j F Y', strtotime($updatedIso));
+$payload = bao_curl_api('/api/results');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+$weekCount = count($games);
+?>
 
 <div class="wrap">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
     <li><a href="/">Home</a></li>
-    <li><span aria-current="page">Results</span></li>
+    <li><span aria-current="page">Football Results</span></li>
   </ol>
 </nav>
 
   <header class="page-hero">
-    <h1>Results &amp; Track Record</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+    <h1>Football Results: Recent Scores &amp; Prediction Results</h1>
+<?php echo bao_last_updated_html($updatedIso); ?>
 <?php echo bao_rg_notice_html(); ?>
 
-<p class="lede">Is Bao Predictions accurate? Judge the numbers — wins and losses — not slogans.</p>
+<p class="lede">Recent football results with the original 1X2 tips beside them — a rolling seven-day prediction performance hub, separate from Yesterday.</p>
   </header>
 </div>
 
-<?php
-require_once __DIR__ . '/../components/api-curl.php';
-$baoStats = bao_api_stats();
-$baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
-?>
 <section class="section-tight section-dark">
   <div class="wrap">
     <div class="track-strip">
@@ -73,24 +83,24 @@ $baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
       <div><strong><?= htmlspecialchars((string) ((int) ($baoStats['settled_tips'] ?? $baoTrack['settled_tips'] ?? 0))) ?></strong><span>Settled tips</span></div>
       <div><strong><?= htmlspecialchars((string) ((int) ($baoStats['win_streak'] ?? $baoStats['recent']['win_streak'] ?? 0))) ?></strong><span>Best streak (3 days)</span></div>
     </div>
+    <p class="text-muted" style="margin:0.75rem 0 0;font-size:0.9rem;text-align:center">Headline figures use the qualifying 1X2 sample — not only the seven-day list below.</p>
   </div>
 </section>
+
 <section class="section">
   <div class="wrap wrap-wide">
     <div class="main-grid">
 <div class="matches-area">
     <h2 class="section-title">Recent settled tips (last 7 days)</h2>
-    <p class="text-muted" style="margin:0 0 1rem">Rolling week of published 1X2 tips that settled — newest first. For a single matchday only, use <a href="/football-predictions-yesterday">Yesterday</a>.</p>
+    <p class="text-muted" style="margin:0 0 1rem">Rolling week of published 1X2 tips that settled — newest first. For a single matchday only, use <a href="/football-predictions-yesterday">yesterday's football predictions</a>.</p>
 
-  <?php
-require_once __DIR__ . '/../components/api-curl.php';
-$payload = bao_curl_api('/api/results');
+<?php
 if ($payload === null) {
   echo bao_api_fail_msg();
-} elseif (empty($payload['games'])) {
+} elseif (!$games) {
   echo bao_api_empty_msg('fixtures');
 } else {
-  echo bao_matches_html($payload['games'], ['page' => (string)($payload['page'] ?? '')]);
+  echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
 ?>
 </div><!-- /.matches-area -->
@@ -99,25 +109,61 @@ if ($payload === null) {
 </div><!-- /.main-grid -->
   </div>
 </section>
+
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
-    <h2>How to read our track record</h2>
-    <p>We track every published prediction from the moment it goes live. Wins and losses both stay visible. <a href="/football-predictions-yesterday">Yesterday</a> is the single-day verification slice; this page shows a rolling week of settled tips plus the longer headline sample in the strip above. The headline win rate and ROI only count 1X2 tips that had a full home/draw/away model split (roughly 55%+ lean) and a real book price — fixtures with missing model probabilities are not counted and are not shown as settled tips. Postponements are excluded. Past performance is not a guarantee of future results.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday&#039;s results</a> · <a href="/how-we-predict">How we predict</a> · <a href="/about-us">About us</a></p>
+    <h2>Football Results: Recent Scores &amp; Prediction Results</h2>
+    <p><strong>Football results</strong> show what happened after the predictions were published. Bao Predictions tracks settled 1X2 predictions across a rolling <strong>last seven days</strong>, showing the actual final score alongside the original prediction, published odds and model lean.</p>
+    <p>This makes the Results page useful for more than checking a score. You can see which predictions matched the final result, which did not, and review Bao's recent prediction record without removing unsuccessful selections.</p>
+
+    <h2>Recent Football Results</h2>
+    <p>The Bao Results page covers a rolling seven-day window of <strong>settled football tips</strong>. As matches finish and predictions settle, the page records the outcome and keeps the original prediction available for comparison.</p>
+    <p>Each result can show:</p>
+    <ul>
+      <li><strong>Competition</strong> — the league or competition in which the match was played</li>
+      <li><strong>Teams</strong> — the home and away sides</li>
+      <li><strong>Final score</strong> — the actual result after the match</li>
+      <li><strong>1X2 prediction</strong> — the selection published before kick-off</li>
+      <li><strong>Published odds</strong> — the price recorded with the original prediction</li>
+      <li><strong>Model lean</strong> — the model's assessment at the time the prediction was published</li>
+      <li><strong>Outcome</strong> — whether the original selection won or lost</li>
+    </ul>
+    <p>This gives the results page a simple purpose: <strong>compare the prediction with what actually happened on the pitch</strong>.</p>
+    <p>The current page was updated on <strong><?php echo bao_h($updatedDate); ?></strong><?php
+if ($weekCount > 0) {
+  echo ' and displays <strong>' . (int) $weekCount . '</strong> settled tips from the preceding seven days';
+} else {
+  echo ' and displays settled tips from the preceding seven days as fixtures finish';
+}
+?>. The headline performance figures above are presented separately from the rolling list of recent matches, so the seven-day entries should not be confused with the full qualifying record used for those figures.</p>
+
+    <h2>Football Results Today and Yesterday</h2>
+    <p>The Results page changes throughout the week as new matches settle. That makes it relevant to searches for <strong>football results today</strong>, while completed fixtures from earlier in the seven-day window remain available for recent-result checks.</p>
+    <p>For a specific previous matchday, Bao also has a separate <a href="/football-predictions-yesterday">Yesterday</a> page. That page is focused on the previous day's predictions, whereas the Results page provides the wider seven-day view.</p>
+    <p>This distinction matters when checking prediction performance. A single day's results can be unusually strong or weak, while a rolling seven-day record gives more context around recent performance.</p>
+
+    <h2>Football Prediction Results</h2>
+    <p>The most useful part of the Results page is the connection between the <strong>original prediction and final result</strong>.</p>
+    <p>A winning prediction is easy to notice, but losing selections are just as important when assessing a prediction service. Bao keeps unsuccessful predictions in the record instead of presenting only winning examples.</p>
+    <p>The page also explains how its headline record is calculated. The qualifying performance figures use settled 1X2 tips with the required model information and a book price, while incomplete entries and postponed fixtures are excluded.</p>
+    <p>Model confidence should also be read correctly. A model lean is an assessment of the available data, not a guaranteed probability that the selection will win. Football remains unpredictable, and a correct way to judge predictions is to compare published selections with their actual results over a meaningful sample.</p>
+    <p>The <strong>last seven days</strong> therefore provide a practical recent snapshot: what Bao predicted, what happened, and how the selections performed.</p>
+    <p><strong>18+ | Gamble responsibly.</strong> Football predictions are informational opinions, not guaranteed outcomes. Never stake money you cannot afford to lose. <a href="/responsible-betting">Responsible betting</a>.</p>
+
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">yesterday's football predictions</a> · <a href="/football-predictions-today">today's football predictions</a></p>
   </div>
 </section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">
-    <h2 class="section-title">Results FAQ</h2>
+    <h2 class="section-title">Football Results FAQ</h2>
     <ul class="faq-list">
-      <li><details><summary>Is this the same as Yesterday?</summary><p>No. Yesterday is one matchday; this list is the last seven settled days, plus the headline track-record strip above.</p></details></li>
-      <li><details><summary>Do you hide losing tips?</summary><p>No. Wins and losses both stay published.</p></details></li>
-      <li><details><summary>How is win rate calculated?</summary><p>Settled 1X2 tips with a full home/draw/away model split and a book price, where the tipped outcome matched the result. Incomplete model stubs and postponements are excluded.</p></details></li>
-      <li><details><summary>Is past performance a guarantee?</summary><p>No. It is a transparency tool only.</p></details></li>
-      <li><details><summary>What odds do you use for ROI?</summary><p>Published odds at tip time when shown — not closing lines after the fact.</p></details></li>
-      <li><details><summary>How often is Results updated?</summary><p>After matchdays as fixtures settle.</p></details></li>
-      <li><details><summary>Where are yesterday&#039;s tips?</summary><p>On the Yesterday predictions page for a daily verification layer.</p></details></li>
+      <li><details><summary>Is this the same as Yesterday?</summary><p>No. Yesterday is one matchday. Results is the rolling last seven days of settled tips, plus the headline track-record strip.</p></details></li>
+      <li><details><summary>Do you hide losing tips?</summary><p>No. Wins and losses both stay published so the prediction record can be reviewed honestly.</p></details></li>
+      <li><details><summary>How are the headline figures calculated?</summary><p>Settled 1X2 tips with the required model information and a book price. Incomplete entries and postponements are excluded. Those figures are separate from the seven-day list alone.</p></details></li>
+      <li><details><summary>Are model leans guaranteed win rates?</summary><p>No. A model lean is an assessment of the available data, not a guaranteed probability.</p></details></li>
+      <li><details><summary>Does this cover football results today?</summary><p>Yes — as today's matches settle they enter the rolling seven-day board. Earlier days in the window remain available for recent checks.</p></details></li>
+      <li><details><summary>Where else can I look?</summary><p>Yesterday's football predictions for a single matchday, and today's football predictions for the live board.</p></details></li>
     </ul>
   </div>
 </section>
@@ -128,54 +174,22 @@ if ($payload === null) {
 <script src="/assets/js/load-more.js" defer></script>
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_faq_schema(array (
-  0 =>
-  array (
-    'q' => 'Is this the same as Yesterday?',
-    'a' => 'No. Yesterday is one matchday; this list is the last seven settled days, plus the headline track-record strip above.',
-  ),
-  1 =>
-  array (
-    'q' => 'Do you hide losing tips?',
-    'a' => 'No. Wins and losses both stay published.',
-  ),
-  2 =>
-  array (
-    'q' => 'How is win rate calculated?',
-    'a' => 'Settled 1X2 tips with a full home/draw/away model split and a book price, where the tipped outcome matched the result. Incomplete model stubs and postponements are excluded.',
-  ),
-  3 =>
-  array (
-    'q' => 'Is past performance a guarantee?',
-    'a' => 'No. It is a transparency tool only.',
-  ),
-  4 =>
-  array (
-    'q' => 'What odds do you use for ROI?',
-    'a' => 'Published odds at tip time when shown — not closing lines after the fact.',
-  ),
-  5 =>
-  array (
-    'q' => 'How often is Results updated?',
-    'a' => 'After matchdays as fixtures settle.',
-  ),
-  6 =>
-  array (
-    'q' => 'Where are yesterday\'s tips?',
-    'a' => 'On the Yesterday predictions page for a daily verification layer.',
-  ),
-)); echo bao_breadcrumb_schema(array (
-  0 =>
-  array (
-    'name' => 'Home',
-    'url' => '/',
-  ),
-  1 =>
-  array (
-    'name' => 'Results',
-    'url' => '/results',
-  ),
-)); echo bao_organization_schema(); ?>
+<?php
+$baoResultsFaqs = [
+  ['q' => 'Is this the same as Yesterday?', 'a' => 'No. Yesterday is one matchday. Results is the rolling last seven days of settled tips, plus the headline track-record strip.'],
+  ['q' => 'Do you hide losing tips?', 'a' => 'No. Wins and losses both stay published so the prediction record can be reviewed honestly.'],
+  ['q' => 'How are the headline figures calculated?', 'a' => 'Settled 1X2 tips with the required model information and a book price. Incomplete entries and postponements are excluded. Those figures are separate from the seven-day list alone.'],
+  ['q' => 'Are model leans guaranteed win rates?', 'a' => 'No. A model lean is an assessment of the available data, not a guaranteed probability.'],
+  ['q' => 'Does this cover football results today?', 'a' => 'Yes — as today\'s matches settle they enter the rolling seven-day board. Earlier days in the window remain available for recent checks.'],
+  ['q' => 'Where else can I look?', 'a' => 'Yesterday\'s football predictions for a single matchday, and today\'s football predictions for the live board.'],
+];
+echo bao_faq_schema($baoResultsFaqs);
+echo bao_breadcrumb_schema([
+  ['name' => 'Home', 'url' => '/'],
+  ['name' => 'Football Results', 'url' => '/results'],
+]);
+echo bao_organization_schema();
+?>
 <!--BAO_SCHEMA_END-->
 </body>
 </html>

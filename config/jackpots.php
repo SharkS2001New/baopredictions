@@ -37,4 +37,11 @@ return [
         'expected_games' => 10,
         'prize_label' => 'up to KES 300,000',
     ],
+    'mozzart-super-daily-jackpot-predictions' => [
+        'label' => 'Mozzart Super Daily Jackpot',
+        'schedule' => 'daily',
+        // Competitors consistently describe 16 games / KES 20 / up to KES 20M — confirm live on Mozzartbet.
+        'expected_games' => 16,
+        'prize_label' => 'up to KES 20,000,000',
+    ],
 ];

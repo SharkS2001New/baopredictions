@@ -202,4 +202,12 @@ return [
         'limit' => 10,
         'latest_round' => true,
     ],
+
+    'mozzart-super-daily-jackpot-predictions' => [
+        'title' => 'Mozzart Super Daily Jackpot',
+        'source' => 'selections',
+        'jackpot' => 'Mozzart Super Daily Jackpot',
+        'limit' => 20,
+        'latest_round' => true,
+    ],
 ];

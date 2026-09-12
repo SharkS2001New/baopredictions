@@ -32,6 +32,7 @@
           <li><a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek</a></li>
           <li><a href="/jackpots/sportybet-daily-jackpot-predictions">SportyBet Daily</a></li>
           <li><a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></li>
+          <li><a href="/jackpots/mozzart-super-daily-jackpot-predictions">Mozzart Super Daily</a></li>
         </ul>
       </div>
       <div>
