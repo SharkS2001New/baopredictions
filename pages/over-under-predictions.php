@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Over/Under Predictions | Football Goals Tips">
   <meta name="keywords" content="over/under, over/under 2.5 goals predictions, over/under prediction, over/under predictions, over under 2.5 goals, over 2.5 goals predictions, under 2.5 goals predictions, over/under predictions today, football over/under predictions">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Over/Under Predictions | Football Goals Tips">
   <meta name="twitter:description" content="Get free Over/Under predictions for football, including Over/Under 2.5 goals tips based on form, scoring trends and match data.">

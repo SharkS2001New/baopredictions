@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Privacy Policy | Bao Predictions">
   <meta name="keywords" content="bao predictions privacy policy, data protection, cookies">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Privacy Policy | Bao Predictions">
   <meta name="twitter:description" content="Privacy policy for Bao Predictions — what we collect on contact forms, theme preference, analytics, and how to reach us about your data.">

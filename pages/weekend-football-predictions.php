@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Weekend Football Predictions | Saturday &amp; Sunday Tips">
   <meta name="keywords" content="football prediction weekend, football prediction weekend tips, free football prediction weekend, weekend football predictions, weekend football tips, Saturday football predictions, Sunday football predictions, mathematical football prediction weekend, football prediction weekend correct score">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Weekend Football Predictions | Saturday &amp; Sunday Tips">
   <meta name="twitter:description" content="Get free weekend football predictions for Saturday and Sunday with 1X2 tips based on form, team news, home and away records and match data.">

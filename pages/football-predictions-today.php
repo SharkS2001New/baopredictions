@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Football Predictions Today | Free Tips &amp; Analysis">
   <meta name="keywords" content="football predictions today, AI football predictions today, mathematical football predictions today, today's football predictions, football tips today, free football predictions, football match predictions today">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Football Predictions Today | Free Tips &amp; Analysis">
   <meta name="twitter:description" content="Get free football predictions today with match tips, form analysis, team news and data-driven selections for today's fixtures.">

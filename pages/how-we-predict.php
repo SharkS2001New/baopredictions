@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="How We Predict | Bao Predictions Methodology">
   <meta name="keywords" content="how we predict, bao predictions methodology, football prediction model, confidence ratings explained">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How We Predict | Bao Predictions Methodology">
   <meta name="twitter:description" content="How Bao Predictions builds football tips: form, home and away records, team news, model leans, publish floors, and a public results trail. 18+ only.">
@@ -117,7 +117,7 @@ if ($settledTips > 0 && $winRate !== null) {
     <h2 class="section-title">How We Predict FAQ</h2>
     <ul class="faq-list">
       <li><details><summary>Is confidence a win probability?</summary><p>No. It is a model lean for publishing and filtering — never a guaranteed hit rate. Cards never display above 85% or at 100%.</p></details></li>
-      <li><details><summary>Do humans review every tip?</summary><p>Data starts the process; an analyst checks team news before the lean is published.</p></details></li>
+      <li><details><summary>Do humans review every tip?</summary><p>Data starts the process; Lead Analyst Stephen Karuku checks team news before the lean is published.</p></details></li>
       <li><details><summary>Why are some matches missing?</summary><p>Below 55% we usually leave the fixture off rather than publish a thin guess.</p></details></li>
       <li><details><summary>Where can I see accuracy?</summary><p>Yesterday for one matchday; Results for the seven-day list and longer qualifying sample.</p></details></li>
     </ul>
@@ -131,7 +131,7 @@ if ($settledTips > 0 && $winRate !== null) {
 <?php
 $baoHowFaqs = [
   ['q' => 'Is confidence a win probability?', 'a' => 'No. It is a model lean for publishing and filtering — never a guaranteed hit rate. Cards never display above 85% or at 100%.'],
-  ['q' => 'Do humans review every tip?', 'a' => 'Data starts the process; an analyst checks team news before the lean is published.'],
+  ['q' => 'Do humans review every tip?', 'a' => 'Data starts the process; Lead Analyst Stephen Karuku checks team news before the lean is published.'],
   ['q' => 'Why are some matches missing?', 'a' => 'Below 55% we usually leave the fixture off rather than publish a thin guess.'],
   ['q' => 'Where can I see accuracy?', 'a' => 'Yesterday for one matchday; Results for the seven-day list and longer qualifying sample.'],
 ];

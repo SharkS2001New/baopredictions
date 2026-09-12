@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="SportPesa Mega Jackpot Prediction — 17 Games | Bao Predictions">
   <meta name="keywords" content="sportpesa mega jackpot prediction, sportpesa mega jackpot predictions, sportpesa 17 games, mega jackpot tips kenya">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SportPesa Mega Jackpot Prediction — 17 Games | Bao Predictions">
   <meta name="twitter:description" content="SportPesa Mega Jackpot prediction for this weekend's 17 games — form, home/away records, H2H, team news, and per-game confidence. 18+.">

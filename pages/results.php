@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Football Results | Recent Scores &amp; Prediction Results">
   <meta name="keywords" content="football results, football results today, football results yesterday, yesterday football results, yesterday's football results, recent football results, football prediction results">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Football Results | Recent Scores &amp; Prediction Results">
   <meta name="twitter:description" content="Check recent football results from the last 7 days and compare Bao Predictions' 1X2 tips with the actual scores.">

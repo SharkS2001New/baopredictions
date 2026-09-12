@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Betika Midweek Jackpot Prediction | Bao Predictions">
   <meta name="keywords" content="betika midweek jackpot prediction, fully analysed betika midweek jackpot prediction, betika midweek jackpot predictions, betika midweek jackpot prediction today, 15M midweek jackpot predictions">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Betika Midweek Jackpot Prediction | Bao Predictions">
   <meta name="twitter:description" content="Betika Midweek Jackpot prediction with form, H2H, home and away analysis and team news for the latest 15-game jackpot.">

@@ -11,11 +11,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Live Predictions Today | Football Livescores">
   <meta name="keywords" content="live predictions, live predictions today, live football predictions, live football scores, football livescores, live match predictions, live betting predictions, live football tips, football scores today, live soccer predictions, live prediction tips">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Live Predictions Today | Football Livescores">
   <meta name="twitter:description" content="Follow live football scores and predictions today, with match updates and selected tips for 1X2, BTTS, Over/Under and Double Chance.">

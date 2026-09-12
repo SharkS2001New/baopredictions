@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Accumulator Tips | Acca Tips Today">
   <meta name="keywords" content="accumulator tips, accumulator tips today, acca tips, 3 fold 5 fold 8 fold tips">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Accumulator Tips | Acca Tips Today">
   <meta name="twitter:description" content="Free accumulator tips today — pre-built 3-, 5- and 8-fold tickets with combined odds, mixed markets and clear reasoning. 18+.">

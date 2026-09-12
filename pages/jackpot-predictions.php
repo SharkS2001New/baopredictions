@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets, Mozzart">
   <meta name="keywords" content="jackpot predictions kenya, free jackpot prediction, sportpesa mega jackpot, betika midweek jackpot, sportybet daily jackpot, odibets laki tatu, mozzart daily jackpot">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Jackpot Predictions Kenya — SportPesa, Betika, SportyBet, Odibets, Mozzart">
   <meta name="twitter:description" content="Free jackpot predictions for SportPesa, Betika, SportyBet, Odibets &amp; Mozzart — current fixtures, per-game reasoning, and confidence levels. 18+.">

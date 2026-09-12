@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="SportyBet Jackpot Predictions &amp; Tips | Free Picks">
   <meta name="keywords" content="sportybet jackpot predictions, sportybet jackpot tips, sportybet jackpot prediction this weekend, sportybet jackpot bonus, sportybet jackpot prizes, sportybet jackpot prediction, sportybet jackpot tips Kenya, sportybet jackpot predictions this week">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="SportyBet Jackpot Predictions &amp; Tips | Free Picks">
   <meta name="twitter:description" content="Get free SportyBet jackpot predictions, tips, current weekend picks, bonus information and prize details based on the latest jackpot card.">

@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Today's Football Predictions &amp; Free Tips | Bao Predictions">
   <meta name="keywords" content="football predictions today, free football tips, bao predictions, confidence ratings, jackpot predictions kenya">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Today's Football Predictions &amp; Free Tips | Bao Predictions">
   <meta name="twitter:description" content="Free daily football predictions with confidence ratings, form and head-to-head analysis, and a public track record. Updated every matchday. 18+ only.">

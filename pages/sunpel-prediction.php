@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Sunpel Prediction | Sunpel Tips &amp; Analysis">
   <meta name="keywords" content="sunpel prediction, sunpel, sunpel jackpot prediction, sunpel tips, sunpel prediction today">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Sunpel Prediction | Sunpel Tips &amp; Analysis">
   <meta name="twitter:description" content="Looking for Sunpel prediction and Sunpel tips? Compare football picks, jackpot analysis, markets and prediction methodology with Bao Predictions.">

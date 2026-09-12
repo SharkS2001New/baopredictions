@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Football Predictions Yesterday | Results &amp; Tips">
   <meta name="keywords" content="football predictions yesterday, AI football predictions yesterday, yesterday football predictions, football tips yesterday, yesterday match predictions, football predictions results yesterday">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Football Predictions Yesterday | Results &amp; Tips">
   <meta name="twitter:description" content="Check football predictions yesterday with the original tips, final results, wins, losses and model leans from Bao Predictions.">

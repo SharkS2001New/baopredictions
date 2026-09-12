@@ -97,11 +97,11 @@ $baoContactFaqs = [
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Contact Us | Bao Predictions">
   <meta name="keywords" content="contact bao predictions, tip correction, partnership enquiry">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Contact Us | Bao Predictions">
   <meta name="twitter:description" content="Contact Bao Predictions for tip corrections, partnerships, league requests and press — use the form for fixture details and score fixes.">

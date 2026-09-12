@@ -28,9 +28,19 @@ class Router {
         $method = $_SERVER['REQUEST_METHOD'];
         $requestUri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
 
+        // Crawlers often send HEAD; treat it like GET for read routes.
+        $matchMethod = ($method === 'HEAD') ? 'GET' : $method;
+
         foreach ($this->routes as $route) {
-            if ($method === $route['method'] && $this->matchPath($route['path'], $requestUri, $params)) {
+            if ($matchMethod === $route['method'] && $this->matchPath($route['path'], $requestUri, $params)) {
                 try {
+                    if ($method === 'HEAD') {
+                        // Run handler only if needed for headers; prefer empty body.
+                        ob_start();
+                        call_user_func_array($route['callback'], $params);
+                        ob_end_clean();
+                        return;
+                    }
                     call_user_func_array($route['callback'], $params);
                 } catch (\Throwable $e) {
                     if (function_exists('bao_log_exception')) {
@@ -57,6 +67,9 @@ class Router {
         }
 
         http_response_code(404);
+        if ($method === 'HEAD') {
+            return;
+        }
         $this->show404Page();
     }
 

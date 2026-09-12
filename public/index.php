@@ -8,6 +8,14 @@
 
 $uri = urldecode(parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH));
 
+// Dynamic sitemap must not be short-circuited as a static file.
+if ($uri === '/sitemap.xml') {
+    require_once __DIR__ . '/../src/Facades/Router.php';
+    require_once __DIR__ . '/../src/Api/bootstrap.php';
+    include __DIR__ . '/../pages/sitemap.php';
+    return true;
+}
+
 // Let the built-in server serve real static files from /public
 if ($uri !== '/' && $uri !== '' && file_exists(__DIR__ . $uri) && !is_dir(__DIR__ . $uri)) {
     return false;
@@ -169,6 +177,10 @@ foreach ($pageApiKeys as $pageKey) {
 
 $router->get('/', function () {
     include __DIR__ . '/../pages/homepage.php';
+});
+
+$router->get('/sitemap.xml', function () {
+    include __DIR__ . '/../pages/sitemap.php';
 });
 
 $router->get('/football-predictions-today', function () {

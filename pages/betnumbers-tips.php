@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Bet Numbers Tips | Bet Numbers Prediction Today">
   <meta name="keywords" content="bet numbers, bet numbers prediction, bet numbers prediction for today, betnumbers, betnumbers prediction, betnumbers prediction today, betnumbers predictions today, betnumbers today, today's betnumbers predictions">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Bet Numbers Tips | Bet Numbers Prediction Today">
   <meta name="twitter:description" content="Get bet numbers prediction today with football tips covering 1X2, Double Chance, BTTS, Over/Under, HT/FT and correct score.">

@@ -10,11 +10,23 @@ if (!function_exists('bao_h')) {
     }
 }
 
+/** Lead analyst — used in bylines, About, and Person schema. */
+function bao_lead_analyst(): array {
+    return [
+        'name' => 'Stephen Karuku',
+        'job_title' => 'Lead Analyst',
+        'url' => 'https://www.baopredictions.com/about-us#stephen-karuku',
+        'works_for' => 'Bao Predictions',
+    ];
+}
+
 function bao_last_updated_html(?string $iso = null): string {
     $iso = $iso ?: date('c');
     $label = date('j M Y, H:i', strtotime($iso)) . ' EAT';
+    $analyst = bao_lead_analyst();
     return '<p class="last-updated">Last updated <time datetime="' . bao_h($iso) . '">' . bao_h($label) . '</time>'
-        . ' · By <a href="/about-us">Bao Predictions Analysis Team</a></p>';
+        . ' · By <a href="' . bao_h($analyst['url']) . '">' . bao_h($analyst['name']) . '</a>'
+        . ', ' . bao_h($analyst['job_title']) . '</p>';
 }
 
 function bao_rg_notice_html(): string {
@@ -261,6 +273,7 @@ function bao_breadcrumb_schema(array $crumbs): string {
 }
 
 function bao_organization_schema(): string {
+    $analyst = bao_lead_analyst();
     $data = [
         '@context' => 'https://schema.org',
         '@type' => 'Organization',
@@ -276,11 +289,40 @@ function bao_organization_schema(): string {
             'Betika Midweek Jackpot',
             'FKF Premier League',
         ],
+        'employee' => [
+            '@type' => 'Person',
+            'name' => $analyst['name'],
+            'jobTitle' => $analyst['job_title'],
+            'url' => $analyst['url'],
+        ],
+    ];
+    return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+}
+
+function bao_person_schema(): string {
+    $analyst = bao_lead_analyst();
+    $data = [
+        '@context' => 'https://schema.org',
+        '@type' => 'Person',
+        'name' => $analyst['name'],
+        'jobTitle' => $analyst['job_title'],
+        'url' => $analyst['url'],
+        'worksFor' => [
+            '@type' => 'Organization',
+            'name' => $analyst['works_for'],
+            'url' => 'https://www.baopredictions.com',
+        ],
+        'knowsAbout' => [
+            'Football predictions',
+            'Football betting markets',
+            'Kenya jackpot tips',
+        ],
     ];
     return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 }
 
 function bao_article_schema(string $headline, string $description, string $url): string {
+    $analyst = bao_lead_analyst();
     $data = [
         '@context' => 'https://schema.org',
         '@type' => 'Article',
@@ -289,9 +331,10 @@ function bao_article_schema(string $headline, string $description, string $url):
         'datePublished' => date('c'),
         'dateModified' => date('c'),
         'author' => [
-            '@type' => 'Organization',
-            'name' => 'Bao Predictions',
-            'url' => 'https://www.baopredictions.com',
+            '@type' => 'Person',
+            'name' => $analyst['name'],
+            'jobTitle' => $analyst['job_title'],
+            'url' => $analyst['url'],
         ],
         'publisher' => [
             '@type' => 'Organization',

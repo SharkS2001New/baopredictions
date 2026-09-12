@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="1X2 Predictions | Home Draw Away Tips Today">
   <meta name="keywords" content="1x2 predictions, 1x2 predictions today, win draw win tips, match result predictions, home win tips">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="1X2 Predictions | Home Draw Away Tips Today">
   <meta name="twitter:description" content="Free 1X2 predictions today — home win, draw or away win — with confidence ratings, team news checks and clear reasoning. 18+.">

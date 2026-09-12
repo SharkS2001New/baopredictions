@@ -10,11 +10,11 @@
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="Must Win Teams Today | Football Win Tips">
   <meta name="keywords" content="must win teams today, must win tips today, must win teams today with big odds, banker tips, high confidence football tips">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Must Win Teams Today | Football Win Tips">
   <meta name="twitter:description" content="Get must win teams today with football analysis based on form, home and away records, team news, league position and opposition strength.">

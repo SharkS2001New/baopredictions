@@ -47,6 +47,9 @@ RewriteBase /
 RewriteCond %{HTTP_HOST} ^baopredictions\.com$ [NC]
 RewriteRule ^ https://www.baopredictions.com%{REQUEST_URI} [R=301,L]
 
+# Dynamic sitemap (do not serve a stale static file)
+RewriteRule ^sitemap\.xml$ index.php [QSA,L]
+
 # Strip trailing slash (except root) — one canonical URL per page
 RewriteCond %{REQUEST_FILENAME} !-d
 RewriteCond %{REQUEST_URI} (.+)/$

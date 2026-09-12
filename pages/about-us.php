@@ -4,25 +4,25 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>About Us | Bao Predictions</title>
-  <meta name="description" content="About Bao Predictions — Kenya-facing football tips and jackpot sheets with model leans, human review, and a public wins-and-losses record.">
+  <meta name="description" content="About Bao Predictions and lead analyst Stephen Karuku — Kenya-facing football tips, jackpot sheets, and a public wins-and-losses record.">
   <link rel="canonical" href="https://www.baopredictions.com/about-us">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
   <meta name="title" content="About Us | Bao Predictions">
-  <meta name="keywords" content="about bao predictions, bao predictions analysis team, kenya football tips">
-  <meta name="author" content="Bao Predictions Analysis Team">
+  <meta name="keywords" content="about bao predictions, stephen karuku, bao predictions lead analyst, kenya football tips">
+  <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Bao Predictions">
+  <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="About Us | Bao Predictions">
-  <meta name="twitter:description" content="About Bao Predictions — Kenya-facing football tips and jackpot sheets with model leans, human review, and a public wins-and-losses record.">
+  <meta name="twitter:description" content="About Bao Predictions and lead analyst Stephen Karuku — Kenya-facing football tips, jackpot sheets, and a public wins-and-losses record.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/about-us">
   <!--BAO_HEAD_EXTRA_END-->
 
   <meta property="og:title" content="About Us | Bao Predictions">
-  <meta property="og:description" content="About Bao Predictions — Kenya-facing football tips and jackpot sheets with model leans, human review, and a public wins-and-losses record.">
+  <meta property="og:description" content="About Bao Predictions and lead analyst Stephen Karuku — Kenya-facing football tips, jackpot sheets, and a public wins-and-losses record.">
   <meta property="og:url" content="https://www.baopredictions.com/about-us">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
@@ -60,15 +60,15 @@ $baoAboutFaqs = [
   ],
   [
     'q' => 'Who writes the tips?',
-    'a' => 'The Bao Predictions Analysis Team — a Kenya-facing editorial desk that reviews model output against team news before publishing.',
+    'a' => 'Stephen Karuku, Lead Analyst at Bao Predictions, signs off published tips. Model output starts the process; he reviews team news and price context before a card goes live.',
   ],
   [
     'q' => 'Where are you focused?',
     'a' => 'Kenya-facing readers and jackpot operators, with tip boards weighted to major European and global leagues. FKF Premier League fixtures publish when model and odds clear the same bar.',
   ],
   [
-    'q' => 'How do I contact you?',
-    'a' => 'Use Contact for tip corrections, partnerships and press.',
+    'q' => 'How do I report a correction?',
+    'a' => 'Use Contact with the teams, match date, published tip, and correct score. Stephen’s desk reviews tip corrections through that form.',
   ],
 ];
 ?>
@@ -85,15 +85,16 @@ $baoAboutFaqs = [
   <header class="page-hero">
     <h1>About Bao Predictions</h1>
 <?php echo bao_last_updated_html($updatedIso); ?>
-<p class="lede">Kenya-facing football tips and jackpot sheets — model leans, human review, and a public record that keeps losses visible.</p>
+<p class="lede">Kenya-facing football tips and jackpot sheets — model leans, human review by lead analyst Stephen Karuku, and a public record that keeps losses visible.</p>
   </header>
 
   <article class="prose">
 <p>Bao Predictions is a football prediction site built for readers who want the tip, the reasoning, and a way to check what happened afterwards. We are not a bookmaker. We do not take stakes. Every published lean is an opinion based on available match data — not a guaranteed result.</p>
 
-<h2>Who is behind the tips</h2>
-<p>Tips are researched and signed off by the <strong>Bao Predictions Analysis Team</strong>, a small Kenya-facing desk that follows football markets and local jackpot products. Model output starts the process; an analyst still checks team news, rotation risk and price context before a card goes live. Nothing is published only because a fixture exists on the calendar.</p>
-<p>Methodology lives on <a href="/how-we-predict">How We Predict</a>. The numbers live on <a href="/results">Football Results</a> and <a href="/football-predictions-yesterday">Football Predictions Yesterday</a>.</p>
+<h2 id="stephen-karuku">Lead analyst — Stephen Karuku</h2>
+<p><strong>Stephen Karuku</strong> is the Lead Analyst of Bao Predictions. He is accountable for the published tip boards and jackpot sheets: model output starts the process, and he reviews team news, rotation risk and price context before a card goes live. Nothing is published only because a fixture exists on the calendar.</p>
+<p>If a tip or settled score looks wrong, send the fixture details through <a href="/contact-us">Contact</a> — corrections are reviewed by Stephen’s desk and reflected on <a href="/football-predictions-yesterday">Yesterday</a> and <a href="/results">Results</a> when needed.</p>
+<p>Methodology lives on <a href="/how-we-predict">How We Predict</a>. The numbers live on Results and Yesterday.</p>
 
 <h2>What we cover</h2>
 <p>Day to day we publish single-match tips across 1X2, BTTS, Over/Under, Double Chance and HT/FT, plus shortlists such as Must Win Teams Today and Sure Bets Today. Jackpot sheets cover SportPesa Mega Jackpot, SportPesa Midweek Jackpot, Betika Midweek Jackpot, SportyBet Daily, Odibets Laki Tatu and Mozzart Super Daily Jackpot.</p>
@@ -106,8 +107,8 @@ if ($settledTips > 0 && $winRate !== null) {
   echo ', settled performance figures update on Results as fixtures finish';
 }
 ?>. That sample excludes incomplete model rows and postponements.</p>
-<p>Plenty of tip brands stay anonymous and delete losers. Bao’s difference is the named desk plus the audit trail: Today for the live board, Yesterday for one matchday, Results for the rolling week and longer track strip.</p>
-<p>Partnerships and corrections go through <a href="/contact-us">Contact</a>. <strong>18+ | Gamble responsibly.</strong></p>
+<p>Plenty of tip brands stay anonymous and delete losers. Bao’s difference is a named lead analyst plus the audit trail: Today for the live board, Yesterday for one matchday, Results for the rolling week and longer track strip.</p>
+<p>Partnerships and press also go through <a href="/contact-us">Contact</a>. <strong>18+ | Gamble responsibly.</strong></p>
   </article>
 </div>
 
@@ -134,9 +135,10 @@ echo bao_breadcrumb_schema([
 ]);
 echo bao_article_schema(
   'About Bao Predictions',
-  'About Bao Predictions — Kenya-facing football tips and jackpot sheets with model leans, human review, and a public wins-and-losses record.',
+  'About Bao Predictions and lead analyst Stephen Karuku — Kenya-facing football tips, jackpot sheets, and a public wins-and-losses record.',
   '/about-us'
 );
+echo bao_person_schema();
 echo bao_organization_schema();
 ?>
 <!--BAO_SCHEMA_END-->
