@@ -112,15 +112,52 @@ if ($settledTips > 0 && $winRate !== null) {
   </article>
 </div>
 
+<?php
+$faqs = [
+  [
+    'q' => 'How does Bao build a football prediction?',
+    'a' => 'Model output starts the process; Stephen Karuku, Lead Analyst, reviews team news, rotation risk and price context before a card goes live. Nothing publishes just because a fixture exists.
+
+Inputs include recent form (last-six where reliable), home/away splits, league position, H2H as supporting context, confirmed availability, and competition stakes. A balanced fixture may stay off the board if nothing clears the 55% publish floor.',
+  ],
+  [
+    'q' => 'What does the confidence percentage mean?',
+    'a' => 'It is a capped model lean — how strongly the data points toward the published selection — not a predicted win rate. The site hard-caps display at 85% and never shows 100%.
+
+Rough bands: below 55% usually unpublished on tip boards; 55–59% thin edge; 60–74% solid lean; 75%+ enters Must Win (1X2); 78%+ enters Sure Bets (mixed markets). Even top-band leans lose regularly.',
+  ],
+  [
+    'q' => 'Do you use AI or pure maths?',
+    'a' => 'Statistical models process form, venue and market data consistently; humans check whether the story still holds after team news. The label matters less than what you can verify after the match.
+
+We avoid stock “AI tip” language because it hides methodology. Each card shows market, lean and short reasoning so you can judge the call yourself.',
+  ],
+  [
+    'q' => 'Why might a tip change after first publish?',
+    'a' => 'Team news, postponements and lineups can shift the expected balance. Tomorrow\'s board is explicitly provisional; Today\'s board can move when confirmed absences change the lean.
+
+Check the last-updated timestamp on the page. Treating an early card as final without re-reading is a common mistake — especially on cup ties and late injury news.',
+  ],
+  [
+    'q' => 'How do shortlist pages differ from Today?',
+    'a' => 'Today is the full daily board. Must Win Teams Today filters high-confidence 1X2 win leans (~75%+). Sure Bets Today takes the strongest leans across 1X2, Double Chance, BTTS, Over/Under and HT/FT (~78%+).
+
+Banker of the Day is a single top lean from those boards. Yesterday and Results are where you audit what actually happened — wins and losses both stay up.',
+  ],
+  [
+    'q' => 'Where can I verify performance?',
+    'a' => 'Results carries the rolling seven-day settled list and headline track strip. Yesterday isolates one matchday. Losses are not removed.
+
+Figures update as fixtures finish. Compare published picks beside final scores rather than trusting a confidence figure as a win-rate promise.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">How We Predict FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>Is confidence a win probability?</summary><p>No. It is a model lean for publishing and filtering — never a guaranteed hit rate. Cards never display above 85% or at 100%.</p></details></li>
-      <li><details><summary>Do humans review every tip?</summary><p>Data starts the process; Lead Analyst Stephen Karuku checks team news before the lean is published.</p></details></li>
-      <li><details><summary>Why are some matches missing?</summary><p>Below 55% we usually leave the fixture off rather than publish a thin guess.</p></details></li>
-      <li><details><summary>Where can I see accuracy?</summary><p>Yesterday for one matchday; Results for the seven-day list and longer qualifying sample.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -129,13 +166,7 @@ if ($settledTips > 0 && $winRate !== null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoHowFaqs = [
-  ['q' => 'Is confidence a win probability?', 'a' => 'No. It is a model lean for publishing and filtering — never a guaranteed hit rate. Cards never display above 85% or at 100%.'],
-  ['q' => 'Do humans review every tip?', 'a' => 'Data starts the process; Lead Analyst Stephen Karuku checks team news before the lean is published.'],
-  ['q' => 'Why are some matches missing?', 'a' => 'Below 55% we usually leave the fixture off rather than publish a thin guess.'],
-  ['q' => 'Where can I see accuracy?', 'a' => 'Yesterday for one matchday; Results for the seven-day list and longer qualifying sample.'],
-];
-echo bao_faq_schema($baoHowFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'How We Predict', 'url' => '/how-we-predict'],

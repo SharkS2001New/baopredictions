@@ -164,7 +164,6 @@ $baoSunpelFaqs = [
   ['q' => 'How do I know a jackpot tip is still current?', 'a' => 'Check the fixture date, round status and whether the coupon still matches the bookmaker\'s live card. Older indexed pages can outlive the round they were written for.'],
   ['q' => 'Do predictions guarantee a win?', 'a' => 'No. Neither Bao nor any tipster can guarantee football outcomes. Stake only what you can afford to lose.'],
 ];
-echo bao_faq_schema($baoSunpelFaqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Sunpel Prediction', 'url' => '/sunpel-prediction'],

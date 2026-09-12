@@ -118,17 +118,52 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is SportPesa Midweek Jackpot?',
+    'a' => 'SportPesa\'s midweek football pool — a multi-game 1X2 card between weekend Mega rounds, with its own stake and prize tier on SportPesa.
+
+Confirm live game count and deadline on SportPesa before playing.',
+  ],
+  [
+    'q' => 'Is the midweek sheet free?',
+    'a' => 'Yes. Bao publishes the full Midweek sheet with per-game reasoning at no charge.
+
+Double Chance notes may appear beside tight 1X2 leans — jackpots still require 1X2 on the operator slip.',
+  ],
+  [
+    'q' => 'How do you analyse midweek games?',
+    'a' => 'Each leg separately: form, home/away, H2H context, team news, rotation risk in congested weeks. No single blanket accuracy score for the whole card.
+
+Stephen Karuku, Lead Analyst, reviews before publish.',
+  ],
+  [
+    'q' => 'Midweek vs Mega — what changes?',
+    'a' => 'Mega is the weekend SportPesa Mega Jackpot product (17-game name). Midweek is a smaller midweek card with different stake and prize.
+
+SMS codes differ — never assume Mega\'s MJP format fits Midweek.',
+  ],
+  [
+    'q' => 'Are midweek tips guaranteed?',
+    'a' => 'No. Midweek cards still need every leg correct for the top prize. Confidence on cards is a capped model lean, not a hit-rate promise.
+
+18+ only. See Responsible Betting.',
+  ],
+  [
+    'q' => 'Previous round visible?',
+    'a' => 'When SportPesa opens a new round, Bao keeps the previous sheet with ✅/❌ where settled — wins and losses together.
+
+Use that audit before trusting generic “midweek jackpot won every week” claims elsewhere.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">SportPesa Midweek FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>How many games is SportPesa Midweek?</summary><p>Typically 13 — confirm the live card on SportPesa for this round.</p></details></li>
-      <li><details><summary>How is Midweek different from Mega?</summary><p>Separate prize pool and midweek fixtures; rotation risk is usually higher than weekend Mega.</p></details></li>
-      <li><details><summary>Should I reuse last round's tips?</summary><p>No. Match every prediction to the currently published SportPesa fixtures.</p></details></li>
-      <li><details><summary>Same tip format as Mega?</summary><p>Yes — 1X2 leans with per-game reasoning, plus a Double Chance cover on the card.</p></details></li>
-      <li><details><summary>Are tips free?</summary><p>Yes.</p></details></li>
-      <li><details><summary>18+ only?</summary><p>Yes. Confirm terms on SportPesa and bet responsibly.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -139,15 +174,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoMwFaqs = [
-  ['q' => 'How many games is SportPesa Midweek?', 'a' => 'Typically 13 — confirm the live card on SportPesa for this round.'],
-  ['q' => 'How is Midweek different from Mega?', 'a' => 'Separate prize pool and midweek fixtures; rotation risk is usually higher than weekend Mega.'],
-  ['q' => 'Should I reuse last round\'s tips?', 'a' => 'No. Match every prediction to the currently published SportPesa fixtures.'],
-  ['q' => 'Same tip format as Mega?', 'a' => 'Yes — 1X2 leans with per-game reasoning, plus a Double Chance cover on the card.'],
-  ['q' => 'Are tips free?', 'a' => 'Yes.'],
-  ['q' => '18+ only?', 'a' => 'Yes. Confirm terms on SportPesa and bet responsibly.'],
-];
-echo bao_faq_schema($baoMwFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

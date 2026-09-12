@@ -57,43 +57,63 @@ $predToday = is_array($stats) ? (int) ($stats['today']['predictions'] ?? 0) : 0;
 $baoFaqs = [
   [
     'q' => 'Is Bao Predictions free?',
-    'a' => 'Yes. Tip boards, jackpot sheets, Yesterday, Results, and reasoning on each card are free to view. We do not take stakes.',
+    'a' => 'Yes. Tip boards, jackpot sheets, Yesterday, Results, and the reasoning on each card are free to view. Bao Predictions does not take stakes or sell access to picks.
+
+You can read every published lean, check settled outcomes, and follow jackpot sheets without creating an account. Partnership enquiries and corrections go through Contact — not a paywall.',
   ],
   [
     'q' => 'Are tips guaranteed or “sure wins”?',
-    'a' => 'No. A model lean is the strength of a published selection, not a promised hit rate. Cards never show 100%, and even 75–85% leans can lose.',
+    'a' => 'No. A model lean describes how strongly the available data points toward a selection — it is not a promised hit rate and never a guarantee.
+
+Cards are hard-capped at 85% confidence and never show 100%. Even leans in the Must Win (75%+) or Sure Bets (78%+) bands can lose. Football stays unpredictable; the honest check is Results and Yesterday, where losses stay visible.',
   ],
   [
     'q' => 'What does the confidence percentage mean?',
-    'a' => 'It is a capped model lean for publishing and filtering (hard-capped at 85%). Below 55% we usually leave the fixture off tip boards. Must Win Teams Today is high-confidence 1X2 (roughly 75%+); Sure Bets Today is the strongest mixed-market band (roughly 78%+).',
+    'a' => 'It is a capped model lean for publishing and filtering — not a predicted win rate. Stephen Karuku, Lead Analyst, reviews model output before anything goes live.
+
+Publish floors: below 55% a fixture usually stays off tip boards. Must Win Teams Today is high-confidence 1X2 (roughly 75%+). Sure Bets Today is the strongest mixed-market band (roughly 78%+). The ceiling is 85%; we never display 100%.',
   ],
   [
     'q' => 'How do you build a prediction?',
-    'a' => 'Recent form (including last-six context where reliable), home and away splits, league position, head-to-head where still relevant, team news, and match context — then a human check before publish. Full detail is on How We Predict.',
+    'a' => 'Each card starts with model output, then a human check against form, home/away splits, league position, head-to-head where still relevant, team news, and match context before publish.
+
+Recent form is weighted more when it comes from the same competition and venue. H2H is supporting evidence, not a standalone rule. Team news can flip a lean after first publish — that is why last-updated times matter. Full methodology is on How We Predict.',
   ],
   [
     'q' => 'What is the difference between Today, Tomorrow, Yesterday and Results?',
-    'a' => 'Today is the main daily board. Tomorrow is a provisional early board that can move after lineups. Yesterday is the previous matchday audit (wins and losses kept). Results is the rolling last seven days of settled tips plus the longer qualifying track strip.',
+    'a' => 'Today is the main daily board for fixtures on the current matchday. Tomorrow is a provisional early board that can move after lineups and team news.
+
+Yesterday is the previous matchday audit — wins and losses kept on the same cards. Results is the rolling last seven days of settled tips plus the headline track-record strip. They answer different questions: live picks vs one day vs a week vs long-run sample.',
   ],
   [
     'q' => 'What are Livescores?',
-    'a' => 'The live board for matches already underway — current score and minute first, then any still-relevant tip. It is not a second copy of the pre-match Today page. Settled outcomes belong on Results.',
+    'a' => 'The live board for matches already underway — current score and minute first, then any still-relevant tip. It is not a second copy of the pre-match Today page.
+
+Use Livescores to follow in-play fixtures. Settled outcomes and performance auditing belong on Results and Yesterday once the final whistle passes.',
   ],
   [
     'q' => 'Which jackpots do you cover?',
-    'a' => 'SportPesa Mega Jackpot, SportPesa Midweek Jackpot, Betika Midweek Jackpot, SportyBet Daily, Odibets Laki Tatu, and Mozzart Super Daily Jackpot. Confirm live game count, stake and deadline on the operator before you play.',
+    'a' => 'SportPesa Mega Jackpot, SportPesa Midweek Jackpot, Betika Midweek Jackpot, SportyBet Daily, Odibets Laki Tatu, and Mozzart Super Daily Jackpot — each with per-game reasoning on its own sheet.
+
+Confirm live game count, stake, deadline and bonus rules on the operator before you play. Bao names products exactly as listed; we do not promise jackpot hits.',
   ],
   [
     'q' => 'How often are tips updated?',
-    'a' => 'Daily boards refresh as fixtures and team news change. Tomorrow tips are provisional. Jackpot sheets follow each operator’s round. Livescores reloads about every 90 seconds while matches are in play.',
+    'a' => 'Daily boards refresh as fixtures and team news change. Tomorrow tips are provisional until closer to kickoff. Jackpot sheets follow each operator’s round.
+
+Livescores reloads about every 90 seconds while matches are in play. Check the last-updated line on each page before treating an older card as current.',
   ],
   [
     'q' => 'Where can I see if tips won or lost?',
-    'a' => 'Football Predictions Yesterday for one matchday; Football Results for the seven-day settled list and headline track-record figures. Losses stay published.',
+    'a' => 'Football Predictions Yesterday for one matchday; Football Results for the seven-day settled list and headline track-record figures. Losses stay published.
+
+Headline win-rate figures update on Results as the qualifying sample grows.',
   ],
   [
     'q' => 'Do you encourage people to start betting?',
-    'a' => 'No. We publish analysis for adults who already choose to bet with licensed operators. Read Responsible Betting first. 18+ only.',
+    'a' => 'No. Bao publishes analysis for adults who already choose to bet with licensed operators. We are not a bookmaker and do not take stakes.
+
+Read Responsible Betting first. Tips are informational opinions — not financial advice. 18+ only (or legal age where you live). Never stake money you cannot afford to lose.',
   ],
 ];
 ?>
@@ -110,32 +130,20 @@ $baoFaqs = [
   <header class="page-hero">
     <h1>Frequently Asked Questions</h1>
 <?php echo bao_last_updated_html($updatedIso); ?>
-<p class="lede">Short answers on free tips, model leans, jackpots, and how Yesterday differs from Results.</p>
+<p class="lede">Direct answers on free tips, model leans, board roles, jackpots, and how Yesterday differs from Results — with the methodology detail most tip-site FAQs skip.</p>
   </header>
 
   <article class="prose">
-<p>This FAQ covers the questions people ask most about Bao Predictions: whether tips are free, what a confidence figure means, how Today / Tomorrow / Yesterday / Results fit together, which Kenyan jackpots we cover, and how to use the site without treating any selection as a sure win.</p>
+<p>This FAQ goes beyond “tips are free” and “bet responsibly.” It explains what confidence figures actually mean (model lean, not win rate), how Today, Tomorrow, Yesterday and Results differ, which Kenyan jackpots Bao covers by exact product name, and why Stephen Karuku reviews cards before publish.</p>
 
 <h2>Using the site</h2>
-<ul class="faq-list">
-<?php foreach (array_slice($baoFaqs, 0, 4) as $item): ?>
-  <li><details><summary><?php echo bao_h($item['q']); ?></summary><p><?php echo bao_h($item['a']); ?></p></details></li>
-<?php endforeach; ?>
-</ul>
+<?php echo bao_faq_items_html(array_slice($baoFaqs, 0, 4)); ?>
 
 <h2>Boards, livescores and jackpots</h2>
-<ul class="faq-list">
-<?php foreach (array_slice($baoFaqs, 4, 4) as $item): ?>
-  <li><details><summary><?php echo bao_h($item['q']); ?></summary><p><?php echo bao_h($item['a']); ?></p></details></li>
-<?php endforeach; ?>
-</ul>
+<?php echo bao_faq_items_html(array_slice($baoFaqs, 4, 4)); ?>
 
 <h2>Track record and responsible use</h2>
-<ul class="faq-list">
-<?php foreach (array_slice($baoFaqs, 8) as $item): ?>
-  <li><details><summary><?php echo bao_h($item['q']); ?></summary><p><?php echo bao_h($item['a']); ?></p></details></li>
-<?php endforeach; ?>
-</ul>
+<?php echo bao_faq_items_html(array_slice($baoFaqs, 8)); ?>
 
 <p>As of <strong><?php echo bao_h($updatedDate); ?></strong><?php
 if ($predToday > 0) {
@@ -147,7 +155,7 @@ if ($settledTips > 0 && $winRate !== null) {
     . bao_h((string) $winRate) . '%</strong> win rate';
 }
 ?>. Those figures are a published record, not a promise about the next card.</p>
-<p>Generic FAQs often stop at “tips are free” and “bet responsibly.” This page also separates provisional Tomorrow tips from settled Yesterday audits, and Results from a single matchday — the same structure used across the tip boards themselves.</p>
+<p>Each answer below states the direct takeaway first, then the checkable detail — publish floors, board roles, and where to audit wins and losses — so you can use the site without treating any lean as a sure win.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/how-we-predict">How We Predict</a> · <a href="/results">Football Results</a> · <a href="/responsible-betting">Responsible Betting</a> · <a href="/contact-us">Contact</a></p>
 <p><strong>18+ | Gamble responsibly.</strong></p>
   </article>
@@ -158,7 +166,6 @@ if ($settledTips > 0 && $winRate !== null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($baoFaqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'FAQ', 'url' => '/faq'],

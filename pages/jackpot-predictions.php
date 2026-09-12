@@ -53,7 +53,8 @@
 
 <header class="page-hero">
     <h1>Jackpot Predictions</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+<?php require_once __DIR__ . '/../components/seo.php';
+echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
 <p class="lede">Free jackpot prediction sheets for SportPesa, Betika, SportyBet, Odibets and Mozzart — current fixtures, selections, and the reasoning behind them.</p>
   </header>
@@ -124,17 +125,52 @@ if ($payload === null && !$baoJackpots) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'Which jackpots does Bao cover?',
+    'a' => 'SportPesa Mega Jackpot, SportPesa Midweek Jackpot, Betika Midweek Jackpot, SportyBet Daily, Odibets Laki Tatu, and Mozzart Super Daily Jackpot — each on its own sheet with per-game notes.
+
+Confirm live game count, stake, deadline and bonus tiers on the operator before playing. Bao does not take stakes.',
+  ],
+  [
+    'q' => 'Are jackpot predictions guaranteed?',
+    'a' => 'No. Jackpots are long-shot entertainment products. One wrong leg on a multi-game card loses the top prize.
+
+Sheets help you think through each fixture — form, home/away, H2H, team news — not promise a perfect card.',
+  ],
+  [
+    'q' => 'How are jackpot legs analysed?',
+    'a' => 'Each game is reviewed separately: recent form, venue, H2H context, availability, and stakes. Double Chance may appear beside 1X2 to show tight-fixture risk.
+
+We do not flatten 17 different certainty levels into one blanket “accuracy” percentage for the whole card.',
+  ],
+  [
+    'q' => 'Do game counts ever change?',
+    'a' => 'Operators swap fixtures or round sizes. Bao reads live game count from the fixtures array on each sheet when available.
+
+SportPesa Mega Jackpot is a 17-game product name; SportyBet Daily is typically 13; Odibets Laki Tatu is 10 games with the KES 300,000 prize name — always confirm the live slip.',
+  ],
+  [
+    'q' => 'Previous round results?',
+    'a' => 'When a new round replaces the old one, previous-round cards stay visible with ✅/❌ on 1X2 or Double Chance where settled.
+
+That audit trail includes losses — not a curated highlight reel.',
+  ],
+  [
+    'q' => 'Who writes jackpot sheets?',
+    'a' => 'Stephen Karuku, Lead Analyst at Bao Predictions, signs off published jackpot sheets using the same review flow as daily tip boards.
+
+18+ only. Jackpot staking carries high risk — see Responsible Betting.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Jackpot Predictions FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>Which jackpots do you cover?</summary><p>SportPesa Mega and Midweek, Betika Midweek, SportyBet Daily, Odibets Laki Tatu, and Mozzart Super Daily.</p></details></li>
-      <li><details><summary>Do operator rules differ?</summary><p>Yes — voids, bonuses, and stakes differ by bookmaker. Always read the official terms.</p></details></li>
-      <li><details><summary>Do you guarantee jackpot wins?</summary><p>No. Jackpots are long-shot entertainment products.</p></details></li>
-      <li><details><summary>Where are the per-game tips?</summary><p>On each operator's own prediction page, linked above.</p></details></li>
-      <li><details><summary>Are the tips free?</summary><p>Yes.</p></details></li>
-      <li><details><summary>18+ only?</summary><p>Yes — bet responsibly.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -143,16 +179,7 @@ if ($payload === null && !$baoJackpots) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-require_once __DIR__ . '/../components/seo.php';
-$baoJackpotFaqs = [
-  ['q' => 'Which jackpots do you cover?', 'a' => 'SportPesa Mega and Midweek, Betika Midweek, SportyBet Daily, Odibets Laki Tatu, and Mozzart Super Daily.'],
-  ['q' => 'Do operator rules differ?', 'a' => 'Yes — voids, bonuses, and stakes differ by bookmaker. Always read the official terms.'],
-  ['q' => 'Do you guarantee jackpot wins?', 'a' => 'No. Jackpots are long-shot entertainment products.'],
-  ['q' => 'Where are the per-game tips?', 'a' => 'On each operator\'s own prediction page, linked above.'],
-  ['q' => 'Are the tips free?', 'a' => 'Yes.'],
-  ['q' => '18+ only?', 'a' => 'Yes — bet responsibly.'],
-];
-echo bao_faq_schema($baoJackpotFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

@@ -145,17 +145,52 @@ if ($pickCount > 0) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is the weekend predictions page?',
+    'a' => 'A Saturday–Sunday focused board when European league volume peaks — same methodology as Today but scoped to the weekend fixture list.
+
+SportPesa Mega Jackpot rounds also land on weekends; this page complements (not replaces) the Mega sheet.',
+  ],
+  [
+    'q' => 'How is weekend different from Today?',
+    'a' => 'Today covers the current calendar matchday (any day). Weekend filters to the Sat–Sun cluster readers search for explicitly.
+
+Publish floors are unchanged: 55% minimum, Must Win ~75%+ 1X2, Sure Bets ~78%+ mixed markets, 85% cap.',
+  ],
+  [
+    'q' => 'Are weekend tips stronger?',
+    'a' => 'More fixtures can mean more published leans — not automatically stronger ones. Each card still must clear the floor on its own merits.
+
+Big-name clashes can be harder to price, not easier. Read reasoning on each card.',
+  ],
+  [
+    'q' => 'How are picks chosen?',
+    'a' => 'Form, home/away, H2H where relevant, team news, and competition context — reviewed by Stephen Karuku before publish.
+
+Rotation in congested European schedules is a common weekend factor checked late.',
+  ],
+  [
+    'q' => 'Are weekend tips guaranteed?',
+    'a' => 'No. Weekend upset rates are part of football — that is why confidence is a capped lean, not a win-rate promise.
+
+Audit on Yesterday and Results; losses stay up.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => 'Football Predictions Today for the full daily hub; SportPesa Mega Jackpot predictions for the weekend 17-game product.
+
+Accumulator tips if you are building multi-leg tickets from published leans.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Weekend Football Predictions FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What days are included?</summary><p>Saturday and Sunday fixtures covered that weekend — not a separate Friday–Sunday product.</p></details></li>
-      <li><details><summary>Can Friday tips move?</summary><p>Yes. Re-check closer to kick-off when lineups and late team news become available.</p></details></li>
-      <li><details><summary>Is a model lean a win rate?</summary><p>No. It is an assessment of the available evidence, not a predicted win rate or guarantee.</p></details></li>
-      <li><details><summary>Does a strong 1X2 tip mean a correct score?</summary><p>No. Correct score is a narrower market and should be treated separately from a match-result lean.</p></details></li>
-      <li><details><summary>How should I plan stakes?</summary><p>Do not raise stakes just because more fixtures are on. Shortlist matches and review the evidence for each selection.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>Today's football predictions and tomorrow's football predictions for the daily boards.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -166,15 +201,7 @@ if ($pickCount > 0) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoWkFaqs = [
-  ['q' => 'What days are included?', 'a' => 'Saturday and Sunday fixtures covered that weekend — not a separate Friday–Sunday product.'],
-  ['q' => 'Can Friday tips move?', 'a' => 'Yes. Re-check closer to kick-off when lineups and late team news become available.'],
-  ['q' => 'Is a model lean a win rate?', 'a' => 'No. It is an assessment of the available evidence, not a predicted win rate or guarantee.'],
-  ['q' => 'Does a strong 1X2 tip mean a correct score?', 'a' => 'No. Correct score is a narrower market and should be treated separately from a match-result lean.'],
-  ['q' => 'How should I plan stakes?', 'a' => 'Do not raise stakes just because more fixtures are on. Shortlist matches and review the evidence for each selection.'],
-  ['q' => 'Where else can I look?', 'a' => 'Today\'s football predictions and tomorrow\'s football predictions for the daily boards.'],
-];
-echo bao_faq_schema($baoWkFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Weekend Football Predictions', 'url' => '/weekend-football-predictions'],

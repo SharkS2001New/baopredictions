@@ -53,7 +53,8 @@
 
 <header class="page-hero">
     <h1>Accumulator Tips</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+<?php require_once __DIR__ . '/../components/seo.php';
+echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
 
 <p class="lede">Pre-built 3-, 5-, and 8-fold accumulator tips today — each leg checked against the current schedule, with combined odds shown upfront.</p>
@@ -129,17 +130,52 @@ if (is_array($yTickets) && $yTickets !== []) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What are accumulator tips on Bao?',
+    'a' => 'Suggested multi-leg combinations built from published daily leans — not guaranteed acca wins. Each leg links back to the underlying card and reasoning.
+
+Accas multiply odds and risk together. One failed leg loses the whole ticket unless your operator offers acca insurance (check their terms).',
+  ],
+  [
+    'q' => 'How are acca legs chosen?',
+    'a' => 'Legs come from fixtures that cleared the 55% publish floor, often mixing solid 60–74% leans rather than only top-band singles.
+
+Form, venue, team news and market clarity on each card matter more than stacking famous club names.',
+  ],
+  [
+    'q' => 'Are acca tips “sure wins”?',
+    'a' => 'No. Combined tickets are among the highest-variance ways to bet. Bao does not use guaranteed-win language for accas.
+
+Model leans on legs are capped at 85% and are not win-rate promises. 18+ only; stake small relative to singles.',
+  ],
+  [
+    'q' => 'How many legs are typical?',
+    'a' => 'Published accas vary by matchday depth — fewer legs when the board is thin, more when several independent leans clear the bar.
+
+More legs mean higher quoted odds and lower realistic hit rate. Treat long accas as entertainment, not income planning.',
+  ],
+  [
+    'q' => 'Can I swap legs?',
+    'a' => 'Yes — these are starting points. Read each leg\'s card on Today or market pages (1X2, BTTS, etc.) and drop legs you disagree with.
+
+Team news on matchday can invalidate an early acca plan. Re-check before kickoff.',
+  ],
+  [
+    'q' => 'Where can I verify results?',
+    'a' => 'Results and Yesterday show how individual published leans landed — the fair way to judge acca building blocks.
+
+We do not retroactively edit losing legs off the daily record.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Accumulator Tips FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>How many legs should an acca have?</summary><p>Fewer stronger legs beat long piles of weak fillers. Our 3-folds aim for realism; longer folds are higher variance.</p></details></li>
-      <li><details><summary>What if one match is postponed?</summary><p>Bookmaker rules vary — void that leg or void the ticket. Check your operator.</p></details></li>
-      <li><details><summary>Where do legs come from?</summary><p>From published tips, preferring higher-confidence selections checked against today's fixture list.</p></details></li>
-      <li><details><summary>Why mix markets?</summary><p>The market should follow the match evidence — Double Chance or BTTS can be safer than forcing a 1X2 on an even game.</p></details></li>
-      <li><details><summary>Why does 80% × 5 fail so often?</summary><p>Independent 80% legs multiply to about 33% for the whole ticket.</p></details></li>
-      <li><details><summary>Are accas free to view?</summary><p>Yes — no paywall on tickets or reasoning.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -149,16 +185,7 @@ if (is_array($yTickets) && $yTickets !== []) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-require_once __DIR__ . '/../components/seo.php';
-$baoAccFaqs = [
-  ['q' => 'How many legs should an acca have?', 'a' => 'Fewer stronger legs beat long piles of weak fillers. Our 3-folds aim for realism; longer folds are higher variance.'],
-  ['q' => 'What if one match is postponed?', 'a' => 'Bookmaker rules vary — void that leg or void the ticket. Check your operator.'],
-  ['q' => 'Where do legs come from?', 'a' => 'From published tips, preferring higher-confidence selections checked against today\'s fixture list.'],
-  ['q' => 'Why mix markets?', 'a' => 'The market should follow the match evidence — Double Chance or BTTS can be safer than forcing a 1X2 on an even game.'],
-  ['q' => 'Why does 80% × 5 fail so often?', 'a' => 'Independent 80% legs multiply to about 33% for the whole ticket.'],
-  ['q' => 'Are accas free to view?', 'a' => 'Yes — no paywall on tickets or reasoning.'],
-];
-echo bao_faq_schema($baoAccFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Accumulator Tips', 'url' => '/accumulator-tips'],

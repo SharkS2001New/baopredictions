@@ -121,17 +121,52 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is Betika Midweek Jackpot?',
+    'a' => 'Betika\'s midweek multi-match football jackpot — 1X2 selections on a fixed operator card with its own stake and prize pool.
+
+Confirm the live fixture list on Betika before kickoff.',
+  ],
+  [
+    'q' => 'Is the Betika sheet free on Bao?',
+    'a' => 'Yes — full per-game leans and notes, no paywall.
+
+We name the product Betika Midweek Jackpot exactly as listed on the operator.',
+  ],
+  [
+    'q' => 'How are legs picked?',
+    'a' => 'Form, home/away splits, H2H where relevant, team news, and match context on each fixture — same review flow as other jackpot sheets.
+
+Marginal games get honest lower leans instead of false “banker” language.',
+  ],
+  [
+    'q' => 'Betika vs SportPesa jackpots?',
+    'a' => 'Different operators, stakes, game counts and deadlines. Bao covers both with separate sheets — never mix slips.
+
+Always confirm live rules on Betika\'s app before staking.',
+  ],
+  [
+    'q' => 'Guaranteed wins?',
+    'a' => 'No. Jackpot products are high-variance. One miss on the card ends the top prize chase.
+
+18+ only. Treat sheets as research, not promises.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => 'Jackpot predictions hub for all operators; Double Chance predictions for cover concepts on tight legs.
+
+Football Predictions Today for non-jackpot daily leans.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Betika Midweek FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>How many games is the Betika Midweek Jackpot?</summary><p>The latest verified round was 15 matches for a KSh 15 million prize. Game count can change — always confirm the live card in the Betika app.</p></details></li>
-      <li><details><summary>Do you set the stake?</summary><p>No — confirm stake and bonuses on Betika before playing.</p></details></li>
-      <li><details><summary>What do you publish on each game?</summary><p>A 1X2 selection with a short reason, plus a Double Chance cover where useful. Confidence is a model lean, not a win guarantee.</p></details></li>
-      <li><details><summary>Should I reuse last round's tips?</summary><p>No. Treat each jackpot separately — fixtures and team news change between rounds.</p></details></li>
-      <li><details><summary>Are tips free?</summary><p>Yes.</p></details></li>
-      <li><details><summary>Responsible betting?</summary><p>18+ only. Never chase jackpot losses. Predictions are not guarantees.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -142,15 +177,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoBkFaqs = [
-  ['q' => 'How many games is the Betika Midweek Jackpot?', 'a' => 'The latest verified round was 15 matches for a KSh 15 million prize. Game count can change — always confirm the live card in the Betika app.'],
-  ['q' => 'Do you set the stake?', 'a' => 'No — confirm stake and bonuses on Betika before playing.'],
-  ['q' => 'What do you publish on each game?', 'a' => 'A 1X2 selection with a short reason, plus a Double Chance cover where useful. Confidence is a model lean, not a win guarantee.'],
-  ['q' => 'Should I reuse last round\'s tips?', 'a' => 'No. Treat each jackpot separately — fixtures and team news change between rounds.'],
-  ['q' => 'Are tips free?', 'a' => 'Yes.'],
-  ['q' => 'Responsible betting?', 'a' => '18+ only. Never chase jackpot losses. Predictions are not guarantees.'],
-];
-echo bao_faq_schema($baoBkFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

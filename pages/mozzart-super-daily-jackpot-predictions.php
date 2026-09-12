@@ -203,17 +203,52 @@ if ($contested > 0) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is Mozzart Super Daily Jackpot?',
+    'a' => 'Mozzartbet\'s daily multi-match football jackpot — 1X2 selections on Mozzart\'s current Super Daily card.
+
+Confirm live game count, stake (often cited around KES 20) and prize pool on Mozzartbet before playing.',
+  ],
+  [
+    'q' => 'Is the Mozzart sheet free on Bao?',
+    'a' => 'Yes — per-game leans and notes without a paywall.
+
+We use the exact product name Mozzart Super Daily Jackpot.',
+  ],
+  [
+    'q' => 'How are games analysed?',
+    'a' => 'Same fixture-level process: form, home/away, H2H where relevant, team news. Double Chance may flag tight 1X2 leans.
+
+Do not treat every leg as equally strong — read individual confidences.',
+  ],
+  [
+    'q' => 'Are Mozzart tips guaranteed?',
+    'a' => 'No. Super Daily still needs your operator-defined correct count for the top prize. One miss can end the chase.
+
+18+ only. Jackpots are entertainment products, not income.',
+  ],
+  [
+    'q' => 'Game count questions?',
+    'a' => 'Competitor pages often cite 16 games — always confirm the active card on Mozzartbet.
+
+Operators can swap fixtures; re-check the slip at kickoff.',
+  ],
+  [
+    'q' => 'Previous rounds?',
+    'a' => 'When a new Super Daily round publishes, Bao keeps the previous sheet with settled ✅/❌ where available.
+
+Losses remain visible — use that record instead of win-only marketing screenshots.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Mozzart Super Daily Jackpot FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>How many games are on the Mozzart Daily Jackpot?</summary><p>Competitors consistently describe 16 matches. Confirm the live game count on Mozzartbet and on the card above.</p></details></li>
-      <li><details><summary>What are the stake and top prize?</summary><p>Commonly published as KES 20 stake and up to KES 20 million — always confirm live terms on Mozzartbet.</p></details></li>
-      <li><details><summary>Is this the same as Grand Jackpot?</summary><p>No. This page covers the Super Daily / Daily Jackpot card, not the separate Grand Jackpot product.</p></details></li>
-      <li><details><summary>Do you claim 100% accuracy?</summary><p>No. Unsupported accuracy claims are not evidence of a guaranteed jackpot result.</p></details></li>
-      <li><details><summary>Do losing tips stay visible?</summary><p>Yes. Previous-round wins and losses remain for an audit trail when available.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>1X2 Predictions and Double Chance Predictions for the related match markets behind each jackpot leg.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -224,15 +259,7 @@ if ($contested > 0) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoMzFaqs = [
-  ['q' => 'How many games are on the Mozzart Daily Jackpot?', 'a' => 'Competitors consistently describe 16 matches. Confirm the live game count on Mozzartbet and on the card above.'],
-  ['q' => 'What are the stake and top prize?', 'a' => 'Commonly published as KES 20 stake and up to KES 20 million — always confirm live terms on Mozzartbet.'],
-  ['q' => 'Is this the same as Grand Jackpot?', 'a' => 'No. This page covers the Super Daily / Daily Jackpot card, not the separate Grand Jackpot product.'],
-  ['q' => 'Do you claim 100% accuracy?', 'a' => 'No. Unsupported accuracy claims are not evidence of a guaranteed jackpot result.'],
-  ['q' => 'Do losing tips stay visible?', 'a' => 'Yes. Previous-round wins and losses remain for an audit trail when available.'],
-  ['q' => 'Where else can I look?', 'a' => '1X2 Predictions and Double Chance Predictions for the related match markets behind each jackpot leg.'],
-];
-echo bao_faq_schema($baoMzFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

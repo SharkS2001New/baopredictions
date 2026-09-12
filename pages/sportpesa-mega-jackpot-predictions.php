@@ -113,17 +113,52 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'Is the SportPesa jackpot prediction free on Bao Predictions?',
+    'a' => 'Yes — every SportPesa Mega Jackpot sheet is free, with no paywall on the per-game reasoning.
+
+Each fixture shows 1X2 lean, optional Double Chance context, and notes on form, venue and team news where confirmed.',
+  ],
+  [
+    'q' => 'What\'s the correct SMS code for the Mega Jackpot?',
+    'a' => 'MJP, sent to 79079, followed by "#" and your selections for the full card. Other SportPesa jackpots use different codes — double-check before sending.
+
+Confirm the live round length on SportPesa before texting a slip.',
+  ],
+  [
+    'q' => 'Do you guarantee jackpot wins?',
+    'a' => 'No. SportPesa Mega Jackpot is a long-shot entertainment product — treat any sheet as a way to think through the card, not a promise.
+
+One wrong leg loses the top prize. Previous-round ✅/❌ stays visible here when a new round opens.',
+  ],
+  [
+    'q' => 'How many games is Mega Jackpot?',
+    'a' => 'SportPesa Mega Jackpot is a 17-game product — confirm the live card on SportPesa for this round.
+
+Mega Jackpot Pro lets you play 13–17 legs from the same card; unused SMS slots are entered as 0.',
+  ],
+  [
+    'q' => 'What is Mega Jackpot Pro?',
+    'a' => 'Pro lets you pick 13–17 games from the same SportPesa Mega Jackpot card instead of all legs. Fewer picks mean lower max prize but better realistic odds.
+
+On SMS, positions you skip are entered as 0 while still filling the full format SportPesa expects.',
+  ],
+  [
+    'q' => 'What if a match is postponed?',
+    'a' => 'Follow SportPesa\'s void and bonus rules for that round — operator terms decide whether a leg is voided or settled later.
+
+Re-check the live SportPesa card and Bao sheet after postponements; stakes and deadlines are operator-controlled.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">SportPesa Mega Jackpot FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>Is the SportPesa jackpot prediction free on Bao Predictions?</summary><p>Yes — every Mega Jackpot sheet is free, with no paywall on the per-game reasoning.</p></details></li>
-      <li><details><summary>What's the correct SMS code for the Mega Jackpot?</summary><p>MJP, sent to 79079, followed by &quot;#&quot; and your 17 selections. Other SportPesa jackpots use different codes, so double-check before sending.</p></details></li>
-      <li><details><summary>Do you guarantee jackpot wins?</summary><p>No. Jackpots are long-shot entertainment products — treat any sheet as a way to think through the card, not a promise.</p></details></li>
-      <li><details><summary>How many games is Mega Jackpot?</summary><p>Typically 17 — confirm the live card on SportPesa for this round.</p></details></li>
-      <li><details><summary>What is Mega Jackpot Pro?</summary><p>Pro lets you pick 13–17 games from the same card. On SMS, unused slots are entered as 0.</p></details></li>
-      <li><details><summary>What if a match is postponed?</summary><p>Follow SportPesa's void/bonus rules for that round.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -134,16 +169,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-require_once __DIR__ . '/../components/seo.php';
-$baoMegaFaqs = [
-  ['q' => 'Is the SportPesa jackpot prediction free on Bao Predictions?', 'a' => 'Yes — every Mega Jackpot sheet is free, with no paywall on the per-game reasoning.'],
-  ['q' => 'What\'s the correct SMS code for the Mega Jackpot?', 'a' => 'MJP, sent to 79079, followed by "#" and your 17 selections. Other SportPesa jackpots use different codes, so double-check before sending.'],
-  ['q' => 'Do you guarantee jackpot wins?', 'a' => 'No. Jackpots are long-shot entertainment products — treat any sheet as a way to think through the card, not a promise.'],
-  ['q' => 'How many games is Mega Jackpot?', 'a' => 'Typically 17 — confirm the live card on SportPesa for this round.'],
-  ['q' => 'What is Mega Jackpot Pro?', 'a' => 'Pro lets you pick 13–17 games from the same card. On SMS, unused slots are entered as 0.'],
-  ['q' => 'What if a match is postponed?', 'a' => 'Follow SportPesa\'s void/bonus rules for that round.'],
-];
-echo bao_faq_schema($baoMegaFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

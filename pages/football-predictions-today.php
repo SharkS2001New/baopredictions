@@ -170,17 +170,52 @@ echo bao_shortlist_summary_html($games, 'daily board');
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is this page?',
+    'a' => 'Bao\'s main daily football predictions board — published leans, markets, model indication and reasoning for today\'s fixtures. It is the live matchday hub, not an archive.
+
+Each card can cover 1X2, BTTS, Over/Under, Double Chance or HT/FT depending on where the clearest signal sits. Shortlists like Must Win and Sure Bets filter the same pool at higher publish floors.',
+  ],
+  [
+    'q' => 'Are these guaranteed winners?',
+    'a' => 'No. Confidence and model figures describe lean strength, not a sure win or financial advice. Cards cap at 85% and never show 100%.
+
+Even strong leans lose. The honest check is Results and Yesterday once fixtures finish — we keep unsuccessful calls visible.',
+  ],
+  [
+    'q' => 'Why does the update time matter?',
+    'a' => 'Team news can change after a tip is first published. An injury confirmed on matchday can flip a lean that looked solid two days earlier.
+
+Check the last-updated line at the top of this page before treating an earlier prediction as current.',
+  ],
+  [
+    'q' => 'What about AI or mathematical predictions?',
+    'a' => 'Data-driven models help process form, venue and scoring trends consistently, but the output is still an estimate you can check after the match.
+
+Stephen Karuku reviews model output against team news and context before publish. The useful question is what evidence supports the selection — not whether the page uses an “AI” label.',
+  ],
+  [
+    'q' => 'Where can I see settled results?',
+    'a' => 'Performance figures update as today\'s fixtures finish. Results holds the rolling seven-day settled list; Yesterday covers the previous matchday in one view.
+
+Headline track figures live on Results.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => 'Today\'s 1X2 predictions for match-result tips; HT/FT predictions for half-time/full-time combinations; Must Win Teams Today and Sure Bets Today for higher publish floors.
+
+Tomorrow carries the early board for the next matchday. Livescores covers fixtures already underway.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Football Predictions Today FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What is this page?</summary><p>Bao's main daily football predictions board — published leans, markets, model indication and reasoning for today's fixtures.</p></details></li>
-      <li><details><summary>Are these guaranteed winners?</summary><p>No. Confidence and model figures describe lean strength, not a sure win or financial advice.</p></details></li>
-      <li><details><summary>Why does the update time matter?</summary><p>Team news can change after a tip is published. Check the last-updated time before treating an earlier prediction as current.</p></details></li>
-      <li><details><summary>What about AI or mathematical predictions?</summary><p>Data-driven models help process match information consistently, but the output is still an estimate you can check after the match.</p></details></li>
-      <li><details><summary>Where can I see settled results?</summary><p>Performance figures update as fixtures finish, and the Results page keeps the published record.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>Today's 1X2 predictions for match-result tips, and HT/FT predictions for half-time/full-time combinations.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -191,15 +226,7 @@ echo bao_shortlist_summary_html($games, 'daily board');
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoTodayFaqs = [
-  ['q' => 'What is this page?', 'a' => 'Bao\'s main daily football predictions board — published leans, markets, model indication and reasoning for today\'s fixtures.'],
-  ['q' => 'Are these guaranteed winners?', 'a' => 'No. Confidence and model figures describe lean strength, not a sure win or financial advice.'],
-  ['q' => 'Why does the update time matter?', 'a' => 'Team news can change after a tip is published. Check the last-updated time before treating an earlier prediction as current.'],
-  ['q' => 'What about AI or mathematical predictions?', 'a' => 'Data-driven models help process match information consistently, but the output is still an estimate you can check after the match.'],
-  ['q' => 'Where can I see settled results?', 'a' => 'Performance figures update as fixtures finish, and the Results page keeps the published record.'],
-  ['q' => 'Where else can I look?', 'a' => 'Today\'s 1X2 predictions for match-result tips, and HT/FT predictions for half-time/full-time combinations.'],
-];
-echo bao_faq_schema($baoTodayFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Football Predictions Today', 'url' => '/football-predictions-today'],

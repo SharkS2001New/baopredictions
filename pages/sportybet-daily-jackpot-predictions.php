@@ -161,17 +161,52 @@ if ($gameCount > 0) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is SportyBet Daily Jackpot?',
+    'a' => 'SportyBet\'s daily multi-match football jackpot — 1X2 picks on the operator\'s current card with a shared daily prize pool.
+
+SportyBet Daily is typically a 13-game card — confirm the live list on SportyBet.',
+  ],
+  [
+    'q' => 'Is the SportyBet sheet free?',
+    'a' => 'Yes. Bao publishes the daily sheet with reasoning on every leg at no charge.
+
+Previous-round results stay visible when a new card replaces the old one.',
+  ],
+  [
+    'q' => 'How do you analyse the daily card?',
+    'a' => 'Each match on its own merits: form, venue, H2H context, team news. Double Chance may highlight tight 1X2 leans.
+
+We do not assign one confidence score to the entire slip — legs vary.',
+  ],
+  [
+    'q' => 'Daily vs weekend jackpots?',
+    'a' => 'SportyBet Daily resets on a daily cadence with fewer legs than SportPesa Mega Jackpot. Stakes and prizes differ — read SportyBet\'s live terms.
+
+Do not copy a Mega-format SMS onto SportyBet.',
+  ],
+  [
+    'q' => 'Are tips guaranteed?',
+    'a' => 'No. Daily jackpots still require every leg (or operator-defined tiers) to land for full payout.
+
+18+ only. Model leans cap at 85%.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => 'Jackpot predictions hub; 1X2 predictions for standalone match-result research.
+
+Results for settled non-jackpot track record.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">SportyBet Jackpot FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>How many games are on the SportyBet jackpot?</summary><p>SportyBet's current Kenya help describes Sporty 13 as 13 matches. Always confirm the live game count on SportyBet and on the card above.</p></details></li>
-      <li><details><summary>Are there consolation prizes?</summary><p>Official rules describe consolation for 12 and 11 correct predictions, with the Super Jackpot for 13/13.</p></details></li>
-      <li><details><summary>Can I reuse yesterday's tips?</summary><p>No. Cards rebuild and fixtures change — use the latest Bao card and SportyBet list only.</p></details></li>
-      <li><details><summary>What is the stake and deadline?</summary><p>Official Kenya rules cite KES 50 per basic combination and a 17:00 Saturday Kenya-time close — confirm both on the live SportyBet page.</p></details></li>
-      <li><details><summary>Do you publish a fixed jackpot amount?</summary><p>No fixed prize figure is stated here unless confirmed on the live SportyBet card. Pools can change.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>1X2 Predictions and Double Chance Predictions for the related match markets behind each jackpot leg.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -182,15 +217,7 @@ if ($gameCount > 0) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoSbFaqs = [
-  ['q' => 'How many games are on the SportyBet jackpot?', 'a' => 'SportyBet\'s current Kenya help describes Sporty 13 as 13 matches. Always confirm the live game count on SportyBet and on the card above.'],
-  ['q' => 'Are there consolation prizes?', 'a' => 'Official rules describe consolation for 12 and 11 correct predictions, with the Super Jackpot for 13/13.'],
-  ['q' => 'Can I reuse yesterday\'s tips?', 'a' => 'No. Cards rebuild and fixtures change — use the latest Bao card and SportyBet list only.'],
-  ['q' => 'What is the stake and deadline?', 'a' => 'Official Kenya rules cite KES 50 per basic combination and a 17:00 Saturday Kenya-time close — confirm both on the live SportyBet page.'],
-  ['q' => 'Do you publish a fixed jackpot amount?', 'a' => 'No fixed prize figure is stated here unless confirmed on the live SportyBet card. Pools can change.'],
-  ['q' => 'Where else can I look?', 'a' => '1X2 Predictions and Double Chance Predictions for the related match markets behind each jackpot leg.'],
-];
-echo bao_faq_schema($baoSbFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

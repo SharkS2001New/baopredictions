@@ -53,24 +53,6 @@ $track = is_array($stats) && is_array($stats['track'] ?? null) ? $stats['track']
 $settledTips = (int) ($track['settled_tips'] ?? $stats['settled_tips'] ?? 0);
 $winRate = $track['win_rate'] ?? ($stats['win_rate'] ?? null);
 
-$baoAboutFaqs = [
-  [
-    'q' => 'Are you a bookmaker?',
-    'a' => 'No. Bao Predictions publishes analysis only. We do not accept stakes.',
-  ],
-  [
-    'q' => 'Who writes the tips?',
-    'a' => 'Stephen Karuku, Lead Analyst at Bao Predictions, signs off published tips. Model output starts the process; he reviews team news and price context before a card goes live.',
-  ],
-  [
-    'q' => 'Where are you focused?',
-    'a' => 'Kenya-facing readers and jackpot operators, with tip boards weighted to major European and global leagues. FKF Premier League fixtures publish when model and odds clear the same bar.',
-  ],
-  [
-    'q' => 'How do I report a correction?',
-    'a' => 'Use Contact with the teams, match date, published tip, and correct score. Stephen’s desk reviews tip corrections through that form.',
-  ],
-];
 ?>
 
 <div class="wrap">
@@ -112,14 +94,52 @@ if ($settledTips > 0 && $winRate !== null) {
   </article>
 </div>
 
+<?php
+$faqs = [
+  [
+    'q' => 'Are you a bookmaker?',
+    'a' => 'No. Bao Predictions publishes analysis only. We do not accept stakes, hold balances, or pay winnings.
+
+Readers use licensed operators separately. Our role is tips, reasoning and a public wins-and-losses record.',
+  ],
+  [
+    'q' => 'Who writes the tips?',
+    'a' => 'Stephen Karuku, Lead Analyst at Bao Predictions, signs off published tips. Model output starts the process; he reviews team news and price context before a card goes live.
+
+Methodology detail lives on How We Predict. Performance numbers live on Results and Yesterday.',
+  ],
+  [
+    'q' => 'Where are you focused?',
+    'a' => 'Kenya-facing readers and jackpot operators, with tip boards weighted to major European and global leagues. FKF Premier League fixtures publish when model and odds clear the same bar.
+
+Sparse KPL odds mean those cards appear less often than Premier League tips — we leave matches off rather than invent leans.',
+  ],
+  [
+    'q' => 'How do I report a correction?',
+    'a' => 'Use Contact with the teams, match date, published tip, and correct score. Stephen\'s desk reviews tip corrections through that form.
+
+Fixes reflect on Yesterday and Results when needed. We do not silently edit settled history without cause.',
+  ],
+  [
+    'q' => 'What makes Bao different?',
+    'a' => 'Named lead analyst, board roles spelled out (Today / Tomorrow / Yesterday / Results), and losses kept visible.
+
+Track figures update on Results as the qualifying sample grows.',
+  ],
+  [
+    'q' => 'Do you encourage betting?',
+    'a' => 'No. Content is for adults who already choose to bet. 18+ only.
+
+See Responsible Betting for limits and help links. Tips are informational opinions — not financial advice.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">About FAQ</h2>
-    <ul class="faq-list">
-<?php foreach ($baoAboutFaqs as $item): ?>
-      <li><details><summary><?php echo bao_h($item['q']); ?></summary><p><?php echo bao_h($item['a']); ?></p></details></li>
-<?php endforeach; ?>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -128,7 +148,7 @@ if ($settledTips > 0 && $winRate !== null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($baoAboutFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'About', 'url' => '/about-us'],

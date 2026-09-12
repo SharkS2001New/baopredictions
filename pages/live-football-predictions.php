@@ -144,17 +144,52 @@ if ($liveCount > 0) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is the Livescores page?',
+    'a' => 'The live board for matches already underway — current score and minute first, then any still-relevant tip. It is not a duplicate of the pre-match Today page.
+
+Use it to follow fixtures in play. Settled auditing belongs on Results and Yesterday once the match finishes.',
+  ],
+  [
+    'q' => 'How often does Livescores update?',
+    'a' => 'The board reloads about every 90 seconds while matches are in play. Scores and clocks can lag briefly depending on the feed.
+
+Pre-match planning still belongs on Football Predictions Today or Tomorrow. Livescores is for in-progress fixtures.',
+  ],
+  [
+    'q' => 'Are live tips guaranteed?',
+    'a' => 'No. In-play context changes quickly — red cards, tempo shifts and late goals rewrite the picture. Any lean shown is informational, not a sure win.
+
+Model leans remain capped at 85% and are not win-rate promises. 18+ only if you are staking on live markets.',
+  ],
+  [
+    'q' => 'Why is a match on Livescores but not Today?',
+    'a' => 'Today lists pre-match published leans for the matchday. Livescores only shows fixtures that have kicked off, prioritising live state over the full daily catalogue.
+
+A game can move from Today to Livescores at kickoff, then to Yesterday/Results after the final whistle.',
+  ],
+  [
+    'q' => 'Can I check results here?',
+    'a' => 'Finished fixtures roll off the live view into Yesterday (one matchday) and Results (seven-day rolling list). Losses stay visible there.
+
+Do not treat Livescores as the performance archive — it is a live window only.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => 'Football Predictions Today for the full pre-match board; Sure Bets Today and Must Win Teams Today for higher publish floors.
+
+How We Predict explains how pre-match leans are built before kickoff.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Livescores FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What is this page for?</summary><p>Live football scores and in-play predictions — current score and minute first, then any still-relevant tip.</p></details></li>
-      <li><details><summary>How is a live score different from a prediction?</summary><p>A live score shows what is happening now. A prediction is an opinion about a market that may still be more likely.</p></details></li>
-      <li><details><summary>How often do live scores update?</summary><p>This page reloads about every 90 seconds. Scores come from our fixture feed — there can be a short delay versus TV.</p></details></li>
-      <li><details><summary>What does the green tick mean?</summary><p>The published tip matches the current scoreline. It is provisional until full time; a late goal can reverse it.</p></details></li>
-      <li><details><summary>Where do finished matches go?</summary><p>Settled tips belong on Football Results and Yesterday, not as active live opportunities.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>Football Predictions Today for pre-match boards, and Football Results for the rolling settled archive.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -165,15 +200,7 @@ if ($liveCount > 0) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoLiveFaqs = [
-  ['q' => 'What is this page for?', 'a' => 'Live football scores and in-play predictions — current score and minute first, then any still-relevant tip.'],
-  ['q' => 'How is a live score different from a prediction?', 'a' => 'A live score shows what is happening now. A prediction is an opinion about a market that may still be more likely.'],
-  ['q' => 'How often do live scores update?', 'a' => 'This page reloads about every 90 seconds. Scores come from our fixture feed — there can be a short delay versus TV.'],
-  ['q' => 'What does the green tick mean?', 'a' => 'The published tip matches the current scoreline. It is provisional until full time; a late goal can reverse it.'],
-  ['q' => 'Where do finished matches go?', 'a' => 'Settled tips belong on Football Results and Yesterday, not as active live opportunities.'],
-  ['q' => 'Where else can I look?', 'a' => 'Football Predictions Today for pre-match boards, and Football Results for the rolling settled archive.'],
-];
-echo bao_faq_schema($baoLiveFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Livescores', 'url' => '/live-football-predictions'],

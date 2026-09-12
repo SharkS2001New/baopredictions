@@ -154,17 +154,52 @@ if ($weekCount > 0) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'Is this the same as Yesterday?',
+    'a' => 'No. Yesterday is one matchday. Results is the rolling last seven days of settled tips, plus the headline track-record strip at the top.
+
+Use Yesterday when you want a single day\'s audit. Use Results when you want recent context across the week and the longer qualifying sample.',
+  ],
+  [
+    'q' => 'Do you hide losing tips?',
+    'a' => 'No. Wins and losses both stay published so the prediction record can be reviewed honestly.
+
+Each entry keeps the original 1X2 selection, published odds where recorded, model lean and final score together.',
+  ],
+  [
+    'q' => 'How are the headline figures calculated?',
+    'a' => 'Settled 1X2 tips with the required model information and a book price. Incomplete entries and postponements are excluded. Those figures are separate from the seven-day list alone.
+
+Headline figures update as the qualifying sample grows.',
+  ],
+  [
+    'q' => 'Are model leans guaranteed win rates?',
+    'a' => 'No. A model lean is an assessment of the available data at publish time — capped at 85% — not a guaranteed probability of winning.
+
+The honest read is how published selections perform over a meaningful sample on this page, including losses.',
+  ],
+  [
+    'q' => 'Does this cover football results today?',
+    'a' => 'Yes — as today\'s matches settle they enter the rolling seven-day board. Earlier days in the window remain available for recent checks.
+
+The list fills as fixtures finish.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => 'Yesterday\'s football predictions for a single matchday, and today\'s football predictions for the live pre-match board.
+
+How We Predict explains methodology; Responsible Betting covers staking risk (18+).',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Football Results FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>Is this the same as Yesterday?</summary><p>No. Yesterday is one matchday. Results is the rolling last seven days of settled tips, plus the headline track-record strip.</p></details></li>
-      <li><details><summary>Do you hide losing tips?</summary><p>No. Wins and losses both stay published so the prediction record can be reviewed honestly.</p></details></li>
-      <li><details><summary>How are the headline figures calculated?</summary><p>Settled 1X2 tips with the required model information and a book price. Incomplete entries and postponements are excluded. Those figures are separate from the seven-day list alone.</p></details></li>
-      <li><details><summary>Are model leans guaranteed win rates?</summary><p>No. A model lean is an assessment of the available data, not a guaranteed probability.</p></details></li>
-      <li><details><summary>Does this cover football results today?</summary><p>Yes — as today's matches settle they enter the rolling seven-day board. Earlier days in the window remain available for recent checks.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>Yesterday's football predictions for a single matchday, and today's football predictions for the live board.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -175,15 +210,7 @@ if ($weekCount > 0) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoResultsFaqs = [
-  ['q' => 'Is this the same as Yesterday?', 'a' => 'No. Yesterday is one matchday. Results is the rolling last seven days of settled tips, plus the headline track-record strip.'],
-  ['q' => 'Do you hide losing tips?', 'a' => 'No. Wins and losses both stay published so the prediction record can be reviewed honestly.'],
-  ['q' => 'How are the headline figures calculated?', 'a' => 'Settled 1X2 tips with the required model information and a book price. Incomplete entries and postponements are excluded. Those figures are separate from the seven-day list alone.'],
-  ['q' => 'Are model leans guaranteed win rates?', 'a' => 'No. A model lean is an assessment of the available data, not a guaranteed probability.'],
-  ['q' => 'Does this cover football results today?', 'a' => 'Yes — as today\'s matches settle they enter the rolling seven-day board. Earlier days in the window remain available for recent checks.'],
-  ['q' => 'Where else can I look?', 'a' => 'Yesterday\'s football predictions for a single matchday, and today\'s football predictions for the live board.'],
-];
-echo bao_faq_schema($baoResultsFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Football Results', 'url' => '/results'],

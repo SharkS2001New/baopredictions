@@ -126,17 +126,52 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What are BTTS predictions?',
+    'a' => 'Both Teams To Score selections — Yes or No — based on scoring trends, defensive form and team news. BTTS is a goals market, not match result.
+
+Each card shows the lean, confidence (capped at 85%) and short reasoning. Below 55% we usually leave the fixture off the board.',
+  ],
+  [
+    'q' => 'How does Bao analyse BTTS?',
+    'a' => 'Recent scoring and conceding patterns, home/away splits, H2H goal history where relevant, and confirmed absences (especially strikers or keepers).
+
+A open game can still finish 0–0 if chances misfire — BTTS leans are opinions, not guarantees.',
+  ],
+  [
+    'q' => 'Are BTTS tips guaranteed?',
+    'a' => 'No. BTTS markets are volatile — early goals, red cards and late defensive blocks change outcomes quickly.
+
+Confidence figures are model leans, not predicted hit rates. 18+ only if staking.',
+  ],
+  [
+    'q' => 'BTTS vs Over/Under — what is the difference?',
+    'a' => 'BTTS cares whether both sides score, not total goals. Over/Under focuses on the goal line (e.g. 2.5). A 2–0 win is Over 2.5 but BTTS No.
+
+Bao publishes whichever market has the clearer signal on each fixture — see Over/Under predictions for goal-line leans.',
+  ],
+  [
+    'q' => 'How is BTTS different from 1X2?',
+    'a' => '1X2 picks a match winner or draw. BTTS ignores who wins — only whether both teams score.
+
+Sure Bets Today may publish BTTS when that is the strongest market on a fixture, even when 1X2 looks coin-flip.',
+  ],
+  [
+    'q' => 'Where can I check results?',
+    'a' => 'Yesterday and Results focus on settled 1X2 for the headline track, but BTTS cards on daily boards still show outcomes beside the original lean when settled.
+
+Use the board archive rather than assuming marketing win-rate claims.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">BTTS Predictions FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What does BTTS mean?</summary><p>Both teams to score. BTTS Yes means each side scores at least once; BTTS No means at least one team blanks.</p></details></li>
-      <li><details><summary>Does the final result matter for BTTS Yes?</summary><p>No. 1-1, 2-1 and 3-2 all qualify because both sides scored.</p></details></li>
-      <li><details><summary>How are BTTS predictions made?</summary><p>Scoring and conceding form, home and away split, clean sheets, head-to-head where useful, team news and match context — not a single statistic.</p></details></li>
-      <li><details><summary>When is BTTS No stronger?</summary><p>When evidence points to a clean sheet or a side struggling to create and convert chances.</p></details></li>
-      <li><details><summary>Are these guaranteed?</summary><p>No. Predictions are estimates. Strong scoring sides can still finish 1-0 or 0-0.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>Football predictions today for the full board, and Over/Under predictions for goals markets.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -147,15 +182,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoBttsFaqs = [
-  ['q' => 'What does BTTS mean?', 'a' => 'Both teams to score. BTTS Yes means each side scores at least once; BTTS No means at least one team blanks.'],
-  ['q' => 'Does the final result matter for BTTS Yes?', 'a' => 'No. 1-1, 2-1 and 3-2 all qualify because both sides scored.'],
-  ['q' => 'How are BTTS predictions made?', 'a' => 'Scoring and conceding form, home and away split, clean sheets, head-to-head where useful, team news and match context — not a single statistic.'],
-  ['q' => 'When is BTTS No stronger?', 'a' => 'When evidence points to a clean sheet or a side struggling to create and convert chances.'],
-  ['q' => 'Are these guaranteed?', 'a' => 'No. Predictions are estimates. Strong scoring sides can still finish 1-0 or 0-0.'],
-  ['q' => 'Where else can I look?', 'a' => 'Football predictions today for the full board, and Over/Under predictions for goals markets.'],
-];
-echo bao_faq_schema($baoBttsFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'BTTS Predictions', 'url' => '/btts-predictions'],

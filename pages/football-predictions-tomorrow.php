@@ -138,17 +138,52 @@ if ($pickCount > 0) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is the Tomorrow board?',
+    'a' => 'A provisional early board for the next matchday — published leans with reasoning before lineups are confirmed. It can move when team news arrives.
+
+Think of Tomorrow as a draft view. Today becomes the main board once the matchday arrives; Yesterday archives what actually happened.',
+  ],
+  [
+    'q' => 'Are tomorrow tips final?',
+    'a' => 'No. Tomorrow tips are explicitly provisional. Confirmed injuries, suspensions or tactical changes can shift a lean after first publish.
+
+Re-check this page and Football Predictions Today on matchday morning. The last-updated timestamp shows when the board last changed.',
+  ],
+  [
+    'q' => 'How are tomorrow picks chosen?',
+    'a' => 'Same methodology as Today: form, home/away, league context, H2H where relevant, and early team-news signals — then the 55% publish floor.
+
+Fixtures below the floor stay off the board. Higher bands (Must Win ~75%+ 1X2, Sure Bets ~78%+ mixed markets) only appear when the data supports them early.',
+  ],
+  [
+    'q' => 'Why publish before lineups?',
+    'a' => 'Readers planning accas or jackpot research often want an early read. Publishing early with a clear “provisional” label is more honest than pretending lineups are known.
+
+When news breaks, cards update rather than silently disappearing. Losses from earlier publishes still audit on Yesterday and Results.',
+  ],
+  [
+    'q' => 'How is Tomorrow different from Today?',
+    'a' => 'Today is the live matchday board. Tomorrow is the next-day early board that may still change. Results and Yesterday are settled views — not pre-match lists.
+
+Do not treat Tomorrow as a second Today page; switch to Today once kickoffs belong to the current calendar day.',
+  ],
+  [
+    'q' => 'Where can I verify results later?',
+    'a' => 'Football Predictions Yesterday for one matchday; Results for the rolling seven-day settled sample with headline track figures.
+
+Model leans are not win-rate promises. Compare each card to the final score once the fixture finishes.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Football Predictions Tomorrow FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>Are tomorrow's predictions final?</summary><p>No. They are a provisional early board and can change after today's results, lineups, injuries, suspensions or rotation.</p></details></li>
-      <li><details><summary>Why publish tomorrow early?</summary><p>So you can plan ahead — then re-check closer to kick-off when team information is clearer.</p></details></li>
-      <li><details><summary>Why does the last-updated time matter?</summary><p>Because fitness calls and squad rotation can still move a lean overnight. Treat an older publish as provisional.</p></details></li>
-      <li><details><summary>What about AI or mathematical predictions tomorrow?</summary><p>Models help process data consistently, but the output remains a forecast. Check the evidence and any late team news.</p></details></li>
-      <li><details><summary>Are these sure wins?</summary><p>No. Bao does not publish “sure wins.” Confidence figures describe lean strength, not guaranteed outcomes.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>1X2 predictions for match-result tips, and HT/FT predictions for half-time/full-time combinations.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -159,15 +194,7 @@ if ($pickCount > 0) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoTmrFaqs = [
-  ['q' => 'Are tomorrow\'s predictions final?', 'a' => 'No. They are a provisional early board and can change after today\'s results, lineups, injuries, suspensions or rotation.'],
-  ['q' => 'Why publish tomorrow early?', 'a' => 'So you can plan ahead — then re-check closer to kick-off when team information is clearer.'],
-  ['q' => 'Why does the last-updated time matter?', 'a' => 'Because fitness calls and squad rotation can still move a lean overnight. Treat an older publish as provisional.'],
-  ['q' => 'What about AI or mathematical predictions tomorrow?', 'a' => 'Models help process data consistently, but the output remains a forecast. Check the evidence and any late team news.'],
-  ['q' => 'Are these sure wins?', 'a' => 'No. Bao does not publish “sure wins.” Confidence figures describe lean strength, not guaranteed outcomes.'],
-  ['q' => 'Where else can I look?', 'a' => '1X2 predictions for match-result tips, and HT/FT predictions for half-time/full-time combinations.'],
-];
-echo bao_faq_schema($baoTmrFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Football Predictions Tomorrow', 'url' => '/football-predictions-tomorrow'],

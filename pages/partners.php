@@ -55,24 +55,6 @@ $updatedIso = date('c');
 $updatedDate = date('j F Y');
 $mailto = 'mailto:hello@baopredictions.com?subject=' . rawurlencode('Link Exchange Request');
 
-$baoPartnerFaqs = [
-  [
-    'q' => 'Is the link exchange free?',
-    'a' => 'Yes. Bao Predictions does not charge for editorial link exchanges. Both sides place dofollow links at no cost.',
-  ],
-  [
-    'q' => 'Will the links be dofollow?',
-    'a' => 'Yes. Approved exchanges use editorial dofollow links. We expect the same on your side and verify before confirming.',
-  ],
-  [
-    'q' => 'How do I apply?',
-    'a' => 'Email hello@baopredictions.com with subject “Link Exchange Request”, or use Contact with subject Partnership enquiry. Include your URL, niche, proposed page, and anchor text.',
-  ],
-  [
-    'q' => 'What if one side removes the link?',
-    'a' => 'We audit active exchanges periodically. Contact us before removing or moving an agreed link. If a partner link disappears without notice, we remove ours after attempting to resolve it.',
-  ],
-];
 ?>
 
 <div class="wrap">
@@ -161,14 +143,52 @@ $baoPartnerFaqs = [
   </article>
 </div>
 
+<?php
+$faqs = [
+  [
+    'q' => 'Is the link exchange free?',
+    'a' => 'Yes. Bao Predictions does not charge for editorial link exchanges. Both sides place dofollow links at no cost — no paid placement packages.
+
+Exchanges are contextual and reviewed by Stephen Karuku, Lead Analyst, before approval.',
+  ],
+  [
+    'q' => 'Will the links be dofollow?',
+    'a' => 'Yes. Approved exchanges use editorial dofollow links. We expect the same on your side and verify before confirming the exchange complete.
+
+Homepage footer spam packs are not part of this programme.',
+  ],
+  [
+    'q' => 'How do I apply?',
+    'a' => 'Email hello@baopredictions.com with subject “Link Exchange Request”, or use Contact with Partnership enquiry. Include your URL, niche, proposed page, and anchor text.
+
+We aim to reply within 48 hours — approved or declined with a reason.',
+  ],
+  [
+    'q' => 'What if one side removes the link?',
+    'a' => 'We audit active exchanges periodically. Contact us before removing or moving an agreed link.
+
+If a partner link disappears without notice, we remove ours after attempting to resolve it.',
+  ],
+  [
+    'q' => 'Do partners influence picks?',
+    'a' => 'No. Published leans follow the same methodology and publish floors (55% minimum, 85% cap) whether or not a partner link appears on site.
+
+We decline unlicensed gambling operators, link farms, and unrelated niches.',
+  ],
+  [
+    'q' => 'Can we republish Bao tips?',
+    'a' => 'Ask first via Contact with scope and attribution plan. Unauthorised scraping or win-only rebrand of our cards is not permitted.
+
+Quote track figures from Results — model leans are not the same as historical win rate.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Link exchange FAQ</h2>
-    <ul class="faq-list">
-<?php foreach ($baoPartnerFaqs as $item): ?>
-      <li><details><summary><?php echo bao_h($item['q']); ?></summary><p><?php echo bao_h($item['a']); ?></p></details></li>
-<?php endforeach; ?>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -177,7 +197,7 @@ $baoPartnerFaqs = [
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($baoPartnerFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Partners', 'url' => '/partners'],

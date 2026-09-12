@@ -149,17 +149,52 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is Must Win Teams Today?',
+    'a' => 'A 1X2-only shortlist of high-confidence win leans — roughly 75%+ model lean — drawn from today\'s pool. It is not a list of guaranteed winners.
+
+Motivation, form, home/away and team news feed the underlying cards. The name reflects situational pressure (relegation, title races), not a promise.',
+  ],
+  [
+    'q' => 'How is this different from Sure Bets?',
+    'a' => 'Must Win is match-result (1X2) only at ~75%+. Sure Bets is the higher band (~78%+) across 1X2, Double Chance, BTTS, Over/Under and HT/FT.
+
+A strong BTTS lean might appear on Sure Bets but not here. A clear home win lean might appear on both.',
+  ],
+  [
+    'q' => 'Are these teams guaranteed to win?',
+    'a' => 'No. “Must win” describes football context and a publish floor — not a sure outcome. Even 85% leans (our cap) lose.
+
+Check Results and Yesterday for the honest record. We never publish 100% on cards.',
+  ],
+  [
+    'q' => 'How are teams selected?',
+    'a' => 'Recent form, home/away splits, H2H where still relevant, confirmed team news and competition stakes — then the ~75% 1X2 floor.
+
+Fixtures below 55% stay off tip boards entirely. Stephen Karuku reviews before publish.',
+  ],
+  [
+    'q' => 'Can I use these in accumulators?',
+    'a' => 'You can, but stacking several “must win” sides multiplies risk — one upset breaks the acca.
+
+Lower-band leans (55–59%) suit acca legs more often than heavy singles. 18+ only; see Responsible Betting.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => 'Sure Bets Today for mixed-market high bands; Football Predictions Today for the full board; Banker of the Day for a single top lean.
+
+Tomorrow carries the early next-day board when you are planning ahead.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Must Win Teams FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What does must-win mean here?</summary><p>Teams with a stronger-than-usual case to win based on form, venue, opposition, motivation and team news — published as a high-confidence 1X2 shortlist, not a guarantee.</p></details></li>
-      <li><details><summary>Can a big club miss this list?</summary><p>Yes. Reputation alone is not enough if form, team news or the fixture look difficult.</p></details></li>
-      <li><details><summary>Do big odds equal a must-win?</summary><p>No. Larger prices usually mean more uncertainty. Evidence comes first; odds are secondary.</p></details></li>
-      <li><details><summary>Are these guaranteed wins?</summary><p>No. There is no such thing as a guaranteed football win. Check Results for how tips land.</p></details></li>
-      <li><details><summary>How often does the list update?</summary><p>Daily for each matchday, and again if late team news changes a lean.</p></details></li>
-      <li><details><summary>Related pages?</summary><p>1X2 Predictions for the full match-result board; Accumulator Tips for combining strong legs.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -170,15 +205,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoMwFaqs = [
-  ['q' => 'What does must-win mean here?', 'a' => 'Teams with a stronger-than-usual case to win based on form, venue, opposition, motivation and team news — published as a high-confidence 1X2 shortlist, not a guarantee.'],
-  ['q' => 'Can a big club miss this list?', 'a' => 'Yes. Reputation alone is not enough if form, team news or the fixture look difficult.'],
-  ['q' => 'Do big odds equal a must-win?', 'a' => 'No. Larger prices usually mean more uncertainty. Evidence comes first; odds are secondary.'],
-  ['q' => 'Are these guaranteed wins?', 'a' => 'No. There is no such thing as a guaranteed football win. Check Results for how tips land.'],
-  ['q' => 'How often does the list update?', 'a' => 'Daily for each matchday, and again if late team news changes a lean.'],
-  ['q' => 'Related pages?', 'a' => '1X2 Predictions for the full match-result board; Accumulator Tips for combining strong legs.'],
-];
-echo bao_faq_schema($baoMwFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Must Win Teams Today', 'url' => '/must-win-teams-today'],

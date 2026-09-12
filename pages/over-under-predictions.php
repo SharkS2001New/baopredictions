@@ -144,17 +144,52 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What are Over/Under predictions?',
+    'a' => 'Goal-line selections — typically Over or Under 2.5 goals — based on scoring trends, tempo and defensive records. Not the same as BTTS or 1X2.
+
+Each card shows market, lean and reasoning. Publish floor remains 55%; confidence caps at 85%.',
+  ],
+  [
+    'q' => 'How does Bao analyse goal lines?',
+    'a' => 'Recent goals scored and conceded, home/away scoring splits, H2H totals where still relevant, weather or venue context when it matters, and team news.
+
+A high-scoring streak can end in a low block — Over/Under leans are estimates, not promises.',
+  ],
+  [
+    'q' => 'Are Over 2.5 tips guaranteed?',
+    'a' => 'No. Early red cards, conservative tactics and missed chances routinely break goal-line bets.
+
+Avoid “sure goal fest” language — we do not use it. 18+ only if staking.',
+  ],
+  [
+    'q' => 'Over/Under vs BTTS?',
+    'a' => 'Over 2.5 needs three+ total goals regardless of who scores. BTTS Yes needs both teams to score — a 3–0 win is Over but BTTS No.
+
+Bao picks whichever market has the clearer signal on each fixture.',
+  ],
+  [
+    'q' => 'Which line does Bao use?',
+    'a' => 'Most cards use the mainstream 2.5 line when that is what books price on the fixture. Alternate lines may appear when the model signal is clearer there.
+
+Always confirm the line on your operator slip matches the card before staking.',
+  ],
+  [
+    'q' => 'Where can I check results?',
+    'a' => 'Settled goal-line results appear beside the original lean on daily boards. Yesterday and Results help audit broader performance.
+
+Headline track figures on Results focus on qualifying 1X2 — not every goals market.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Over/Under FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What does Over/Under mean in football?</summary><p>A forecast on total goals versus a line. Over means more goals than the line; Under means fewer.</p></details></li>
-      <li><details><summary>How does Over/Under 2.5 work?</summary><p>Over 2.5 needs at least three combined goals. Under 2.5 needs two or fewer. Who scores them does not matter.</p></details></li>
-      <li><details><summary>Does a favourite always go Over?</summary><p>No. A strong favourite can still finish 1-0 or 2-0, which is Under 2.5.</p></details></li>
-      <li><details><summary>Why does home and away form matter?</summary><p>Overall goal averages can hide big differences between home and away scoring patterns.</p></details></li>
-      <li><details><summary>Are these guaranteed?</summary><p>No. Strong Over support can still finish 0-0, and tight fixtures can produce goal rushes.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>BTTS predictions for both teams to score, and football predictions today for the full board.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -165,15 +200,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoOuFaqs = [
-  ['q' => 'What does Over/Under mean in football?', 'a' => 'A forecast on total goals versus a line. Over means more goals than the line; Under means fewer.'],
-  ['q' => 'How does Over/Under 2.5 work?', 'a' => 'Over 2.5 needs at least three combined goals. Under 2.5 needs two or fewer. Who scores them does not matter.'],
-  ['q' => 'Does a favourite always go Over?', 'a' => 'No. A strong favourite can still finish 1-0 or 2-0, which is Under 2.5.'],
-  ['q' => 'Why does home and away form matter?', 'a' => 'Overall goal averages can hide big differences between home and away scoring patterns.'],
-  ['q' => 'Are these guaranteed?', 'a' => 'No. Strong Over support can still finish 0-0, and tight fixtures can produce goal rushes.'],
-  ['q' => 'Where else can I look?', 'a' => 'BTTS predictions for both teams to score, and football predictions today for the full board.'],
-];
-echo bao_faq_schema($baoOuFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Over/Under Predictions', 'url' => '/over-under-predictions'],

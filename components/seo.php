@@ -230,18 +230,48 @@ function bao_settled_audit_examples_html(array $games): string {
     return $html;
 }
 
+/** Render FAQ answer text (supports \n\n paragraph breaks). */
+function bao_faq_answer_html(string $a): string {
+    $parts = preg_split('/\n\n+/', trim($a)) ?: [];
+    $html = '';
+    foreach ($parts as $part) {
+        $part = trim($part);
+        if ($part === '') {
+            continue;
+        }
+        $html .= '<p>' . bao_h($part) . '</p>';
+    }
+    return $html !== '' ? $html : '<p>' . bao_h($a) . '</p>';
+}
+
+/** Render a full FAQ list from ['q' => …, 'a' => …] items. */
+function bao_faq_items_html(array $faqs): string {
+    if (!$faqs) {
+        return '';
+    }
+    $html = '<ul class="faq-list">';
+    foreach ($faqs as $item) {
+        $html .= '<li><details><summary>' . bao_h((string) ($item['q'] ?? '')) . '</summary>'
+            . bao_faq_answer_html((string) ($item['a'] ?? ''))
+            . '</details></li>';
+    }
+    $html .= '</ul>';
+    return $html;
+}
+
 function bao_faq_schema(array $faqs): string {
     if (!$faqs) {
         return '';
     }
     $entities = [];
     foreach ($faqs as $item) {
+        $answer = preg_replace('/\n\n+/', ' ', trim((string) ($item['a'] ?? ''))) ?? (string) ($item['a'] ?? '');
         $entities[] = [
             '@type' => 'Question',
             'name' => $item['q'],
             'acceptedAnswer' => [
                 '@type' => 'Answer',
-                'text' => $item['a'],
+                'text' => $answer,
             ],
         ];
     }

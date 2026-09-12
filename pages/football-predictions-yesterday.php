@@ -143,17 +143,52 @@ if ($settledCount > 0) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is the Yesterday page?',
+    'a' => 'A single-matchday audit — every published tip from the previous day beside its final score, wins and losses kept on the same cards.
+
+It answers “how did yesterday’s board land?” Results covers a rolling seven-day window instead of one day.',
+  ],
+  [
+    'q' => 'Do you remove losing tips?',
+    'a' => 'No. Unsuccessful predictions stay published with the original lean, market and reasoning. That is the point of an audit page.
+
+Generic tip sites often delete losers. Bao keeps them so you can judge the record honestly — including calls that looked strong on paper.',
+  ],
+  [
+    'q' => 'How is Yesterday different from Results?',
+    'a' => 'Yesterday is one matchday only. Results is the rolling last seven days of settled tips plus the headline track-record strip above the list.
+
+A single day can look unusually hot or cold; the seven-day view adds context. Both pages keep losses visible.',
+  ],
+  [
+    'q' => 'What do confidence figures mean here?',
+    'a' => 'The percentage shown is the model lean at publish time — capped at 85%, never 100% — not a guaranteed win rate for that card.
+
+A high lean that lost still tells you something: even top-band selections fail. Compare the lean to the outcome rather than assuming the number was a promise.',
+  ],
+  [
+    'q' => 'Can I see examples of wins and losses?',
+    'a' => 'Yes. Each settled card keeps the original pick beside the final score. The prose section highlights real win and loss examples from the archive when available.
+
+Use those examples to see how form, team news and venue context played out — not as proof the next card will repeat.',
+  ],
+  [
+    'q' => 'Where is today\'s live board?',
+    'a' => 'Football Predictions Today for the current matchday. Tomorrow for the early next-day board. Livescores for fixtures already underway.
+
+Check Today for pre-match leans on the current calendar day.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Football Predictions Yesterday FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What is this page for?</summary><p>Verification — comparing yesterday's published tips with the final scores, including wins and losses.</p></details></li>
-      <li><details><summary>Do you remove losing tips?</summary><p>No. Unsuccessful selections stay listed so the record can be reviewed honestly.</p></details></li>
-      <li><details><summary>Are confidence scores win rates?</summary><p>No. They are model leans, not predicted win rates or guarantees.</p></details></li>
-      <li><details><summary>Is this the same as Results?</summary><p>No. Yesterday is the daily verification layer; Results is the longer track record.</p></details></li>
-      <li><details><summary>How do I judge AI predictions yesterday?</summary><p>Compare the published call with the completed match — not the confidence number alone.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>1X2 predictions and HT/FT predictions for live market boards; Results for the longer sample.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -164,15 +199,7 @@ if ($settledCount > 0) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoYFaqs = [
-  ['q' => 'What is this page for?', 'a' => 'Verification — comparing yesterday\'s published tips with the final scores, including wins and losses.'],
-  ['q' => 'Do you remove losing tips?', 'a' => 'No. Unsuccessful selections stay listed so the record can be reviewed honestly.'],
-  ['q' => 'Are confidence scores win rates?', 'a' => 'No. They are model leans, not predicted win rates or guarantees.'],
-  ['q' => 'Is this the same as Results?', 'a' => 'No. Yesterday is the daily verification layer; Results is the longer track record.'],
-  ['q' => 'How do I judge AI predictions yesterday?', 'a' => 'Compare the published call with the completed match — not the confidence number alone.'],
-  ['q' => 'Where else can I look?', 'a' => '1X2 predictions and HT/FT predictions for live market boards; Results for the longer sample.'],
-];
-echo bao_faq_schema($baoYFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Football Predictions Yesterday', 'url' => '/football-predictions-yesterday'],

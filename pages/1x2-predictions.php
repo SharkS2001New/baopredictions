@@ -53,7 +53,8 @@
 
 <header class="page-hero">
     <h1>1X2 Predictions</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+<?php require_once __DIR__ . '/../components/seo.php';
+echo bao_last_updated_html(); ?>
 <?php echo bao_rg_notice_html(); ?>
 
 <p class="lede">Match-result tips only: 1 (home), X (draw), or 2 (away) — with confidence and reasoning on every card.</p>
@@ -145,17 +146,52 @@ echo bao_shortlist_summary_html($games, '1X2 shortlist');
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What are 1X2 predictions?',
+    'a' => 'Match-result tips — Home (1), Draw (X), or Away (2) — with model lean, reasoning and optional published odds. This is Bao\'s core market on daily boards.
+
+Below 55% model lean we usually leave the fixture unpublished. Confidence displays cap at 85%; never 100%.',
+  ],
+  [
+    'q' => 'How are 1X2 picks built?',
+    'a' => 'Form, home/away splits, league position, H2H where relevant, team news and match context — model first, then human review by Stephen Karuku, Lead Analyst.
+
+Must Win Teams Today (~75%+) and the headline Results track sample are both rooted in 1X2 leans.',
+  ],
+  [
+    'q' => 'Are 1X2 tips guaranteed?',
+    'a' => 'No. 1X2 is the simplest market but still loses often — favourites drop points, underdogs score late.
+
+Check Results for wins and losses together. Model lean ≠ win rate.',
+  ],
+  [
+    'q' => '1X2 vs Double Chance?',
+    'a' => '1X2 picks one outcome. Double Chance covers two outcomes at lower odds. Bao publishes whichever market has the clearer signal.
+
+Jackpot slips require 1X2 entries even when Double Chance explains risk on our sheet.',
+  ],
+  [
+    'q' => 'How does this relate to Today?',
+    'a' => 'Football Predictions Today is the full multi-market daily board. This page filters to 1X2-only leans for readers who want match-result focus.
+
+Tomorrow, Yesterday and Results play the same board roles as on the main hub.',
+  ],
+  [
+    'q' => 'Where can I verify results?',
+    'a' => 'Results publishes the rolling seven-day settled 1X2 list and headline track figures. Yesterday isolates one matchday.
+
+Losses stay visible on both pages.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">1X2 Predictions FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What does 1X2 mean?</summary><p>1 = home win, X = draw, 2 = away win — the standard match-result market after 90 minutes plus injury time.</p></details></li>
-      <li><details><summary>Is every tip free?</summary><p>Yes — every 1X2 tip and its reasoning is free, with no paywall.</p></details></li>
-      <li><details><summary>Why don't you show 100% confidence?</summary><p>Ratings are hard-capped at 85%. A 100% figure would read as a guarantee, which football never is.</p></details></li>
-      <li><details><summary>Is 1X2 the same as Double Chance?</summary><p>No. 1X2 picks one exact result. Double Chance covers two outcomes (1X, X2, or 12).</p></details></li>
-      <li><details><summary>Should I stack many 1X2 legs?</summary><p>Long 1X2 accumulators multiply failure risk fast. Prefer fewer stronger legs — see Accumulator Tips.</p></details></li>
-      <li><details><summary>Where is the track record?</summary><p>On the Results page — wins and losses both stay published.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -166,15 +202,7 @@ echo bao_shortlist_summary_html($games, '1X2 shortlist');
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-require_once __DIR__ . '/../components/seo.php';
-echo bao_faq_schema([
-  ['q' => 'What does 1X2 mean?', 'a' => '1 = home win, X = draw, 2 = away win — the standard match-result market after 90 minutes plus injury time.'],
-  ['q' => 'Is every tip free?', 'a' => 'Yes — every 1X2 tip and its reasoning is free, with no paywall.'],
-  ['q' => 'Why don\'t you show 100% confidence?', 'a' => 'Ratings are hard-capped at 85%. A 100% figure would read as a guarantee, which football never is.'],
-  ['q' => 'Is 1X2 the same as Double Chance?', 'a' => 'No. 1X2 picks one exact result. Double Chance covers two outcomes (1X, X2, or 12).'],
-  ['q' => 'Should I stack many 1X2 legs?', 'a' => 'Long 1X2 accumulators multiply failure risk fast. Prefer fewer stronger legs — see Accumulator Tips.'],
-  ['q' => 'Where is the track record?', 'a' => 'On the Results page — wins and losses both stay published.'],
-]);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => '1X2 Predictions', 'url' => '/1x2-predictions'],

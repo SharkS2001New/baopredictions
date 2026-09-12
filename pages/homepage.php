@@ -70,7 +70,10 @@ $baoRecent = is_array($baoStats['recent'] ?? null) ? $baoStats['recent'] : [];
 <div class="wrap">
 <header class="page-hero">
       <h1>Today's Football Predictions</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
+<?php
+require_once __DIR__ . '/../components/seo.php';
+echo bao_last_updated_html();
+?>
 <?php echo bao_rg_notice_html(); ?>
 <p class="lede">Know the odds before kickoff. Tips across 1X2, BTTS, over/under and double chance for today's biggest games, popular leagues first.</p>
     </header>
@@ -123,17 +126,53 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
+$faqs = [
+  [
+    'q' => 'Are Bao Predictions free?',
+    'a' => 'Yes. Every tip board, jackpot sheet, Yesterday archive and Results listing is free to view. Bao Predictions does not charge for picks or take stakes.
+
+The homepage shows a live slice of today\'s board; full daily lists, shortlists and jackpot sheets live on their own pages with the same free access.',
+  ],
+  [
+    'q' => 'How accurate are your football tips?',
+    'a' => 'Check Results — we publish every settled pick, wins and losses. That is the real number, not a marketing line.
+
+Headline figures on Results update as fixtures settle. Model leans describe publish strength, not a guaranteed probability.',
+  ],
+  [
+    'q' => 'What do the confidence ratings mean?',
+    'a' => 'They are capped model leans reviewed by Stephen Karuku, Lead Analyst — not predicted win rates. 75–85% is the strongest published band (hard-capped at 85%). 60–74% is a solid lean. 55–59% is a thinner edge, often better as an accumulator leg.
+
+Below 55% we usually leave a fixture off tip boards. Cards never show 100%. Must Win Teams Today (~75%+ 1X2) and Sure Bets Today (~78%+ mixed markets) are the named high bands.',
+  ],
+  [
+    'q' => 'Do you cover Kenyan jackpots?',
+    'a' => 'Yes — SportPesa Mega Jackpot, SportPesa Midweek Jackpot, Betika Midweek Jackpot, SportyBet Daily, Odibets Laki Tatu, and Mozzart Super Daily Jackpot, with notes on every game.
+
+Each sheet gets per-fixture reasoning: form, home/away, H2H context, team news where confirmed. Confirm live card size and stake on the operator before playing.',
+  ],
+  [
+    'q' => 'How often do tips get updated?',
+    'a' => 'Usually the evening before, then again on matchday when team news changes the picture. Tomorrow\'s early board is provisional until lineups firm up.
+
+Jackpot sheets refresh when operators publish a new round.',
+  ],
+  [
+    'q' => 'Is this financial advice?',
+    'a' => 'No. These are opinions based on available match data — not financial advice, not guaranteed outcomes, and not an invitation to start betting.
+
+Bet only with licensed operators, only what you can afford to lose, and only if you are 18 or over. See Responsible Betting for limits, warning signs and help links.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Football Predictions FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>Are Bao Predictions free?</summary><p>Yes. Every tip, jackpot sheet, and result is free to view.</p></details></li>
-      <li><details><summary>How accurate are your football tips?</summary><p>Check the results page — we publish every settled pick, wins and losses. That's the real number, not a marketing line.</p></details></li>
-      <li><details><summary>What do the confidence ratings mean?</summary><p>75–85% is our strongest published lean (hard-capped at 85%). 60–74% is solid. 55–59% is a thinner edge, better suited to an accumulator than a heavy single. We never publish 100%. None of it is a guarantee.</p></details></li>
-      <li><details><summary>Do you cover Kenyan jackpots?</summary><p>Yes — SportPesa Mega and Midweek, Betika Midweek, SportyBet Daily, and Odibets Laki Tatu, with notes on every game.</p></details></li>
-      <li><details><summary>How often do tips get updated?</summary><p>Usually the evening before, then again on matchday if team news changes anything.</p></details></li>
-      <li><details><summary>Is this financial advice?</summary><p>No. These are opinions, not advice. Bet only with licensed operators, only what you can afford to lose, and only if you're 18 or over.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -144,16 +183,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-require_once __DIR__ . '/../components/seo.php';
-$baoHomeFaqs = [
-  ['q' => 'Are Bao Predictions free?', 'a' => 'Yes. Every tip, jackpot sheet, and result is free to view.'],
-  ['q' => 'How accurate are your football tips?', 'a' => 'Check the results page — we publish every settled pick, wins and losses. That\'s the real number, not a marketing line.'],
-  ['q' => 'What do the confidence ratings mean?', 'a' => '75–85% is our strongest published lean (hard-capped at 85%). 60–74% is solid. 55–59% is a thinner edge, better suited to an accumulator than a heavy single. We never publish 100%. None of it is a guarantee.'],
-  ['q' => 'Do you cover Kenyan jackpots?', 'a' => 'Yes — SportPesa Mega and Midweek, Betika Midweek, SportyBet Daily, and Odibets Laki Tatu, with notes on every game.'],
-  ['q' => 'How often do tips get updated?', 'a' => 'Usually the evening before, then again on matchday if team news changes anything.'],
-  ['q' => 'Is this financial advice?', 'a' => 'No. These are opinions, not advice. Bet only with licensed operators, only what you can afford to lose, and only if you\'re 18 or over.'],
-];
-echo bao_faq_schema($baoHomeFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([['name' => 'Home', 'url' => '/']]);
 echo bao_organization_schema();
 ?>

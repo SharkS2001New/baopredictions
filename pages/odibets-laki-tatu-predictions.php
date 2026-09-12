@@ -205,17 +205,52 @@ if ($dateSpan !== '') {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is Laki Tatu?',
+    'a' => 'Odibets Laki Tatu — OdiBet\'s daily jackpot named for the KES 300,000 top prize, not “three games.”
+
+The product is a 10-game card — confirm the live list on OdiBet.',
+  ],
+  [
+    'q' => 'Does Laki Tatu mean three games?',
+    'a' => 'No. “Laki Tatu” refers to the KES 300,000 prize name, not a three-match ticket.
+
+Check OdiBet for the current game count and stake before playing.',
+  ],
+  [
+    'q' => 'What is the stake amount?',
+    'a' => 'Typically KES 15 on recent cards, but confirm the live stake and bonus rules in the OdiBet app before playing — operator terms change.
+
+18+ only. Bao does not present stake figures as unchangeable rules.',
+  ],
+  [
+    'q' => 'Are bonus tiers fixed?',
+    'a' => 'No. Lower tiers for partial correct slips vary by round — check OdiBet\'s current card rather than copying old articles.
+
+Bao focuses on per-game analysis; payout maths stays on the operator.',
+  ],
+  [
+    'q' => 'Do you hide losing tips?',
+    'a' => 'No. Previous-round wins and losses stay visible for an audit trail when a new Laki Tatu card opens.
+
+Each leg shows 1X2 lean with optional Double Chance context.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => '1X2 predictions and Double Chance predictions for the match markets behind each leg.
+
+Jackpot predictions hub for other Kenyan pools.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Odibet Laki Tatu FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What is Laki Tatu?</summary><p>OdiBet's daily jackpot: currently a 10-game card with a top prize up to KES 300,000. Confirm live branding and rules on OdiBet.</p></details></li>
-      <li><details><summary>Does Laki Tatu mean three games?</summary><p>No. The name refers to the KES 300,000 prize, not a three-match ticket. The current product is a 10-game card.</p></details></li>
-      <li><details><summary>What is the stake amount?</summary><p>Typically KES 15, but confirm the live stake and bonus rules in the OdiBet app before playing.</p></details></li>
-      <li><details><summary>Are bonus tiers fixed?</summary><p>No. Check OdiBet's current card for stake, prize and consolation conditions rather than copying old articles.</p></details></li>
-      <li><details><summary>Do you hide losing tips?</summary><p>No. Previous-round wins and losses stay visible for an audit trail.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>1X2 Predictions and Double Chance Predictions for the related match markets behind each jackpot leg.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -226,15 +261,7 @@ if ($dateSpan !== '') {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoOdFaqs = [
-  ['q' => 'What is Laki Tatu?', 'a' => 'OdiBet\'s daily jackpot: currently a 10-game card with a top prize up to KES 300,000. Confirm live branding and rules on OdiBet.'],
-  ['q' => 'Does Laki Tatu mean three games?', 'a' => 'No. The name refers to the KES 300,000 prize, not a three-match ticket. The current product is a 10-game card.'],
-  ['q' => 'What is the stake amount?', 'a' => 'Typically KES 15, but confirm the live stake and bonus rules in the OdiBet app before playing.'],
-  ['q' => 'Are bonus tiers fixed?', 'a' => 'No. Check OdiBet\'s current card for stake, prize and consolation conditions rather than copying old articles.'],
-  ['q' => 'Do you hide losing tips?', 'a' => 'No. Previous-round wins and losses stay visible for an audit trail.'],
-  ['q' => 'Where else can I look?', 'a' => '1X2 Predictions and Double Chance Predictions for the related match markets behind each jackpot leg.'],
-];
-echo bao_faq_schema($baoOdFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

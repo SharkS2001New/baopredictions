@@ -148,17 +148,52 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What are HT/FT predictions?',
+    'a' => 'Half-time/full-time combinations — e.g. Draw/Home — predicting the standing at the break and at the final whistle. Higher odds, lower hit rate than plain 1X2.
+
+Bao only publishes HT/FT when the combined lean clears the 55% floor; confidence caps at 85%.',
+  ],
+  [
+    'q' => 'Why is HT/FT harder than 1X2?',
+    'a' => 'You need two phase outcomes to align. A team can dominate but draw at half-time; a slow start can still end in an away win.
+
+Form, home/away and tactical patterns (fast starters vs second-half teams) feed the model — still not a guarantee.',
+  ],
+  [
+    'q' => 'How does Bao analyse HT/FT?',
+    'a' => 'First-half scoring trends, second-half performance, H2H phase patterns where sample size helps, and team news affecting early intensity.
+
+Stephen Karuku reviews before publish. Late team news can change tempo expectations.',
+  ],
+  [
+    'q' => 'Are HT/FT tips “sure wins”?',
+    'a' => 'No. HT/FT is among the highest-variance mainstream markets. We do not use guaranteed-win language.
+
+Treat HT/FT as specialist — better for small stakes or acca fun, not heavy singles. 18+ only.',
+  ],
+  [
+    'q' => 'HT/FT on Sure Bets?',
+    'a' => 'Sure Bets Today (~78%+ band) can surface HT/FT when it is the strongest market on a fixture — rare, but published when data supports it.
+
+Most high-band shortlists are 1X2, Double Chance, BTTS or Over/Under instead.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => '1X2 predictions for simpler match-result leans; Football Predictions Today for the full daily board.
+
+Results and Yesterday for settled auditing.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Halftime Fulltime FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What is a halftime fulltime prediction?</summary><p>A selection that forecasts both the half-time and full-time result — for example X/1 for draw at HT and home win at FT.</p></details></li>
-      <li><details><summary>How many HT/FT combinations are there?</summary><p>Nine: 1/1, X/X, 2/2, X/1, X/2, 1/X, 2/X, 1/2 and 2/1.</p></details></li>
-      <li><details><summary>How does Bao assess HT/FT?</summary><p>Using half-time and full-time patterns, first- and second-half scoring, home/away form, lead retention, comebacks, recent form and team news.</p></details></li>
-      <li><details><summary>Is HT/FT just picking the winner?</summary><p>No. It also requires judging how the match may develop across both halves.</p></details></li>
-      <li><details><summary>Are these guaranteed?</summary><p>No. Early goals, red cards, injuries or tactical changes can alter the path quickly.</p></details></li>
-      <li><details><summary>What odds are shown on the board?</summary><p>Often the first-half book price for the HT leg when a full HT/FT combo quote is unavailable.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -169,15 +204,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoHtftFaqs = [
-  ['q' => 'What is a halftime fulltime prediction?', 'a' => 'A selection that forecasts both the half-time and full-time result — for example X/1 for draw at HT and home win at FT.'],
-  ['q' => 'How many HT/FT combinations are there?', 'a' => 'Nine: 1/1, X/X, 2/2, X/1, X/2, 1/X, 2/X, 1/2 and 2/1.'],
-  ['q' => 'How does Bao assess HT/FT?', 'a' => 'Using half-time and full-time patterns, first- and second-half scoring, home/away form, lead retention, comebacks, recent form and team news.'],
-  ['q' => 'Is HT/FT just picking the winner?', 'a' => 'No. It also requires judging how the match may develop across both halves.'],
-  ['q' => 'Are these guaranteed?', 'a' => 'No. Early goals, red cards, injuries or tactical changes can alter the path quickly.'],
-  ['q' => 'What odds are shown on the board?', 'a' => 'Often the first-half book price for the HT leg when a full HT/FT combo quote is unavailable.'],
-];
-echo bao_faq_schema($baoHtftFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Halftime Fulltime Predictions', 'url' => '/ht-ft-predictions'],

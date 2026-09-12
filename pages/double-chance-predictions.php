@@ -140,17 +140,52 @@ if ($payload === null) {
   </div>
 </section>
 
+<?php
+$faqs = [
+  [
+    'q' => 'What is Double Chance?',
+    'a' => 'A market covering two of three 1X2 outcomes — 1X (home or draw), X2 (draw or away), or 12 (home or away). It trades lower odds for broader cover.
+
+Bao publishes Double Chance when that market carries the clearest lean on a fixture, not automatically on every match.',
+  ],
+  [
+    'q' => 'When does Bao prefer Double Chance over 1X2?',
+    'a' => 'When form and team news point to a side not losing (or avoiding a draw) but outright win confidence sits below the 1X2 publish bar.
+
+Jackpot sheets also show Double Chance cover where useful — one wrong 1X2 line ends a ticket, so context matters.',
+  ],
+  [
+    'q' => 'Are Double Chance tips safer?',
+    'a' => 'They cover more outcomes, so hit rate can look smoother — but odds are lower and legs still lose. Nothing here is guaranteed.
+
+Model leans remain capped at 85%. A strong 1X2 lean and a Double Chance lean on the same match are not the same bet.',
+  ],
+  [
+    'q' => 'How are Double Chance picks built?',
+    'a' => 'Same core inputs as 1X2: form, home/away, H2H context, team news, competition stakes — then the 55% floor on the Double Chance market itself.
+
+Stephen Karuku reviews before publish. Re-check cards if late team news drops.',
+  ],
+  [
+    'q' => 'Double Chance on jackpots?',
+    'a' => 'Jackpot products require 1X2 entries on the operator slip. Bao still shows Double Chance on sheets to explain risk around tight fixtures.
+
+SportPesa Mega Jackpot, Odibets Laki Tatu and other named products each have their own stake rules — confirm live on the book.',
+  ],
+  [
+    'q' => 'Where else can I look?',
+    'a' => '1X2 predictions for outright match-result leans; Sure Bets Today when Double Chance is the top band across markets.
+
+Results and Yesterday for settled auditing on published boards.',
+  ],
+];
+?>
+
 <section class="section section-tight bao-faq">
   <div class="wrap">
     <h2 class="section-title">Double Chance FAQ</h2>
-    <ul class="faq-list">
-      <li><details><summary>What does Double Chance mean?</summary><p>A selection that covers two of three match results: 1X (home or draw), 12 (either team wins), or X2 (draw or away).</p></details></li>
-      <li><details><summary>How is 12 different from 1X or X2?</summary><p>12 covers either team winning but excludes the draw. 1X and X2 each include the draw and exclude one side winning.</p></details></li>
-      <li><details><summary>Is Double Chance automatically low-risk?</summary><p>No. You still lose if the uncovered outcome lands. Treat it as two specific outcomes, not a guarantee.</p></details></li>
-      <li><details><summary>How does Bao choose 1X, 12 or X2?</summary><p>By which two outcomes have the strongest supporting evidence from form, venue, head-to-head, league context and team news.</p></details></li>
-      <li><details><summary>Are these guaranteed?</summary><p>No. Late injuries or line-up changes can also change the picture after a prediction is published.</p></details></li>
-      <li><details><summary>Where else can I look?</summary><p>Football predictions today for the full board, and BTTS predictions for both teams to score.</p></details></li>
-    </ul>
+    <?php echo bao_faq_items_html($faqs); ?>
+
   </div>
 </section>
 
@@ -161,15 +196,7 @@ if ($payload === null) {
 <script src="/assets/js/theme.js" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-$baoDcFaqs = [
-  ['q' => 'What does Double Chance mean?', 'a' => 'A selection that covers two of three match results: 1X (home or draw), 12 (either team wins), or X2 (draw or away).'],
-  ['q' => 'How is 12 different from 1X or X2?', 'a' => '12 covers either team winning but excludes the draw. 1X and X2 each include the draw and exclude one side winning.'],
-  ['q' => 'Is Double Chance automatically low-risk?', 'a' => 'No. You still lose if the uncovered outcome lands. Treat it as two specific outcomes, not a guarantee.'],
-  ['q' => 'How does Bao choose 1X, 12 or X2?', 'a' => 'By which two outcomes have the strongest supporting evidence from form, venue, head-to-head, league context and team news.'],
-  ['q' => 'Are these guaranteed?', 'a' => 'No. Late injuries or line-up changes can also change the picture after a prediction is published.'],
-  ['q' => 'Where else can I look?', 'a' => 'Football predictions today for the full board, and BTTS predictions for both teams to score.'],
-];
-echo bao_faq_schema($baoDcFaqs);
+echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Double Chance Predictions', 'url' => '/double-chance-predictions'],
