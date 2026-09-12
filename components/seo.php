@@ -158,6 +158,66 @@ function bao_shortlist_summary_html(array $games, string $label = 'shortlist', s
     return '<p>' . $lead . '</p>';
 }
 
+/**
+ * Live win + loss examples from a settled board (verification copy).
+ *
+ * @param list<array<string,mixed>> $games
+ */
+function bao_settled_audit_examples_html(array $games): string {
+    $win = null;
+    $loss = null;
+    foreach ($games as $g) {
+        if (!is_array($g) || ($g['won'] ?? null) === null) {
+            continue;
+        }
+        if ($g['won'] === true && $win === null) {
+            $win = $g;
+        } elseif ($g['won'] === false && $loss === null) {
+            $loss = $g;
+        }
+        if ($win !== null && $loss !== null) {
+            break;
+        }
+    }
+    if ($win === null && $loss === null) {
+        return '<p>As fixtures settle, each card above keeps the original prediction beside the final score — wins and losses both.</p>';
+    }
+
+    $fmt = static function (array $g): string {
+        $home = trim((string) ($g['home'] ?? 'Home'));
+        $away = trim((string) ($g['away'] ?? 'Away'));
+        $score = trim((string) ($g['score'] ?? ''));
+        $league = trim((string) ($g['league'] ?? 'Football'));
+        $pick = trim((string) ($g['pick'] ?? 'selection'));
+        $conf = isset($g['confidence']) ? (int) $g['confidence'] : 0;
+        $line = '<strong>' . bao_h($home);
+        if ($score !== '') {
+            $line .= ' ' . bao_h($score) . ' ' . bao_h($away) . '</strong>';
+        } else {
+            $line .= ' vs ' . bao_h($away) . '</strong>';
+        }
+        $line .= ' in ' . bao_h($league) . ' with a ' . bao_h($pick) . ' selection';
+        if ($conf > 0) {
+            $line .= ' and a ' . $conf . '% model lean';
+        }
+        return $line;
+    };
+
+    $html = '<p>For example, the current archive';
+    if ($win !== null) {
+        $html .= ' records ' . $fmt($win) . '.';
+    }
+    if ($loss !== null) {
+        $html .= ($win !== null ? ' It also shows unsuccessful calls, such as ' : ' records ')
+            . $fmt($loss)
+            . ', where the published prediction did not match the result.';
+    } else {
+        $html .= ' Losing calls stay listed alongside winning ones when they settle.';
+    }
+    $html .= '</p>';
+    return $html;
+}
+
 function bao_faq_schema(array $faqs): string {
     if (!$faqs) {
         return '';
