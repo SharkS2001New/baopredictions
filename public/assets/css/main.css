@@ -2887,13 +2887,17 @@ main:has(.bao-faq) + .site-footer {
    ========================================================= */
 
 .tip-day {
-  background: var(--pitch-deep);
-  color: #f3f6f9;
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-bg);
+  color: var(--ink);
+  border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 0.9rem 0.85rem 1rem;
   margin-bottom: 0.85rem;
-  box-shadow: 0 10px 28px rgba(8, 16, 28, 0.28);
+  box-shadow: var(--panel-shadow);
+}
+
+.tip-day.is-live {
+  outline: 1px solid rgba(198, 40, 40, 0.28);
 }
 
 .tip-day-header {
@@ -2907,27 +2911,31 @@ main:has(.bao-faq) + .site-footer {
   width: 0.85rem;
   height: 0.85rem;
   border-radius: 50%;
-  background:
-    radial-gradient(circle at 30% 30%, #fff 0 18%, transparent 19%),
-    radial-gradient(circle at 70% 35%, #fff 0 12%, transparent 13%),
-    radial-gradient(circle at 50% 70%, #fff 0 14%, transparent 15%),
-    #e8eef6;
+  background: linear-gradient(135deg, var(--pitch-light), var(--card-accent));
   flex-shrink: 0;
+  box-shadow: inset 0 0 0 2px color-mix(in srgb, var(--ink) 8%, transparent);
 }
 
 .tip-day-title {
   margin: 0;
+  flex: 1;
+  min-width: 0;
   font-family: var(--font-display);
-  font-size: 1.05rem;
+  font-size: 0.95rem;
   font-weight: 700;
   letter-spacing: 0.02em;
-  color: #fff;
+  color: var(--ink);
   line-height: 1.2;
 }
 
+.tip-day-live {
+  margin-left: 0;
+  flex-shrink: 0;
+}
+
 .tip-day-match {
-  background: rgba(0, 0, 0, 0.28);
-  border: 1px solid rgba(255, 255, 255, 0.06);
+  background: var(--card-tip-bg);
+  border: 1px solid var(--card-tip-border);
   border-radius: 10px;
   padding: 0.7rem 0.65rem 0.85rem;
   margin-bottom: 0.7rem;
@@ -2936,15 +2944,24 @@ main:has(.bao-faq) + .site-footer {
 .tip-day-meta {
   display: flex;
   flex-direction: column;
-  gap: 0.2rem;
+  gap: 0.25rem;
   margin-bottom: 0.75rem;
   font-size: 0.78rem;
-  color: rgba(233, 238, 243, 0.72);
+  color: var(--ink-muted);
 }
 
 .tip-day-league {
   font-weight: 600;
-  color: rgba(243, 246, 249, 0.92);
+  color: var(--ink-muted);
+}
+
+.tip-day-kick {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.3rem;
+  font-weight: 600;
+  color: var(--ink);
+  white-space: nowrap;
 }
 
 .tip-day-teams {
@@ -2967,21 +2984,21 @@ main:has(.bao-faq) + .site-footer {
   width: 40px;
   height: 40px;
   object-fit: contain;
-  background: rgba(255, 255, 255, 0.08);
+  background: var(--card-crest-bg);
   border-radius: 50%;
   padding: 0.2rem;
 }
 
 .tip-day-crest--empty {
   display: block;
-  background: rgba(255, 255, 255, 0.1);
+  background: var(--card-crest-bg);
 }
 
 .tip-day-team-name {
   font-size: 0.78rem;
   font-weight: 600;
   line-height: 1.25;
-  color: #fff;
+  color: var(--ink);
   overflow-wrap: anywhere;
 }
 
@@ -2989,28 +3006,29 @@ main:has(.bao-faq) + .site-footer {
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 0.1rem;
+  justify-content: center;
   font-family: var(--font-display);
   font-weight: 700;
   font-size: 0.95rem;
-  color: rgba(255, 255, 255, 0.85);
+  color: var(--ink-muted);
   letter-spacing: 0.04em;
 }
 
-.tip-day-vs em {
-  font-style: normal;
-  font-family: var(--font-body);
-  font-size: 0.68rem;
-  font-weight: 600;
-  color: var(--win);
+.tip-day-score {
+  font-variant-numeric: tabular-nums;
+  color: var(--card-accent);
   letter-spacing: 0;
+}
+
+.tip-day.is-live .tip-day-score {
+  color: #c62828;
+  font-weight: 800;
 }
 
 .tip-day-stats {
   display: grid;
   grid-template-columns: minmax(0, 1.4fr) auto auto;
   gap: 0.4rem;
-  margin-bottom: 0.45rem;
 }
 
 .tip-day-stat {
@@ -3024,7 +3042,7 @@ main:has(.bao-faq) + .site-footer {
   font-size: 0.65rem;
   text-transform: uppercase;
   letter-spacing: 0.04em;
-  color: rgba(233, 238, 243, 0.55);
+  color: var(--ink-faint);
 }
 
 .tip-day-stat-value {
@@ -3038,9 +3056,9 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .tip-day-pick {
-  background: rgba(0, 0, 0, 0.35);
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  color: #fff;
+  background: var(--card-tip-bg);
+  border: 1px solid var(--card-tip-border);
+  color: var(--ink);
   font-style: italic;
   text-align: left;
   padding-left: 0.45rem;
@@ -3048,34 +3066,28 @@ main:has(.bao-faq) + .site-footer {
 }
 
 .tip-day-odds {
-  background: transparent;
-  border: 1px solid rgba(52, 211, 153, 0.55);
-  color: #34d399;
+  background: var(--card-odds-bg);
+  border: 1px solid var(--card-odds-border);
+  color: var(--card-odds-text);
   min-width: 2.75rem;
 }
 
 .tip-day-payout {
-  background: rgba(26, 107, 74, 0.92);
-  border: 1px solid rgba(52, 211, 153, 0.35);
+  background: color-mix(in srgb, var(--win) 88%, transparent);
+  border: 1px solid var(--card-conf-border);
   color: #fff;
   min-width: 3.4rem;
 }
 
-.tip-day-conf {
-  margin: 0 0 0.65rem;
-  font-size: 0.68rem;
-  color: rgba(233, 238, 243, 0.55);
-  line-height: 1.35;
-}
-
 .tip-day-sponsor {
-  margin-bottom: 0.65rem;
+  margin-top: 0.65rem;
+  margin-bottom: 0;
 }
 
 .tip-day-sponsor-label {
   margin: 0 0 0.35rem;
   font-size: 0.68rem;
-  color: rgba(233, 238, 243, 0.5);
+  color: var(--ink-faint);
 }
 
 .tip-day-sponsor-card {
@@ -3085,20 +3097,20 @@ main:has(.bao-faq) + .site-footer {
   gap: 0.5rem;
   padding: 0.55rem 0.65rem;
   border-radius: 8px;
-  background: rgba(255, 255, 255, 0.06);
-  border: 1px solid rgba(255, 255, 255, 0.08);
+  background: var(--card-tip-bg);
+  border: 1px solid var(--card-tip-border);
   text-decoration: none;
   color: inherit;
 }
 
 .tip-day-sponsor-card:hover {
-  border-color: rgba(255, 255, 255, 0.2);
+  border-color: var(--card-hover-border);
 }
 
 .tip-day-sponsor-name {
   font-weight: 700;
   font-size: 0.85rem;
-  color: #fff;
+  color: var(--ink);
 }
 
 .tip-day-sponsor-badge {
@@ -3111,52 +3123,6 @@ main:has(.bao-faq) + .site-footer {
   border-radius: 999px;
   background: #f5c518;
   color: #121820;
-}
-
-.tip-day-actions {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
-  gap: 0.45rem;
-}
-
-.tip-day-btn {
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  gap: 0.3rem;
-  min-height: 2.35rem;
-  padding: 0.45rem 0.5rem;
-  border-radius: 8px;
-  font-size: 0.78rem;
-  font-weight: 700;
-  text-decoration: none;
-  text-align: center;
-  line-height: 1.2;
-}
-
-.tip-day-btn--ghost {
-  color: #fff;
-  border: 1px solid rgba(255, 255, 255, 0.35);
-  background: transparent;
-}
-
-.tip-day-btn--ghost:hover {
-  border-color: #fff;
-  background: rgba(255, 255, 255, 0.06);
-}
-
-.tip-day-btn--bet {
-  color: #121820;
-  background: #f5c518;
-  border: 1px solid #f5c518;
-}
-
-.tip-day-btn--bet:hover {
-  filter: brightness(1.05);
-}
-
-[data-theme="light"] .tip-day {
-  background: linear-gradient(180deg, #163a5c 0%, #0e2438 100%);
 }
 
 @media (max-width: 900px) {

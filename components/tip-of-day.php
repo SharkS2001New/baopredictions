@@ -1,13 +1,14 @@
 <?php
 /**
  * Prediction of the Day — highest-confidence tip from today's board for the sidebar.
+ * Prefers popular_status=1 leagues, then model lean.
  */
 
 require_once __DIR__ . '/api-curl.php';
 require_once __DIR__ . '/match-cards.php';
 
 /**
- * @return array{game: array<string,mixed>, source: string}|null
+ * @return array{game: array<string,mixed>, source: string, href: string}|null
  */
 function bao_tip_of_day_pick(): ?array
 {
@@ -23,38 +24,40 @@ function bao_tip_of_day_pick(): ?array
         ['path' => '/api/football-predictions-today', 'href' => '/football-predictions-today', 'label' => 'today'],
     ];
 
+    $pool = [];
     foreach ($sources as $src) {
         $payload = bao_curl_api($src['path']);
         $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
             ? $payload['games']
             : [];
-        $best = bao_tip_of_day_best_game($games);
-        if ($best !== null) {
-            $result = [
-                'game' => $best,
+        foreach ($games as $g) {
+            if (!is_array($g)) {
+                continue;
+            }
+            $pool[] = [
+                'game' => $g,
                 'source' => $src['label'],
                 'href' => $src['href'],
             ];
-            return $result;
         }
     }
 
-    return null;
+    $best = bao_tip_of_day_best_from_pool($pool);
+    $result = $best;
+    return $result;
 }
 
 /**
- * Prefer unsettled, not-finished fixtures with the strongest published confidence.
+ * Prefer popular leagues first, then strongest published confidence.
  *
- * @param list<array<string,mixed>> $games
- * @return array<string,mixed>|null
+ * @param list<array{game: array<string,mixed>, source: string, href: string}> $pool
+ * @return array{game: array<string,mixed>, source: string, href: string}|null
  */
-function bao_tip_of_day_best_game(array $games): ?array
+function bao_tip_of_day_best_from_pool(array $pool): ?array
 {
     $candidates = [];
-    foreach ($games as $g) {
-        if (!is_array($g)) {
-            continue;
-        }
+    foreach ($pool as $row) {
+        $g = $row['game'];
         // Skip fully settled tips — tip of the day should be actionable.
         if (array_key_exists('won', $g) && $g['won'] !== null) {
             continue;
@@ -63,34 +66,52 @@ function bao_tip_of_day_best_game(array $games): ?array
         if (in_array($status, ['FT', 'AET', 'PEN', 'CANC', 'PST', 'ABD', 'AWD', 'WO'], true)) {
             continue;
         }
-        $candidates[] = $g;
+        $candidates[] = $row;
     }
     if ($candidates === []) {
-        // Fall back to any published tip if everything settled.
-        $candidates = array_values(array_filter($games, 'is_array'));
+        $candidates = $pool;
     }
     if ($candidates === []) {
         return null;
     }
 
     usort($candidates, static function (array $a, array $b): int {
-        $ca = bao_display_confidence(isset($a['confidence']) ? (int) $a['confidence'] : 0);
-        $cb = bao_display_confidence(isset($b['confidence']) ? (int) $b['confidence'] : 0);
-        if ($ca !== $cb) {
-            return $cb <=> $ca;
-        }
-        // Prefer popular leagues, then earlier kickoff.
-        $pa = (int) ($a['popular'] ?? 0);
-        $pb = (int) ($b['popular'] ?? 0);
+        $ga = $a['game'];
+        $gb = $b['game'];
+        // Popular leagues first (popular_status = 1).
+        $pa = (int) ($ga['popular'] ?? $ga['popular_status'] ?? 0) > 0 ? 1 : 0;
+        $pb = (int) ($gb['popular'] ?? $gb['popular_status'] ?? 0) > 0 ? 1 : 0;
         if ($pa !== $pb) {
             return $pb <=> $pa;
         }
-        $ka = (string) ($a['kickoff_iso'] ?? $a['kickoff'] ?? '');
-        $kb = (string) ($b['kickoff_iso'] ?? $b['kickoff'] ?? '');
+        $ca = bao_display_confidence(isset($ga['confidence']) ? (int) $ga['confidence'] : 0);
+        $cb = bao_display_confidence(isset($gb['confidence']) ? (int) $gb['confidence'] : 0);
+        if ($ca !== $cb) {
+            return $cb <=> $ca;
+        }
+        $ka = (string) ($ga['kickoff_iso'] ?? $ga['kickoff'] ?? '');
+        $kb = (string) ($gb['kickoff_iso'] ?? $gb['kickoff'] ?? '');
         return $ka <=> $kb;
     });
 
     return $candidates[0];
+}
+
+/**
+ * @param list<array<string,mixed>> $games
+ * @return array<string,mixed>|null
+ */
+function bao_tip_of_day_best_game(array $games): ?array
+{
+    $pool = [];
+    foreach ($games as $g) {
+        if (!is_array($g)) {
+            continue;
+        }
+        $pool[] = ['game' => $g, 'source' => 'board', 'href' => '/football-predictions-today'];
+    }
+    $best = bao_tip_of_day_best_from_pool($pool);
+    return $best['game'] ?? null;
 }
 
 /**
@@ -135,7 +156,6 @@ function bao_tip_of_day_html(): string
     }
 
     $g = $pick['game'];
-    $href = (string) $pick['href'];
     $home = trim((string) ($g['home'] ?? 'Home'));
     $away = trim((string) ($g['away'] ?? 'Away'));
     $league = trim((string) ($g['league'] ?? 'Football'));
@@ -179,32 +199,49 @@ function bao_tip_of_day_html(): string
     $dateLabel = trim((string) ($g['date_label'] ?? ''));
     if ($dateLabel === '' && !empty($g['date'])) {
         try {
-            $dateLabel = (new DateTimeImmutable((string) $g['date']))->format('D - j M Y');
+            $dateLabel = (new DateTimeImmutable((string) $g['date']))->format('D j M');
         } catch (Throwable $e) {
             $dateLabel = (string) $g['date'];
         }
     }
+    // Prefer a compact one-line kickoff: "5:00 PM · Sat 12 Sep"
+    $kickLine = '';
+    if ($clock !== '' && $dateLabel !== '') {
+        $kickLine = $clock . ' · ' . $dateLabel;
+    } elseif ($clock !== '') {
+        $kickLine = $clock;
+    } elseif ($dateLabel !== '') {
+        $kickLine = $dateLabel;
+    }
+
     $kickoffIso = trim((string) ($g['kickoff_iso'] ?? ''));
-    $confidence = bao_display_confidence(isset($g['confidence']) ? (int) $g['confidence'] : 0);
     $isLive = !empty($g['is_live']);
+    $status = strtoupper(trim((string) ($g['status'] ?? '')));
+    $statusLong = trim((string) ($g['status_long'] ?? ''));
+    $score = trim((string) ($g['score'] ?? ''));
     $sponsor = bao_tip_of_day_sponsor();
 
-    $html = '<section class="tip-day" aria-label="Prediction of the Day">';
+    $html = '<section class="tip-day' . ($isLive ? ' is-live' : '') . '" aria-label="Prediction of the Day">';
     $html .= '<header class="tip-day-header">';
     $html .= '<span class="tip-day-ball" aria-hidden="true"></span>';
     $html .= '<h2 class="tip-day-title">Prediction of the Day</h2>';
+    if ($isLive) {
+        $html .= '<span class="tip-day-live at-live-pill" title="'
+            . bao_h($statusLong !== '' ? $statusLong : $status)
+            . '">LIVE'
+            . ($status !== '' ? ' · ' . bao_h($status) : '')
+            . '</span>';
+    }
     $html .= '</header>';
 
     $html .= '<div class="tip-day-match">';
     $html .= '<div class="tip-day-meta">';
     $html .= '<span class="tip-day-league">' . bao_h($leagueLine) . '</span>';
-    if ($clock !== '') {
-        $html .= '<span class="tip-day-time bao-kickoff-time"'
+    if ($kickLine !== '') {
+        $html .= '<span class="tip-day-kick bao-kickoff-time"'
             . ($kickoffIso !== '' ? ' data-kickoff-utc="' . bao_h($kickoffIso) . '"' : '')
-            . '><span class="bao-kickoff-label">' . bao_h($clock) . '</span></span>';
-    }
-    if ($dateLabel !== '') {
-        $html .= '<span class="tip-day-date">' . bao_h($dateLabel) . '</span>';
+            . ' data-show-date="1"'
+            . '><span class="bao-kickoff-label">' . bao_h($kickLine) . '</span></span>';
     }
     $html .= '</div>';
 
@@ -218,8 +255,12 @@ function bao_tip_of_day_html(): string
     $html .= '<span class="tip-day-team-name">' . bao_h($home) . '</span>';
     $html .= '</div>';
 
-    $html .= '<div class="tip-day-vs" aria-hidden="true"><span>V.S</span>';
-    $html .= $isLive ? '<em>Live</em>' : '<em>Today</em>';
+    $html .= '<div class="tip-day-vs">';
+    if ($isLive && $score !== '' && $score !== '—') {
+        $html .= '<span class="tip-day-score">' . bao_h($score) . '</span>';
+    } else {
+        $html .= '<span>V.S</span>';
+    }
     $html .= '</div>';
 
     $html .= '<div class="tip-day-team">';
@@ -248,10 +289,6 @@ function bao_tip_of_day_html(): string
     $html .= '</div>';
     $html .= '</div>';
 
-    if ($confidence > 0) {
-        $html .= '<p class="tip-day-conf">' . (int) $confidence . '% model lean — not a guarantee</p>';
-    }
-
     if ($sponsor !== null) {
         $html .= '<div class="tip-day-sponsor">';
         $html .= '<p class="tip-day-sponsor-label">Betting odds sponsored by</p>';
@@ -261,15 +298,6 @@ function bao_tip_of_day_html(): string
         $html .= '</a>';
         $html .= '</div>';
     }
-
-    $html .= '<div class="tip-day-actions">';
-    $html .= '<a class="tip-day-btn tip-day-btn--ghost" href="' . bao_h($href) . '">See Prediction</a>';
-    if ($sponsor !== null) {
-        $html .= '<a class="tip-day-btn tip-day-btn--bet" href="' . bao_h($sponsor['url']) . '" rel="sponsored noopener noreferrer" target="_blank">Bet Now</a>';
-    } else {
-        $html .= '<a class="tip-day-btn tip-day-btn--bet" href="' . bao_h($href) . '">View Board</a>';
-    }
-    $html .= '</div>';
 
     $html .= '</section>';
     return $html;
