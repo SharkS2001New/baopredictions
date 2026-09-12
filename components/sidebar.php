@@ -106,6 +106,13 @@ require_once __DIR__ . '/tip-of-day.php';
             </span>
             <span class="market-count"><?= htmlspecialchars($mc($baoMarkets, 'sure-bets-today')) ?></span>
           </a>
+          <a href="/banker-of-the-day" class="market-item-link<?= bao_sidebar_active('banker-of-the-day', $a) ?>">
+            <span class="market-info">
+              <span class="market-icon">BK</span>
+              <span class="market-name">Banker of the Day</span>
+            </span>
+            <span class="market-count">1</span>
+          </a>
           <a href="/accumulator-tips" class="market-item-link<?= bao_sidebar_active('accumulator-tips', $a) ?>">
             <span class="market-info">
               <span class="market-icon">AC</span>

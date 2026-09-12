@@ -207,6 +207,10 @@ $router->get('/sure-bets-today', function () {
     include __DIR__ . '/../pages/sure-bets-today.php';
 });
 
+$router->get('/banker-of-the-day', function () {
+    include __DIR__ . '/../pages/banker-of-the-day.php';
+});
+
 $router->get('/betnumbers-tips', function () {
     include __DIR__ . '/../pages/betnumbers-tips.php';
 });
@@ -457,6 +461,10 @@ $router->get('/premier-league-form-guide-matchweek-4', function () {
 
 $router->get('/about-us', function () {
     include __DIR__ . '/../pages/about-us.php';
+});
+
+$router->get('/partners', function () {
+    include __DIR__ . '/../pages/partners.php';
 });
 
 $router->get('/faq', function () {

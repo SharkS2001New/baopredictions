@@ -224,7 +224,7 @@ function bao_tip_of_day_html(): string
     $html = '<section class="tip-day' . ($isLive ? ' is-live' : '') . '" aria-label="Prediction of the Day">';
     $html .= '<header class="tip-day-header">';
     $html .= '<span class="tip-day-ball" aria-hidden="true"></span>';
-    $html .= '<h2 class="tip-day-title">Prediction of the Day</h2>';
+    $html .= '<h2 class="tip-day-title"><a href="/banker-of-the-day">Prediction of the Day</a></h2>';
     if ($isLive) {
         $html .= '<span class="tip-day-live at-live-pill" title="'
             . bao_h($statusLong !== '' ? $statusLong : $status)
@@ -234,6 +234,7 @@ function bao_tip_of_day_html(): string
     }
     $html .= '</header>';
 
+    $html .= '<a class="tip-day-body-link" href="/banker-of-the-day">';
     $html .= '<div class="tip-day-match">';
     $html .= '<div class="tip-day-meta">';
     $html .= '<span class="tip-day-league">' . bao_h($leagueLine) . '</span>';
@@ -288,6 +289,8 @@ function bao_tip_of_day_html(): string
     $html .= '<span class="tip-day-stat-value tip-day-payout">' . bao_h($payoutDisplay) . '</span>';
     $html .= '</div>';
     $html .= '</div>';
+    $html .= '<p class="tip-day-more">Open Banker of the Day →</p>';
+    $html .= '</a>';
 
     if ($sponsor !== null) {
         $html .= '<div class="tip-day-sponsor">';

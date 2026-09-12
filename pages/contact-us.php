@@ -18,6 +18,7 @@ $subjects = [
     'General enquiry',
     'Tip correction / wrong score',
     'Partnership enquiry',
+    'Link exchange request',
     'Press / media',
     'League request',
     'Other',

@@ -10,6 +10,7 @@
           <li><a href="/weekend-football-predictions">Weekend</a></li>
           <li><a href="/must-win-teams-today">Must-Win</a></li>
           <li><a href="/sure-bets-today">Sure Bets</a></li>
+          <li><a href="/banker-of-the-day">Banker of the Day</a></li>
           <li><a href="/accumulator-tips">Accumulators</a></li>
         </ul>
       </div>
@@ -43,6 +44,7 @@
           <li><a href="/results">Results</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/about-us">About</a></li>
+          <li><a href="/partners">Partners</a></li>
           <li><a href="/faq">FAQ</a></li>
           <li><a href="/contact-us">Contact</a></li>
         </ul>
