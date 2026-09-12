@@ -69,6 +69,7 @@ $gameCount = (int) $sheet['count'];
 
 <section class="section-tight">
   <div class="wrap wrap-wide">
+<div class="main-grid">
 <div class="matches-area">
 <p>This weekend's live Mega Jackpot sheet — <?php echo (int) $gameCount; ?> games with a 1X2 lean, Double Chance cover where useful, and a short reason on every fixture. Re-check team news before kickoff.</p>
     <?php
@@ -78,11 +79,13 @@ if ($payload === null) {
   echo bao_api_empty_msg('fixtures');
   echo bao_jackpot_previous_results_html($payload);
 } else {
-  echo bao_matches_html($payload['games'], ['show_date' => true, 'page' => (string)($payload['page'] ?? '')]);
+  echo bao_matches_html($payload['games'], ['show_date' => true, 'page' => (string)($payload['page'] ?? ''), 'tip_of_day' => false]);
   echo bao_jackpot_previous_results_html($payload);
 }
 ?>
   </div><!-- /.matches-area -->
+<?php $bao_jackpot_active = 'sportpesa-mega-jackpot-predictions'; require __DIR__ . '/../components/jackpot-sidebar.php'; ?>
+</div><!-- /.main-grid -->
 </div>
 </section>
 

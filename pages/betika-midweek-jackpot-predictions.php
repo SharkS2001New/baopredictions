@@ -69,6 +69,7 @@ $gameCount = (int) $sheet['count'];
 
 <section class="section-tight">
   <div class="wrap wrap-wide">
+<div class="main-grid">
 <div class="matches-area">
 <p>The live card below is this round's Betika Midweek Jackpot prediction sheet — <?php echo (int) $gameCount; ?> games with a 1X2 lean and short reason on every fixture. Confirm stake, game count, and bonuses in the Betika app before you play.</p>
     <?php
@@ -78,11 +79,13 @@ if ($payload === null) {
   echo bao_api_empty_msg('fixtures');
   echo bao_jackpot_previous_results_html($payload);
 } else {
-  echo bao_matches_html($payload['games'], ['show_date' => true, 'page' => (string)($payload['page'] ?? '')]);
+  echo bao_matches_html($payload['games'], ['show_date' => true, 'page' => (string)($payload['page'] ?? ''), 'tip_of_day' => false]);
   echo bao_jackpot_previous_results_html($payload);
 }
 ?>
   </div><!-- /.matches-area -->
+<?php $bao_jackpot_active = 'betika-midweek-jackpot-predictions'; require __DIR__ . '/../components/jackpot-sidebar.php'; ?>
+</div><!-- /.main-grid -->
 </div>
 </section>
 

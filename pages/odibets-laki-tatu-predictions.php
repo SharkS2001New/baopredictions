@@ -131,6 +131,7 @@ if (is_array($prevGames)) {
 
 <section class="section-tight">
   <div class="wrap wrap-wide">
+<div class="main-grid">
 <div class="matches-area">
 <p>Current Odibet Laki Tatu card — <?php echo (int) $gameCount; ?> games with a 1X2 lean, Double Chance where useful, and notes on every fixture. Top prize up to KES 300,000; confirm stake and rules in the OdiBet app.</p>
 <?php
@@ -140,11 +141,13 @@ if ($payload === null) {
   echo bao_api_empty_msg('fixtures');
   echo bao_jackpot_previous_results_html($payload);
 } else {
-  echo bao_matches_html($games, ['show_date' => true, 'page' => (string)($payload['page'] ?? '')]);
+  echo bao_matches_html($games, ['show_date' => true, 'page' => (string)($payload['page'] ?? ''), 'tip_of_day' => false]);
   echo bao_jackpot_previous_results_html($payload);
 }
 ?>
   </div><!-- /.matches-area -->
+<?php $bao_jackpot_active = 'odibets-laki-tatu-predictions'; require __DIR__ . '/../components/jackpot-sidebar.php'; ?>
+</div><!-- /.main-grid -->
 </div>
 </section>
 

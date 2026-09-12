@@ -103,6 +103,7 @@ if (count($dateLabels) === 1) {
 
 <section class="section-tight">
   <div class="wrap wrap-wide">
+<div class="main-grid">
 <div class="matches-area">
 <p>Current SportyBet jackpot card — <?php echo (int) $gameCount; ?> games with a 1X2 lean, Double Chance cover where useful, and clearer or weaker labels on each fixture. Confirm the live list, stake and deadline on SportyBet before you play.</p>
 <?php
@@ -112,11 +113,13 @@ if ($payload === null) {
   echo bao_api_empty_msg('fixtures');
   echo bao_jackpot_previous_results_html($payload);
 } else {
-  echo bao_matches_html($games, ['show_date' => true, 'page' => (string)($payload['page'] ?? '')]);
+  echo bao_matches_html($games, ['show_date' => true, 'page' => (string)($payload['page'] ?? ''), 'tip_of_day' => false]);
   echo bao_jackpot_previous_results_html($payload);
 }
 ?>
   </div><!-- /.matches-area -->
+<?php $bao_jackpot_active = 'sportybet-daily-jackpot-predictions'; require __DIR__ . '/../components/jackpot-sidebar.php'; ?>
+</div><!-- /.main-grid -->
 </div>
 </section>
 

@@ -69,6 +69,7 @@ $gameCount = (int) $sheet['count'];
 
 <section class="section-tight">
   <div class="wrap wrap-wide">
+<div class="main-grid">
 <div class="matches-area">
 <p>Live SportPesa Midweek Jackpot sheet — <?php echo (int) $gameCount; ?> games with 1X2 selections and reasons. Always match this card to SportPesa's published fixtures for the open round.</p>
     <?php
@@ -78,11 +79,13 @@ if ($payload === null) {
   echo bao_api_empty_msg('fixtures');
   echo bao_jackpot_previous_results_html($payload);
 } else {
-  echo bao_matches_html($payload['games'], ['show_date' => true, 'page' => (string)($payload['page'] ?? '')]);
+  echo bao_matches_html($payload['games'], ['show_date' => true, 'page' => (string)($payload['page'] ?? ''), 'tip_of_day' => false]);
   echo bao_jackpot_previous_results_html($payload);
 }
 ?>
   </div><!-- /.matches-area -->
+<?php $bao_jackpot_active = 'sportpesa-midweek-jackpot-predictions'; require __DIR__ . '/../components/jackpot-sidebar.php'; ?>
+</div><!-- /.main-grid -->
 </div>
 </section>
 

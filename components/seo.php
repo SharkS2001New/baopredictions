@@ -112,6 +112,8 @@ function bao_jackpot_previous_results_html(?array $payload): string {
     $html .= bao_matches_html($games, [
         'show_date' => true,
         'page' => (string) ($payload['page'] ?? '') . '-previous',
+        'tip_of_day' => false,
+        'load_more' => false,
     ]);
     $html .= '</section>';
     return $html;
