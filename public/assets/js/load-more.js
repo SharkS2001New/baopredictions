@@ -59,6 +59,10 @@
       if (html) {
         grid.insertAdjacentHTML('beforeend', html);
         applyKickoffs();
+        var filtersRoot = grid.closest('[data-bao-result-filters]');
+        if (filtersRoot) {
+          filtersRoot.dispatchEvent(new CustomEvent('bao:matches-updated', { bubbles: true }));
+        }
       }
 
       if (!html || count < 1 || !hasMore) {

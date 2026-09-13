@@ -167,7 +167,8 @@ function bao_match_card(array $g): string {
         . ($isLive ? ' is-live' : '')
         . ($showTick ? ' is-tip-hit' : '')
         . ($showLost ? ' is-tip-lost' : '');
-    $html = '<article class="' . $cardClass . '" aria-label="' . $aria . '">';
+    $outcome = $showTick ? 'won' : ($showLost ? 'lost' : 'pending');
+    $html = '<article class="' . $cardClass . '" data-outcome="' . $outcome . '" aria-label="' . $aria . '">';
 
     $html .= '<div class="at-card-league">';
     $html .= '<span class="at-league-dot" aria-hidden="true"></span>';

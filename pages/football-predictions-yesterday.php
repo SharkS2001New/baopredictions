@@ -3,26 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Football Predictions Yesterday | Results &amp; Tips</title>
-  <meta name="description" content="Check football predictions yesterday with the original tips, final results, wins, losses and model leans from Bao Predictions.">
+  <title>Football Predictions Yesterday — Results &amp; Analysis | Bao Predictions</title>
+  <meta name="description" content="Yesterday's football predictions with every win and loss published — final scores beside the original tips. Transparent daily audit. 18+.">
   <link rel="canonical" href="https://www.baopredictions.com/football-predictions-yesterday">
   <meta name="robots" content="index,follow">
   <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Football Predictions Yesterday | Results &amp; Tips">
-  <meta name="keywords" content="football predictions yesterday, AI football predictions yesterday, yesterday football predictions, football tips yesterday, yesterday match predictions, football predictions results yesterday">
+  <meta name="title" content="Football Predictions Yesterday — Results &amp; Analysis | Bao Predictions">
+  <meta name="keywords" content="football predictions yesterday, yesterday football predictions, football tips yesterday, yesterday match predictions, football predictions results yesterday">
   <meta name="author" content="Stephen Karuku">
   <meta name="date" content="<?php echo date('Y-m-d'); ?>">
   <meta property="article:published_time" content="<?php echo date('c'); ?>">
   <meta property="article:modified_time" content="<?php echo date('c'); ?>">
   <meta property="article:author" content="Stephen Karuku">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Football Predictions Yesterday | Results &amp; Tips">
-  <meta name="twitter:description" content="Check football predictions yesterday with the original tips, final results, wins, losses and model leans from Bao Predictions.">
+  <meta name="twitter:title" content="Football Predictions Yesterday — Results &amp; Analysis | Bao Predictions">
+  <meta name="twitter:description" content="Yesterday's football predictions with every win and loss published — final scores beside the original tips. Transparent daily audit. 18+.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-yesterday">
   <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Football Predictions Yesterday | Results &amp; Tips">
-  <meta property="og:description" content="Check football predictions yesterday with the original tips, final results, wins, losses and model leans from Bao Predictions.">
+  <meta property="og:title" content="Football Predictions Yesterday — Results &amp; Analysis | Bao Predictions">
+  <meta property="og:description" content="Yesterday's football predictions with every win and loss published — final scores beside the original tips. Transparent daily audit. 18+.">
   <meta property="og:url" content="https://www.baopredictions.com/football-predictions-yesterday">
   <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
@@ -49,18 +49,37 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   ? $payload['games']
   : [];
 $stats = bao_api_stats();
-$yesterdayLabel = date('l, j F Y', strtotime('-1 day'));
+$yDateRaw = is_array($payload) && !empty($payload['date'])
+  ? (string) $payload['date']
+  : date('Y-m-d', strtotime('-1 day'));
+$yesterdayLabel = date('l, j F Y', strtotime($yDateRaw));
+$yesterdayShort = date('j F Y', strtotime($yDateRaw));
 $updatedIso = is_array($stats) && !empty($stats['last_updated'])
   ? (string) $stats['last_updated']
   : date('c');
 $updatedDate = date('j F Y', strtotime($updatedIso));
 $updatedTime = date('H:i', strtotime($updatedIso));
-$settledCount = 0;
+
+$yWins = 0;
+$yLosses = 0;
+$yPending = 0;
 foreach ($games as $g) {
-  if (is_array($g) && ($g['won'] ?? null) !== null) {
-    $settledCount++;
+  if (!is_array($g)) {
+    continue;
+  }
+  $won = $g['won'] ?? null;
+  if ($won === true) {
+    $yWins++;
+  } elseif ($won === false) {
+    $yLosses++;
+  } else {
+    $yPending++;
   }
 }
+$yAnalysed = count($games);
+$ySettled = $yWins + $yLosses;
+$yRate = $ySettled > 0 ? (int) round(100 * $yWins / $ySettled) : null;
+$settledCount = $ySettled;
 ?>
 
 <div class="wrap">
@@ -73,19 +92,49 @@ foreach ($games as $g) {
 </nav>
 
 <header class="page-hero">
-    <h1>Football Predictions Yesterday</h1>
+    <h1>Yesterday's Football Predictions</h1>
 <?php echo bao_last_updated_html($updatedIso); ?>
 <?php echo bao_rg_notice_html(); ?>
 
-<p class="lede">Verification, not prediction: yesterday's tips kept beside the final scores — wins and losses both visible.</p>
+<p class="lede">See exactly how published tips performed on <strong><?php echo bao_h($yesterdayLabel); ?></strong> — every win and loss kept on the board. No cherry-picking.</p>
   </header>
 
 </div>
 
+<?php if ($yAnalysed > 0): ?>
+<section class="section-tight section-dark" aria-label="Yesterday's prediction performance">
+  <div class="wrap">
+    <div class="track-strip track-strip--yesterday">
+      <div><strong><?php echo (int) $yAnalysed; ?></strong><span>Matches analysed</span></div>
+      <div><strong><?php echo (int) $yWins; ?></strong><span>Predictions won</span></div>
+      <div><strong><?php echo (int) $yLosses; ?></strong><span>Predictions lost</span></div>
+      <div><strong><?php echo $yRate !== null ? (int) $yRate . '%' : '—'; ?></strong><span>Success rate</span></div>
+    </div>
+    <p class="track-strip-note">Based on <?php echo (int) $ySettled; ?> settled tip<?php echo $ySettled === 1 ? '' : 's'; ?> from <?php echo bao_h($yesterdayShort); ?><?php
+if ($yPending > 0) {
+  echo ' · ' . (int) $yPending . ' still pending';
+}
+?>. Success rate = wins ÷ settled.</p>
+  </div>
+</section>
+<?php endif; ?>
+
 <section class="section-tight">
   <div class="wrap wrap-wide">
 <div class="main-grid">
-<div class="matches-area">
+<div class="matches-area" data-bao-result-filters>
+    <h2 class="section-title">Yesterday's Results</h2>
+    <p class="text-muted" style="margin:0 0 0.85rem">Results from tips published for <strong><?php echo bao_h($yesterdayLabel); ?></strong>. Filter the board or open the longer <a href="/results">Results</a> archive for a seven-day view.</p>
+
+<?php if ($yAnalysed > 0): ?>
+    <div class="result-filters" role="group" aria-label="Filter yesterday's results">
+      <button type="button" class="result-filter-btn is-active" data-result-filter="all" aria-pressed="true">All results</button>
+      <button type="button" class="result-filter-btn" data-result-filter="won" aria-pressed="false">Won only</button>
+      <button type="button" class="result-filter-btn" data-result-filter="lost" aria-pressed="false">Lost only</button>
+      <span class="result-filter-count" data-result-count>Showing <?php echo (int) $yAnalysed; ?> result<?php echo $yAnalysed === 1 ? '' : 's'; ?></span>
+    </div>
+<?php endif; ?>
+
 <?php
 if ($payload === null) {
   echo bao_api_fail_msg();
@@ -106,7 +155,14 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>Football Predictions Yesterday</h2>
     <p><strong>Football predictions yesterday</strong> are useful for checking how published football tips performed after the matches have finished. Bao Predictions keeps yesterday's selections visible alongside the actual results, so you can see which predictions won, which lost and what the original model lean was before the match started.</p>
-    <p>This makes the page different from a list of final football scores. The purpose is to compare <strong>prediction versus outcome</strong> and review the record without removing unsuccessful selections. The settled board above is that daily audit trail for <strong><?php echo bao_h($yesterdayLabel); ?></strong>.</p>
+    <p>This makes the page different from a list of final football scores. The purpose is to compare <strong>prediction versus outcome</strong> and review the record without removing unsuccessful selections. The settled board above is that daily audit trail for <strong><?php echo bao_h($yesterdayLabel); ?></strong><?php
+if ($ySettled > 0) {
+  echo ' — currently <strong>' . (int) $yWins . '</strong> won and <strong>' . (int) $yLosses . '</strong> lost';
+  if ($yRate !== null) {
+    echo ' (<strong>' . (int) $yRate . '%</strong> of settled tips)';
+  }
+}
+?>.</p>
 
     <h2>How to Read Yesterday's Football Predictions</h2>
     <p>Bao's yesterday page shows settled predictions from the previous day's fixtures. Each entry identifies the competition, teams, final score, selected market and the published model assessment.</p>
@@ -137,9 +193,8 @@ if ($settledCount > 0) {
     <h2>Why Yesterday's Results Matter</h2>
     <p>A prediction should be judged after the match, not just when it is published. Yesterday's page provides that audit trail by leaving the original selection and its outcome together.</p>
     <p>That gives bettors a straightforward way to ask: <strong>What was predicted, what actually happened, and how often has the prediction process performed over a larger sample?</strong></p>
-    <p><strong>18+ | Gamble responsibly.</strong> Football predictions are informational opinions, not guaranteed outcomes or financial advice. Never stake money you cannot afford to lose. <a href="/responsible-betting">Responsible betting</a>.</p>
 
-    <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2 predictions</a> · <a href="/ht-ft-predictions">HT/FT predictions</a> · <a href="/results">Results</a></p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2 predictions</a> · <a href="/ht-ft-predictions">HT/FT predictions</a> · <a href="/results">Results</a> · <a href="/responsible-betting">Responsible betting</a></p>
   </div>
 </section>
 
@@ -171,7 +226,7 @@ A high lean that lost still tells you something: even top-band selections fail. 
   ],
   [
     'q' => 'Can I see examples of wins and losses?',
-    'a' => 'Yes. Each settled card keeps the original pick beside the final score. The prose section highlights real win and loss examples from the archive when available.
+    'a' => 'Yes. Use All / Won only / Lost only above the board, or read the cards directly — each settled tip keeps the original pick beside the final score.
 
 Use those examples to see how form, team news and venue context played out — not as proof the next card will repeat.',
   ],
@@ -195,7 +250,8 @@ Check Today for pre-match leans on the current calendar day.',
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/timezone.js?v=20260913c" defer></script>
-<script src="/assets/js/load-more.js?v=20260913c" defer></script>
+<script src="/assets/js/load-more.js?v=20260913e" defer></script>
+<script src="/assets/js/result-filters.js?v=20260913e" defer></script>
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
