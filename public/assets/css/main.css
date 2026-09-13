@@ -2488,22 +2488,30 @@ main:has(.bao-faq) + .site-footer {
   align-items: start;
 }
 
-.main-grid:has(.tip-day-slot--grid) {
-  grid-template-areas:
-    "tip matches"
-    "sidebar matches";
-}
-
 .matches-area {
   grid-area: matches;
   min-width: 0;
 }
 
-.sidebar {
+/* Tip + sidebar share one column so a tall match list can't open a gap between them */
+.sidebar-stack,
+.main-grid > .sidebar {
   grid-area: sidebar;
+  min-width: 0;
+  align-self: start;
+}
+
+.sidebar-stack {
   display: flex;
   flex-direction: column;
   gap: 1rem;
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: 1rem;
+  min-width: 0;
 }
 
 .sidebar-collapsible {
@@ -2512,9 +2520,8 @@ main:has(.bao-faq) + .site-footer {
   gap: 1rem;
 }
 
-/* Prediction of the Day: one DOM node; grid places it in the sidebar column */
+/* Prediction of the Day: one DOM node inside .sidebar-stack */
 .tip-day-slot--grid {
-  grid-area: tip;
   min-width: 0;
 }
 
@@ -2726,11 +2733,24 @@ main:has(.bao-faq) + .site-footer {
     gap: 1.25rem;
   }
 
+  /* Flatten stack so tip can sit above the match list */
   .main-grid:has(.tip-day-slot--grid) {
     grid-template-areas:
       "tip"
       "matches"
       "sidebar";
+  }
+
+  .sidebar-stack {
+    display: contents;
+  }
+
+  .tip-day-slot--grid {
+    grid-area: tip;
+  }
+
+  .sidebar {
+    grid-area: sidebar;
   }
 
   .matches-area,
@@ -2914,7 +2934,7 @@ main:has(.bao-faq) + .site-footer {
   border: 1px solid var(--card-border);
   border-radius: 12px;
   padding: 0.9rem 0.85rem 1rem;
-  margin-bottom: 0.85rem;
+  margin-bottom: 0;
   box-shadow: var(--panel-shadow);
 }
 
