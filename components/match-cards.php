@@ -11,6 +11,8 @@ if (!function_exists('bao_h')) {
     }
 }
 
+require_once __DIR__ . '/images.php';
+
 function bao_team_initials(string $name): string {
     $words = preg_split('/\s+/', trim($name)) ?: [];
     $words = array_values(array_filter($words, static function ($w) {
@@ -180,14 +182,14 @@ function bao_match_card(array $g): string {
     $html .= '<div class="at-card-teams">';
     $html .= '<div class="at-team">';
     if ($homeLogo !== '') {
-        $html .= '<img class="at-crest" src="' . bao_h($homeLogo) . '" alt="' . bao_h($home . ' badge') . '" width="24" height="24" loading="lazy" decoding="async">';
+        $html .= '<img class="at-crest" src="' . bao_h(bao_img_url($homeLogo, 48)) . '" alt="' . bao_h($home . ' badge') . '" width="24" height="24" loading="lazy" decoding="async">';
     } else {
         $html .= '<span class="at-crest at-crest-fallback" aria-hidden="true">' . bao_h(bao_team_initials($home)) . '</span>';
     }
     $html .= '<span class="at-team-name">' . bao_h($home) . '</span></div>';
     $html .= '<div class="at-team">';
     if ($awayLogo !== '') {
-        $html .= '<img class="at-crest" src="' . bao_h($awayLogo) . '" alt="' . bao_h($away . ' badge') . '" width="24" height="24" loading="lazy" decoding="async">';
+        $html .= '<img class="at-crest" src="' . bao_h(bao_img_url($awayLogo, 48)) . '" alt="' . bao_h($away . ' badge') . '" width="24" height="24" loading="lazy" decoding="async">';
     } else {
         $html .= '<span class="at-crest at-crest-fallback" aria-hidden="true">' . bao_h(bao_team_initials($away)) . '</span>';
     }
@@ -270,17 +272,8 @@ function bao_matches_html(array $games, array $opts = []): string {
         return bao_matches_table_html($games, $title, $class, $showDate);
     }
 
-    $tipSlot = '';
-    if (($opts['tip_of_day'] ?? true) !== false) {
-        require_once __DIR__ . '/tip-of-day.php';
-        $tipHtml = bao_tip_of_day_html();
-        if ($tipHtml !== '') {
-            $tipSlot = '<div class="tip-day-slot tip-day-slot--board">' . $tipHtml . '</div>';
-        }
-    }
-
-    $html = $tipSlot;
-    $html .= '<div class="matches-block' . ($class ? ' ' . bao_h($class) : '') . '">';
+    // Tip of the Day is rendered once via sidebar.php (tip-day-slot--grid), not duplicated here.
+    $html = '<div class="matches-block' . ($class ? ' ' . bao_h($class) : '') . '">';
     if ($title !== '') {
         $html .= '<h2 class="at-matches-title">' . bao_h($title) . '</h2>';
     }

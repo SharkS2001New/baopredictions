@@ -36,12 +36,14 @@ $mc = static function (array $markets, string $key): string {
 
 $a = $bao_sidebar_active;
 require_once __DIR__ . '/tip-of-day.php';
-?>
+// Single tip render (grid places it above matches on mobile, in the sidebar column on desktop).
+$baoTipDayHtml = bao_tip_of_day_html();
+if ($baoTipDayHtml !== ''): ?>
+<div class="tip-day-slot tip-day-slot--grid">
+<?php echo $baoTipDayHtml; ?>
+</div>
+<?php endif; ?>
 <aside class="sidebar" aria-label="Markets and statistics">
-  <div class="tip-day-slot tip-day-slot--sidebar">
-<?php echo bao_tip_of_day_html(); ?>
-  </div>
-
   <div class="sidebar-collapsible">
     <section class="panel sidebar-panel-markets">
       <header class="panel-header">

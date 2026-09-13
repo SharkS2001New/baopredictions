@@ -249,7 +249,7 @@ function bao_tip_of_day_html(): string
     $html .= '<div class="tip-day-teams">';
     $html .= '<div class="tip-day-team">';
     if ($homeLogo !== '') {
-        $html .= '<img class="tip-day-crest" src="' . bao_h($homeLogo) . '" alt="" width="40" height="40" loading="lazy">';
+        $html .= '<img class="tip-day-crest" src="' . bao_h(bao_img_url($homeLogo, 80)) . '" alt="" width="40" height="40" loading="lazy" decoding="async">';
     } else {
         $html .= '<span class="tip-day-crest tip-day-crest--empty" aria-hidden="true"></span>';
     }
@@ -266,7 +266,7 @@ function bao_tip_of_day_html(): string
 
     $html .= '<div class="tip-day-team">';
     if ($awayLogo !== '') {
-        $html .= '<img class="tip-day-crest" src="' . bao_h($awayLogo) . '" alt="" width="40" height="40" loading="lazy">';
+        $html .= '<img class="tip-day-crest" src="' . bao_h(bao_img_url($awayLogo, 80)) . '" alt="" width="40" height="40" loading="lazy" decoding="async">';
     } else {
         $html .= '<span class="tip-day-crest tip-day-crest--empty" aria-hidden="true"></span>';
     }

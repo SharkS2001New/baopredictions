@@ -152,9 +152,9 @@ if ($payload === null) {
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
-<script src="/assets/js/timezone.js" defer></script>
-<script src="/assets/js/load-more.js" defer></script>
-<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/timezone.js?v=20260913c" defer></script>
+<script src="/assets/js/load-more.js?v=20260913c" defer></script>
+<script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
 require_once __DIR__ . '/../components/seo.php';

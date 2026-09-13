@@ -112,7 +112,7 @@ if ($strong > 0 || $swing > 0) {
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
-<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
 echo bao_breadcrumb_schema([

@@ -25,8 +25,11 @@
 <IfModule mod_headers.c>
   # Dynamic tip HTML (front controller) — never long-cache in the browser.
   Header set Cache-Control "no-store"
-  <FilesMatch "\.(css|js|svg|png|jpe?g|webp|ico|woff2?)$">
+  <FilesMatch "\.(css|js|woff2?)$">
     Header set Cache-Control "public, max-age=604800, immutable"
+  </FilesMatch>
+  <FilesMatch "\.(svg|png|jpe?g|webp|ico|gif|avif)$">
+    Header set Cache-Control "public, max-age=2592000, immutable"
   </FilesMatch>
   # Sitemap + robots must be cacheable/fetchable by Googlebot (override no-store).
   <FilesMatch "^(sitemap\.xml|robots\.txt)$">

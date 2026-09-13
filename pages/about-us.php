@@ -145,7 +145,7 @@ See Responsible Betting for limits and help links. Tips are informational opinio
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
-<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
 echo bao_faq_schema($faqs);

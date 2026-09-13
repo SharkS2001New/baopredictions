@@ -263,6 +263,6 @@ function bao_blog_page_url(int $pageNum, string $category): string
 
   </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
-<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/theme.js?v=20260913c" defer></script>
 </body>
 </html>

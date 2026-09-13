@@ -168,7 +168,7 @@ $stakes = [100, 200, 500, 1000, 2000, 5000];
     <div class="banker-teams">
       <div class="banker-team">
 <?php if ($homeLogo !== ''): ?>
-        <img class="banker-crest" src="<?php echo bao_h($homeLogo); ?>" alt="" width="56" height="56" loading="lazy">
+        <img class="banker-crest" src="<?php echo bao_h(bao_img_url($homeLogo, 112)); ?>" alt="" width="56" height="56" loading="lazy" decoding="async">
 <?php else: ?>
         <span class="banker-crest banker-crest--empty" aria-hidden="true"></span>
 <?php endif; ?>
@@ -183,7 +183,7 @@ $stakes = [100, 200, 500, 1000, 2000, 5000];
       </div>
       <div class="banker-team">
 <?php if ($awayLogo !== ''): ?>
-        <img class="banker-crest" src="<?php echo bao_h($awayLogo); ?>" alt="" width="56" height="56" loading="lazy">
+        <img class="banker-crest" src="<?php echo bao_h(bao_img_url($awayLogo, 112)); ?>" alt="" width="56" height="56" loading="lazy" decoding="async">
 <?php else: ?>
         <span class="banker-crest banker-crest--empty" aria-hidden="true"></span>
 <?php endif; ?>
@@ -316,8 +316,8 @@ Check Yesterday and Results once the fixture settles.',
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
-<script src="/assets/js/timezone.js" defer></script>
-<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/timezone.js?v=20260913c" defer></script>
+<script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
 echo bao_faq_schema($faqs);

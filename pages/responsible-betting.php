@@ -135,7 +135,7 @@ Make your own decisions with licensed operators only. 18+ | Gamble responsibly.'
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
-<script src="/assets/js/theme.js" defer></script>
+<script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
 echo bao_faq_schema($faqs);
