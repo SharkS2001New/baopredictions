@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Weekend Football Predictions | Saturday &amp; Sunday Tips</title>
-  <meta name="description" content="Get free weekend football predictions for Saturday and Sunday with 1X2 tips based on form, team news, home and away records and match data.">
+  <title>Weekend Football Predictions &amp; Free Tips | Bao Predictions</title>
+  <meta name="description" content="Get weekend football predictions for Saturday and Sunday, free betting tips, match analysis, confidence ratings, form and H2H statistics from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/weekend-football-predictions">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Weekend Football Predictions | Saturday &amp; Sunday Tips">
-  <meta name="keywords" content="football prediction weekend, football prediction weekend tips, free football prediction weekend, weekend football predictions, weekend football tips, Saturday football predictions, Sunday football predictions, mathematical football prediction weekend, football prediction weekend correct score">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Weekend Football Predictions | Saturday &amp; Sunday Tips">
-  <meta name="twitter:description" content="Get free weekend football predictions for Saturday and Sunday with 1X2 tips based on form, team news, home and away records and match data.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/weekend-football-predictions">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Weekend Football Predictions | Saturday &amp; Sunday Tips">
-  <meta property="og:description" content="Get free weekend football predictions for Saturday and Sunday with 1X2 tips based on form, team news, home and away records and match data.">
+  <meta name="keywords" content="weekend football predictions, saturday football tips, sunday predictions, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Weekend Football Predictions &amp; Free Tips | Bao Predictions">
+  <meta name="twitter:description" content="Weekend football predictions, free Saturday and Sunday tips, match analysis, confidence ratings and H2H statistics.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/weekend-football-predictions">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/weekend-football-predictions">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Weekend Football Predictions &amp; Free Tips | Bao Predictions">
+  <meta property="og:description" content="Weekend football predictions, free Saturday and Sunday tips, match analysis, confidence ratings and H2H statistics.">
   <meta property="og:url" content="https://www.baopredictions.com/weekend-football-predictions">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

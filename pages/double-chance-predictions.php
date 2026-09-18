@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Double Chance Predictions | Football Tips Today</title>
-  <meta name="description" content="Get free Double Chance predictions for today's football matches, including 1X, 12 and X2 tips based on form, team news and match data.">
+  <title>Double Chance Predictions Today | Bao Predictions</title>
+  <meta name="description" content="Get today's Double Chance predictions (1X, X2, 12) with free tips, match analysis, confidence ratings, form and H2H statistics from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/double-chance-predictions">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Double Chance Predictions | Football Tips Today">
-  <meta name="keywords" content="double chance prediction, double chance predictions, double chance tips, double chance predictions today, football double chance predictions, double chance betting tips, 1X double chance, X2 double chance, 12 double chance, double chance football tips">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Double Chance Predictions | Football Tips Today">
-  <meta name="twitter:description" content="Get free Double Chance predictions for today's football matches, including 1X, 12 and X2 tips based on form, team news and match data.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/double-chance-predictions">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Double Chance Predictions | Football Tips Today">
-  <meta property="og:description" content="Get free Double Chance predictions for today's football matches, including 1X, 12 and X2 tips based on form, team news and match data.">
+  <meta name="keywords" content="double chance predictions, 1x x2 12 tips, double chance tips today, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Double Chance Predictions Today | Bao Predictions">
+  <meta name="twitter:description" content="Today's Double Chance predictions — 1X, X2 and 12 tips with match analysis and confidence ratings.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/double-chance-predictions">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/double-chance-predictions">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Double Chance Predictions Today | Bao Predictions">
+  <meta property="og:description" content="Today's Double Chance predictions — 1X, X2 and 12 tips with match analysis and confidence ratings.">
   <meta property="og:url" content="https://www.baopredictions.com/double-chance-predictions">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

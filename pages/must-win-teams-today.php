@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Must Win Teams Today | Football Win Tips</title>
-  <meta name="description" content="Get must win teams today with football analysis based on form, home and away records, team news, league position and opposition strength.">
+  <title>Must Win Teams Today — Strong 1X2 Tips | Bao Predictions</title>
+  <meta name="description" content="Get today's must-win team predictions — high-confidence 1X2 tips with match analysis, form, confidence ratings and head-to-head statistics from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/must-win-teams-today">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Must Win Teams Today | Football Win Tips">
-  <meta name="keywords" content="must win teams today, must win tips today, must win teams today with big odds, banker tips, high confidence football tips">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Must Win Teams Today | Football Win Tips">
-  <meta name="twitter:description" content="Get must win teams today with football analysis based on form, home and away records, team news, league position and opposition strength.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/must-win-teams-today">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Must Win Teams Today | Football Win Tips">
-  <meta property="og:description" content="Get must win teams today with football analysis based on form, home and away records, team news, league position and opposition strength.">
+  <meta name="keywords" content="must win teams today, strong home tips, high confidence 1x2, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Must Win Teams Today — Strong 1X2 Tips | Bao Predictions">
+  <meta name="twitter:description" content="Must-win teams today — high-confidence 1X2 tips with match analysis, form and confidence ratings.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/must-win-teams-today">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/must-win-teams-today">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Must Win Teams Today — Strong 1X2 Tips | Bao Predictions">
+  <meta property="og:description" content="Must-win teams today — high-confidence 1X2 tips with match analysis, form and confidence ratings.">
   <meta property="og:url" content="https://www.baopredictions.com/must-win-teams-today">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

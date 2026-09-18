@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Odibet Laki Tatu Jackpot Predictions &amp; Tips</title>
-  <meta name="description" content="Get free Odibet Laki Tatu jackpot predictions, current 10-game tips, stake information and bonus details for the latest card.">
+  <title>Odibets Laki Tatu Predictions | Bao Predictions</title>
+  <meta name="description" content="Get free Odibets Laki Tatu jackpot predictions with per-game tips, 1X2 and Double Chance views, form analysis and confidence ratings from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Odibet Laki Tatu Jackpot Predictions &amp; Tips">
-  <meta name="keywords" content="Odibet Laki Tatu Jackpot predictions, odibet laki tatu jackpot games, odibet laki tatu jackpot bonus, Odibet Laki Tatu Daily Jackpot Stake Amount, Odibet Laki Tatu predictions today, Odibet Laki Tatu jackpot tips, Odibet Laki Tatu daily jackpot">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Odibet Laki Tatu Jackpot Predictions &amp; Tips">
-  <meta name="twitter:description" content="Get free Odibet Laki Tatu jackpot predictions, current 10-game tips, stake information and bonus details for the latest card.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Odibet Laki Tatu Jackpot Predictions &amp; Tips">
-  <meta property="og:description" content="Get free Odibet Laki Tatu jackpot predictions, current 10-game tips, stake information and bonus details for the latest card.">
+  <meta name="keywords" content="odibets laki tatu predictions, odibet laki tatu tips, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Odibets Laki Tatu Predictions | Bao Predictions">
+  <meta name="twitter:description" content="Free Odibets Laki Tatu predictions with per-game tips, 1X2 and Double Chance views and form analysis.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Odibets Laki Tatu Predictions | Bao Predictions">
+  <meta property="og:description" content="Free Odibets Laki Tatu predictions with per-game tips, 1X2 and Double Chance views and form analysis.">
   <meta property="og:url" content="https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

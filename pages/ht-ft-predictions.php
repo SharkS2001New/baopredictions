@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Halftime Fulltime Prediction | HT/FT Tips</title>
-  <meta name="description" content="Get today's halftime fulltime predictions with HT/FT football tips based on form, half-time results, home and away records and team news.">
+  <title>HT/FT Predictions Today — Half Time Full Time | Bao Predictions</title>
+  <meta name="description" content="Get today's HT/FT predictions and Half Time Full Time tips with match analysis, confidence ratings, form and tempo context from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/ht-ft-predictions">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Halftime Fulltime Prediction | HT/FT Tips">
-  <meta name="keywords" content="halftime fulltime prediction, halftime fulltime predictions, halftime fulltime prediction for today, halftime fulltime prediction today, today's halftime fulltime predictions, halftime fulltime, HT/FT predictions, HT/FT football predictions">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Halftime Fulltime Prediction | HT/FT Tips">
-  <meta name="twitter:description" content="Get today's halftime fulltime predictions with HT/FT football tips based on form, half-time results, home and away records and team news.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/ht-ft-predictions">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Halftime Fulltime Prediction | HT/FT Tips">
-  <meta property="og:description" content="Get today's halftime fulltime predictions with HT/FT football tips based on form, half-time results, home and away records and team news.">
+  <meta name="keywords" content="ht ft predictions, half time full time tips, htft predictions today, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="HT/FT Predictions Today — Half Time Full Time | Bao Predictions">
+  <meta name="twitter:description" content="Today's HT/FT predictions and Half Time Full Time tips with match analysis and confidence ratings.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/ht-ft-predictions">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/ht-ft-predictions">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="HT/FT Predictions Today — Half Time Full Time | Bao Predictions">
+  <meta property="og:description" content="Today's HT/FT predictions and Half Time Full Time tips with match analysis and confidence ratings.">
   <meta property="og:url" content="https://www.baopredictions.com/ht-ft-predictions">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

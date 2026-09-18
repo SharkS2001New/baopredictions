@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>SportPesa Midweek Jackpot Prediction | Bao Predictions</title>
-  <meta name="description" content="SportPesa Midweek Jackpot prediction for the 13-game card — form, home/away records, H2H, team news and per-game reasoning. 18+.">
+  <title>SportPesa Midweek Jackpot Predictions | Bao Predictions</title>
+  <meta name="description" content="Get free SportPesa Midweek Jackpot predictions for the 13-game card with per-game tips, form, H2H, team news and confidence ratings from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/jackpots/sportpesa-midweek-jackpot-predictions">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="SportPesa Midweek Jackpot Prediction | Bao Predictions">
-  <meta name="keywords" content="sportpesa midweek jackpot prediction, sportpesa midweek jackpot predictions, sportpesa midweek jackpot prediction today">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="SportPesa Midweek Jackpot Prediction | Bao Predictions">
-  <meta name="twitter:description" content="SportPesa Midweek Jackpot prediction for the 13-game card — form, home/away records, H2H, team news and per-game reasoning. 18+.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/sportpesa-midweek-jackpot-predictions">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="SportPesa Midweek Jackpot Prediction | Bao Predictions">
-  <meta property="og:description" content="SportPesa Midweek Jackpot prediction for the 13-game card — form, home/away records, H2H, team news and per-game reasoning. 18+.">
+  <meta name="keywords" content="sportpesa midweek jackpot prediction, sportpesa midweek tips, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="SportPesa Midweek Jackpot Predictions | Bao Predictions">
+  <meta name="twitter:description" content="Free SportPesa Midweek Jackpot predictions for 13 games with per-game tips, form, H2H and confidence ratings.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/sportpesa-midweek-jackpot-predictions">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/jackpots/sportpesa-midweek-jackpot-predictions">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="SportPesa Midweek Jackpot Predictions | Bao Predictions">
+  <meta property="og:description" content="Free SportPesa Midweek Jackpot predictions for 13 games with per-game tips, form, H2H and confidence ratings.">
   <meta property="og:url" content="https://www.baopredictions.com/jackpots/sportpesa-midweek-jackpot-predictions">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

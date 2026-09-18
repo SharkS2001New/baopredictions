@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Mozzart Super Daily Jackpot Predictions &amp; Tips</title>
-  <meta name="description" content="Get free Mozzart Super Daily Jackpot predictions, 16-game tips, bonus information, rules and results for the latest jackpot card.">
+  <title>Mozzart Super Daily Jackpot Predictions | Bao Predictions</title>
+  <meta name="description" content="Get free Mozzart Super Daily Jackpot predictions with per-game tips, match analysis, confidence ratings, bonus notes and rules context from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/jackpots/mozzart-super-daily-jackpot-predictions">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Mozzart Super Daily Jackpot Predictions &amp; Tips">
-  <meta name="keywords" content="Mozzart Super Daily Jackpot Predictions, Mozzart Super Daily Jackpot Prediction, Mozzart Daily Jackpot Prediction, Mozzart Super Daily Jackpot Bonuses, Mozzart Super Daily Jackpot Games, Mozzart Daily Jackpot Rules, Mozzart Daily Jackpot Results, Mozzartbet Daily Jackpot Prediction, Mozzart Daily Jackpot tips, Mozzart Jackpot predictions today">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Mozzart Super Daily Jackpot Predictions &amp; Tips">
-  <meta name="twitter:description" content="Get free Mozzart Super Daily Jackpot predictions, 16-game tips, bonus information, rules and results for the latest jackpot card.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/mozzart-super-daily-jackpot-predictions">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Mozzart Super Daily Jackpot Predictions &amp; Tips">
-  <meta property="og:description" content="Get free Mozzart Super Daily Jackpot predictions, 16-game tips, bonus information, rules and results for the latest jackpot card.">
+  <meta name="keywords" content="mozzart super daily jackpot, mozzart daily jackpot predictions, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mozzart Super Daily Jackpot Predictions | Bao Predictions">
+  <meta name="twitter:description" content="Free Mozzart Super Daily Jackpot predictions with per-game tips, match analysis and confidence ratings.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/jackpots/mozzart-super-daily-jackpot-predictions">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/jackpots/mozzart-super-daily-jackpot-predictions">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mozzart Super Daily Jackpot Predictions | Bao Predictions">
+  <meta property="og:description" content="Free Mozzart Super Daily Jackpot predictions with per-game tips, match analysis and confidence ratings.">
   <meta property="og:url" content="https://www.baopredictions.com/jackpots/mozzart-super-daily-jackpot-predictions">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

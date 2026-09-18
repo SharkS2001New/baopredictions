@@ -23,10 +23,8 @@ function bao_lead_analyst(): array {
 function bao_last_updated_html(?string $iso = null): string {
     $iso = $iso ?: date('c');
     $label = date('j M Y, H:i', strtotime($iso)) . ' EAT';
-    $analyst = bao_lead_analyst();
     return '<p class="last-updated">Last updated <time datetime="' . bao_h($iso) . '">' . bao_h($label) . '</time>'
-        . ' · By <a href="' . bao_h($analyst['url']) . '">' . bao_h($analyst['name']) . '</a>'
-        . ', ' . bao_h($analyst['job_title']) . '</p>';
+        . ' · <a href="https://www.baopredictions.com/">Bao Predictions</a></p>';
 }
 
 function bao_rg_notice_html(): string {
@@ -305,7 +303,6 @@ function bao_breadcrumb_schema(array $crumbs): string {
 }
 
 function bao_organization_schema(): string {
-    $analyst = bao_lead_analyst();
     $data = [
         '@context' => 'https://schema.org',
         '@type' => 'Organization',
@@ -320,12 +317,7 @@ function bao_organization_schema(): string {
             'SportPesa Mega Jackpot',
             'Betika Midweek Jackpot',
             'FKF Premier League',
-        ],
-        'employee' => [
-            '@type' => 'Person',
-            'name' => $analyst['name'],
-            'jobTitle' => $analyst['job_title'],
-            'url' => $analyst['url'],
+            'Kenya jackpot tips',
         ],
     ];
     return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
@@ -354,19 +346,16 @@ function bao_person_schema(): string {
 }
 
 function bao_article_schema(string $headline, string $description, string $url): string {
-    $analyst = bao_lead_analyst();
     $data = [
         '@context' => 'https://schema.org',
-        '@type' => 'Article',
-        'headline' => $headline,
+        '@type' => 'WebPage',
+        'name' => $headline,
         'description' => $description,
-        'datePublished' => date('c'),
-        'dateModified' => date('c'),
-        'author' => [
-            '@type' => 'Person',
-            'name' => $analyst['name'],
-            'jobTitle' => $analyst['job_title'],
-            'url' => $analyst['url'],
+        'url' => 'https://www.baopredictions.com' . $url,
+        'isPartOf' => [
+            '@type' => 'WebSite',
+            'name' => 'Bao Predictions',
+            'url' => 'https://www.baopredictions.com',
         ],
         'publisher' => [
             '@type' => 'Organization',

@@ -6,12 +6,22 @@ http_response_code(404);
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Page not found | Bao Predictions</title>
-  <meta name="description" content="That page is not on Bao Predictions. Try today's tips, results, or the jackpot hub.">
-  <meta name="robots" content="noindex,follow">
-  <meta property="og:title" content="Page not found | Bao Predictions">
-  <meta property="og:description" content="That page is not on Bao Predictions. Try today's tips, results, or the jackpot hub.">
+  <title>Page Not Found | Bao Predictions</title>
+  <meta name="description" content="That page is not on Bao Predictions. Try today's football predictions, results, or the jackpot hub.">
+  <meta name="robots" content="noindex, follow">
+
+  <meta name="keywords" content="bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Page Not Found | Bao Predictions">
+  <meta name="twitter:description" content="Page not found — try today's football predictions, results, or the jackpot hub.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/">
+
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
+  <meta property="og:title" content="Page Not Found | Bao Predictions">
+  <meta property="og:description" content="Page not found — try today's football predictions, results, or the jackpot hub.">
+  <meta property="og:url" content="https://www.baopredictions.com/">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

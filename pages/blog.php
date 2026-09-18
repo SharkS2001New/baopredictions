@@ -163,14 +163,18 @@ function bao_blog_page_url(int $pageNum, string $category): string
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Bao Predictions Blog – Expert Tips, Predictions &amp; Football Insights</title>
-  <meta name="description" content="Bao Predictions blog — jackpot strategy, BTTS odds, Premier League form guides, and practical betting education.">
+  <title>Football Tips Blog &amp; Prediction Guides | Bao Predictions</title>
+  <meta name="description" content="Bao Predictions blog — jackpot strategy, BTTS odds guides, form analysis and practical football prediction education.">
   <link rel="canonical" href="<?php echo htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8'); ?>">
-  <meta name="robots" content="index,follow">
-  <meta property="og:title" content="Bao Predictions Blog – Expert Tips, Predictions &amp; Football Insights">
-  <meta property="og:description" content="Bao Predictions blog — jackpot strategy, BTTS odds, Premier League form guides, and practical betting education.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <meta property="og:title" content="Football Tips Blog &amp; Prediction Guides | Bao Predictions">
+  <meta property="og:description" content="Football tips blog — jackpot strategy, BTTS odds guides, form analysis and prediction education.">
   <meta property="og:url" content="<?php echo htmlspecialchars($canonical, ENT_QUOTES, 'UTF-8'); ?>">
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Football Tips Blog &amp; Prediction Guides | Bao Predictions">
+  <meta name="twitter:description" content="Football tips blog — jackpot strategy, BTTS odds guides, form analysis and prediction education.">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

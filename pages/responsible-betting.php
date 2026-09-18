@@ -4,27 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>Responsible Betting | Bao Predictions</title>
-  <meta name="description" content="How to use Bao Predictions tips responsibly — model leans are not stake advice, jackpots are long shots, and help is available if gambling stops being entertainment.">
+  <meta name="description" content="Responsible betting guidance for Bao Predictions — tips are informational, model leans are not stake advice, and help is available if gambling stops being entertainment.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/responsible-betting">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Responsible Betting | Bao Predictions">
-  <meta name="keywords" content="responsible betting, responsible gambling, bao predictions 18+, gamble responsibly">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
+
+  <meta name="keywords" content="responsible betting, responsible gambling, bao predictions 18+">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Responsible Betting | Bao Predictions">
-  <meta name="twitter:description" content="How to use Bao Predictions tips responsibly — model leans are not stake advice, jackpots are long shots, and help is available if gambling stops being entertainment.">
+  <meta name="twitter:description" content="Responsible betting guidance — tips are informational, model leans are not stake advice.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/responsible-betting">
-  <!--BAO_HEAD_EXTRA_END-->
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/responsible-betting">
 
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="Responsible Betting | Bao Predictions">
-  <meta property="og:description" content="How to use Bao Predictions tips responsibly — model leans are not stake advice, jackpots are long shots, and help is available if gambling stops being entertainment.">
+  <meta property="og:description" content="Responsible betting guidance — tips are informational, model leans are not stake advice.">
   <meta property="og:url" content="https://www.baopredictions.com/responsible-betting">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

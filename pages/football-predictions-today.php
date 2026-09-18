@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Football Predictions Today | Free Tips &amp; Analysis</title>
-  <meta name="description" content="Get free football predictions today with match tips, form analysis, team news and data-driven selections for today's fixtures.">
+  <title>Football Predictions Today &amp; Free Tips | Bao Predictions</title>
+  <meta name="description" content="Get today's football predictions, free betting tips, match analysis, confidence ratings, form and head-to-head statistics from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/football-predictions-today">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Football Predictions Today | Free Tips &amp; Analysis">
-  <meta name="keywords" content="football predictions today, AI football predictions today, mathematical football predictions today, today's football predictions, football tips today, free football predictions, football match predictions today">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Football Predictions Today | Free Tips &amp; Analysis">
-  <meta name="twitter:description" content="Get free football predictions today with match tips, form analysis, team news and data-driven selections for today's fixtures.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-today">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Football Predictions Today | Free Tips &amp; Analysis">
-  <meta property="og:description" content="Get free football predictions today with match tips, form analysis, team news and data-driven selections for today's fixtures.">
+  <meta name="keywords" content="football predictions today, free football tips, today football predictions, match predictions today, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Football Predictions Today &amp; Free Tips | Bao Predictions">
+  <meta name="twitter:description" content="Today's football predictions, free tips, match analysis, confidence ratings, form and H2H statistics.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/football-predictions-today">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/football-predictions-today">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Football Predictions Today &amp; Free Tips | Bao Predictions">
+  <meta property="og:description" content="Today's football predictions, free tips, match analysis, confidence ratings, form and H2H statistics.">
   <meta property="og:url" content="https://www.baopredictions.com/football-predictions-today">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

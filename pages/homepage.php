@@ -3,30 +3,26 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Today's Football Predictions &amp; Free Tips | Bao Predictions</title>
-  <meta name="description" content="Free daily football predictions with confidence ratings, form and head-to-head analysis, and a public track record. Updated every matchday. 18+ only.">
-  <link rel="canonical" href="https://www.baopredictions.com/">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Today's Football Predictions &amp; Free Tips | Bao Predictions">
-  <meta name="keywords" content="football predictions today, free football tips, bao predictions, confidence ratings, jackpot predictions kenya">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Today's Football Predictions &amp; Free Tips | Bao Predictions">
-  <meta name="twitter:description" content="Free daily football predictions with confidence ratings, form and head-to-head analysis, and a public track record. Updated every matchday. 18+ only.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Today's Football Predictions &amp; Free Tips | Bao Predictions">
-  <meta property="og:description" content="Free daily football predictions with confidence ratings, form and head-to-head analysis, and a public track record. Updated every matchday. 18+ only.">
-  <meta property="og:url" content="https://www.baopredictions.com/">
+  <title>Football Predictions Today &amp; Free Tips | Bao Predictions</title>
+  <meta name="description" content="Get today's football predictions, free betting tips, match analysis, confidence ratings, form, head-to-head statistics and jackpot predictions from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
+  <link rel="canonical" href="https://www.baopredictions.com/">
+
+  <meta name="keywords" content="football predictions today, free football tips, bao predictions, confidence ratings, jackpot predictions kenya">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Football Predictions Today &amp; Free Tips | Bao Predictions">
+  <meta name="twitter:description" content="Today's football predictions, free tips, match analysis, confidence ratings, form, H2H statistics and jackpot predictions.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/">
+
+  <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
+  <meta property="og:title" content="Football Predictions Today &amp; Free Tips | Bao Predictions">
+  <meta property="og:description" content="Today's football predictions, free tips, match analysis, confidence ratings, form, H2H statistics and jackpot predictions.">
+  <meta property="og:url" content="https://www.baopredictions.com/">
   <meta property="og:site_name" content="Bao Predictions">
-    <script>
+  <script>
   (function () {
     try {
       var t = localStorage.getItem('bao-theme');

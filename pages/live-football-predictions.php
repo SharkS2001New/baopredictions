@@ -3,29 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Live Predictions Today | Football Livescores</title>
-  <meta name="description" content="Follow live football scores and predictions today, with match updates and selected tips for 1X2, BTTS, Over/Under and Double Chance.">
+  <title>Live Football Predictions &amp; Livescores | Bao Predictions</title>
+  <meta name="description" content="Follow live football predictions and livescores with in-play tips, match status, confidence ratings and real-time score updates from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/live-football-predictions">
-  <meta name="robots" content="index,follow">
-  <meta http-equiv="refresh" content="90">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Live Predictions Today | Football Livescores">
-  <meta name="keywords" content="live predictions, live predictions today, live football predictions, live football scores, football livescores, live match predictions, live betting predictions, live football tips, football scores today, live soccer predictions, live prediction tips">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Live Predictions Today | Football Livescores">
-  <meta name="twitter:description" content="Follow live football scores and predictions today, with match updates and selected tips for 1X2, BTTS, Over/Under and Double Chance.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/live-football-predictions">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Live Predictions Today | Football Livescores">
-  <meta property="og:description" content="Follow live football scores and predictions today, with match updates and selected tips for 1X2, BTTS, Over/Under and Double Chance.">
+  <meta name="keywords" content="live football predictions, livescores, live betting tips, in-play predictions, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Live Football Predictions &amp; Livescores | Bao Predictions">
+  <meta name="twitter:description" content="Live football predictions, livescores, in-play tips, match status and real-time score updates.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/live-football-predictions">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/live-football-predictions">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Live Football Predictions &amp; Livescores | Bao Predictions">
+  <meta property="og:description" content="Live football predictions, livescores, in-play tips, match status and real-time score updates.">
   <meta property="og:url" content="https://www.baopredictions.com/live-football-predictions">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

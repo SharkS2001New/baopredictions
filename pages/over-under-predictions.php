@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Over/Under Predictions | Football Goals Tips</title>
-  <meta name="description" content="Get free Over/Under predictions for football, including Over/Under 2.5 goals tips based on form, scoring trends and match data.">
+  <title>Over Under Predictions Today | Bao Predictions</title>
+  <meta name="description" content="Get today's Over/Under 2.5 predictions and goals tips with match analysis, scoring trends, confidence ratings and form data from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/over-under-predictions">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Over/Under Predictions | Football Goals Tips">
-  <meta name="keywords" content="over/under, over/under 2.5 goals predictions, over/under prediction, over/under predictions, over under 2.5 goals, over 2.5 goals predictions, under 2.5 goals predictions, over/under predictions today, football over/under predictions">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Over/Under Predictions | Football Goals Tips">
-  <meta name="twitter:description" content="Get free Over/Under predictions for football, including Over/Under 2.5 goals tips based on form, scoring trends and match data.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/over-under-predictions">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Over/Under Predictions | Football Goals Tips">
-  <meta property="og:description" content="Get free Over/Under predictions for football, including Over/Under 2.5 goals tips based on form, scoring trends and match data.">
+  <meta name="keywords" content="over under predictions, over 2.5 tips, under 2.5 predictions, goals tips, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Over Under Predictions Today | Bao Predictions">
+  <meta name="twitter:description" content="Today's Over/Under predictions and goals tips with scoring trends, match analysis and confidence ratings.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/over-under-predictions">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/over-under-predictions">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Over Under Predictions Today | Bao Predictions">
+  <meta property="og:description" content="Today's Over/Under predictions and goals tips with scoring trends, match analysis and confidence ratings.">
   <meta property="og:url" content="https://www.baopredictions.com/over-under-predictions">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

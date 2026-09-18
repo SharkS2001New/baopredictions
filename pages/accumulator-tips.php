@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Accumulator Tips | Acca Tips Today</title>
-  <meta name="description" content="Free accumulator tips today — pre-built 3-, 5- and 8-fold tickets with combined odds, mixed markets and clear reasoning. 18+.">
+  <title>Accumulator Tips Today — Free Acca Predictions | Bao Predictions</title>
+  <meta name="description" content="Get free accumulator tips today with pre-built 3-, 5- and 8-fold tickets, combined odds, mixed markets and match analysis from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/accumulator-tips">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Accumulator Tips | Acca Tips Today">
-  <meta name="keywords" content="accumulator tips, accumulator tips today, acca tips, 3 fold 5 fold 8 fold tips">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Accumulator Tips | Acca Tips Today">
-  <meta name="twitter:description" content="Free accumulator tips today — pre-built 3-, 5- and 8-fold tickets with combined odds, mixed markets and clear reasoning. 18+.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/accumulator-tips">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Accumulator Tips | Acca Tips Today">
-  <meta property="og:description" content="Free accumulator tips today — pre-built 3-, 5- and 8-fold tickets with combined odds, mixed markets and clear reasoning. 18+.">
+  <meta name="keywords" content="accumulator tips, acca tips today, accumulator predictions, multi bet tips, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Accumulator Tips Today — Free Acca Predictions | Bao Predictions">
+  <meta name="twitter:description" content="Free accumulator tips today — 3-, 5- and 8-fold tickets with combined odds and match analysis.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/accumulator-tips">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/accumulator-tips">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Accumulator Tips Today — Free Acca Predictions | Bao Predictions">
+  <meta property="og:description" content="Free accumulator tips today — 3-, 5- and 8-fold tickets with combined odds and match analysis.">
   <meta property="og:url" content="https://www.baopredictions.com/accumulator-tips">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

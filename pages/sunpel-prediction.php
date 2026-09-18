@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sunpel Prediction | Sunpel Tips &amp; Analysis</title>
-  <meta name="description" content="Looking for Sunpel prediction and Sunpel tips? Compare football picks, jackpot analysis, markets and prediction methodology with Bao Predictions.">
+  <title>Sunpel Prediction Alternative — Free Tips | Bao Predictions</title>
+  <meta name="description" content="Looking for Sunpel-style football predictions? Get free tips, jackpot analysis, markets and match methodology from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/sunpel-prediction">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Sunpel Prediction | Sunpel Tips &amp; Analysis">
-  <meta name="keywords" content="sunpel prediction, sunpel, sunpel jackpot prediction, sunpel tips, sunpel prediction today">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sunpel Prediction | Sunpel Tips &amp; Analysis">
-  <meta name="twitter:description" content="Looking for Sunpel prediction and Sunpel tips? Compare football picks, jackpot analysis, markets and prediction methodology with Bao Predictions.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sunpel-prediction">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Sunpel Prediction | Sunpel Tips &amp; Analysis">
-  <meta property="og:description" content="Looking for Sunpel prediction and Sunpel tips? Compare football picks, jackpot analysis, markets and prediction methodology with Bao Predictions.">
+  <meta name="keywords" content="sunpel prediction, sunpel tips, football predictions alternative, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sunpel Prediction Alternative — Free Tips | Bao Predictions">
+  <meta name="twitter:description" content="Sunpel-style football predictions — free tips, jackpot analysis, markets and match methodology.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sunpel-prediction">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/sunpel-prediction">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sunpel Prediction Alternative — Free Tips | Bao Predictions">
+  <meta property="og:description" content="Sunpel-style football predictions — free tips, jackpot analysis, markets and match methodology.">
   <meta property="og:url" content="https://www.baopredictions.com/sunpel-prediction">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

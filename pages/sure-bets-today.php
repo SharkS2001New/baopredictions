@@ -3,28 +3,23 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sure Bets Today: Football Picks for Today | Bao Predictions</title>
-  <meta name="description" content="Free sure bets today across 1X2, Double Chance, BTTS, Over/Under and HT/FT — selected from form and match data, not guaranteed results.">
+  <title>Sure Bets Today — Free Football Tips | Bao Predictions</title>
+  <meta name="description" content="Get today's sure bets shortlist across 1X2, Double Chance, BTTS, Over/Under and HT/FT with confidence ratings and match analysis from Bao Predictions.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/sure-bets-today">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="Sure Bets Today: Football Picks for Today | Bao Predictions">
-  <meta name="keywords" content="sure bets today, most sure bets today, sure bet football tips, high confidence football tips, free sure bets today">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
-  <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sure Bets Today: Football Picks for Today | Bao Predictions">
-  <meta name="twitter:description" content="Free sure bets today across 1X2, Double Chance, BTTS, Over/Under and HT/FT — selected from form and match data, not guaranteed results.">
-  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sure-bets-today">
-  <!--BAO_HEAD_EXTRA_END-->
 
-  <meta property="og:title" content="Sure Bets Today: Football Picks for Today | Bao Predictions">
-  <meta property="og:description" content="Free sure bets today across 1X2, Double Chance, BTTS, Over/Under and HT/FT — selected from form and match data, not guaranteed results.">
+  <meta name="keywords" content="sure bets today, sure tips today, high confidence football tips, bao predictions">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Sure Bets Today — Free Football Tips | Bao Predictions">
+  <meta name="twitter:description" content="Sure bets today across 1X2, Double Chance, BTTS, Over/Under and HT/FT with confidence ratings.">
+  <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sure-bets-today">
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/sure-bets-today">
+
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Sure Bets Today — Free Football Tips | Bao Predictions">
+  <meta property="og:description" content="Sure bets today across 1X2, Double Chance, BTTS, Over/Under and HT/FT with confidence ratings.">
   <meta property="og:url" content="https://www.baopredictions.com/sure-bets-today">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {

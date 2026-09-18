@@ -4,27 +4,22 @@
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <title>How to Read BTTS Odds | Bao Predictions</title>
-  <meta name="description" content="How Both Teams To Score odds work — what the price implies, when BTTS Yes or No looks thinner, and how Bao’s model lean differs from the bookmaker price.">
+  <meta name="description" content="Learn how to read BTTS odds and Both Teams To Score markets — probabilities, form cues and how Bao Predictions publishes BTTS tips.">
+  <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/how-to-read-btts-odds">
-  <meta name="robots" content="index,follow">
-  <!--BAO_HEAD_EXTRA_START-->
-  <meta name="title" content="How to Read BTTS Odds | Bao Predictions">
-  <meta name="keywords" content="how to read btts odds, both teams to score odds, btts yes value, btts tips explained">
-  <meta name="author" content="Stephen Karuku">
-  <meta name="date" content="<?php echo date('Y-m-d'); ?>">
-  <meta property="article:published_time" content="<?php echo date('c'); ?>">
-  <meta property="article:modified_time" content="<?php echo date('c'); ?>">
-  <meta property="article:author" content="Stephen Karuku">
+
+  <meta name="keywords" content="how to read btts odds, both teams to score odds, btts guide, bao predictions">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="How to Read BTTS Odds | Bao Predictions">
-  <meta name="twitter:description" content="How Both Teams To Score odds work — what the price implies, when BTTS Yes or No looks thinner, and how Bao’s model lean differs from the bookmaker price.">
+  <meta name="twitter:description" content="How to read BTTS odds — probabilities, form cues and how Bao Predictions publishes BTTS tips.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/how-to-read-btts-odds">
-  <!--BAO_HEAD_EXTRA_END-->
+  <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/how-to-read-btts-odds">
 
+  <meta property="og:locale" content="en_US">
+  <meta property="og:type" content="website">
   <meta property="og:title" content="How to Read BTTS Odds | Bao Predictions">
-  <meta property="og:description" content="How Both Teams To Score odds work — what the price implies, when BTTS Yes or No looks thinner, and how Bao’s model lean differs from the bookmaker price.">
+  <meta property="og:description" content="How to read BTTS odds — probabilities, form cues and how Bao Predictions publishes BTTS tips.">
   <meta property="og:url" content="https://www.baopredictions.com/how-to-read-btts-odds">
-  <meta property="og:type" content="article">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
   (function () {
