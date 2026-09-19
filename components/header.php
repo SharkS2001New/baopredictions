@@ -1,8 +1,8 @@
 <header class="site-header">
   <div class="wrap header-bar">
-    <a class="logo" href="/" aria-label="Bao Predictions home">
-      <img class="logo-mark-img" src="/assets/img/logo-mark.svg" width="32" height="32" alt="" decoding="async">
-      <span class="logo-text">Bao<span>Predictions</span></span>
+    <a class="logo" href="/">
+      <img class="logo-mark-img" src="/assets/img/logo-mark.svg" width="32" height="32" alt="Bao Predictions" decoding="async">
+      <span class="logo-text" aria-hidden="true">Bao<span>Predictions</span></span>
     </a>
 
     <input type="checkbox" id="nav-toggle" class="nav-toggle" aria-label="Open menu">
