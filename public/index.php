@@ -215,6 +215,14 @@ $router->get('/betnumbers-tips', function () {
     include __DIR__ . '/../pages/betnumbers-tips.php';
 });
 
+$router->get('/sokafans-predictions', function () {
+    include __DIR__ . '/../pages/sokafans-predictions.php';
+});
+
+$router->get('/cheerplex-tips', function () {
+    include __DIR__ . '/../pages/cheerplex-tips.php';
+});
+
 $router->get('/accumulator-tips', function () {
     include __DIR__ . '/../pages/accumulator-tips.php';
 });

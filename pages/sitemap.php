@@ -32,6 +32,8 @@ $rows = [
     ['https://www.baopredictions.com/banker-of-the-day', $liveDay, 'hourly', '0.8'],
     ['https://www.baopredictions.com/accumulator-tips', $liveDay, 'daily', '0.7'],
     ['https://www.baopredictions.com/betnumbers-tips', $liveDay, 'daily', '0.6'],
+    ['https://www.baopredictions.com/sokafans-predictions', $liveDay, 'daily', '0.6'],
+    ['https://www.baopredictions.com/cheerplex-tips', $liveDay, 'daily', '0.6'],
     ['https://www.baopredictions.com/1x2-predictions', $liveDay, 'hourly', '0.8'],
     ['https://www.baopredictions.com/double-chance-predictions', $liveDay, 'daily', '0.7'],
     ['https://www.baopredictions.com/over-under-predictions', $liveDay, 'daily', '0.7'],

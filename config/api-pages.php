@@ -77,6 +77,25 @@ return [
         'order' => 'confidence_desc',
     ],
 
+    // Brand-comparison landing: same mixed-market engine as BetNumbers.
+    'sokafans-predictions' => [
+        'title' => 'SokaFans predictions today',
+        'day' => 'today',
+        'limit' => 40,
+        'market' => 'best',
+        'min_confidence' => 58,
+        'order' => 'confidence_desc',
+    ],
+
+    'cheerplex-tips' => [
+        'title' => 'Cheerplex tips today',
+        'day' => 'today',
+        'limit' => 40,
+        'market' => 'best',
+        'min_confidence' => 58,
+        'order' => 'confidence_desc',
+    ],
+
     // Brand-comparison landing: same mixed-market engine as BetNumbers / Today.
     'sunpel-prediction' => [
         'title' => 'Sunpel prediction tips today',
