@@ -55,8 +55,9 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 </nav>
 
 <header class="page-hero">
-    <h1>Halftime Fulltime Predictions: Football Tips Today</h1>
-<p class="lede">Halftime and full-time result combinations. Useful when first-half patterns and full-time lean point in the same direction.</p>
+    <h1>HT/FT Predictions Today</h1>
+<p class="lede">Halftime / full-time predictions for today — combinations that need both first-half and full-time outcomes. Useful when tempo and match context point the same way. Always re-check late team news before you stake.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -180,6 +181,13 @@ Results and Yesterday for settled auditing.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

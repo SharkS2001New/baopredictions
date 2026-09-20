@@ -56,6 +56,7 @@ $gameCount = (int) $sheet['count'];
 <header class="page-hero">
     <h1>SportPesa Midweek Jackpot Prediction</h1>
 <?php echo bao_jackpot_lede_html($sheet); ?>
+<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -154,6 +155,13 @@ Use that audit before trusting generic “midweek jackpot won every week” clai
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

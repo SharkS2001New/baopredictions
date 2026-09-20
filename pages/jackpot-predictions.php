@@ -47,8 +47,9 @@
 </nav>
 
 <header class="page-hero">
-    <h1>Jackpot Predictions</h1>
-<p class="lede">All Kenya jackpot sheets in one hub — SportPesa, Betika, SportyBet, Odibets and Mozzart. Open the live round for the operator you play.</p>
+    <h1>Jackpot Predictions — Kenya Tips Hub</h1>
+<p class="lede">Free jackpot prediction sheets for SportPesa, Betika, SportyBet, Odibets and Mozzart. Open the live round for the operator you play — each sheet lists current fixtures with a 1X2 lean and short reasoning per game.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -158,6 +159,13 @@ That audit trail includes losses — not a curated highlight reel.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

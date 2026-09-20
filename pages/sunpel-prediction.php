@@ -47,8 +47,9 @@
 </nav>
 
 <header class="page-hero">
-    <h1>Sunpel Prediction</h1>
-<p class="lede">Looking for <strong>Sunpel</strong> football predictions? Free mixed-market tips for today — one recommended lean per fixture, plus how to check tip freshness.</p>
+    <h1>Sunpel Prediction for Today</h1>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_intro_html('Sunpel'); ?>
+<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -126,6 +127,13 @@ require __DIR__ . '/../components/sidebar.php';
 
     <p><strong>18+:</strong> Football predictions are not guarantees. Betting involves financial risk. Only bet what you can afford to lose and use licensed betting services where permitted. <a href="/responsible-betting">Responsible betting</a>.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions</a> · <a href="/double-chance-predictions">Double Chance Predictions</a> · <a href="/betnumbers-tips">BetNumbers tips</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/how-we-predict">How We Predict</a></p>
+  </div>
+</section>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
   </div>
 </section>
 

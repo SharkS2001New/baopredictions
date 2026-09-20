@@ -47,8 +47,9 @@
 </nav>
 
 <header class="page-hero">
-    <h1>1X2 Predictions</h1>
-<p class="lede">Home, draw or away only — no goal markets mixed in. Every card shows the 1X2 lean, confidence and why it made the board.</p>
+    <h1>Free Betting Tips 1X2 Today</h1>
+<p class="lede">Welcome to free <strong>1X2 predictions</strong> and betting tips today from Bao Predictions. This board publishes home, draw or away leans only — with confidence and match context on every card — for fixtures across popular leagues. Free 1X2 tips are updated below; compare them with Double Chance or jackpot sheets when a single result looks thin.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -177,6 +178,13 @@ Losses stay visible on both pages.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

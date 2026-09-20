@@ -56,6 +56,7 @@ $gameCount = (int) $sheet['count'];
 <header class="page-hero">
     <h1>SportPesa Mega Jackpot Predictions — 17 Games</h1>
 <?php echo bao_jackpot_lede_html($sheet); ?>
+<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -149,6 +150,13 @@ Re-check the live SportPesa card and Bao sheet after postponements; stakes and d
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

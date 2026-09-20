@@ -65,9 +65,10 @@ $baoRecent = is_array($baoStats['recent'] ?? null) ? $baoStats['recent'] : [];
 
 <div class="wrap">
 <header class="page-hero">
-      <h1>Today's Football Predictions</h1>
-<p class="lede">Free tips for today's biggest fixtures — 1X2, BTTS, Over/Under and Double Chance, with popular leagues listed first. Open any card for the lean and the reasoning behind it.</p>
-    </header>
+    <h1>Today's Football Predictions</h1>
+<p class="lede">Free tips for today's biggest fixtures across 1X2, BTTS, Over/Under and Double Chance, with popular leagues listed first. Open any card for the lean and the reasoning behind it, then use the full Today board or jackpot hub for a wider slate.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
+  </header>
 </div>
 
 <section class="section-tight">
@@ -168,6 +169,13 @@ Bet only with licensed operators, only what you can afford to lose, and only if 
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

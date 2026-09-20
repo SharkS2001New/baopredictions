@@ -66,8 +66,9 @@ if ($marketWeekend > $pickCount) {
 </nav>
 
 <header class="page-hero">
-    <h1>Weekend Football Predictions: Saturday &amp; Sunday Tips</h1>
-<p class="lede">Saturday and Sunday fixtures in one place. Plan the weekend card now, then revisit as lineups land closer to kickoff.</p>
+    <h1>Weekend Football Predictions</h1>
+<p class="lede">Saturday and Sunday fixtures in one board — free weekend football tips across popular leagues. Plan the card early, then revisit as lineups land closer to kickoff. Each selection shows the lean and match context so you can compare fixtures before you stake.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -177,6 +178,13 @@ Accumulator tips if you are building multi-leg tickets from published leans.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

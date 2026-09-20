@@ -93,7 +93,8 @@ $faqs = [
 
 <header class="page-hero">
     <h1><?php echo bao_h($h1); ?></h1>
-<p class="lede"><?php echo $lede; ?></p>
+<?php echo bao_brand_intro_html($brand); ?>
+<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -147,6 +148,13 @@ require __DIR__ . '/../components/sidebar.php';
 
     <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. See <a href="/responsible-betting">Responsible Betting</a>.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a> · <a href="/sitemaps">All pages</a></p>
+  </div>
+</section>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
   </div>
 </section>
 

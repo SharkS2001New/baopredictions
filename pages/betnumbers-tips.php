@@ -47,8 +47,9 @@
 </nav>
 
 <header class="page-hero">
-    <h1>Bet Numbers Tips</h1>
-<p class="lede">Mixed-market shortlist for today: we compare 1X2, BTTS, Over/Under and Double Chance, then publish one recommended market per fixture.</p>
+    <h1>Bet Numbers Prediction for Today</h1>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_intro_html('Bet Numbers'); ?>
+<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -125,6 +126,13 @@ if ($payload === null) {
     <p>Bao Predictions does not guarantee winning results. Football remains unpredictable, and even a well-supported selection can lose.</p>
     <p><strong>18+:</strong> Football predictions are not guarantees. Betting involves financial risk. Only bet what you can afford to lose and use licensed betting services where permitted. <a href="/responsible-betting">Responsible betting</a>.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2 Predictions</a> · <a href="/accumulator-tips">Accumulator Tips</a> · <a href="/football-predictions-today">Today's full list</a> · <a href="/sure-bets-today">Sure bets today</a> · <a href="/double-chance-predictions">Double Chance</a></p>
+  </div>
+</section>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
   </div>
 </section>
 

@@ -65,8 +65,9 @@ if ($marketLive > $liveCount) {
 </nav>
 
 <header class="page-hero">
-    <h1>Live Football Scores &amp; Predictions Today</h1>
-<p class="lede">In-play scores beside any still-relevant tips. Score and minute come first; the page refreshes about every 90 seconds.</p>
+    <h1>Live Football Predictions & Scores</h1>
+<p class="lede">In-play football scores beside any still-relevant tips. Score and minute come first; published leans stay visible when they still matter. The page refreshes about every 90 seconds so you can follow the slate as matches unfold.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -175,6 +176,13 @@ How We Predict explains how pre-match leans are built before kickoff.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

@@ -76,8 +76,9 @@ $trackUnits = isset($track['units']) ? (float) $track['units'] : null;
 </nav>
 
 <header class="page-hero">
-    <h1>Football Predictions Today</h1>
-<p class="lede">Today's full tip board — every published lean with confidence and match context. Filter by market, then check Yesterday and Results to see what settled.</p>
+    <h1>Football Predictions Today & Free Tips</h1>
+<p class="lede">Free football predictions today across 1X2, Double Chance, BTTS, Over/Under and HT/FT. Bao Predictions publishes the recommended market per fixture with model lean and reasoning, so you can review form and venue before you stake. Tips below cover local and international leagues; they are opinions based on available match data, not guaranteed winners.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -202,6 +203,13 @@ Tomorrow carries the early board for the next matchday. Livescores covers fixtur
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

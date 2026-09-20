@@ -123,8 +123,9 @@ $stakes = [100, 200, 500, 1000, 2000, 5000];
 
   <header class="page-hero">
     <p class="banker-eyebrow">Prediction of the Day</p>
-    <h1>Banker of the Day</h1>
-<p class="lede">One pick: today's strongest published lean, with full analysis and stake returns. Same tip as Prediction of the Day.</p>
+    <h1>Banker of the Day — Prediction of the Day</h1>
+<p class="lede">One pick: today's strongest published lean from Bao Predictions, with full analysis and stake returns. Same selection as Prediction of the Day — reviewed for publication before it goes live.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
   <ul class="banker-stats" aria-label="Banker highlights">
@@ -298,6 +299,13 @@ Check Yesterday and Results once the fixture settles.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

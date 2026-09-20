@@ -68,7 +68,8 @@ if ($marketTomorrow > $pickCount) {
 
 <header class="page-hero">
     <h1>Football Predictions Tomorrow</h1>
-<p class="lede">Early tips for tomorrow's fixtures. This board is provisional: lineups, team news and late odds can still change before kickoff.</p>
+<p class="lede">Provisional football predictions for tomorrow across upcoming fixtures. This early board can change after today's results, lineups and late team news — re-check closer to kickoff. Markets focus on match-result leans with confidence and context on each card.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -170,6 +171,13 @@ Model leans are not win-rate promises. Compare each card to the final score once
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

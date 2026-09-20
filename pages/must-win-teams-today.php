@@ -56,7 +56,8 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero">
     <h1>Must Win Teams Today</h1>
-<p class="lede">High-confidence 1X2 shortlist for today — stronger win cases from form, venue and opposition. Still opinions, not locks.</p>
+<p class="lede">Must win teams today — a high-confidence 1X2 shortlist built from form, venue, opposition and team news. These are stronger win cases on today's board, still published as opinions rather than locks.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -181,6 +182,13 @@ Tomorrow carries the early next-day board when you are planning ahead.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

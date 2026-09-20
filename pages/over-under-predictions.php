@@ -55,8 +55,9 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 </nav>
 
 <header class="page-hero">
-    <h1>Over/Under Predictions: Football Goal Tips Today</h1>
-<p class="lede">Goals markets for today, including the Over/Under 2.5 line. Built from scoring and defensive trends, not match winners alone.</p>
+    <h1>Over/Under Predictions Today</h1>
+<p class="lede">Free Over/Under football predictions for today's fixtures, including the 2.5 goals line. Tips are built from scoring and defensive trends rather than match winners alone. Check each card below, then compare with BTTS when both sides look likely to score.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -176,6 +177,13 @@ Headline track figures on Results focus on qualifying 1X2 — not every goals ma
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

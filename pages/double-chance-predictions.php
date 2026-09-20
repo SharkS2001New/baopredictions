@@ -55,8 +55,9 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 </nav>
 
 <header class="page-hero">
-    <h1>Double Chance Predictions: Football Tips Today</h1>
-<p class="lede">1X, 12 and X2 covers for fixtures where a single result is thin. Two outcomes in one selection, with form and venue context.</p>
+    <h1>Double Chance Predictions Today</h1>
+<p class="lede">Free Double Chance tips covering 1X, 12 and X2 — two outcomes in one selection when a single result looks thin. Each card shows the recommended cover with form and fixture context. Use this board alongside 1X2 when you want safer match-result cover.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -172,6 +173,13 @@ Results and Yesterday for settled auditing on published boards.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

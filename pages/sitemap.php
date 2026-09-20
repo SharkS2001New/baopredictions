@@ -60,7 +60,6 @@ $rows = [
     ['https://www.baopredictions.com/responsible-betting', $staticDay, 'yearly', '0.5'],
     ['https://www.baopredictions.com/privacy-policy', $staticDay, 'yearly', '0.3'],
     ['https://www.baopredictions.com/terms-of-service', $staticDay, 'yearly', '0.3'],
-    ['https://www.baopredictions.com/llms.txt', $staticDay, 'monthly', '0.3'],
 ];
 
 $brandLandings = require __DIR__ . '/../config/brand-landings.php';

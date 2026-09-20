@@ -90,6 +90,7 @@ if (count($dateLabels) === 1) {
 <header class="page-hero">
     <h1>SportyBet Jackpot Predictions, Tips &amp; Prizes</h1>
 <?php echo bao_jackpot_lede_html($sheet); ?>
+<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -197,6 +198,13 @@ Results for settled non-jackpot track record.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

@@ -1,6 +1,6 @@
 <?php
 /**
- * Human-readable HTML sitemap — dense link directory (crawler XML remains /sitemap.xml).
+ * Human-readable HTML sitemap — button-grid directory (crawler XML remains /sitemap.xml).
  */
 require_once __DIR__ . '/../components/seo.php';
 
@@ -12,7 +12,7 @@ if (!is_array($brandLandings)) {
 $existingBrands = [
   ['label' => 'Bet Numbers Tips', 'href' => '/betnumbers-tips'],
   ['label' => 'SokaFans Predictions', 'href' => '/sokafans-predictions'],
-  ['label' => 'Cheerplex Tips', 'href' => '/cheerplex-tips'],
+  ['label' => 'Cheerplex Predictions', 'href' => '/cheerplex-tips'],
   ['label' => 'Sunpel Prediction', 'href' => '/sunpel-prediction'],
   ['label' => 'VenasBet Predictions', 'href' => '/venasbet-predictions'],
 ];
@@ -33,7 +33,6 @@ $sections = [
   [
     'id' => 'quick-links',
     'title' => 'Quick Links',
-    'intro' => 'Daily boards, markets, jackpots and brand tip pages published on Bao Predictions.',
     'links' => array_merge(
       [
         ['label' => 'Football Predictions Today', 'href' => '/football-predictions-today'],
@@ -62,43 +61,11 @@ $sections = [
   [
     'id' => 'free-predictions',
     'title' => 'Free Predictions',
-    'intro' => 'Brand-comparison tip boards — same mixed-market engine as Bet Numbers, free to view.',
     'links' => $existingBrands,
-  ],
-  [
-    'id' => 'daily-boards',
-    'title' => 'Daily Boards',
-    'intro' => 'Today, tomorrow, yesterday, weekend and live tip boards.',
-    'links' => [
-      ['label' => 'Homepage', 'href' => '/'],
-      ['label' => 'Football Predictions Today', 'href' => '/football-predictions-today'],
-      ['label' => 'Football Predictions Tomorrow', 'href' => '/football-predictions-tomorrow'],
-      ['label' => 'Football Predictions Yesterday', 'href' => '/football-predictions-yesterday'],
-      ['label' => 'Weekend Football Predictions', 'href' => '/weekend-football-predictions'],
-      ['label' => 'Live Football Predictions', 'href' => '/live-football-predictions'],
-      ['label' => 'Must Win Teams Today', 'href' => '/must-win-teams-today'],
-      ['label' => 'Sure Bets Today', 'href' => '/sure-bets-today'],
-      ['label' => 'Banker of the Day', 'href' => '/banker-of-the-day'],
-      ['label' => 'Accumulator Tips', 'href' => '/accumulator-tips'],
-      ['label' => 'Results', 'href' => '/results'],
-    ],
-  ],
-  [
-    'id' => 'markets',
-    'title' => 'Markets',
-    'intro' => 'Single-market tip boards.',
-    'links' => [
-      ['label' => '1X2 Predictions', 'href' => '/1x2-predictions'],
-      ['label' => 'Double Chance Predictions', 'href' => '/double-chance-predictions'],
-      ['label' => 'Over/Under Predictions', 'href' => '/over-under-predictions'],
-      ['label' => 'BTTS Predictions', 'href' => '/btts-predictions'],
-      ['label' => 'HT/FT Predictions', 'href' => '/ht-ft-predictions'],
-    ],
   ],
   [
     'id' => 'jackpots',
     'title' => 'Jackpots',
-    'intro' => 'Kenya jackpot tip sheets — each fixture analysed separately.',
     'links' => [
       ['label' => 'Jackpot Predictions Hub', 'href' => '/jackpot-predictions'],
       ['label' => 'SportPesa Mega Jackpot Predictions', 'href' => '/jackpots/sportpesa-mega-jackpot-predictions'],
@@ -111,29 +78,19 @@ $sections = [
     ],
   ],
   [
-    'id' => 'guides-site',
-    'title' => 'Guides & Site',
-    'intro' => 'Methodology, FAQ, blog and partnership pages.',
+    'id' => 'site',
+    'title' => 'Site',
     'links' => [
-      ['label' => 'How We Predict', 'href' => '/how-we-predict'],
-      ['label' => 'How to Read BTTS Odds', 'href' => '/how-to-read-btts-odds'],
-      ['label' => 'FAQ', 'href' => '/faq'],
       ['label' => 'About Us', 'href' => '/about-us'],
-      ['label' => 'Partners', 'href' => '/partners'],
+      ['label' => 'FAQ', 'href' => '/faq'],
       ['label' => 'Blog', 'href' => '/blog'],
+      ['label' => 'Partners', 'href' => '/partners'],
       ['label' => 'Contact Us', 'href' => '/contact-us'],
-      ['label' => 'XML Sitemap', 'href' => '/sitemap.xml'],
-      ['label' => 'llms.txt', 'href' => '/llms.txt'],
-    ],
-  ],
-  [
-    'id' => 'legal',
-    'title' => 'Legal',
-    'intro' => 'Policies and safer-gambling guidance.',
-    'links' => [
       ['label' => 'Responsible Betting', 'href' => '/responsible-betting'],
       ['label' => 'Privacy Policy', 'href' => '/privacy-policy'],
       ['label' => 'Terms of Service', 'href' => '/terms-of-service'],
+      ['label' => 'XML Sitemap', 'href' => '/sitemap.xml'],
+      ['label' => 'llms.txt', 'href' => '/llms.txt'],
     ],
   ],
 ];
@@ -142,7 +99,6 @@ $linkCount = 0;
 foreach ($sections as $section) {
   $linkCount += count($section['links']);
 }
-$updatedIso = date('c');
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -193,21 +149,17 @@ $updatedIso = date('c');
 
   <header class="page-hero">
     <h1>Bao Predictions Links</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-    <p class="lede">Human-readable sitemap of tip boards, markets, jackpots and brand prediction pages. Crawlers can also use <a href="/sitemap.xml">sitemap.xml</a>.</p>
+    <p class="lede">Browse tip boards, markets, jackpots and brand pages. Crawlers can also use <a href="/sitemap.xml">sitemap.xml</a>.</p>
   </header>
 
-  <p class="sitemaps-meta"><?php echo (int) $linkCount; ?> links across <?php echo count($sections); ?> sections</p>
+  <p class="sitemaps-meta"><?php echo (int) $linkCount; ?> links</p>
 
 <?php foreach ($sections as $section): ?>
   <section class="sitemaps-panel" aria-labelledby="sitemaps-<?php echo bao_h($section['id']); ?>">
     <header class="sitemaps-panel-head">
       <h2 id="sitemaps-<?php echo bao_h($section['id']); ?>"><?php echo bao_h($section['title']); ?></h2>
-<?php if (!empty($section['intro'])): ?>
-      <p><?php echo bao_h($section['intro']); ?></p>
-<?php endif; ?>
     </header>
-    <ul class="sitemaps-cloud">
+    <ul class="sitemaps-grid">
 <?php foreach ($section['links'] as $link): ?>
       <li><a href="<?php echo bao_h($link['href']); ?>"><?php echo bao_h($link['label']); ?></a></li>
 <?php endforeach; ?>

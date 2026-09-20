@@ -47,8 +47,9 @@
 </nav>
 
 <header class="page-hero">
-    <h1>SokaFans Predictions</h1>
-<p class="lede">Looking for <strong>SokaFans</strong> football predictions? Free mixed-market tips for today — one recommended lean per fixture, with jackpot sheets linked below.</p>
+    <h1>SokaFans Predictions for Today</h1>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_intro_html('SokaFans'); ?>
+<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -126,6 +127,13 @@ $faqs = [
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

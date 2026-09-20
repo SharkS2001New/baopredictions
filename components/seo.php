@@ -10,14 +10,32 @@ if (!function_exists('bao_h')) {
     }
 }
 
-/** Lead analyst — used in bylines, About, and Person schema. */
+/** Lead analyst — used in bylines, About, analyst card, and Person schema. */
 function bao_lead_analyst(): array {
     return [
         'name' => 'Stephen Karuku',
+        'initials' => 'SK',
         'job_title' => 'Lead Analyst',
+        'role_line' => 'Lead Football Analyst — Bao Predictions Editorial',
         'url' => 'https://www.baopredictions.com/about-us#stephen-karuku',
         'works_for' => 'Bao Predictions',
+        'bio' => 'Stephen reviews published tip boards and jackpot sheets at Bao Predictions: model output starts the process, then he checks team news, rotation risk and price context before a card goes live. Every selection is an opinion based on available match data — not a guaranteed result.',
     ];
+}
+
+/**
+ * GoalVertex-style analyst card for tip pages.
+ */
+function bao_analyst_card_html(): string {
+    $a = bao_lead_analyst();
+    return '<aside class="bao-analyst-card" aria-label="Lead analyst">'
+        . '<div class="bao-analyst-avatar" aria-hidden="true">' . bao_h($a['initials']) . '</div>'
+        . '<div class="bao-analyst-body">'
+        . '<p class="bao-analyst-name"><a href="' . bao_h($a['url']) . '">' . bao_h($a['name']) . '</a></p>'
+        . '<p class="bao-analyst-role">' . bao_h($a['role_line']) . '</p>'
+        . '<p class="bao-analyst-bio">' . bao_h($a['bio']) . '</p>'
+        . '</div>'
+        . '</aside>';
 }
 
 function bao_last_updated_html(?string $iso = null): string {
@@ -29,6 +47,26 @@ function bao_last_updated_html(?string $iso = null): string {
 
 function bao_rg_notice_html(): string {
     return '<p class="rg-notice"><span class="age-badge">18+</span> Tips are informational opinions for entertainment — not financial advice, not betting tips that guarantee profit, and not a substitute for your own judgment. Confidence scores are model leans only; they are not predicted win rates. Never stake money you cannot afford to lose. <a href="/responsible-betting">Responsible betting</a>. Must be 18+ (or legal age where you live).</p>';
+}
+
+/**
+ * Closing intro line with internal links (Betwinner360-style page heroes).
+ */
+function bao_intro_links_html(): string {
+    return '<p class="intro-links">With our free tips, <a href="/football-predictions-today">Football Predictions Today</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> you can compare more boards before you stake with your favourite bookmakers.</p>';
+}
+
+/**
+ * Brand-page intro paragraph (SEO-dense, honest tone — no fake win-rate claims).
+ */
+function bao_brand_intro_html(string $brand): string {
+    $b = bao_h($brand);
+    return '<p class="lede">'
+        . $b . ' prediction for today covers football matches across local and international leagues. '
+        . 'Bao Predictions publishes free ' . $b . ' tips and selections with match context across 1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture. '
+        . 'Review form, venue and the selected market on each card below, then open jackpot sheets when you are building a coupon. '
+        . 'Tips are opinions based on available match data, not guaranteed outcomes.'
+        . '</p>';
 }
 
 /**

@@ -87,8 +87,9 @@ $settledCount = $ySettled;
 </nav>
 
 <header class="page-hero">
-    <h1>Yesterday's Football Predictions</h1>
-<p class="lede">How tips published for <strong><?php echo bao_h($yesterdayLabel); ?></strong> finished — every win and loss kept on the board so you can judge the record, not marketing claims.</p>
+    <h1>Yesterday's Football Predictions & Results</h1>
+<p class="lede">See how yesterday's published tips finished — wins and losses kept on the same board. Use this audit to judge the record, then return to Today or Tomorrow for the next slate.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -230,6 +231,13 @@ Check Today for pre-match leans on the current calendar day.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

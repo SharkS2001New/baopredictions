@@ -55,8 +55,9 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 </nav>
 
 <header class="page-hero">
-    <h1>BTTS Predictions Today: Both Teams To Score</h1>
-<p class="lede">Both Teams To Score tips for matches where each side has a credible route to a goal — form, defence and home/away patterns.</p>
+    <h1>BTTS Predictions Today — Both Teams To Score</h1>
+<p class="lede">Free <strong>BTTS</strong> (both teams to score) predictions today for matches where each side has a credible route to a goal. Selections use scoring form, defensive records and home/away patterns. Review the card reasoning below, then cross-check Over/Under or 1X2 when goals markets are not the best fit.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -158,6 +159,13 @@ Use the board archive rather than assuming marketing win-rate claims.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

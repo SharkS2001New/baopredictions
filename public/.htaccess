@@ -24,16 +24,19 @@
 
 <IfModule mod_headers.c>
   # Dynamic tip HTML (front controller) — never long-cache in the browser.
-  Header set Cache-Control "no-store"
+  # Exception: sitemap.xml is routed through index.php, so FilesMatch on a
+  # static file never applies — use SetEnvIf on the request URI instead.
+  SetEnvIf Request_URI "^/sitemap\.xml$" bao_is_crawl_asset
+  SetEnvIf Request_URI "^/robots\.txt$" bao_is_crawl_asset
+  Header set Cache-Control "no-store" env=!bao_is_crawl_asset
+  Header set Cache-Control "public, max-age=3600" env=bao_is_crawl_asset
   <FilesMatch "\.(css|js|woff2?)$">
     Header set Cache-Control "public, max-age=604800, immutable"
   </FilesMatch>
   <FilesMatch "\.(svg|png|jpe?g|webp|ico|gif|avif)$">
     Header set Cache-Control "public, max-age=2592000, immutable"
   </FilesMatch>
-  # Sitemap + robots must be cacheable/fetchable by Googlebot (override no-store).
   <FilesMatch "^(sitemap\.xml|robots\.txt)$">
-    Header set Cache-Control "public, max-age=3600"
     Header unset Expires
   </FilesMatch>
   <Files "sitemap.xml">

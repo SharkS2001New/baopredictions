@@ -62,8 +62,9 @@ $weekCount = count($games);
 </nav>
 
   <header class="page-hero">
-    <h1>Football Results: Recent Scores &amp; Prediction Results</h1>
-<p class="lede">Rolling seven-day settled 1X2 tips with original leans beside the final scores. Separate from Yesterday's single-matchday audit.</p>
+    <h1>Football Prediction Results</h1>
+<p class="lede">Rolling seven-day settled tips with the original leans beside final scores. Separate from Yesterday's single-matchday audit — use Results to review a longer performance window.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 </div>
 
@@ -186,6 +187,13 @@ How We Predict explains methodology; Responsible Betting covers staking risk (18
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">

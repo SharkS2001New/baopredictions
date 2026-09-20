@@ -47,8 +47,9 @@
 </nav>
 
 <header class="page-hero">
-    <h1>Accumulator Tips</h1>
-<p class="lede">Ready-made 3-, 5- and 8-fold tickets for today. Each leg is checked against the live schedule, with combined odds shown upfront.</p>
+    <h1>Accumulator Tips Today</h1>
+<p class="lede">Pre-built 3-, 5- and 8-fold accumulator tips for today. Each leg is checked against the current schedule, with combined odds shown upfront so you can review the ticket before kickoff.</p>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -162,6 +163,13 @@ We do not retroactively edit losing legs off the daily record.',
   ],
 ];
 ?>
+
+
+<section class="section section-tight bao-analyst-wrap">
+  <div class="wrap">
+    <?php echo bao_analyst_card_html(); ?>
+  </div>
+</section>
 
 <section class="section section-tight bao-faq">
   <div class="wrap">
