@@ -131,9 +131,14 @@ echo bao_results_bridge_html();
 
     <h2>Betnumbers Today</h2>
     <p>As of <strong><?php echo bao_h($todayLabel); ?></strong><?php if ($tipCount > 0) { echo ' with <strong>' . (int) $tipCount . ' tips</strong> on this board'; } ?>, Bet Numbers-style pages publish date-specific selections and separate markets as the day's fixture list changes.</p>
+    <p class="sitemaps-meta">Last updated: <?php echo bao_h($todayLabel); ?> · check the tip-board timestamp above for publish time</p>
     <p>For Bao, the active prediction card follows the same basic principle: show the date clearly, keep completed fixtures separate from upcoming matches and update selections when important team information changes.</p>
     <p>This is particularly important for searches such as <strong>betnumbers prediction today</strong> and <strong>today's Betnumbers predictions</strong>, because an old result can remain online long after the match has finished. Check <a href="/results">Results</a> for settled tips, and use this page for the open card only.</p>
     <p>Bao Predictions does not guarantee winning results. Football remains unpredictable, and even a well-supported selection can lose.</p>
+
+    <h2>What competing Bet Numbers pages leave thin</h2>
+    <p>Aggregator Bet Numbers mirrors are strong on keyword coverage and long tip tables. They often under-explain why Double Chance or Over/Under beats a forced 1X2, and they rarely separate this daily board from Kenya jackpot coupons with clear date checks. That market-choice reasoning — plus a unique fixture slate for this URL — is the information gain on this page.</p>
+
     <h2>Bet Numbers and jackpots</h2>
     <p>This page is the daily Bet Numbers tip board. For Kenya coupons open the live jackpot sheet that matches your operator.</p>
     <p class="seo-related"><a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a></p>

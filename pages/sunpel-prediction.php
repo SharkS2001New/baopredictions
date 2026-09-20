@@ -3,22 +3,22 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <title>Sunpel Prediction Alternative — Free Tips | Bao Predictions</title>
-  <meta name="description" content="Looking for Sunpel-style football predictions? Get free tips, jackpot analysis, markets and match methodology from Bao Predictions.">
+  <title>Sunpel Prediction Today — Free Tips | Bao</title>
+  <meta name="description" content="Sunpel prediction today: free football tips across 1X2, Double Chance, BTTS and Over/Under. Jackpot tips checked on live coupons — no M-Pesa paywall here.">
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/sunpel-prediction">
 
   <meta name="keywords" content="sunpel, sunpel prediction, sunpel jackpot prediction, sunpel tips">
   <meta name="twitter:card" content="summary_large_image">
-  <meta name="twitter:title" content="Sunpel Prediction Alternative — Free Tips | Bao Predictions">
-  <meta name="twitter:description" content="Sunpel-style football predictions — free tips, jackpot analysis, markets and match methodology.">
+  <meta name="twitter:title" content="Sunpel Prediction Today — Free Tips | Bao">
+  <meta name="twitter:description" content="Sunpel prediction today: free mixed-market tips. Jackpot intents link to live operator sheets.">
   <link rel="alternate" hreflang="en" href="https://www.baopredictions.com/sunpel-prediction">
   <link rel="alternate" hreflang="x-default" href="https://www.baopredictions.com/sunpel-prediction">
 
   <meta property="og:locale" content="en_US">
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Sunpel Prediction Alternative — Free Tips | Bao Predictions">
-  <meta property="og:description" content="Sunpel-style football predictions — free tips, jackpot analysis, markets and match methodology.">
+  <meta property="og:title" content="Sunpel Prediction Today — Free Tips | Bao">
+  <meta property="og:description" content="Sunpel prediction today: free mixed-market tips. Jackpot intents link to live operator sheets.">
   <meta property="og:url" content="https://www.baopredictions.com/sunpel-prediction">
   <meta property="og:site_name" content="Bao Predictions">
     <script>
@@ -97,22 +97,28 @@ require __DIR__ . '/../components/sidebar.php';
 
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
-    <h2>Sunpel</h2>
-    <p><strong>Sunpel</strong> on Bao Predictions is a free tip board for today. Fixtures above are this page’s slate — not shared with Bet Numbers or other brand pages.</p>
-
-    <h2>Sunpel Prediction</h2>
-    <p>A <strong>Sunpel prediction</strong> is one recommended market per fixture with a short reason.</p>
+    <p>A <strong>Sunpel prediction</strong> on Bao Predictions is a free tip for a fixture that is actually scheduled today — one recommended market with a short reason, not a paid SMS pack. For <strong><?php echo bao_h($todayLabel); ?></strong><?php if ($tipCount > 0) { echo ' this board lists <strong>' . (int) $tipCount . ' tips</strong>'; } ?>. Markets cover 1X2, Double Chance, BTTS, Over/Under and HT/FT. If you arrived from a Sunpel jackpot search, use the operator coupon links below; this page stays the daily singles board.</p>
+    <p class="sitemaps-meta">Last updated: <?php echo bao_h($todayLabel); ?> · verify the freshness stamp on the tip board above</p>
     <?php echo bao_shortlist_summary_html($games, 'Sunpel shortlist'); ?>
 
-    <h2>Sunpel Tips</h2>
-    <p><strong>Sunpel tips</strong> on this page are the free cards above. Some Sunpel-related products also promote paid packages; this Bao board stays free.</p>
+    <h2>Sunpel tips without the paywall</h2>
+    <p><strong>Sunpel tips</strong> on competing SunpelBets pages mix free daily cards with M-Pesa packages for full multibets and jackpots. That split is easy to miss when you only want today’s free list. On Bao, every card on this page is free to view. We do not invent exact scores to pad a VIP table.</p>
+    <p>Each lean is checked against table standing, last six matches, home/away form, head-to-head where it exists, and confirmed team news when we have it. Uncertain absences are left out rather than guessed.</p>
 
-    <h2>Sunpel Jackpot Prediction</h2>
-    <p>A <strong>Sunpel jackpot prediction</strong> should be checked on the live operator coupon. Indexed jackpot pages can outlive the round they were written for — always confirm the date.</p>
-    <p class="seo-related"><a href="/jackpot-predictions">Jackpot Predictions</a></p>
+    <h2>Sunpel jackpot prediction — date hygiene</h2>
+    <p>A <strong>Sunpel jackpot prediction</strong> should match the live SportPesa or Betika coupon for the current round. Third-party “Sunpel Mega Jackpot” pages often keep last week’s 17-game prose online and claim high hit rates without showing settled results against that exact card. Before you stake:</p>
+    <ul>
+      <li>Confirm the jackpot start/end dates on the bookmaker</li>
+      <li>Match each fixture name to the live slip — not an archived blog post</li>
+      <li>Treat 1X2 and Double Chance as different risk levels on a 17-leg card</li>
+    </ul>
+    <p>Use <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> or the <a href="/jackpot-predictions">Jackpot Predictions</a> hub, then re-check the operator app.</p>
 
-    <p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions, not guaranteed outcomes. <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a></p>
+    <h2>Where this page adds information</h2>
+    <p>Reviewed pages (SunpelBets daily tips, SunpelBets home, Sokapedia’s Sunpel Mega Jackpot article, Betwinner360’s Sunpel Mega write-up, and sunpel.co.ke tip tables) already list fixtures and promote jackpot access. What they leave thin is a clear free-vs-paid boundary and a warning that indexed jackpot copy can outlive the round. This <strong>Sunpel prediction</strong> page answers that: free mixed-market tips for today’s date, unique fixture slate for this URL, and jackpot intent routed to live sheets instead of a stale 17-leg mirror.</p>
+
+    <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. Only stake what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>
   </div>
 </section>
 

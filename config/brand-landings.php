@@ -10,8 +10,8 @@ return [
 
     'betensured-predictions' => [
         'brand' => 'Betensured',
-        'title' => 'Betensured Prediction Today & Tips | Bao Predictions',
-        'description' => 'Betensured prediction today — free Betensured tips across 1X2, Double Chance, BTTS, Over/Under and HT/FT from Bao Predictions.',
+        'title' => 'Betensured Prediction Today — Free Tips | Bao',
+        'description' => 'Betensured prediction today: free tips across 1X2, Double Chance, BTTS, Over/Under and HT/FT with reasons. No VIP wall.',
         'keywords' => 'betensured, betensured prediction, betensured prediction today, betensured today, betensured tips',
         'h1' => 'Betensured Prediction Today',
         'intro' => '<strong>Betensured</strong> tips on Bao Predictions are a free daily board for today: one recommended market per fixture with the lean and a short reason. Use the cards below for <strong>Betensured prediction today</strong> — not a VIP wall and not a jackpot coupon.',
@@ -23,8 +23,8 @@ return [
 
     'betpera-predictions' => [
         'brand' => 'Betpera',
-        'title' => 'Betpera Prediction Today & Tips | Bao Predictions',
-        'description' => 'Betpera prediction today — free Betpera tips and Betpera predictions across mixed markets from Bao Predictions.',
+        'title' => 'Betpera Prediction Today — Free Tips | Bao',
+        'description' => 'Betpera prediction today: free Betpera tips across 1X2, Double Chance, BTTS, Over/Under and HT/FT. Dated board, no guarantees.',
         'keywords' => 'betpera, betpera prediction, betpera tips, betpera prediction today, betpera predictions',
         'h1' => 'Betpera Prediction Today',
         'intro' => '<strong>Betpera</strong> predictions on Bao Predictions are free tips for today’s fixtures — one market per match. This page covers <strong>Betpera prediction today</strong> and <strong>Betpera tips</strong> without padding jackpot sections that are not part of this keyword set.',
@@ -36,8 +36,8 @@ return [
 
     'forebet-predictions' => [
         'brand' => 'Forebet',
-        'title' => 'Forebet Prediction Today, Tomorrow & Mega Jackpot | Bao Predictions',
-        'description' => 'Forebet prediction today and Forebet tomorrow — free tips, Mega Jackpot and midweek jackpot links from Bao Predictions.',
+        'title' => 'Forebet Prediction Today — Free Tips | Bao',
+        'description' => 'Forebet prediction today: free mixed-market tips. Forebet tomorrow and Mega Jackpot link to live boards — no sure-Mega claims.',
         'keywords' => 'forebet, forebet today, forebet prediction, forebet mega jackpot prediction, forebet prediction today, zulubet predictions for today forebet, forebet today prediction, forebet today prediction tips, mega jackpot prediction 17 games today forebet, forebet tomorrow, forebet midweek jackpot predictions, sure mega jackpot predictions this weekend forebet, forebet predictions',
         'h1' => 'Forebet Prediction Today',
         'intro' => '<strong>Forebet</strong> prediction today on Bao Predictions is a free mixed-market board — not a probability API mirror. Cards cover today’s tips; Mega Jackpot (17 games) and midweek coupons link out to the live operator sheets. <strong>Forebet tomorrow</strong> belongs on Tomorrow’s board.',
@@ -49,8 +49,8 @@ return [
 
     'zulubet-predictions' => [
         'brand' => 'Zulubet',
-        'title' => 'Zulubet Prediction Today & Mega Jackpot | Bao Predictions',
-        'description' => 'Zulubet prediction today — free tips, Mega Jackpot and midweek jackpot links. Also covers Zulubet predictions for today Forebet searches.',
+        'title' => 'Zulubet Prediction Today — Free Tips | Bao',
+        'description' => 'Zulubet prediction today: free tips with reasons. Mega Jackpot and midweek on live sheets. Forebet cross-searches covered honestly.',
         'keywords' => 'zulubet, zulubet mega jackpot prediction, zulubet predictions for today forebet, zulubet prediction, zulubet midweek jackpot prediction',
         'h1' => 'Zulubet Prediction Today',
         'intro' => '<strong>Zulubet</strong> prediction on Bao Predictions is a free daily tip board. Mega Jackpot and midweek jackpot intents link to the live Kenya sheets. Searches that combine <strong>Zulubet predictions for today Forebet</strong> can use this page or the Forebet landing — both run Bao’s mixed-market engine.',
@@ -62,8 +62,8 @@ return [
 
     'mighty-tips' => [
         'brand' => 'Mighty Tips',
-        'title' => 'Mighty Tips Prediction Today | Bao Predictions',
-        'description' => 'Mighty Tips prediction today — free MightyTips / mighty tips today board. Correct score searches explained honestly.',
+        'title' => 'Mighty Tips Prediction Today — Free | Bao',
+        'description' => 'Mighty Tips prediction today: free MightyTips board. Correct score searches answered without invented scorelines.',
         'keywords' => 'mighty tips, mighty tips prediction, mighty tips today, mighty tips predictions, mighty tips correct score, mightytips, mightytips today',
         'h1' => 'Mighty Tips Prediction Today',
         'intro' => '<strong>Mighty Tips</strong> (MightyTips) today on Bao Predictions is a free mixed-market board — one lean per fixture. <strong>Mighty Tips correct score</strong> searches are answered honestly: we do not invent exact scores; cards show the supported market instead.',
@@ -75,8 +75,8 @@ return [
 
     'mwanasoka-tips' => [
         'brand' => 'Mwanasoka',
-        'title' => 'Mwanasoka Tips Today & Mega Jackpot | Bao Predictions',
-        'description' => 'Mwanasoka tips today — free Mwanasoka prediction board and Mega Jackpot links for Kenya players.',
+        'title' => 'Mwanasoka Tips Today — Free Predictions | Bao',
+        'description' => 'Mwanasoka tips today: free Mwanasoka prediction board for Kenya. Mega Jackpot on the live SportPesa sheet.',
         'keywords' => 'mwanasoka tips, mwanasoka, mwanasoka prediction, mwanasoka tips today, mwanasoka mega jackpot prediction',
         'h1' => 'Mwanasoka Tips Today',
         'intro' => '<strong>Mwanasoka</strong> tips on Bao Predictions are free daily football selections for Kenya bettors. This page covers <strong>Mwanasoka tips today</strong> and <strong>Mwanasoka prediction</strong>; Mega Jackpot coupons open on the live SportPesa sheet.',
@@ -89,8 +89,8 @@ return [
 
     'predictz-tips' => [
         'brand' => 'PredictZ',
-        'title' => 'PredictZ Today — Free Tips | Bao Predictions',
-        'description' => 'PredictZ today — free PredictZ-style tips. Covers 100 PredictZ and Surebet PredictZ searches without fake guarantees.',
+        'title' => 'PredictZ Today — Free Tips | Bao',
+        'description' => 'PredictZ today: free tips with reasons. 100 PredictZ and Surebet PredictZ searches answered without fake guarantees.',
         'keywords' => 'predictz, predictz today, 100 predictz, victor predictz, surebet predictz',
         'h1' => 'PredictZ Today',
         'intro' => '<strong>PredictZ</strong> today on Bao Predictions is a free tip board for the current day’s fixtures. Queries such as <strong>100 PredictZ</strong> or <strong>Surebet PredictZ</strong> do not mean guaranteed wins — confidence is capped, and Sure Bets is a separate higher-floor shortlist.',
@@ -103,8 +103,8 @@ return [
 
     'primatips-prediction' => [
         'brand' => 'PrimaTips',
-        'title' => 'PrimaTips Prediction Today | Bao Predictions',
-        'description' => 'PrimaTips today — free PrimaTips prediction board across mixed markets from Bao Predictions.',
+        'title' => 'PrimaTips Prediction Today — Free Tips | Bao',
+        'description' => 'PrimaTips today: free PrimaTips prediction board across 1X2, Double Chance, BTTS, Over/Under and HT/FT.',
         'keywords' => 'primatips, primatips today, primatips prediction',
         'h1' => 'PrimaTips Prediction Today',
         'intro' => '<strong>PrimaTips</strong> today on Bao Predictions is a short free tip list — one market per fixture. This page targets <strong>PrimaTips</strong>, <strong>PrimaTips today</strong> and <strong>PrimaTips prediction</strong> only.',
@@ -116,8 +116,8 @@ return [
 
     'solo-prediction' => [
         'brand' => 'Solo Prediction',
-        'title' => 'Solo Prediction Today | Bao Predictions',
-        'description' => 'Solo prediction for today — free tips. Correct score and “sure win 100” searches answered without fake guarantees.',
+        'title' => 'Solo Prediction Today — Free Tips | Bao',
+        'description' => 'Solo prediction today: free singles tips. Correct score and sure-win-100 searches answered without fake guarantees.',
         'keywords' => 'solo prediction, solo prediction for today, solo prediction today, solo prediction correct score, sure win 100 solo prediction',
         'h1' => 'Solo Prediction Today',
         'intro' => '<strong>Solo prediction today</strong> on Bao Predictions is a free singles board — one recommended market per fixture. <strong>Solo prediction correct score</strong> and <strong>sure win 100 Solo prediction</strong> searches are answered without inventing scores or 100% claims.',
@@ -129,8 +129,8 @@ return [
 
     'statarea-predictions' => [
         'brand' => 'Statarea',
-        'title' => 'Statarea Prediction Today 1X2 & Jackpots | Bao Predictions',
-        'description' => 'Statarea prediction today 1X2 — free tips. Covers old Statarea, Mega Jackpot and midweek jackpot intents.',
+        'title' => 'Statarea Prediction Today 1X2 — Free | Bao',
+        'description' => 'Statarea prediction today 1X2: free tips. Old Statarea ≠ today’s card. Mega and midweek on live operator sheets.',
         'keywords' => 'statarea, statarea prediction, old statarea, statarea prediction today, old statarea prediction today, statarea old, statarea mega jackpot prediction, statarea prediction today 1x2, statarea today, statarea midweek jackpot prediction, statarea zulubet today, old statarea prediction',
         'h1' => 'Statarea Prediction Today 1X2',
         'intro' => '<strong>Statarea</strong> today on Bao Predictions is a free tip board with a 1X2 emphasis where the evidence supports it. <strong>Old Statarea</strong> pages should not be treated as today’s card — use the live tips below. Mega and midweek jackpot intents link to operator sheets; <strong>Statarea Zulubet today</strong> can also use the Zulubet landing.',
@@ -142,8 +142,8 @@ return [
 
     'supatips-prediction' => [
         'brand' => 'Supatips',
-        'title' => 'Supatips Prediction Today & Mega Jackpot | Bao Predictions',
-        'description' => 'Supatips prediction today — free Supatips today tips and Mega Jackpot links from Bao Predictions.',
+        'title' => 'Supatips Prediction Today — Free Tips | Bao',
+        'description' => 'Supatips prediction today: free Supatips today tips. Mega Jackpot on the live SportPesa sheet — not a fake 17-leg list.',
         'keywords' => 'supatips, supatips mega jackpot prediction, supatips prediction today, supatips today',
         'h1' => 'Supatips Prediction Today',
         'intro' => '<strong>Supatips</strong> today on Bao Predictions is a free daily tip board. <strong>Supatips Mega Jackpot prediction</strong> belongs on the live SportPesa Mega sheet, not as a fake 17-leg list on this page.',
@@ -155,8 +155,8 @@ return [
 
     'tips180-predictions' => [
         'brand' => 'Tips180',
-        'title' => 'Tips180 Prediction — Double Chance & Correct Score | Bao Predictions',
-        'description' => 'Tips180 prediction — free tips. Covers Tips180 Double Chance and correct score searches; Victorpredict Tips180 linked honestly.',
+        'title' => 'Tips180 Prediction — Double Chance | Bao',
+        'description' => 'Tips180 prediction: free tips. Double Chance and correct score intents covered without invented scorelines.',
         'keywords' => 'tips180, victorpredict tips180, tips180 prediction, tips180 double chance, tips180 correct score',
         'h1' => 'Tips180 Prediction',
         'intro' => '<strong>Tips180</strong> prediction on Bao Predictions is a free mixed-market board. <strong>Tips180 Double Chance</strong> and <strong>Tips180 correct score</strong> intents are covered below without inventing exact scores. <strong>Victorpredict Tips180</strong> readers can also use the Victor Prediction landing.',
@@ -168,8 +168,8 @@ return [
 
     'victorspredicts' => [
         'brand' => 'Victor Prediction',
-        'title' => 'Victor Prediction Today | Bao Predictions',
-        'description' => 'Victor prediction today and Victor prediction for today — free tips. Correct score searches answered without invented scorelines.',
+        'title' => 'Victor Prediction Today — Free Tips | Bao',
+        'description' => 'Victor prediction today: free tips with reasons. Correct score searches answered without invented scorelines.',
         'keywords' => 'victor prediction, victor prediction today, victor prediction for today, victor prediction correct score',
         'h1' => 'Victor Prediction Today',
         'intro' => '<strong>Victor prediction today</strong> on Bao Predictions is a free tip board for the current day’s fixtures. <strong>Victor prediction correct score</strong> is not fabricated here — cards show the supported market with reasoning instead.',
@@ -181,8 +181,8 @@ return [
 
     'vitibet-predictions' => [
         'brand' => 'Vitibet',
-        'title' => 'Vitibet Prediction Today | Bao Predictions',
-        'description' => 'Vitibet prediction today — free tips. Covers Vitibet prediction for next 7 days and sure-wins searches without fake guarantees.',
+        'title' => 'Vitibet Prediction Today — Free Tips | Bao',
+        'description' => 'Vitibet prediction today: free tips. Next-7-days intent maps to Tomorrow/Weekend. Sure wins are not guaranteed.',
         'keywords' => 'vitibet prediction, vitibet prediction today, vitibet prediction for next 7 days, vitibet prediction today sure wins',
         'h1' => 'Vitibet Prediction Today',
         'intro' => '<strong>Vitibet prediction today</strong> on Bao Predictions is a free daily board. <strong>Vitibet prediction for next 7 days</strong> is planning intent — use Tomorrow and Weekend boards for the wider window. “Sure wins” are not guaranteed.',
@@ -194,8 +194,8 @@ return [
 
     'windrawwin-predictions' => [
         'brand' => 'WinDrawWin',
-        'title' => 'WinDrawWin Today Prediction | Bao Predictions',
-        'description' => 'WinDrawWin today prediction — free WinDrawWin prediction and predictions today from Bao Predictions.',
+        'title' => 'WinDrawWin Today Prediction — Free | Bao',
+        'description' => 'WinDrawWin today prediction: free tips focused on clear 1X2, Double Chance and goals leans for today’s fixtures.',
         'keywords' => 'windrawwin, windrawwin today prediction, windrawwin prediction, windrawwin predictions today',
         'h1' => 'WinDrawWin Today Prediction',
         'intro' => '<strong>WinDrawWin</strong> today prediction on Bao Predictions is a free tip board focused on clear match-result and goals leans for today’s fixtures.',
