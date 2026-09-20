@@ -1719,32 +1719,6 @@ main:has(.bao-faq) + .site-footer {
   margin-bottom: var(--space-xl);
 }
 
-.footer-grid--seo {
-  grid-template-columns: repeat(4, minmax(0, 1fr));
-  gap: var(--space-lg) 1.5rem;
-}
-
-.footer-grid--seo li {
-  margin-bottom: 0.35rem;
-  line-height: 1.35;
-}
-
-.footer-grid--seo a {
-  font-size: 0.82rem;
-}
-
-@media (max-width: 960px) {
-  .footer-grid--seo {
-    grid-template-columns: repeat(2, minmax(0, 1fr));
-  }
-}
-
-@media (max-width: 560px) {
-  .footer-grid--seo {
-    grid-template-columns: 1fr;
-  }
-}
-
 .footer-grid h3 {
   color: #e85a4a;
   font-size: 0.8rem;
