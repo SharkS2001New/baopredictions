@@ -134,7 +134,7 @@ if ($payload === null) {
     </ul>
 
     <h2>Brand-style tip boards</h2>
-    <p>Looking for a familiar tip-site layout? These free boards use the same mixed-market engine as today’s card:</p>
+    <p>Looking for a familiar tip-site layout? Each board below has its own fixture list for today:</p>
     <p class="seo-related"><a href="/sokafans-predictions">SokaFans Predictions</a> · <a href="/cheerplex-tips">Cheerplex Tips</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a> · <a href="/sunpel-prediction">Sunpel Prediction</a> · <a href="/venasbet-predictions">VenasBet Predictions</a> · <a href="/sitemaps">Full sitemaps</a></p>
 
     <h2>Transparency</h2>

@@ -8,7 +8,7 @@
   <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1">
   <link rel="canonical" href="https://www.baopredictions.com/venasbet-predictions">
 
-  <meta name="keywords" content="venasbet predictions, venasbet tips, venasbet prediction today, venasbet football predictions, bao predictions">
+  <meta name="keywords" content="venasbet, venasbet prediction, venasbet prediction today, venasbet predictions">
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="VenasBet Predictions &amp; Tips | Bao Predictions">
   <meta name="twitter:description" content="Looking for VenasBet football predictions and tips? Free daily selections across 1X2, Double Chance, BTTS, Over/Under and HT/FT.">
@@ -63,8 +63,8 @@ $todayLabel = date('j F Y');
 if ($tipCount > 0) {
   echo ' — <strong>' . (int) $tipCount . ' published selections</strong>';
 }
-?>. Each card shows one recommended market (1X2, Double Chance, BTTS, Over/Under or HT/FT), the model lean and a short reason. Midweek jackpot players should still open the live operator sheet — this daily board is not a full coupon.</p>
-<?php echo bao_intro_links_html('Compare with <a href="/football-predictions-today">Football Predictions Today</a>, or open <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek Jackpot Predictions</a> and the <a href="/jackpot-predictions">Jackpot Predictions</a> hub.'); ?>
+?>. Each card shows one recommended market (1X2, Double Chance, BTTS, Over/Under or HT/FT), the model lean and a short reason. This page targets VenasBet prediction today — not unrelated jackpot keyword clusters.</p>
+<?php echo bao_intro_links_html('Compare with <a href="/football-predictions-today">Football Predictions Today</a> or <a href="/results">Results</a>.'); ?>
   </header>
 
 </div>
@@ -96,13 +96,18 @@ require __DIR__ . '/../components/sidebar.php';
 
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
-<?php
-echo bao_brand_seo_stack_html('VenasBet', $games, [
-  'angle' => 'VenasBet searches often overlap with midweek jackpot research. Keep the jobs separate: use this page for today’s free singles board, then open SportPesa Midweek or Betika Midweek sheets when you need a full coupon view.',
-  'shortlist_label' => 'VenasBet shortlist',
-  'related' => '<a href="/football-predictions-today">Football Predictions Today</a> · <a href="/cheerplex-tips">Cheerplex Tips</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a> · <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek Jackpot Predictions</a> · <a href="/results">Results</a>',
-]);
-?>
+    <h2>VenasBet</h2>
+    <p><strong>VenasBet</strong> on Bao Predictions is a free daily tip board. The fixtures above are selected for this VenasBet page only.</p>
+
+    <h2>VenasBet Prediction</h2>
+    <p>A <strong>VenasBet prediction</strong> is one market lean per fixture with a short reason on the card.</p>
+
+    <h2>VenasBet Prediction Today</h2>
+    <p>For <strong>VenasBet prediction today</strong> and <strong>VenasBet predictions</strong> on <strong><?php echo bao_h($todayLabel); ?></strong>, use the live cards above.</p>
+    <?php echo bao_shortlist_summary_html($games, 'VenasBet shortlist'); ?>
+
+    <p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions, not guaranteed outcomes. <a href="/responsible-betting">Responsible Betting</a>.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a></p>
   </div>
 </section>
 
@@ -114,7 +119,7 @@ $faqs = [
   ],
   [
     'q' => 'Which markets appear on this board?',
-    'a' => 'The same mixed-market engine as Bet Numbers Tips: 1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture.',
+    'a' => '1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture on this VenasBet page.',
   ],
   [
     'q' => 'Where are midweek jackpot sheets?',

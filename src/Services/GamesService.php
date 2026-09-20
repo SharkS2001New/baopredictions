@@ -253,7 +253,57 @@ SQL;
             $out[] = $game;
         }
 
+        $offset = max(0, (int) ($filters['offset'] ?? 0));
+        $boardKey = trim((string) ($filters['board_key'] ?? ''));
+
+        // Brand boards: stable per-page diversification so pages do not all publish
+        // the identical top-N mixed-market slate.
+        if ($boardKey !== '') {
+            $poolSize = min(count($out), max($limit * 5, $limit + 60));
+            $pool = $this->selectBoardGames($out, $poolSize, $order);
+            return $this->diversifyBoardByKey($pool, $boardKey, $limit);
+        }
+
+        if ($offset > 0) {
+            $pool = $this->selectBoardGames($out, $limit + $offset, $order);
+            return array_slice($pool, $offset, $limit);
+        }
+
         return $this->selectBoardGames($out, $limit, $order);
+    }
+
+    /**
+     * Prefer fixtures whose hash bucket matches the page key, then fill from the rest.
+     *
+     * @param list<array<string,mixed>> $games
+     * @return list<array<string,mixed>>
+     */
+    private function diversifyBoardByKey(array $games, string $boardKey, int $limit): array
+    {
+        if ($games === [] || $limit <= 0) {
+            return [];
+        }
+        $buckets = 7;
+        $prefer = abs(crc32($boardKey)) % $buckets;
+        $primary = [];
+        $secondary = [];
+        foreach ($games as $g) {
+            $fid = (int) ($g['fixture_id'] ?? 0);
+            $bucket = abs(crc32($boardKey . ':' . $fid)) % $buckets;
+            if ($bucket === $prefer) {
+                $primary[] = $g;
+            } else {
+                $secondary[] = $g;
+            }
+        }
+        $rot = abs(crc32('rot:' . $boardKey)) % max(1, count($secondary));
+        if ($rot > 0 && $secondary !== []) {
+            $secondary = array_merge(
+                array_slice($secondary, $rot),
+                array_slice($secondary, 0, $rot)
+            );
+        }
+        return array_slice(array_merge($primary, $secondary), 0, $limit);
     }
 
     /**

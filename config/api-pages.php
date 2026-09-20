@@ -75,44 +75,48 @@ $pages = [
         'market' => 'best',
         'min_confidence' => 58,
         'order' => 'confidence_desc',
+        'board_key' => 'betnumbers-tips',
     ],
 
-    // Brand-comparison landing: same mixed-market engine as BetNumbers.
+    // Dedicated brand boards — each has its own board_key so fixtures differ.
     'sokafans-predictions' => [
         'title' => 'SokaFans predictions today',
         'day' => 'today',
-        'limit' => 40,
+        'limit' => 36,
         'market' => 'best',
         'min_confidence' => 58,
         'order' => 'confidence_desc',
+        'board_key' => 'sokafans-predictions',
     ],
 
     'cheerplex-tips' => [
         'title' => 'Cheerplex tips today',
         'day' => 'today',
-        'limit' => 40,
+        'limit' => 36,
         'market' => 'best',
-        'min_confidence' => 58,
+        'min_confidence' => 59,
         'order' => 'confidence_desc',
+        'board_key' => 'cheerplex-tips',
     ],
 
     'venasbet-predictions' => [
         'title' => 'VenasBet tips today',
         'day' => 'today',
-        'limit' => 40,
+        'limit' => 36,
         'market' => 'best',
-        'min_confidence' => 58,
+        'min_confidence' => 57,
         'order' => 'confidence_desc',
+        'board_key' => 'venasbet-predictions',
     ],
 
-    // Brand-comparison landing: same mixed-market engine as BetNumbers / Today.
     'sunpel-prediction' => [
         'title' => 'Sunpel prediction tips today',
         'day' => 'today',
-        'limit' => 40,
+        'limit' => 36,
         'market' => 'best',
         'min_confidence' => 58,
         'order' => 'confidence_desc',
+        'board_key' => 'sunpel-prediction',
     ],
 
     '1x2-predictions' => [
@@ -240,9 +244,10 @@ $pages = [
     ],
 ];
 
-// Brand-comparison landings share the BetNumbers mixed-market engine.
+// Brand landings: unique board_key (+ slight filter variance) so fixtures differ per page.
 $brandLandings = require __DIR__ . '/brand-landings.php';
 if (is_array($brandLandings)) {
+    $i = 0;
     foreach ($brandLandings as $slug => $meta) {
         if (!is_string($slug) || $slug === '' || isset($pages[$slug])) {
             continue;
@@ -251,11 +256,13 @@ if (is_array($brandLandings)) {
         $pages[$slug] = [
             'title' => $brandName . ' tips today',
             'day' => 'today',
-            'limit' => 40,
+            'limit' => 32 + ($i % 5),
             'market' => 'best',
-            'min_confidence' => 58,
+            'min_confidence' => 56 + ($i % 5),
             'order' => 'confidence_desc',
+            'board_key' => $slug,
         ];
+        $i++;
     }
 }
 

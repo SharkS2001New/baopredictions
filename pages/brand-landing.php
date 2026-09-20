@@ -23,20 +23,25 @@ $intro = trim((string) ($meta['intro'] ?? $meta['lede'] ?? ''));
 $introLinks = trim((string) ($meta['intro_links'] ?? ''));
 $breadcrumb = (string) $meta['breadcrumb'];
 $canonical = 'https://www.baopredictions.com/' . $slug;
-$faqTitle = $brand . ' Predictions FAQ';
+$faqTitle = $brand . ' FAQ';
+$sections = is_array($meta['sections'] ?? null) ? $meta['sections'] : [];
+
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/' . $slug);
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+$todayLabel = date('j F Y');
+$tipCount = count($games);
 
 $faqs = [
   [
-    'q' => 'Are ' . $brand . ' predictions free here?',
-    'a' => 'Yes. Every tip board and jackpot sheet on Bao Predictions is free to view. There is no VIP paywall on this page.',
+    'q' => 'Are ' . $brand . ' tips free here?',
+    'a' => 'Yes. This tip board on Bao Predictions is free to view. There is no VIP paywall on the cards above.',
   ],
   [
     'q' => 'Which markets appear on this board?',
-    'a' => 'The same mixed-market engine as Bet Numbers Tips: 1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture, with a short reason on the card.',
-  ],
-  [
-    'q' => 'Is this a SportPesa Mega Jackpot coupon?',
-    'a' => 'No. This page is the daily tip board. For the live 17-game card open SportPesa Mega Jackpot Predictions, or use the Jackpot Predictions hub for Betika, SportyBet, Odibets Laki Tatu and Mozzart sheets.',
+    'a' => '1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture, with a short reason on the card.',
   ],
   [
     'q' => 'How do I know the tips are still current?',
@@ -47,12 +52,12 @@ $faqs = [
     'a' => 'No. Confidence figures are model leans with a publish cap, not promised win rates. Stake only what you can afford to lose.',
   ],
 ];
-
-require_once __DIR__ . '/../components/api-curl.php';
-$payload = bao_curl_api('/api/' . $slug);
-$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
-  ? $payload['games']
-  : [];
+if (array_intersect($sections, ['jackpot', 'mega_jackpot', 'sportpesa_mega', 'midweek_jackpot'])) {
+  array_splice($faqs, 2, 0, [[
+    'q' => 'Is this a full jackpot coupon?',
+    'a' => 'No. This page is the daily tip board. Open the matching jackpot sheet from the sections above or the Jackpot Predictions hub, then confirm the live operator card before you play.',
+  ]]);
+}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -106,20 +111,18 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
     <h1><?php echo bao_h($h1); ?></h1>
 <?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <?php
-$tipCount = count($games);
-$todayLabel = date('j F Y');
 if ($intro !== '') {
   echo '<p class="lede">' . $intro;
   if ($tipCount > 0) {
-    echo ' <strong>' . (int) $tipCount . ' tips</strong> are on the board for <strong>' . bao_h($todayLabel) . '</strong>.';
+    echo ' <strong>' . (int) $tipCount . ' tips</strong> are on this page for <strong>' . bao_h($todayLabel) . '</strong>.';
   }
   echo '</p>';
 } else {
-  echo '<p class="lede"><strong>' . bao_h($brand) . ' predictions</strong> on Bao Predictions are free mixed-market tips for <strong>' . bao_h($todayLabel) . '</strong>';
+  echo '<p class="lede"><strong>' . bao_h($brand) . '</strong> tips on this page for <strong>' . bao_h($todayLabel) . '</strong>';
   if ($tipCount > 0) {
-    echo ' — <strong>' . (int) $tipCount . ' published selections</strong>';
+    echo ' — <strong>' . (int) $tipCount . ' selections</strong>';
   }
-  echo '. Each card shows one recommended market (1X2, Double Chance, BTTS, Over/Under or HT/FT), the model lean and a short reason.</p>';
+  echo '. Each card shows one recommended market with a short reason.</p>';
 }
 ?>
 <?php echo bao_intro_links_html($introLinks !== '' ? $introLinks : null); ?>
@@ -156,9 +159,12 @@ require __DIR__ . '/../components/sidebar.php';
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
 <?php
-echo bao_brand_seo_stack_html($brand, $games, [
-  'shortlist_label' => $brand . ' shortlist',
-]);
+$seoPartial = __DIR__ . '/brand-seo/' . $slug . '.php';
+if (is_file($seoPartial)) {
+  include $seoPartial;
+} else {
+  echo '<p>Tips for ' . bao_h($brand) . ' are on the board above.</p>';
+}
 ?>
   </div>
 </section>

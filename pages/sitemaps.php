@@ -25,6 +25,28 @@ foreach ($brandLandings as $slug => $meta) {
     'href' => '/' . $slug,
   ];
 }
+
+/**
+ * Keep first occurrence of each href (case-insensitive path).
+ *
+ * @param list<array{label:string,href:string}> $links
+ * @return list<array{label:string,href:string}>
+ */
+$bao_sitemaps_dedupe = static function (array $links): array {
+  $seen = [];
+  $out = [];
+  foreach ($links as $link) {
+    $href = strtolower(rtrim((string) ($link['href'] ?? ''), '/'));
+    if ($href === '' || isset($seen[$href])) {
+      continue;
+    }
+    $seen[$href] = true;
+    $out[] = $link;
+  }
+  return $out;
+};
+
+$existingBrands = $bao_sitemaps_dedupe($existingBrands);
 usort($existingBrands, static function ($a, $b) {
   return strcasecmp((string) $a['label'], (string) $b['label']);
 });
@@ -33,30 +55,25 @@ $sections = [
   [
     'id' => 'quick-links',
     'title' => 'Quick Links',
-    'links' => array_merge(
-      [
-        ['label' => 'Football Predictions Today', 'href' => '/football-predictions-today'],
-        ['label' => 'Football Predictions Tomorrow', 'href' => '/football-predictions-tomorrow'],
-        ['label' => 'Football Predictions Yesterday', 'href' => '/football-predictions-yesterday'],
-        ['label' => 'Weekend Football Predictions', 'href' => '/weekend-football-predictions'],
-        ['label' => 'Live Football Predictions', 'href' => '/live-football-predictions'],
-        ['label' => 'Must Win Teams Today', 'href' => '/must-win-teams-today'],
-        ['label' => 'Sure Bets Today', 'href' => '/sure-bets-today'],
-        ['label' => 'Banker of the Day', 'href' => '/banker-of-the-day'],
-        ['label' => 'Accumulator Tips', 'href' => '/accumulator-tips'],
-        ['label' => '1X2 Predictions', 'href' => '/1x2-predictions'],
-        ['label' => 'Double Chance Predictions', 'href' => '/double-chance-predictions'],
-        ['label' => 'Over/Under Predictions', 'href' => '/over-under-predictions'],
-        ['label' => 'BTTS Predictions', 'href' => '/btts-predictions'],
-        ['label' => 'HT/FT Predictions', 'href' => '/ht-ft-predictions'],
-        ['label' => 'Jackpot Predictions', 'href' => '/jackpot-predictions'],
-        ['label' => 'Results', 'href' => '/results'],
-        ['label' => 'How We Predict', 'href' => '/how-we-predict'],
-        ['label' => 'Mega Jackpot Strategy Guide', 'href' => '/mega-jackpot-strategy-guide'],
-        ['label' => 'How to Read BTTS Odds', 'href' => '/how-to-read-btts-odds'],
-      ],
-      $existingBrands
-    ),
+    'links' => [
+      ['label' => 'Football Predictions Today', 'href' => '/football-predictions-today'],
+      ['label' => 'Football Predictions Tomorrow', 'href' => '/football-predictions-tomorrow'],
+      ['label' => 'Football Predictions Yesterday', 'href' => '/football-predictions-yesterday'],
+      ['label' => 'Weekend Football Predictions', 'href' => '/weekend-football-predictions'],
+      ['label' => 'Live Football Predictions', 'href' => '/live-football-predictions'],
+      ['label' => 'Must Win Teams Today', 'href' => '/must-win-teams-today'],
+      ['label' => 'Sure Bets Today', 'href' => '/sure-bets-today'],
+      ['label' => 'Banker of the Day', 'href' => '/banker-of-the-day'],
+      ['label' => 'Accumulator Tips', 'href' => '/accumulator-tips'],
+      ['label' => '1X2 Predictions', 'href' => '/1x2-predictions'],
+      ['label' => 'Double Chance Predictions', 'href' => '/double-chance-predictions'],
+      ['label' => 'Over/Under Predictions', 'href' => '/over-under-predictions'],
+      ['label' => 'BTTS Predictions', 'href' => '/btts-predictions'],
+      ['label' => 'HT/FT Predictions', 'href' => '/ht-ft-predictions'],
+      ['label' => 'Results', 'href' => '/results'],
+      ['label' => 'How We Predict', 'href' => '/how-we-predict'],
+      ['label' => 'How to Read BTTS Odds', 'href' => '/how-to-read-btts-odds'],
+    ],
   ],
   [
     'id' => 'free-predictions',
@@ -94,6 +111,21 @@ $sections = [
     ],
   ],
 ];
+
+// Final pass: no href appears in more than one section.
+$seenGlobal = [];
+foreach ($sections as $si => $section) {
+  $clean = [];
+  foreach ($section['links'] as $link) {
+    $href = strtolower(rtrim((string) ($link['href'] ?? ''), '/'));
+    if ($href === '' || isset($seenGlobal[$href])) {
+      continue;
+    }
+    $seenGlobal[$href] = true;
+    $clean[] = $link;
+  }
+  $sections[$si]['links'] = $clean;
+}
 
 $linkCount = 0;
 foreach ($sections as $section) {
@@ -149,7 +181,7 @@ foreach ($sections as $section) {
 
   <header class="page-hero">
     <h1>Bao Predictions Links</h1>
-    <p class="lede">Browse tip boards, markets, jackpots and brand pages. Crawlers can also use <a href="/sitemap.xml">sitemap.xml</a>.</p>
+    <p class="lede">Browse tip boards, markets, jackpots and brand pages. Crawlers can also use the XML sitemap under Site below.</p>
   </header>
 
   <p class="sitemaps-meta"><?php echo (int) $linkCount; ?> links</p>
