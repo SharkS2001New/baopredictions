@@ -62,11 +62,7 @@ function bao_kickoff_label(array $g, bool $withDate = false): string
     if ($clock === '') {
         return '—';
     }
-    if (!$withDate) {
-        $time = trim((string) ($g['time'] ?? ''));
-        return $time !== '' ? $time : $clock;
-    }
-
+    // Always prefer a compact date when we have one — mobile scan UX.
     $dateLabel = trim((string) ($g['date_label'] ?? ''));
     if ($dateLabel === '' && !empty($g['date'])) {
         try {
@@ -75,10 +71,18 @@ function bao_kickoff_label(array $g, bool $withDate = false): string
             $dateLabel = (string) $g['date'];
         }
     }
-    if ($dateLabel === '') {
-        return $clock;
+    if ($withDate || $dateLabel !== '') {
+        if ($dateLabel === '') {
+            return $clock;
+        }
+        // Avoid duplicating if time already embeds the date.
+        if (str_contains($clock, $dateLabel) || preg_match('/\b(Mon|Tue|Wed|Thu|Fri|Sat|Sun)\b/i', $clock)) {
+            return $clock;
+        }
+        return $dateLabel . ' · ' . $clock;
     }
-    return $dateLabel . ' · ' . $clock;
+    $time = trim((string) ($g['time'] ?? ''));
+    return $time !== '' ? $time : $clock;
 }
 
 /**
@@ -205,16 +209,29 @@ function bao_match_card(array $g): string {
             $html .= '<span class="at-outcome-tick" title="' . bao_h($tickTitle) . '" aria-label="' . bao_h($tickTitle) . '">✅</span>';
         } elseif ($showLost) {
             $html .= '<span class="at-outcome-lost" title="Lost" aria-label="Lost">❌</span>';
+        } else {
+            $html .= '<span class="at-status-pill" title="Awaiting settlement">FT</span>';
         }
         $html .= '</span>';
+        // Keep kickoff visible under the score so date/time stay scannable.
+        if ($kickLabel !== '' && $kickLabel !== '—') {
+            $html .= '<span class="at-time at-time--secondary bao-kickoff-time"'
+                . ($kickoffIso !== '' ? ' data-kickoff-utc="' . bao_h($kickoffIso) . '"' : '')
+                . ' data-show-date="1"'
+                . ' title="Kick-off time">'
+                . '<span class="bao-kickoff-label">' . bao_h($kickLabel) . '</span></span>';
+        }
     } elseif ($kickLabel !== '' && $kickLabel !== '—') {
         $html .= '<span class="at-time bao-kickoff-time"'
             . ($kickoffIso !== '' ? ' data-kickoff-utc="' . bao_h($kickoffIso) . '"' : '')
-            . ($showDate ? ' data-show-date="1"' : '')
+            . ' data-show-date="1"'
             . ' title="Kick-off time (shown in your timezone)">';
         $html .= '<span class="at-clock" aria-hidden="true"></span>';
         $html .= '<span class="bao-kickoff-label">' . bao_h($kickLabel) . '</span>';
         $html .= '</span>';
+        if (!$isLive && !$showTick && !$showLost) {
+            $html .= '<span class="at-status-pill" title="Not started">NS</span>';
+        }
     }
     $html .= '</div>';
 
@@ -277,6 +294,10 @@ function bao_matches_html(array $games, array $opts = []): string {
     $html = '<div class="matches-block' . ($class ? ' ' . bao_h($class) : '') . '">';
     if ($title !== '') {
         $html .= '<h2 class="at-matches-title">' . bao_h($title) . '</h2>';
+    }
+    if (($opts['results_bridge'] ?? true) !== false) {
+        require_once __DIR__ . '/seo.php';
+        $html .= bao_results_bridge_html();
     }
     $html .= '<div class="matches-container at-matches-grid" data-bao-matches>';
     foreach ($visible as $g) {

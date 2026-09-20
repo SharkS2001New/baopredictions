@@ -20,7 +20,7 @@ function bao_tip_of_day_pick(): ?array
     $cached = true;
 
     $sources = [
-        ['path' => '/api/sure-bets-today', 'href' => '/sure-bets-today', 'label' => 'sure-bets'],
+        // Single board fetch — enough pool for tip-of-day without a second full API.
         ['path' => '/api/football-predictions-today', 'href' => '/football-predictions-today', 'label' => 'today'],
     ];
 

@@ -43,6 +43,12 @@ $faqs = [
     'a' => 'No. Football predictions are opinions based on available match data, not guaranteed outcomes. Stake only what you can afford to lose.',
   ],
 ];
+
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/' . $slug);
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -94,6 +100,7 @@ $faqs = [
 
 <header class="page-hero">
     <h1><?php echo bao_h($h1); ?></h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <?php if ($intro !== ''): ?>
     <p class="lede"><?php echo $intro; ?></p>
 <?php endif; ?>
@@ -108,11 +115,6 @@ $faqs = [
 <div class="matches-area">
 
   <?php
-require_once __DIR__ . '/../components/api-curl.php';
-$payload = bao_curl_api('/api/' . $slug);
-$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
-  ? $payload['games']
-  : [];
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (!$games) {
@@ -137,10 +139,6 @@ require __DIR__ . '/../components/sidebar.php';
     <h2><?php echo bao_h($brand); ?> Predictions</h2>
     <p>Looking for <strong><?php echo bao_h($brand); ?></strong> football predictions and tips? Bao Predictions covers daily football selections, jackpot fixtures and popular betting markets including 1X2, Double Chance, BTTS, Over/Under and Half Time/Full Time. Check the available match information and compare the selections before placing a bet.</p>
 
-    <h2><?php echo bao_h($brand); ?></h2>
-    <p><strong><?php echo bao_h($brand); ?></strong> searches are often associated with football predictions, betting tips and daily match selections. Bao Predictions provides football predictions across leagues and competitions, with individual matches assessed according to the market being considered.</p>
-    <p>You can review straightforward outcomes such as home win, draw or away win, as well as goal-based markets where they are available. The focus is on giving you the prediction and relevant match context without presenting any result as guaranteed.</p>
-
     <h2><?php echo bao_h($brand); ?> Prediction</h2>
     <p>A <strong><?php echo bao_h($brand); ?> prediction</strong> gives you a football selection for an individual match or a group of fixtures. Depending on the match, the prediction may cover 1X2, Double Chance, BTTS, Over/Under or Half Time/Full Time.</p>
     <p>When comparing predictions, look at the actual fixture as well as the selected market. A strong-looking team on paper does not automatically make every betting market suitable, particularly when the prediction is based on goals, both teams to score or a double-chance outcome.</p>
@@ -149,8 +147,10 @@ require __DIR__ . '/../components/sidebar.php';
     <p>For <strong><?php echo bao_h($brand); ?> prediction today</strong>, check the latest available football fixtures and selections for the current day's matches. Today's predictions can change as fixtures, team information and available markets are updated, so it is worth checking the latest version before making a selection.</p>
     <p>The daily list can include matches from different competitions, giving you the option to review individual predictions rather than relying on one overall tip. Always check the fixture time and market before placing a bet.</p>
 
+<?php echo bao_brand_jackpot_sections_html($brand); ?>
+
     <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. See <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a> · <a href="/sitemaps">All pages</a></p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/football-predictions-yesterday">Yesterday</a> · <a href="/results">Results</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a></p>
   </div>
 </section>
 

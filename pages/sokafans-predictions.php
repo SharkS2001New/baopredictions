@@ -48,7 +48,7 @@
 
 <header class="page-hero">
     <h1>SokaFans Predictions for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">SokaFans predictions are searched for daily tips, weekend fixtures and Mega Jackpot coupons. This Bao Predictions board lists free SokaFans-style selections for today — one recommended market per match — so you can review form and venue without paying for a VIP wall. Jackpot players should still open the live operator sheet rather than treating this daily board as a full 17-game coupon.</p>
 <?php echo bao_intro_links_html('Continue with <a href="/weekend-football-predictions">Weekend Football Predictions</a> or the <a href="/jackpot-predictions">Jackpot Predictions</a> hub for SportPesa and Betika cards.'); ?>
   </header>
@@ -103,8 +103,10 @@ require __DIR__ . '/../components/sidebar.php';
     <p>For <strong>SokaFans prediction today</strong>, check the latest available football fixtures and selections for the current day's matches. Today's predictions can change as fixtures, team information and available markets are updated, so it is worth checking the latest version before making a selection.</p>
     <p>The daily list can include matches from different competitions, giving you the option to review individual predictions rather than relying on one overall tip. Always check the fixture time and market before placing a bet.</p>
 
+    <?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_jackpot_sections_html('SokaFans'); ?>
+
     <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. See <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a></p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday</a> · <a href="/results">Results</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a></p>
   </div>
 </section>
 

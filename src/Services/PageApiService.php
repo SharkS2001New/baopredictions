@@ -69,6 +69,7 @@ final class PageApiService
             'title' => $def['title'] ?? $key,
             'source' => $source,
             'market' => $def['market'] ?? null,
+            'last_updated' => date('c'),
         ];
 
         if ($source === 'jackpot_hub') {

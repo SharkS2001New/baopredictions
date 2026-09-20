@@ -48,7 +48,7 @@
 
 <header class="page-hero">
     <h1>Bet Numbers Prediction for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">Bet Numbers prediction for today covers football matches across local and international leagues. Bao Predictions compares 1X2, Double Chance, BTTS, Over/Under and related markets on each fixture, then publishes the single selection that best fits the evidence — so the tip numbers you see below are market picks, not random scorelines. Soccer tips for tomorrow and yesterday sit on their own boards.</p>
 <?php echo bao_intro_links_html('With our free tips, <a href="/football-predictions-yesterday">Football Predictions Yesterday</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> you can check settled results and coupons in one place.'); ?>
   </header>
@@ -125,6 +125,8 @@ if ($payload === null) {
     <p>For Bao, the active prediction card follows the same basic principle: show the date clearly, keep completed fixtures separate from upcoming matches and update selections when important team information changes.</p>
     <p>This is particularly important for searches such as <strong>betnumbers prediction today</strong> and <strong>today's Betnumbers predictions</strong>, because an old result can remain online long after the match has finished. Check <a href="/results">Results</a> for settled tips, and use this page for the open card only.</p>
     <p>Bao Predictions does not guarantee winning results. Football remains unpredictable, and even a well-supported selection can lose.</p>
+    <?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_jackpot_sections_html('Bet Numbers'); ?>
+
     <p><strong>18+:</strong> Football predictions are not guarantees. Betting involves financial risk. Only bet what you can afford to lose and use licensed betting services where permitted. <a href="/responsible-betting">Responsible betting</a>.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/1x2-predictions">1X2 Predictions</a> · <a href="/accumulator-tips">Accumulator Tips</a> · <a href="/football-predictions-today">Today's full list</a> · <a href="/sure-bets-today">Sure bets today</a> · <a href="/double-chance-predictions">Double Chance</a></p>
   </div>

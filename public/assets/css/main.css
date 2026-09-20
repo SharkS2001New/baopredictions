@@ -645,6 +645,47 @@ ol {
   margin: 0.35rem 0 0.85rem;
 }
 
+.bao-results-bridge {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.85rem;
+  margin: 0 0 1rem;
+  font-size: 0.88rem;
+}
+
+.bao-results-bridge a {
+  color: var(--ink-muted);
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.bao-results-bridge a:hover {
+  color: var(--amber-deep);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+}
+
+.at-status-pill {
+  display: inline-block;
+  margin-left: 0.35rem;
+  padding: 0.1rem 0.4rem;
+  border-radius: 4px;
+  font-size: 0.68rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: var(--ink-muted);
+  border: 1px solid var(--card-border);
+  background: transparent;
+}
+
+.at-time--secondary {
+  display: block;
+  margin-top: 0.25rem;
+  font-size: 0.78rem;
+  color: var(--ink-muted);
+}
+
 .seo-unique {
   max-width: none;
   color: var(--ink);

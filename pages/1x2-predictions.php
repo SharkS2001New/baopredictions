@@ -67,7 +67,7 @@ $payload = bao_curl_api('/api/1x2-predictions');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
-$stats = bao_curl_api('/api/stats');
+$stats = bao_api_stats();
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (!$games) {

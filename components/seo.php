@@ -45,6 +45,54 @@ function bao_last_updated_html(?string $iso = null): string {
         . ' · <a href="https://www.baopredictions.com/">Bao Predictions</a></p>';
 }
 
+/**
+ * Board freshness from page API payload last_updated, else stats, else now.
+ *
+ * @param array<string,mixed>|null $payload
+ */
+function bao_board_freshness_html(?array $payload = null): string {
+    $iso = null;
+    if (is_array($payload) && !empty($payload['last_updated'])) {
+        $iso = (string) $payload['last_updated'];
+    } else {
+        require_once __DIR__ . '/api-curl.php';
+        $stats = bao_api_stats();
+        if (is_array($stats) && !empty($stats['last_updated'])) {
+            $iso = (string) $stats['last_updated'];
+        }
+    }
+    return bao_last_updated_html($iso);
+}
+
+/**
+ * Compact bridge under tip boards — Today / Yesterday / Results.
+ */
+function bao_results_bridge_html(): string {
+    return '<nav class="bao-results-bridge" aria-label="Prediction timeline">'
+        . '<a href="/football-predictions-today">Today</a>'
+        . '<a href="/football-predictions-yesterday">Yesterday</a>'
+        . '<a href="/results">Results</a>'
+        . '<a href="/how-we-predict">How we predict</a>'
+        . '</nav>';
+}
+
+/**
+ * Brand keyword sections for jackpot intents (links only — no empty shells).
+ * Preserves existing Prediction / Prediction Today copy elsewhere on the page.
+ */
+function bao_brand_jackpot_sections_html(string $brand): string {
+    $b = bao_h($brand);
+    return '<h2 id="' . bao_h(strtolower(preg_replace('/[^a-z0-9]+/i', '-', $brand) ?: 'brand') . '-jackpot') . '">' . $b . ' Jackpot Prediction</h2>'
+        . '<p>A <strong>' . $b . ' jackpot prediction</strong> should be checked fixture-by-fixture against the live operator coupon. Bao Predictions publishes free Kenya jackpot sheets with a 1X2 lean and short reason on every game.</p>'
+        . '<p class="seo-related"><a href="/jackpot-predictions">All jackpot predictions</a></p>'
+        . '<h2>' . $b . ' Mega Jackpot Prediction</h2>'
+        . '<p>For <strong>' . $b . ' Mega Jackpot prediction</strong> searches, use the current SportPesa Mega card rather than an old indexed round. Each of the 17 fixtures is assessed separately.</p>'
+        . '<p class="seo-related"><a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> · <a href="/mega-jackpot-strategy-guide">Mega Jackpot Strategy Guide</a></p>'
+        . '<h2>' . $b . ' SportPesa Mega Jackpot Prediction</h2>'
+        . '<p>Looking for a <strong>' . $b . ' SportPesa Mega Jackpot prediction</strong>? Open the live Mega sheet for this weekend’s fixtures, stakes and per-match notes — then confirm the coupon on SportPesa before you play.</p>'
+        . '<p class="seo-related"><a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> · <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek Jackpot Predictions</a></p>';
+}
+
 function bao_rg_notice_html(): string {
     return '<p class="rg-notice"><span class="age-badge">18+</span> Tips are informational opinions for entertainment — not financial advice, not betting tips that guarantee profit, and not a substitute for your own judgment. Confidence scores are model leans only; they are not predicted win rates. Never stake money you cannot afford to lose. <a href="/responsible-betting">Responsible betting</a>. Must be 18+ (or legal age where you live).</p>';
 }

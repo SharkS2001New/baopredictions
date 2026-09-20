@@ -48,7 +48,7 @@
 
 <header class="page-hero">
     <h1>Sunpel Prediction for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">Sunpel prediction is a popular search for daily football tips, correct-score style ideas and Kenya jackpot analysis. Bao Predictions publishes a free Sunpel-style board for today: mixed markets with clear reasoning on each card, plus guidance on checking tip freshness so an old indexed round is not mistaken for this weekend’s live coupon.</p>
 <?php echo bao_intro_links_html('Compare <a href="/betnumbers-tips">Bet Numbers Tips</a> on the same engine, or open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> for the current Mega card.'); ?>
   </header>
@@ -125,9 +125,8 @@ require __DIR__ . '/../components/sidebar.php';
       <li><strong>Jackpots:</strong> current round on each sheet, with previous-round results kept separate so finished coupons are not mistaken for today's card.</li>
       <li><strong>Transparency:</strong> confidence is a model lean with a hard publish cap — never presented as a guarantee.</li>
     </ul>
-
     <p><strong>18+:</strong> Football predictions are not guarantees. Betting involves financial risk. Only bet what you can afford to lose and use licensed betting services where permitted. <a href="/responsible-betting">Responsible betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions</a> · <a href="/double-chance-predictions">Double Chance Predictions</a> · <a href="/betnumbers-tips">BetNumbers tips</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/how-we-predict">How We Predict</a></p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday</a> · <a href="/results">Results</a> · <a href="/football-predictions-today">Football Predictions</a> · <a href="/double-chance-predictions">Double Chance Predictions</a> · <a href="/betnumbers-tips">BetNumbers tips</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/how-we-predict">How We Predict</a></p>
   </div>
 </section>
 

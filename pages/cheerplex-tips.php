@@ -48,7 +48,7 @@
 
 <header class="page-hero">
     <h1>Cheerplex Prediction &amp; Tips for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">Cheerplex provides daily football tips and jackpot ideas that many Kenyan bettors search for before kickoff. Bao Predictions publishes free Cheerplex-style tips for today across major European leagues and other competitions — covering 1X2, Double Chance, BTTS, Over/Under and HT/FT — with GG and goals markets when they fit the fixture better than a straight result.</p>
 <?php echo bao_intro_links_html('With our free tips, <a href="/sure-bets-today">Sure Bets Today</a>, or <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> you can widen the slate before you stake.'); ?>
   </header>
@@ -103,8 +103,10 @@ require __DIR__ . '/../components/sidebar.php';
     <p>For <strong>Cheerplex prediction today</strong>, check the latest available football fixtures and selections for the current day's matches. Today's predictions can change as fixtures, team information and available markets are updated, so it is worth checking the latest version before making a selection.</p>
     <p>The daily list can include matches from different competitions, giving you the option to review individual predictions rather than relying on one overall tip. Always check the fixture time and market before placing a bet.</p>
 
+    <?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_jackpot_sections_html('Cheerplex'); ?>
+
     <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. See <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/football-predictions-today">Football Predictions Today</a></p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday</a> · <a href="/results">Results</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/football-predictions-today">Football Predictions Today</a></p>
   </div>
 </section>
 
