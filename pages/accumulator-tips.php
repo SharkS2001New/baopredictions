@@ -37,7 +37,7 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">

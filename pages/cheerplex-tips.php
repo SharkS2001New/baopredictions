@@ -37,7 +37,7 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -47,9 +47,10 @@
 </nav>
 
 <header class="page-hero">
-    <h1>Cheerplex Prediction & Tips for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_intro_html('Cheerplex'); ?>
-<?php echo bao_intro_links_html(); ?>
+    <h1>Cheerplex Prediction &amp; Tips for Today</h1>
+<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<p class="lede">Cheerplex provides daily football tips and jackpot ideas that many Kenyan bettors search for before kickoff. Bao Predictions publishes free Cheerplex-style tips for today across major European leagues and other competitions — covering 1X2, Double Chance, BTTS, Over/Under and HT/FT — with GG and goals markets when they fit the fixture better than a straight result.</p>
+<?php echo bao_intro_links_html('With our free tips, <a href="/sure-bets-today">Sure Bets Today</a>, or <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> you can widen the slate before you stake.'); ?>
   </header>
 
 </div>

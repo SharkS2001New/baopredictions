@@ -37,7 +37,7 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -48,8 +48,9 @@
 
 <header class="page-hero">
     <h1>VenasBet Predictions for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_intro_html('VenasBet'); ?>
-<?php echo bao_intro_links_html(); ?>
+<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<p class="lede">Looking for <strong>VenasBet</strong> football predictions and tips? Bao Predictions covers daily football selections, jackpot fixtures and popular betting markets including 1X2, Double Chance, BTTS, Over/Under and Half Time/Full Time. Check the available match information and compare the selections before placing a bet — tips are opinions based on available match data, not guaranteed outcomes.</p>
+<?php echo bao_intro_links_html('With our free tips, <a href="/football-predictions-today">Football Predictions Today</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> you can review more boards before you stake with your favourite bookmakers.'); ?>
   </header>
 
 </div>

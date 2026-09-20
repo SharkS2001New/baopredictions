@@ -45,7 +45,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   : [];
 ?>
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">

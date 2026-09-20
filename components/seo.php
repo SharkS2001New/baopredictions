@@ -51,22 +51,13 @@ function bao_rg_notice_html(): string {
 
 /**
  * Closing intro line with internal links (Betwinner360-style page heroes).
+ * Pass optional custom HTML for the sentence body if a page needs different anchors.
  */
-function bao_intro_links_html(): string {
+function bao_intro_links_html(?string $html = null): string {
+    if ($html !== null && $html !== '') {
+        return '<p class="intro-links">' . $html . '</p>';
+    }
     return '<p class="intro-links">With our free tips, <a href="/football-predictions-today">Football Predictions Today</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> you can compare more boards before you stake with your favourite bookmakers.</p>';
-}
-
-/**
- * Brand-page intro paragraph (SEO-dense, honest tone — no fake win-rate claims).
- */
-function bao_brand_intro_html(string $brand): string {
-    $b = bao_h($brand);
-    return '<p class="lede">'
-        . $b . ' prediction for today covers football matches across local and international leagues. '
-        . 'Bao Predictions publishes free ' . $b . ' tips and selections with match context across 1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture. '
-        . 'Review form, venue and the selected market on each card below, then open jackpot sheets when you are building a coupon. '
-        . 'Tips are opinions based on available match data, not guaranteed outcomes.'
-        . '</p>';
 }
 
 /**

@@ -19,7 +19,8 @@ $title = (string) $meta['title'];
 $description = (string) $meta['description'];
 $keywords = (string) $meta['keywords'];
 $h1 = (string) $meta['h1'];
-$lede = (string) $meta['lede'];
+$intro = trim((string) ($meta['intro'] ?? $meta['lede'] ?? ''));
+$introLinks = trim((string) ($meta['intro_links'] ?? ''));
 $breadcrumb = (string) $meta['breadcrumb'];
 $canonical = 'https://www.baopredictions.com/' . $slug;
 $faqTitle = $brand . ' Predictions FAQ';
@@ -82,7 +83,7 @@ $faqs = [
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -93,8 +94,10 @@ $faqs = [
 
 <header class="page-hero">
     <h1><?php echo bao_h($h1); ?></h1>
-<?php echo bao_brand_intro_html($brand); ?>
-<?php echo bao_intro_links_html(); ?>
+<?php if ($intro !== ''): ?>
+    <p class="lede"><?php echo $intro; ?></p>
+<?php endif; ?>
+<?php echo bao_intro_links_html($introLinks !== '' ? $introLinks : null); ?>
   </header>
 
 </div>

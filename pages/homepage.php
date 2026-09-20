@@ -63,7 +63,7 @@ $baoRecent = is_array($baoStats['recent'] ?? null) ? $baoStats['recent'] : [];
   </div>
 </section>
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 <header class="page-hero">
     <h1>Today's Football Predictions</h1>
 <p class="lede">Free tips for today's biggest fixtures across 1X2, BTTS, Over/Under and Double Chance, with popular leagues listed first. Open any card for the lean and the reasoning behind it, then use the full Today board or jackpot hub for a wider slate.</p>

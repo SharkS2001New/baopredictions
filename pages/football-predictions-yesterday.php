@@ -77,7 +77,7 @@ $yRate = $ySettled > 0 ? (int) round(100 * $yWins / $ySettled) : null;
 $settledCount = $ySettled;
 ?>
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">

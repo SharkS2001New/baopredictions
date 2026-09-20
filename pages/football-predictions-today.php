@@ -66,7 +66,7 @@ $trackWinRate = $track['win_rate'] ?? ($stats['win_rate'] ?? null);
 $trackUnits = isset($track['units']) ? (float) $track['units'] : null;
 ?>
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">

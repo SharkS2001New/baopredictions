@@ -37,7 +37,7 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -48,8 +48,9 @@
 
 <header class="page-hero">
     <h1>Sunpel Prediction for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_intro_html('Sunpel'); ?>
-<?php echo bao_intro_links_html(); ?>
+<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<p class="lede">Sunpel prediction is a popular search for daily football tips, correct-score style ideas and Kenya jackpot analysis. Bao Predictions publishes a free Sunpel-style board for today: mixed markets with clear reasoning on each card, plus guidance on checking tip freshness so an old indexed round is not mistaken for this weekend’s live coupon.</p>
+<?php echo bao_intro_links_html('Compare <a href="/betnumbers-tips">Bet Numbers Tips</a> on the same engine, or open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> for the current Mega card.'); ?>
   </header>
 
 </div>

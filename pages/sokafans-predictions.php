@@ -37,7 +37,7 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -48,8 +48,9 @@
 
 <header class="page-hero">
     <h1>SokaFans Predictions for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_intro_html('SokaFans'); ?>
-<?php echo bao_intro_links_html(); ?>
+<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<p class="lede">SokaFans predictions are searched for daily tips, weekend fixtures and Mega Jackpot coupons. This Bao Predictions board lists free SokaFans-style selections for today — one recommended market per match — so you can review form and venue without paying for a VIP wall. Jackpot players should still open the live operator sheet rather than treating this daily board as a full 17-game coupon.</p>
+<?php echo bao_intro_links_html('Continue with <a href="/weekend-football-predictions">Weekend Football Predictions</a> or the <a href="/jackpot-predictions">Jackpot Predictions</a> hub for SportPesa and Betika cards.'); ?>
   </header>
 
 </div>

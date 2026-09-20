@@ -37,7 +37,7 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -48,8 +48,9 @@
 
 <header class="page-hero">
     <h1>Bet Numbers Prediction for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_intro_html('Bet Numbers'); ?>
-<?php echo bao_intro_links_html(); ?>
+<?php require_once __DIR__ . '/../components/seo.php'; ?>
+<p class="lede">Bet Numbers prediction for today covers football matches across local and international leagues. Bao Predictions compares 1X2, Double Chance, BTTS, Over/Under and related markets on each fixture, then publishes the single selection that best fits the evidence — so the tip numbers you see below are market picks, not random scorelines. Soccer tips for tomorrow and yesterday sit on their own boards.</p>
+<?php echo bao_intro_links_html('With our free tips, <a href="/football-predictions-yesterday">Football Predictions Yesterday</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> you can check settled results and coupons in one place.'); ?>
   </header>
 
 </div>
