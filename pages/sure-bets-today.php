@@ -54,7 +54,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Sure Bets Today — Strongest Leans</h1>
 <p class="lede">Sure bets today are a cross-market shortlist of Bao Predictions' stronger published leans — not guaranteed results. Each tip shows the recommended market and confidence so you can narrow fixtures worth closer attention before kickoff.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

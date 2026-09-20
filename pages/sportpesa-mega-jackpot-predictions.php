@@ -37,7 +37,7 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -53,7 +53,7 @@ $sheet = bao_jackpot_sheet('sportpesa-mega-jackpot-predictions', '/api/sportpesa
 $payload = $sheet['payload'];
 $gameCount = (int) $sheet['count'];
 ?>
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>SportPesa Mega Jackpot Predictions — 17 Games</h1>
 <?php echo bao_jackpot_lede_html($sheet); ?>
 <?php echo bao_intro_links_html(); ?>

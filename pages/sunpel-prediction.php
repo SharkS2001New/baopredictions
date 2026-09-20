@@ -46,7 +46,7 @@
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Sunpel Prediction for Today</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">Sunpel prediction is a popular search for daily football tips, correct-score style ideas and Kenya jackpot analysis. Bao Predictions publishes a free Sunpel-style board for today: mixed markets with clear reasoning on each card, plus guidance on checking tip freshness so an old indexed round is not mistaken for this weekend’s live coupon.</p>

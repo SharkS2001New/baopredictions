@@ -46,7 +46,7 @@
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Jackpot Predictions — Kenya Tips Hub</h1>
 <p class="lede">Free jackpot prediction sheets for SportPesa, Betika, SportyBet, Odibets and Mozzart. Open the live round for the operator you play — each sheet lists current fixtures with a 1X2 lean and short reasoning per game.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

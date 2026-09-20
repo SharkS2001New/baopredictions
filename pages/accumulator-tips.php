@@ -46,7 +46,7 @@
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Accumulator Tips Today</h1>
 <p class="lede">Pre-built 3-, 5- and 8-fold accumulator tips for today. Each leg is checked against the current schedule, with combined odds shown upfront so you can review the ticket before kickoff.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

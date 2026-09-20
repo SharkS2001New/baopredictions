@@ -61,7 +61,7 @@ $weekCount = count($games);
   </ol>
 </nav>
 
-  <header class="page-hero">
+  <header class="page-hero page-hero--full">
     <h1>Football Prediction Results</h1>
 <p class="lede">Rolling seven-day settled tips with the original leans beside final scores. Separate from Yesterday's single-matchday audit — use Results to review a longer performance window.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

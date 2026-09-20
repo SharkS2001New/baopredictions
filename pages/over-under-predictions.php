@@ -54,7 +54,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Over/Under Predictions Today</h1>
 <p class="lede">Free Over/Under football predictions for today's fixtures, including the 2.5 goals line. Tips are built from scoring and defensive trends rather than match winners alone. Check each card below, then compare with BTTS when both sides look likely to score.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

@@ -105,7 +105,7 @@ if (is_array($prevGames)) {
 }
 ?>
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -115,7 +115,7 @@ if (is_array($prevGames)) {
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Odibet Laki Tatu Jackpot Predictions</h1>
 <?php echo bao_jackpot_lede_html($sheet); ?>
 <?php echo bao_intro_links_html(); ?>

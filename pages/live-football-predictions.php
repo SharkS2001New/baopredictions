@@ -64,7 +64,7 @@ if ($marketLive > $liveCount) {
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Live Football Predictions & Scores</h1>
 <p class="lede">In-play football scores beside any still-relevant tips. Score and minute come first; published leans stay visible when they still matter. The page refreshes about every 90 seconds so you can follow the slate as matches unfold.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

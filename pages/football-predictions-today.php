@@ -75,10 +75,15 @@ $trackUnits = isset($track['units']) ? (float) $track['units'] : null;
   </ol>
 </nav>
 
-<header class="page-hero">
-    <h1>Football Predictions Today & Free Tips</h1>
-<p class="lede">Free football predictions today across 1X2, Double Chance, BTTS, Over/Under and HT/FT. Bao Predictions publishes the recommended market per fixture with model lean and reasoning, so you can review form and venue before you stake. Tips below cover local and international leagues; they are opinions based on available match data, not guaranteed winners.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
+<header class="page-hero page-hero--full">
+    <h1>Football Predictions Today</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede"><strong><?php echo bao_h($todayLabel); ?></strong><?php
+if ($predToday > 0) {
+  echo ' — <strong>' . (int) $predToday . ' free tips</strong>';
+}
+?> covering 1X2, Double Chance, BTTS, Over/Under and HT/FT. Each card shows one recommended market, the model lean and a short reason so you can check form and kickoff before you stake. Popular leagues are listed first; tips are opinions from available match data, not guaranteed winners.</p>
+<?php echo bao_intro_links_html('Browse <a href="/1x2-predictions">1X2 Predictions Today</a>, tighten the slate on <a href="/sure-bets-today">Sure Bets Today</a>, or open <a href="/jackpot-predictions">Jackpot Predictions</a> for Kenya coupons.'); ?>
   </header>
 
 </div>

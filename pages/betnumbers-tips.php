@@ -46,7 +46,7 @@
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Bet Numbers Prediction for Today</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">Bet Numbers prediction for today covers football matches across local and international leagues. Bao Predictions compares 1X2, Double Chance, BTTS, Over/Under and related markets on each fixture, then publishes the single selection that best fits the evidence — so the tip numbers you see below are market picks, not random scorelines. Soccer tips for tomorrow and yesterday sit on their own boards.</p>

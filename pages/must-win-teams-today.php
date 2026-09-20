@@ -54,7 +54,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Must Win Teams Today</h1>
 <p class="lede">Must win teams today — a high-confidence 1X2 shortlist built from form, venue, opposition and team news. These are stronger win cases on today's board, still published as opinions rather than locks.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

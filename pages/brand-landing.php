@@ -98,7 +98,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1><?php echo bao_h($h1); ?></h1>
 <?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <?php if ($intro !== ''): ?>

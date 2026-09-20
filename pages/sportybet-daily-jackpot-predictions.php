@@ -77,7 +77,7 @@ if (count($dateLabels) === 1) {
 }
 ?>
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -87,7 +87,7 @@ if (count($dateLabels) === 1) {
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>SportyBet Jackpot Predictions, Tips &amp; Prizes</h1>
 <?php echo bao_jackpot_lede_html($sheet); ?>
 <?php echo bao_intro_links_html(); ?>

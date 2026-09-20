@@ -43,7 +43,7 @@ $payload = $sheet['payload'];
 $gameCount = (int) $sheet['count'];
 ?>
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -53,7 +53,7 @@ $gameCount = (int) $sheet['count'];
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>SportPesa Midweek Jackpot Prediction</h1>
 <?php echo bao_jackpot_lede_html($sheet); ?>
 <?php echo bao_intro_links_html(); ?>

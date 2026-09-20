@@ -86,7 +86,7 @@ $settledCount = $ySettled;
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Yesterday's Football Predictions & Results</h1>
 <p class="lede">See how yesterday's published tips finished — wins and losses kept on the same board. Use this audit to judge the record, then return to Today or Tomorrow for the next slate.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

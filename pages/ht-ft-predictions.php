@@ -54,7 +54,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>HT/FT Predictions Today</h1>
 <p class="lede">Halftime / full-time predictions for today — combinations that need both first-half and full-time outcomes. Useful when tempo and match context point the same way. Always re-check late team news before you stake.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

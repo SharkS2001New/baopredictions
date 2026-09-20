@@ -112,7 +112,7 @@ $stakes = [100, 200, 500, 1000, 2000, 5000];
 
 ?>
 
-<div class="wrap">
+<div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
   <ol class="breadcrumbs">
@@ -121,7 +121,7 @@ $stakes = [100, 200, 500, 1000, 2000, 5000];
   </ol>
 </nav>
 
-  <header class="page-hero">
+  <header class="page-hero page-hero--full">
     <p class="banker-eyebrow">Prediction of the Day</p>
     <h1>Banker of the Day — Prediction of the Day</h1>
 <p class="lede">One pick: today's strongest published lean from Bao Predictions, with full analysis and stake returns. Same selection as Prediction of the Day — reviewed for publication before it goes live.</p>

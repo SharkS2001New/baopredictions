@@ -46,7 +46,7 @@
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>SokaFans Predictions for Today</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">SokaFans predictions are searched for daily tips, weekend fixtures and Mega Jackpot coupons. This Bao Predictions board lists free SokaFans-style selections for today — one recommended market per match — so you can review form and venue without paying for a VIP wall. Jackpot players should still open the live operator sheet rather than treating this daily board as a full 17-game coupon.</p>

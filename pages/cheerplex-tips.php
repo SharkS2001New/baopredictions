@@ -46,7 +46,7 @@
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Cheerplex Prediction &amp; Tips for Today</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">Cheerplex provides daily football tips and jackpot ideas that many Kenyan bettors search for before kickoff. Bao Predictions publishes free Cheerplex-style tips for today across major European leagues and other competitions — covering 1X2, Double Chance, BTTS, Over/Under and HT/FT — with GG and goals markets when they fit the fixture better than a straight result.</p>

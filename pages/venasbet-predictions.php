@@ -46,7 +46,7 @@
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>VenasBet Predictions for Today</h1>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
 <p class="lede">Looking for <strong>VenasBet</strong> football predictions and tips? Bao Predictions covers daily football selections, jackpot fixtures and popular betting markets including 1X2, Double Chance, BTTS, Over/Under and Half Time/Full Time. Check the available match information and compare the selections before placing a bet — tips are opinions based on available match data, not guaranteed outcomes.</p>

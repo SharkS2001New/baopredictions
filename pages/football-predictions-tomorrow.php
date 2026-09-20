@@ -66,10 +66,15 @@ if ($marketTomorrow > $pickCount) {
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Football Predictions Tomorrow</h1>
-<p class="lede">Provisional football predictions for tomorrow across upcoming fixtures. This early board can change after today's results, lineups and late team news — re-check closer to kickoff. Markets focus on match-result leans with confidence and context on each card.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede">Early board for <strong><?php echo bao_h($tomorrowLabel); ?></strong><?php
+if ($pickCount > 0) {
+  echo ' — <strong>' . (int) $pickCount . ' provisional tips</strong>';
+}
+?>. Lineups and late team news can still shift a lean overnight, so treat this as a planning view and re-check closer to kickoff. Cards lean toward match-result markets with confidence and short context; switch to Today once the fixtures belong to the live matchday.</p>
+<?php echo bao_intro_links_html('Compare with <a href="/football-predictions-today">Football Predictions Today</a>, plan Saturday–Sunday on <a href="/weekend-football-predictions">Weekend Football Predictions</a>, or open <a href="/jackpot-predictions">Jackpot Predictions</a> for Kenya coupons.'); ?>
   </header>
 
 </div>

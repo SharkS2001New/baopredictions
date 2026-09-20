@@ -54,7 +54,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>Double Chance Predictions Today</h1>
 <p class="lede">Free Double Chance tips covering 1X, 12 and X2 — two outcomes in one selection when a single result looks thin. Each card shows the recommended cover with form and fixture context. Use this board alongside 1X2 when you want safer match-result cover.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>

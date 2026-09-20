@@ -54,7 +54,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
   </ol>
 </nav>
 
-<header class="page-hero">
+<header class="page-hero page-hero--full">
     <h1>BTTS Predictions Today — Both Teams To Score</h1>
 <p class="lede">Free <strong>BTTS</strong> (both teams to score) predictions today for matches where each side has a credible route to a goal. Selections use scoring form, defensive records and home/away patterns. Review the card reasoning below, then cross-check Over/Under or 1X2 when goals markets are not the best fit.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
