@@ -1,22 +1,31 @@
 <?php
 /** Unique SEO body for /vitibet-predictions — do not share across brands. */
 ?>
-<p><strong>Vitibet prediction today</strong> on Bao Predictions is a free daily board for <strong><?php echo bao_h($todayLabel); ?></strong><?php if ($tipCount > 0) { echo ' with <strong>' . (int) $tipCount . ' tips</strong>'; } ?>. Markets: 1X2, Double Chance, BTTS, Over/Under and HT/FT — one lean per fixture with a short reason. <strong>Vitibet prediction for next 7 days</strong> is planning intent; use Tomorrow and Weekend boards for the wider window. “Sure wins” are not guaranteed, and we will not dress ordinary tips in that language.</p>
-<p class="sitemaps-meta">Last updated: <?php echo bao_h($todayLabel); ?> · check the tip-board timestamp above</p>
+<p>A <strong>Vitibet prediction</strong> is a statistically generated football forecast published across a rolling calendar rather than a single day, which is why <strong>Vitibet prediction for next 7 days</strong> is such a common search. That forward window is useful for planning and unreliable for staking, because team news arrives late and changes the picture.</p>
 <?php echo bao_shortlist_summary_html($games, 'Vitibet shortlist'); ?>
 
-<h2>Today vs next 7 days</h2>
-<p>Vitibet-style sites often publish rolling calendars. Searchers typing <strong>Vitibet prediction for next 7 days</strong> need a plan, not seven days of invented certainty. Use this page for today’s open card, <a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a> for the next session, and <a href="/weekend-football-predictions">Weekend Football Predictions</a> for the Saturday–Sunday block. Team news will change leans inside that week — treat early picks as provisional.</p>
-<p>That map matters for Kenya bettors who plan weekend stakes midweek. A provisional lean on Tuesday can move when Thursday’s lineup news lands. Come back to the dated board rather than screenshotting an early list and staking it blindly on Saturday. Weekend blocks change shape as operators confirm kickoffs — treat early midweek notes as drafts, not finished slips.</p>
-<p>Wider coverage without the Vitibet brand framing also sits on <a href="/football-predictions-today">Football Predictions Today</a> when you want more fixtures from the same engine on matchday. Compare a tighter shortlist on <a href="/sure-bets-today">Sure Bets Today</a> if you prefer fewer cards than a rolling calendar dump.</p>
-<p>Method inputs when available: last six matches, venue form, table standing, head-to-head, confirmed availability. Missing lineups stay blank. Market choice follows the game: 1X2 when the edge is clear, Double Chance when it is not, BTTS or Over/Under when goal patterns are the cleaner read, HT/FT only when first-half evidence justifies it.</p>
+<h2>What Vitibet predictions cover</h2>
+<p>Calendar-style prediction sites publish result forecasts and goals markets several days ahead, refreshing them as fixtures approach. This board takes the narrower approach: one recommended market per fixture for today — 1X2, Double Chance, BTTS, Over/Under or HT/FT — with a reason attached.</p>
+<p>The further out a forecast sits, the fewer inputs it can use. A Wednesday lean written on Sunday cannot account for a weekend injury, a red card or rotation before a European tie. Treat long-range output as a shortlist of matches worth watching, not a slip to fill in.</p>
 
-<h2>Vitibet prediction today sure wins</h2>
-<p><strong>Vitibet prediction today sure wins</strong> is a high-intent phrase that oversells football. For fewer, higher-floor selections open <a href="/sure-bets-today">Sure Bets Today</a>. Confidence here is capped. We use last six matches, venue form, table standing, head-to-head, and confirmed availability only. Settled tips move to <a href="/results">Results</a>. Only the open card above is active for <strong><?php echo bao_h($todayLabel); ?></strong>.</p>
-<p>Build accumulators from the stronger leans after kickoffs still match your slip. Do not treat the whole board as one “sure” multi — that framing is marketing, not match analysis.</p>
+<h2>How to assess Vitibet tips</h2>
+<p>Check the fixture behind the forecast:</p>
+<ul>
+  <li><strong>Recent form:</strong> the last six matches, weighted by opponent.</li>
+  <li><strong>Home/away record:</strong> venue splits, which shift result markets most.</li>
+  <li><strong>League position:</strong> relevant when the points gap is real.</li>
+  <li><strong>Head-to-head:</strong> supporting context between comparable squads.</li>
+  <li><strong>Team news:</strong> confirmed absences, which is where long-range forecasts age.</li>
+  <li><strong>Market fit:</strong> whether the evidence supports a result or a goals market.</li>
+</ul>
 
-<h2>Information gain</h2>
-<p>Competitor Vitibet and “sure wins” mirrors are strong on calendar coverage. They leave thin: a practical map from “next 7 days” intent to Tomorrow/Weekend boards, an explicit rejection of sure-win framing, and market reasons that explain when Double Chance beats a forced match-winner. That is the gap this page fills.</p>
+<h2>Vitibet prediction today and the next 7 days</h2>
+<p>The cards above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong> only. For the wider window, <a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a> covers the next session and <a href="/weekend-football-predictions">Weekend Football Predictions</a> covers the Saturday–Sunday block. Come back to this board on matchday: a provisional lean published days earlier should be re-checked, not restaked blind. Settled tips move to <a href="/results">Results</a>.</p>
 
-<p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions based on available match data, not guaranteed outcomes. <a href="/responsible-betting">Responsible Betting</a>.</p>
+<h3>Vitibet prediction today sure wins</h3>
+<p><strong>Vitibet prediction today sure wins</strong> is high-intent phrasing that football cannot support. No forecast, statistical or otherwise, removes the chance of a late equaliser or a red card. Confidence on these cards is capped and presented as a lean. If you want fewer selections held to a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> is the shortlist board — a tighter filter, not a promise.</p>
+
+<h3>What the other Vitibet pages leave unclear</h3>
+<p>The reviewed pages in this cluster do calendar coverage well and say little about its limits. None map the "next 7 days" intent onto a practical routine — plan early, confirm on matchday — and several carry sure-win language in headings without a settled record behind it. Setting out that routine, and being explicit about what a forward forecast cannot know, is the gain here.</p>
+<p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-tomorrow">Tomorrow</a> · <a href="/weekend-football-predictions">Weekend</a> · <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/results">Results</a></p>

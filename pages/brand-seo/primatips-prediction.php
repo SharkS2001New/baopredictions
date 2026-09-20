@@ -1,21 +1,32 @@
 <?php
 /** Unique SEO body for /primatips-prediction — do not share across brands. */
 ?>
-<p><strong>PrimaTips today</strong> on Bao Predictions is a short free tip list for <strong><?php echo bao_h($todayLabel); ?></strong><?php if ($tipCount > 0) { echo ' with <strong>' . (int) $tipCount . ' selections</strong>'; } ?>. This page targets <strong>PrimaTips</strong>, <strong>PrimaTips today</strong> and <strong>PrimaTips prediction</strong> only — one market per fixture across 1X2, Double Chance, BTTS, Over/Under and HT/FT. If you came here for a long novel of tips, you are in the wrong place; the point of PrimaTips-style search is a card you can scan before kickoff.</p>
-<p class="sitemaps-meta">Last updated: <?php echo bao_h($todayLabel); ?> · verify the board freshness stamp above</p>
+<p>A <strong>PrimaTips prediction</strong> is a short daily football tip tied to a dated fixture list, covering match result and goals markets. The appeal of this style is brevity: a compact card you can read in a minute rather than a wall of fixtures. The risk is that brevity hides the reasoning, which is where most prediction pages quietly fail their readers.</p>
 <?php echo bao_shortlist_summary_html($games, 'PrimaTips shortlist'); ?>
 
-<h2>PrimaTips prediction — keep the list short and dated</h2>
-<p>PrimaTips searchers usually want a compact daily card, not a wall of recycled copy. We publish the lean, the market, and a reason grounded in form, venue, table standing, and confirmed team news when we have it. That reason should be something you can check yourself: how the side has looked over the last six, whether home or away splits change the story, and whether a confirmed absence actually moves the market.</p>
-<p>When to pick each market on this board matters as much as the lean itself. A clear favourite with stable defence can stay on 1X2. A competitive underdog that travels well often belongs on Double Chance rather than a fragile match-winner. Open games with two attacking lineups can fit BTTS or Over/Under better than inventing a scoreline. HT/FT only appears when first-half patterns are strong enough to justify the extra risk — we do not force it for keyword colour.</p>
-<p>Kenya bettors often stake from a phone between errands. A short PrimaTips board is built for that habit: fewer cards, clearer markets, and a date you can trust. Pair tighter picks with <a href="/sure-bets-today">Sure Bets Today</a>, or browse the wider slate on <a href="/football-predictions-today">Football Predictions Today</a> when you want more fixtures without leaving Bao’s engine.</p>
+<h2>What PrimaTips predictions cover</h2>
+<p>This board publishes one recommended market per fixture across 1X2, Double Chance, BTTS, Over/Under and HT/FT, each with a short reason. There is no jackpot section here, because jackpot coupons are not part of what this page is asked for — padding a tip board with unrelated sections helps nobody.</p>
+<p>The market is chosen from the evidence rather than the fixture's profile. A big name is not automatically a result selection, and a tight table game is often better expressed as Double Chance than as a forced winner.</p>
 
-<h2>What we will not do</h2>
-<p>No invented correct scores. No “guaranteed” language. No jackpot filler outside this keyword set — if you need a 17-leg SportPesa Mega Jackpot card, that is a different job on a different page. Settled tips live on <a href="/results">Results</a>. Confidence on every card is capped; a lean is an opinion with a publish time, not a promised hit rate.</p>
-<p>Team news can change after we publish. Re-check lineups and kickoffs before you stake, especially on evening European cards that Kenya players often follow late. Thin evidence stays a thin lean. We would rather leave a fixture off the board than pad it with a forced banker.</p>
+<h2>How to assess PrimaTips selections</h2>
+<p>Check the fixture underneath the tip:</p>
+<ul>
+  <li><strong>Recent form:</strong> the last six matches, opponent quality included.</li>
+  <li><strong>Home/away record:</strong> venue splits, which frequently explain a lean.</li>
+  <li><strong>League position:</strong> context when the points gap is meaningful.</li>
+  <li><strong>Head-to-head:</strong> supporting evidence between comparable squads.</li>
+  <li><strong>Team news:</strong> confirmed injuries and suspensions before kickoff.</li>
+  <li><strong>Market fit:</strong> whether the result or the goals market carries the evidence.</li>
+</ul>
+<p>For a shorter list held to a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> filters harder. For the full slate, <a href="/football-predictions-today">Football Predictions Today</a> carries every open fixture.</p>
 
-<h2>Information gain</h2>
-<p>Competitor PrimaTips mirrors are often thin keyword pages: a brand name, a date in the title, and little methodology. Some push volume tips without saying when Double Chance beats 1X2, or when goals markets are the cleaner read. The gain here is a complete, self-contained explanation of how tips are chosen, tied to a live dated board unique to this URL, with honest limits on what football tips can claim.</p>
+<h2>PrimaTips today: check the publication date</h2>
+<p>The short list above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Compact tip pages are the easiest of all to mistake for evergreen content, since the layout looks identical from one day to the next. Read the kickoff before staking, and check <a href="/results">Results</a> for anything already settled.</p>
 
-<p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions, not guaranteed outcomes. Stake only what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
+<h3>What this page will not do</h3>
+<p>No invented correct scores, no guaranteed-win language, and no filler sections added to reach a word count. Confidence is a capped lean, and a thin read stays a thin read. Skipping a fixture is a legitimate outcome of analysis.</p>
+
+<h3>What the other PrimaTips pages leave unclear</h3>
+<p>The reviewed pages serving this cluster are largely thin keyword pages: a brand name, a list, and little explanation of how the selections were reached or when they were published. Setting out the method in full, attaching a reason to each card, and keeping the fixture slate unique to this URL rather than shared with the other brand boards on Bao is the difference.</p>
+<p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>

@@ -46,8 +46,8 @@ $partners = array_values(array_filter($partners, static function ($p) {
   return is_array($p) && !empty($p['name']) && !empty($p['url']);
 }));
 $partnerCount = count($partners);
-$updatedIso = date('c');
-$updatedDate = date('j F Y');
+$updatedIso = bao_reviewed_iso();
+$updatedDate = bao_reviewed_date();
 $mailto = 'mailto:hello@baopredictions.com?subject=' . rawurlencode('Link Exchange Request');
 
 ?>

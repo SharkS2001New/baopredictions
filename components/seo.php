@@ -38,8 +38,23 @@ function bao_analyst_card_html(): string {
         . '</aside>';
 }
 
+/**
+ * Editorial review date for pages whose copy is static.
+ * Bump this only when the wording of those pages actually changes — never automate it.
+ */
+function bao_reviewed_iso(): string {
+    return '2026-09-21T09:00:00+03:00';
+}
+
+function bao_reviewed_date(): string {
+    return date('j F Y', strtotime(bao_reviewed_iso()));
+}
+
 function bao_last_updated_html(?string $iso = null): string {
-    $iso = $iso ?: date('c');
+    // No verified board timestamp — show nothing rather than claiming the page refreshed now.
+    if ($iso === null || $iso === '' || strtotime($iso) === false) {
+        return '';
+    }
     $label = date('j M Y, H:i', strtotime($iso)) . ' EAT';
     return '<p class="last-updated">Last updated <time datetime="' . bao_h($iso) . '">' . bao_h($label) . '</time>'
         . ' · <a href="https://www.baopredictions.com/">Bao Predictions</a></p>';

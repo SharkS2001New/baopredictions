@@ -44,8 +44,11 @@ $games = (is_array($sheet['payload']) && !empty($sheet['payload']['games']) && i
   ? $sheet['payload']['games']
   : [];
 $gameCount = (int) $sheet['count'];
-$updatedIso = date('c');
-$updatedDate = date('j F Y');
+// Sheet timestamp drives the date shown, so the stamp tracks the coupon rather than page load.
+$updatedIso = (is_array($sheet['payload']) && !empty($sheet['payload']['last_updated']))
+  ? (string) $sheet['payload']['last_updated']
+  : bao_reviewed_iso();
+$updatedDate = date('j F Y', strtotime($updatedIso));
 $strong = 0;
 $swing = 0;
 foreach ($games as $g) {

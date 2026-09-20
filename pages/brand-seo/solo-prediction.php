@@ -1,22 +1,32 @@
 <?php
 /** Unique SEO body for /solo-prediction — do not share across brands. */
 ?>
-<p><strong>Solo prediction today</strong> on Bao Predictions is a free singles board for <strong><?php echo bao_h($todayLabel); ?></strong><?php if ($tipCount > 0) { echo ' — <strong>' . (int) $tipCount . ' tips</strong>'; } ?>. One recommended market per fixture across 1X2, Double Chance, BTTS, Over/Under and HT/FT. <strong>Solo prediction correct score</strong> and <strong>sure win 100 Solo prediction</strong> searches are answered without invented scorelines or 100% claims. The word “solo” here means singles discipline — each pick should stand on its own before anyone talks about a multi.</p>
-<p class="sitemaps-meta">Last updated: <?php echo bao_h($todayLabel); ?> · verify the board freshness stamp above</p>
+<p>A <strong>Solo prediction</strong> is a single-match football tip, staked on its own rather than combined into a multiple. Pages in this cluster publish dated lists across match result and goals markets, with correct score and "sure win" wording appearing regularly. For readers searching <strong>Solo prediction today</strong>, the useful distinction is between a selection you can check and a claim you cannot.</p>
 <?php echo bao_shortlist_summary_html($games, 'Solo Prediction shortlist'); ?>
 
-<h2>Singles first, then accumulators</h2>
-<p>Solo tips work best when each pick stands alone. If you want to combine selections, build from the stronger leans on <a href="/accumulator-tips">Accumulator Tips</a> after you have checked kickoffs — do not stake every card on this page as one multi. A tighter shortlist lives on <a href="/sure-bets-today">Sure Bets Today</a>.</p>
-<p>We weigh recent form, home/away splits, table standing, head-to-head, and confirmed availability. Thin evidence stays a thin lean. Market timing: 1X2 when one side has a clear edge; Double Chance when the underdog is competitive enough that a straight match-winner is fragile; BTTS or Over/Under when goal patterns are clearer than a forced winner; HT/FT only when first-half patterns justify the extra risk.</p>
-<p>Kenya bettors who stake from a phone often jump straight into a five-fold. Resist that habit on this page. Read the reason, check the last six, then decide whether the card earns a single stake. Accumulators come second, not first. A single well-chosen Double Chance often ages better than a five-leg multi built from every card on the board.</p>
-<p>Wider daily coverage without the Solo brand framing also sits on <a href="/football-predictions-today">Football Predictions Today</a> when you want more fixtures from the same engine.</p>
+<h2>What a Solo prediction covers</h2>
+<p>This board publishes one recommended market per fixture — 1X2, Double Chance, BTTS, Over/Under or HT/FT — with a short reason. Singles are the natural format for that structure: each pick stands or falls on its own evidence, and one loss does not erase the rest of the card.</p>
+<p>If you want to combine selections, build from the stronger leans on <a href="/accumulator-tips">Accumulator Tips</a> after confirming kickoffs. Stacking every card on this page into one multiple is the fastest way to turn a reasonable day into a losing one on a single late goal.</p>
 
-<h2>Correct score and “sure win 100”</h2>
-<p>Exact scores and “sure win 100” language are common in Solo Prediction SERPs. Neither is honest football practice. If both sides score regularly, BTTS may be the clearer market. If one defence is solid, Under or Double Chance can beat a forced match-winner. Settled tips move to <a href="/results">Results</a>. Only the open card above is active for <strong><?php echo bao_h($todayLabel); ?></strong>.</p>
-<p>Re-check team news before you stake. A lunchtime lean can move after evening lineups without anyone inventing a new “100%” story to cover the change.</p>
+<h2>How to assess Solo prediction tips</h2>
+<p>Check the fixture underneath the selection:</p>
+<ul>
+  <li><strong>Recent form:</strong> the last six matches, opponent quality included.</li>
+  <li><strong>Home/away record:</strong> venue splits can reverse a paper favourite.</li>
+  <li><strong>League position:</strong> useful when the gap is genuine.</li>
+  <li><strong>Head-to-head:</strong> supporting evidence across comparable squads.</li>
+  <li><strong>Team news:</strong> confirmed injuries and suspensions only.</li>
+  <li><strong>Market fit:</strong> result market or goals market, decided by the evidence.</li>
+</ul>
+<p>Where the evidence is thin, the lean stays thin. That is a feature, not an omission — a weak card is worth skipping.</p>
 
-<h2>Information gain vs competitor Solo pages</h2>
-<p>Competitor Solo Prediction mirrors push volume tips and guarantee wording. They leave thin: a clear singles-vs-accumulator workflow, an explicit ban on fabricated correct scores, and freshness signalling tied to today’s board. That is the gap this page closes for Kenya and broader African searchers who want free tips without the theatre.</p>
+<h2>Solo prediction today: check the publication date</h2>
+<p>The singles above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. <strong>Solo prediction for today</strong> searches often land on pages whose fixtures have already been played, because the URL outlives the card it was written for. Read the kickoff on each selection before staking; settled tips move to <a href="/results">Results</a>.</p>
 
-<p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions, not guaranteed outcomes. Stake only what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
+<h3>Correct score and "sure win 100" searches</h3>
+<p><strong>Solo prediction correct score</strong> and <strong>sure win 100 Solo prediction</strong> both ask for more certainty than football provides. Correct score requires the result and the exact goal count together; across the pages reviewed in this cluster, none published a settled record for that market that a reader could audit. This board does not invent scorelines. Where goals are the real signal, the card says Over/Under or BTTS instead. For fewer selections with a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> is the shortlist — still an opinion, never a guarantee.</p>
+
+<h3>What the other Solo prediction pages leave unclear</h3>
+<p>The reviewed pages concentrate on long tip tables, scoreline grids and confidence language, and several use "sure" or "100%" in headings without a checkable record behind it. What they leave thin is the workflow: when to stake a single, when to combine, and when to pass entirely. Setting out that sequence, with a reason attached to each market, is the difference here.</p>
+<p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/accumulator-tips">Accumulator Tips</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>

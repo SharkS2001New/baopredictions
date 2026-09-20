@@ -38,8 +38,8 @@
 <main id="main">
 <?php
 require_once __DIR__ . '/../components/seo.php';
-$updatedIso = date('c');
-$updatedDate = date('j F Y');
+$updatedIso = bao_reviewed_iso();
+$updatedDate = bao_reviewed_date();
 ?>
 
 <div class="wrap">

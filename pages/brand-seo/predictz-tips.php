@@ -1,21 +1,32 @@
 <?php
 /** Unique SEO body for /predictz-tips — do not share across brands. */
 ?>
-<p><strong>PredictZ today</strong> on Bao Predictions is a free tip board for <strong><?php echo bao_h($todayLabel); ?></strong><?php if ($tipCount > 0) { echo ' — <strong>' . (int) $tipCount . ' tips</strong>'; } ?>. Each fixture gets one market lean with a reason across 1X2, Double Chance, BTTS, Over/Under and HT/FT. Queries like <strong>100 PredictZ</strong> or <strong>Surebet PredictZ</strong> do not mean guaranteed wins; confidence is capped, and a higher-floor shortlist lives on Sure Bets. Calendar volume is useful for browsing; stakeable tips still need a date and a market that matches the evidence.</p>
-<p class="sitemaps-meta">Last updated: <?php echo bao_h($todayLabel); ?> · match the board freshness stamp above</p>
+<p>A <strong>PredictZ</strong> tip is a daily football prediction organised by fixture date, covering match result and goals markets. The searches around the brand — <strong>PredictZ today</strong>, <strong>100 PredictZ</strong>, <strong>Surebet PredictZ</strong> — mix an ordinary request for today's card with wording that implies certainty. Those are two different things, and only the first can be answered honestly.</p>
 <?php echo bao_shortlist_summary_html($games, 'PredictZ shortlist'); ?>
 
-<h2>What PredictZ-style tips should include</h2>
-<p>PredictZ.com is known for fixture calendars and scoreline-oriented content. Searchers who type PredictZ on Bao usually want a dated free tip they can judge quickly. We check last six matches, home/away form, table standing, head-to-head, and confirmed absences when available. If the lean is thin, the card says so — we do not pad “bankers” to look confident.</p>
-<p>When to pick each market: 1X2 when venue and recent form line up clearly. Double Chance when the underdog is competitive enough that a forced match-winner is fragile. BTTS or Over/Under when both sides create chances or when a key defender is confirmed out. HT/FT only when first-half patterns justify the price. Kenya bettors often stake evening European cards after work — re-check lineups before those kickoffs, because lunchtime news can move a lean without anyone inventing a new scoreline.</p>
-<p>Tomorrow’s fixtures belong on <a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a>. Treat early next-day lists as provisional until team news lands. A calendar that shows seven days of fixtures is useful for planning; it is not seven days of stakeable certainty. Stake from the dated board that matches the kickoff you are about to play.</p>
-<p>Wider daily coverage without the PredictZ brand framing also sits on <a href="/football-predictions-today">Football Predictions Today</a> when you want more fixtures from the same engine.</p>
+<h2>What a PredictZ-style prediction covers</h2>
+<p>Pages in this cluster typically publish a dated fixture list with a suggested result, sometimes a scoreline, and occasionally a goals angle. The board on this page works differently: one recommended market per fixture across 1X2, Double Chance, BTTS, Over/Under and HT/FT, each with a short reason.</p>
+<p>That single-market rule exists because the alternative encourages cherry-picking. If a page shows a result tip, a scoreline and a goals line for the same match, at least one of them will usually look right afterwards, which tells you nothing useful before kickoff.</p>
 
-<h2>100 PredictZ and Surebet PredictZ — honest limits</h2>
-<p><strong>100 PredictZ</strong> is a search pattern, not a hit-rate promise. <strong>Surebet PredictZ</strong> often mixes “sure” marketing with ordinary 1X2 tips. For fewer, tighter selections open <a href="/sure-bets-today">Sure Bets Today</a>. Victor-related PredictZ traffic can also use <a href="/victorspredicts">Victor Prediction</a>. Settled tips move to <a href="/results">Results</a>. Only the open card above is active for <strong><?php echo bao_h($todayLabel); ?></strong>.</p>
+<h2>How to assess PredictZ tips</h2>
+<p>Read the tip, then test the fixture behind it:</p>
+<ul>
+  <li><strong>Recent form:</strong> the last six matches, adjusted for opponent quality.</li>
+  <li><strong>Home/away record:</strong> venue often explains a surprising selection.</li>
+  <li><strong>League position:</strong> worth weighting when the points gap is substantial.</li>
+  <li><strong>Head-to-head:</strong> supporting context, not proof.</li>
+  <li><strong>Team news:</strong> confirmed absences only.</li>
+  <li><strong>Market fit:</strong> whether the evidence supports a result or a goals market.</li>
+</ul>
+<p>Tomorrow's fixtures belong on <a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a>; treat an early provisional lean as provisional until lineups are confirmed.</p>
 
-<h2>Where this page adds value</h2>
-<p>Competitor PredictZ surfaces and “sure tips” mirrors excel at volume listings. They leave thin: clear refusal of 100% framing, separation of surebet language from ordinary tips, guidance on when Double Chance or goals markets beat a forced winner, and a publish date tied to today’s card. That is the information gain here — free tips with market reasons and no fake certainty.</p>
+<h2>PredictZ today: check the publication date</h2>
+<p>Everything above is drawn from fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Daily prediction URLs rarely change while the fixtures underneath rotate every day, which is how an old card ends up looking like the current one. Read the kickoff on each card before staking, and check <a href="/results">Results</a> for tips that have already settled.</p>
 
-<p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions, not guaranteed outcomes. <a href="/responsible-betting">Responsible Betting</a>.</p>
+<h3>100 PredictZ and Surebet PredictZ: what the wording can and cannot mean</h3>
+<p><strong>100 PredictZ</strong> and <strong>Surebet PredictZ</strong> are search phrasings, not performance claims we can verify. Across the pages reviewed in this cluster, no published, settled record was found to support "100%" or "sure" framing — the language appears in headings and copy rather than in results anyone can audit. If you want fewer selections with a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> is the shortlist board; it is still an opinion, not a promise. Readers arriving from Victor-related searches can compare <a href="/victorspredicts">Victor Prediction</a>, which keeps its own fixture slate.</p>
+
+<h3>What the other PredictZ pages leave unclear</h3>
+<p>The reviewed pages are good at volume: long dated lists, broad league coverage, quick-scan tables. What they leave thin is the reasoning layer — why this market rather than another, what would change the lean, and how confident the selection actually is. Publishing the reason alongside the tip is the point of difference here, along with a fixture slate unique to this page rather than copied from the other brand boards on Bao.</p>
+<p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/victorspredicts">Victor Prediction</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a></p>

@@ -64,8 +64,8 @@ if (isset($_GET['sent']) && (string) $_GET['sent'] === '1') {
 
 $formStartedAt = time();
 require_once __DIR__ . '/../components/seo.php';
-$updatedIso = date('c');
-$updatedDate = date('j F Y');
+$updatedIso = bao_reviewed_iso();
+$updatedDate = bao_reviewed_date();
 
 ?>
 <!DOCTYPE html>
