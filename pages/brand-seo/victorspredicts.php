@@ -20,10 +20,10 @@
 </ul>
 <p>Tomorrow's fixtures sit on <a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a>. Treat an early lean as provisional and return on matchday once lineups are confirmed.</p>
 
-<h2>Victor prediction today: check the publication date</h2>
+<h2>Check the publication date</h2>
 <p>The selections above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, with kickoff times on each card. Indexed "for today" pages are a known trap in this cluster: the heading says today while the fixtures beneath it belong to an earlier round. Check the kickoff before staking, and use <a href="/results">Results</a> for settled tips.</p>
 
-<h3>Victor prediction correct score</h3>
+<h3>Correct score selections</h3>
 <p><strong>Victor prediction correct score</strong> asks for the result and the exact goal count in one selection. Nothing on this page fabricates a scoreline to satisfy that search. Where goal patterns are the strongest signal, the card names Over/Under or BTTS, which reflects the same reading with a market that can actually be justified.</p>
 <p>The cost of a scoreline is easy to underestimate. A match you have read correctly — right winner, right shape, goals arriving where you expected — still settles as a loss if the margin is one goal out. That is why a correct-score column tends to look authoritative and settle badly. When the evidence points at a narrow home win, this board says so through 1X2 or Double Chance rather than guessing at 2-1. For Double Chance-led planning, <a href="/double-chance-predictions">Double Chance Predictions</a> covers that market directly.</p>
 

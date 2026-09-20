@@ -115,10 +115,10 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Missing lineup information is left blank rather than guessed, and HT/FT appears only where first-half patterns justify the extra risk. Accumulator legs should come from the stronger cards only, after kickoffs still match your slip.</p>
 
-    <h2>Cheerplex prediction: check the date on the card</h2>
+    <h2>Check the publication date</h2>
     <p>The cards above are the live list on this page, and the fixture times on each card tell you when they kick off. When this page was researched in September 2026, the indexed Cheerplex daily tables carried fixture dates from earlier in the week rather than the day they were served on — exactly the trap worth avoiding, because the layout looks current even when the card is not.</p>
 
-    <h3>Cheerplex jackpot prediction vs this board</h3>
+    <h3>Jackpot predictions vs this board</h3>
     <p>A <strong>Cheerplex jackpot prediction</strong> must follow the operator’s selected fixtures for that round, and <strong>Cheerplex Mega Jackpot prediction</strong> or <strong>Cheerplex SportPesa Mega Jackpot prediction</strong> both mean the live 17-game card. Aggregator Mega pages summarise 1X2 and Double Chance well but often keep prose that outlives the coupon window. Before you play a Mega card:</p>
     <ul>
       <li>Open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a></li>

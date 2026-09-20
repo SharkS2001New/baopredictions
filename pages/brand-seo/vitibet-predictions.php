@@ -19,10 +19,10 @@
   <li><strong>Market fit:</strong> whether the evidence supports a result or a goals market.</li>
 </ul>
 
-<h2>Vitibet prediction today and the next 7 days</h2>
+<h2>Today and the next 7 days</h2>
 <p>The cards above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong> only. For the wider window, <a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a> covers the next session and <a href="/weekend-football-predictions">Weekend Football Predictions</a> covers the Saturday–Sunday block. Come back to this board on matchday: a provisional lean published days earlier should be re-checked, not restaked blind. Settled tips move to <a href="/results">Results</a>.</p>
 
-<h3>Vitibet prediction today sure wins</h3>
+<h3>“Sure wins” wording</h3>
 <p><strong>Vitibet prediction today sure wins</strong> is high-intent phrasing that football cannot support. No forecast, statistical or otherwise, removes the chance of a late equaliser or a red card. Confidence on these cards is capped and presented as a lean. If you want fewer selections held to a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> is the shortlist board — a tighter filter, not a promise.</p>
 
 <h3>What the other Vitibet pages leave unclear</h3>

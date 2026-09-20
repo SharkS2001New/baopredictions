@@ -116,7 +116,7 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Uncertain absences are left out rather than guessed, and a thin read stays a thin lean.</p>
 
-    <h2>Sunpel jackpot prediction: check the round before the tip</h2>
+    <h2>Check the jackpot round before you stake</h2>
     <p>A <strong>Sunpel jackpot prediction</strong> should match the live SportPesa or Betika coupon for the current round. Third-party “Sunpel Mega Jackpot” pages often keep last week’s 17-game prose online and claim high hit rates without showing settled results against that exact card. Before you stake:</p>
     <ul>
       <li>Confirm the jackpot start/end dates on the bookmaker</li>

@@ -20,10 +20,10 @@
 </ul>
 <p>Confidence is capped rather than sold as an accuracy figure, and a lunchtime lean can look different after evening team news.</p>
 
-<h2>Supatips today: check the publication date</h2>
-<p>The board above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, each with a kickoff time on the card. A <strong>Supatips prediction today</strong> is only worth as much as the fixture it names, and tip URLs in this category stay fixed while the matches underneath them rotate. Check the kickoff before staking. Settled tips move to <a href="/results">Results</a>.</p>
+<h2>Check the publication date</h2>
+<p>The board above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, each with a kickoff time on the card. A <strong>Supatips prediction today</strong> is only worth as much as the fixture it names, and searches for <strong>Supatips today</strong> hit the same trap: tip URLs stay fixed while the matches underneath them rotate. Check the kickoff before staking. Settled tips move to <a href="/results">Results</a>.</p>
 
-<h3>Supatips Mega Jackpot prediction</h3>
+<h3>Mega Jackpot</h3>
 <p><strong>Supatips Mega Jackpot prediction</strong> means the current SportPesa 17-game card, which this daily board does not reproduce. Open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a>, confirm all 17 fixtures against the live SportPesa slip, and check the round's start and end dates. Other Kenyan coupons sit under the <a href="/jackpot-predictions">Jackpot Predictions</a> hub. Jackpot pages are the worst offenders for staying online past their round, so this check matters more here than anywhere else on the site.</p>
 
 <h3>What the other Supatips pages leave unclear</h3>

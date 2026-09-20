@@ -20,8 +20,8 @@
 </ul>
 <p>For a shorter list held to a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> filters harder. For the full slate, <a href="/football-predictions-today">Football Predictions Today</a> carries every open fixture.</p>
 
-<h2>PrimaTips today: check the publication date</h2>
-<p>The short list above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Compact tip pages are the easiest of all to mistake for evergreen content, since the layout looks identical from one day to the next. Read the kickoff before staking, and check <a href="/results">Results</a> for anything already settled.</p>
+<h2>Check the publication date</h2>
+<p>The short list above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Compact tip pages are the easiest of all to mistake for evergreen content, since the layout looks identical from one day to the next. Anyone searching <strong>PrimaTips today</strong> should read the kickoff before staking, and check <a href="/results">Results</a> for anything already settled.</p>
 
 <h3>What this page will not do</h3>
 <p>No invented correct scores, no guaranteed-win language, and no filler sections added to reach a word count. Confidence is a capped lean, and a thin read stays a thin read. Skipping a fixture is a legitimate outcome of analysis.</p>

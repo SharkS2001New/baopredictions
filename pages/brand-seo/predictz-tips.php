@@ -20,10 +20,10 @@
 </ul>
 <p>Tomorrow's fixtures belong on <a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a>; treat an early provisional lean as provisional until lineups are confirmed.</p>
 
-<h2>PredictZ today: check the publication date</h2>
+<h2>Check the publication date</h2>
 <p>Everything above is drawn from fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Daily prediction URLs rarely change while the fixtures underneath rotate every day, which is how an old card ends up looking like the current one. Read the kickoff on each card before staking, and check <a href="/results">Results</a> for tips that have already settled.</p>
 
-<h3>100 PredictZ and Surebet PredictZ: what the wording can and cannot mean</h3>
+<h3>“100” and “Surebet” wording</h3>
 <p><strong>100 PredictZ</strong> and <strong>Surebet PredictZ</strong> are search phrasings, not performance claims we can verify. Across the pages reviewed in this cluster, no published, settled record was found to support "100%" or "sure" framing — the language appears in headings and copy rather than in results anyone can audit. If you want fewer selections with a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> is the shortlist board; it is still an opinion, not a promise. <strong>Victor PredictZ</strong> pairs two separate tipster names in one query; on Bao the <a href="/victorspredicts">Victor Prediction</a> board keeps its own fixture slate rather than mirroring this one.</p>
 
 <h3>What the other PredictZ pages leave unclear</h3>

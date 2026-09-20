@@ -22,7 +22,7 @@
 </ul>
 <p>This approach is also consistent with Betpera's own recent editorial material, which recommends checking confirmed team sheets and current matchday information before making a betting decision.</p>
 
-<h2>Betpera prediction today: check the publication date</h2>
+<h2>Check the publication date</h2>
 <p>When this page was researched on <strong>21 September 2026</strong>, the Betpera homepage's indexed daily board was still showing fixtures dated <strong>20 September 2026</strong>, including Manchester City vs Sunderland, Fulham vs Manchester United, Nice vs Lille and Marseille vs PSG. Readers should check the live Betpera page — and the kickoff times on the cards above — rather than assume a displayed search result represents the current day's card.</p>
 <p>This date check is particularly important for searches such as <strong>Betpera prediction today</strong> and <strong>Betpera predictions</strong> because an indexed prediction page can remain visible after its fixtures have been played. Settled tips on Bao belong on <a href="/results">Results</a>.</p>
 

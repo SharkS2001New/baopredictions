@@ -20,7 +20,7 @@
 </ul>
 <p>Where the evidence is thin, the lean stays thin. That is a feature, not an omission — a weak card is worth skipping.</p>
 
-<h2>Solo prediction today: check the publication date</h2>
+<h2>Check the publication date</h2>
 <p>The singles above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. <strong>Solo prediction for today</strong> searches often land on pages whose fixtures have already been played, because the URL outlives the card it was written for. Read the kickoff on each selection before staking; settled tips move to <a href="/results">Results</a>.</p>
 
 <h3>Correct score and "sure win 100" searches</h3>

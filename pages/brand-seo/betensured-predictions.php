@@ -21,7 +21,7 @@
 </ul>
 <p>Recent form can provide context, but it should not be treated as a guarantee. Home and away performance, the quality of recent opponents, head-to-head meetings and confirmed player availability can all affect how a fixture should be interpreted. Compare a tighter shortlist on <a href="/sure-bets-today">Sure Bets Today</a>, or browse the wider slate on <a href="/football-predictions-today">Football Predictions Today</a>.</p>
 
-<h2>Betensured prediction today: check the date first</h2>
+<h2>Check the publication date</h2>
 <p>When this page was researched in September 2026, Betensured's dated listings spanned the Premier League, Ligue 1, Bundesliga, Eredivisie and La Liga, with 1X2, Double Chance and goal-market information shown beside each match. The structure of that page is stable; the fixtures underneath it are not.</p>
 <p>That matters because a prediction from an earlier matchday should not be treated as a prediction for today. Searches for <strong>Betensured today</strong> and <strong>Betensured tips</strong> both land on URLs whose fixture list has already rotated at least once since publication. Check the fixture date, and whether the match information behind the tip is still current. On Bao Predictions, the tip cards above are the active list for <strong><?php echo bao_h($todayLabel); ?></strong>; settled tips belong on <a href="/results">Results</a>.</p>
 

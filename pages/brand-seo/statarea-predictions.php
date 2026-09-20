@@ -19,11 +19,11 @@
   <li><strong>Market fit:</strong> whether 1X2, Double Chance, BTTS or a goals line matches the evidence.</li>
 </ul>
 
-<h2>Statarea prediction today: old boards are not today's card</h2>
+<h2>Old boards are not today's card</h2>
 <p>The grid above is built from fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, and each card carries its own kickoff time. <strong>Old Statarea</strong>, <strong>old Statarea prediction today</strong> and <strong>Statarea old</strong> are nostalgia searches for the classic interface, and the pages that serve them are often archived views rather than current fixtures.</p>
 <p>Statarea's own predictions are addressed by date in the URL, which makes the date easy to verify — a detail worth copying. Anyone searching <strong>Statarea today</strong> should read that date segment first, because the layout gives no other clue. Before acting on any prediction page, confirm the fixture date and that the match has not already kicked off. Settled Bao tips move to <a href="/results">Results</a>.</p>
 
-<h3>Mega Jackpot, midweek and Statarea Zulubet today</h3>
+<h3>Mega Jackpot, midweek and Zulubet today</h3>
 <p><strong>Statarea Mega Jackpot prediction</strong> and <strong>Statarea midweek jackpot prediction</strong> need the operator's selected fixtures for the current round. Open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> or the midweek sheets under <a href="/jackpot-predictions">Jackpot Predictions</a>, then check the live slip. Readers searching <strong>Statarea Zulubet today</strong> can also use <a href="/zulubet-predictions">Zulubet Predictions</a>, which keeps its own fixture slate.</p>
 
 <h3>What the other Statarea pages leave unclear</h3>

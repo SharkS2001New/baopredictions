@@ -20,10 +20,10 @@
 </ul>
 <p>Where lineup information is not confirmed, this page says nothing rather than guessing — thin data is a reason to lower confidence, not to invent detail.</p>
 
-<h2>Mwanasoka tips today: check the publication date</h2>
-<p>The selections above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Kenyan tip pages are heavily indexed and routinely outlive the fixtures they were written for, so read the kickoff on each card before staking. Settled tips move to <a href="/results">Results</a>.</p>
+<h2>Check the publication date</h2>
+<p>The selections above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Searches for <strong>Mwanasoka tips today</strong> often land on Kenyan tip pages that have already outlived their fixtures, so read the kickoff on each card before staking. Settled tips move to <a href="/results">Results</a>.</p>
 
-<h3>Mwanasoka Mega Jackpot prediction</h3>
+<h3>Mega Jackpot</h3>
 <p>A <strong>Mwanasoka Mega Jackpot prediction</strong> belongs on the live coupon, not on a daily singles board. Open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> for the 17-game weekend card and confirm every fixture on SportPesa before you play. Midweek options include <a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek Jackpot Predictions</a>, with the full set under the <a href="/jackpot-predictions">Jackpot Predictions</a> hub. Jackpot articles regularly stay online after a round closes, which makes the date check the most valuable habit in this category.</p>
 
 <h3>What the other Mwanasoka pages leave unclear</h3>

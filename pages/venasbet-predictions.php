@@ -115,7 +115,7 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Where the evidence is thin, the lean stays thin rather than being dressed up as a banker. A lunchtime read can move once evening lineups land, so re-check before staking.</p>
 
-    <h2>VenasBet prediction today: check the publication date</h2>
+    <h2>Check the publication date</h2>
     <p>The cards above are the open list on this page, with kickoff times shown per fixture. When this page was researched in September 2026, several VenasBet-branded pages were serving fixture tables dated weeks earlier while still reading as current — the clearest argument for checking the date before anything else. Settled tips move to <a href="/results">Results</a>.</p>
 
     <h2>Markets on this VenasBet board</h2>

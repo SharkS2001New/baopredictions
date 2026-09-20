@@ -115,10 +115,10 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Confidence here is a capped lean rather than a hit-rate claim. A lunchtime read can move once evening lineups land, so re-check before staking. HT/FT stays rare on purpose, and building accumulator legs is a second step — only from the stronger cards, and only while kickoffs still match your slip.</p>
 
-    <h2>SokaFans tips today prediction: check the date</h2>
+    <h2>Check the publication date</h2>
     <p>The cards above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, each showing its own kickoff time. <strong>SokaFans tips today prediction</strong> searches often land on URLs whose fixtures have already been played, because the address stays fixed while the card rotates each day. Read the kickoff before acting on any tip; settled selections move to <a href="/results">Results</a>.</p>
 
-    <h3>SokaFans Mega Jackpot prediction</h3>
+    <h3>Mega Jackpot vs this daily board</h3>
     <p>A <strong>SokaFans Mega Jackpot prediction</strong> is a different product from a daily singles board: seventeen SportPesa fixtures that must match the live coupon. Open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> when you are filling the SportPesa Mega Jackpot card, then confirm every kickoff on SportPesa. Midweek Kenyan coupons sit under the <a href="/jackpot-predictions">Jackpot Predictions</a> hub. Jackpot articles routinely stay online after a round closes, which makes the date check the most useful habit in this category.</p>
 
     <h3>What the other SokaFans pages leave unclear</h3>

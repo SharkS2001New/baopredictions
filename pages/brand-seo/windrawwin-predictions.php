@@ -21,8 +21,8 @@
 <p>The draw is the outcome most often under-weighted. Evenly matched sides, low-scoring recent meetings and a cautious away approach all raise its likelihood, and that is usually the point where Double Chance becomes the sounder card. It is also the outcome that punishes accumulator slips hardest, since one stalemate takes the whole ticket with it.</p>
 <p>Confidence on each card is capped rather than sold as an accuracy percentage. A lean published in the morning can move once evening lineups are confirmed, so the sensible routine is to read the reason, check the team news, then decide whether the fixture earns a stake at all.</p>
 
-<h2>WinDrawWin predictions today: check the publication date</h2>
-<p>The board above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Result-market pages are especially prone to looking evergreen, because the format never changes even when the fixtures do. Read the kickoff on each card before staking; settled tips move to <a href="/results">Results</a>.</p>
+<h2>Check the publication date</h2>
+<p>The board above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Result-market pages are especially prone to looking evergreen, because the format never changes even when the fixtures do. That is why <strong>WinDrawWin predictions today</strong> searches need a kickoff check before staking; settled tips move to <a href="/results">Results</a>.</p>
 
 <h3>What the other WinDrawWin pages leave unclear</h3>
 <p>The reviewed pages in this cluster cover result grids and form tables thoroughly. What they leave thin is the exit condition: when the evidence stops supporting 1X2 and a reader should switch markets or skip the fixture. Stating that threshold, and showing the reason on every card, is the difference here. Confidence is a capped lean rather than an accuracy claim.</p>
