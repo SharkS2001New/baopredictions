@@ -56,10 +56,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero">
     <h1>Sure Bets Today: Football Picks for Today</h1>
-<?php echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Sure bets today are stronger football selections across markets — not guaranteed results. Narrow the fixtures worth closer attention.</p>
+<p class="lede">Cross-market shortlist of today's strongest leans. "Sure" means a clearer model edge, not a guaranteed result.</p>
   </header>
 
 </div>

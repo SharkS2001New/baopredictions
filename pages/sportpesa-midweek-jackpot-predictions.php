@@ -55,8 +55,6 @@ $gameCount = (int) $sheet['count'];
 
 <header class="page-hero">
     <h1>SportPesa Midweek Jackpot Prediction</h1>
-<?php echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
 <?php echo bao_jackpot_lede_html($sheet); ?>
   </header>
 

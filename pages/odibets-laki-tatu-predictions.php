@@ -117,8 +117,6 @@ if (is_array($prevGames)) {
 
 <header class="page-hero">
     <h1>Odibet Laki Tatu Jackpot Predictions</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
 <?php echo bao_jackpot_lede_html($sheet); ?>
   </header>
 

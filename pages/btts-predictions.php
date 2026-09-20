@@ -56,10 +56,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero">
     <h1>BTTS Predictions Today: Both Teams To Score</h1>
-<?php echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">BTTS predictions today for matches where both sides are expected to score — based on scoring form, defensive records and home/away patterns.</p>
+<p class="lede">Both Teams To Score tips for matches where each side has a credible route to a goal — form, defence and home/away patterns.</p>
   </header>
 
 </div>

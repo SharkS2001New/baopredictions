@@ -66,10 +66,7 @@ if ($marketLive > $liveCount) {
 
 <header class="page-hero">
     <h1>Live Football Scores &amp; Predictions Today</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Livescores and in-play tips in one place — current score and minute first, then any still-relevant prediction. Page refreshes every 90 seconds.</p>
+<p class="lede">In-play scores beside any still-relevant tips. Score and minute come first; the page refreshes about every 90 seconds.</p>
   </header>
 
 </div>

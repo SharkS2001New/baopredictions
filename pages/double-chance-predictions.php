@@ -56,10 +56,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero">
     <h1>Double Chance Predictions: Football Tips Today</h1>
-<?php echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Double Chance predictions covering 1X, 12 and X2 — two match outcomes in one selection, based on form and fixture context.</p>
+<p class="lede">1X, 12 and X2 covers for fixtures where a single result is thin. Two outcomes in one selection, with form and venue context.</p>
   </header>
 
 </div>

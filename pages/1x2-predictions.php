@@ -48,11 +48,7 @@
 
 <header class="page-hero">
     <h1>1X2 Predictions</h1>
-<?php require_once __DIR__ . '/../components/seo.php';
-echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Match-result tips only: 1 (home), X (draw), or 2 (away) — with confidence and reasoning on every card.</p>
+<p class="lede">Home, draw or away only — no goal markets mixed in. Every card shows the 1X2 lean, confidence and why it made the board.</p>
   </header>
 
 </div>

@@ -56,10 +56,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero">
     <h1>Halftime Fulltime Predictions: Football Tips Today</h1>
-<?php echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">HT/FT predictions for both the half-time and full-time result — based on first-half trends, full-time patterns and match data.</p>
+<p class="lede">Halftime and full-time result combinations. Useful when first-half patterns and full-time lean point in the same direction.</p>
   </header>
 
 </div>

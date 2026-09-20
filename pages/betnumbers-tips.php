@@ -48,10 +48,7 @@
 
 <header class="page-hero">
     <h1>Bet Numbers Tips</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Bet numbers prediction today — mixed markets per game. We compare 1X2, BTTS, Over/Under, Double Chance and more, then publish the selection that best fits the evidence.</p>
+<p class="lede">Mixed-market shortlist for today: we compare 1X2, BTTS, Over/Under and Double Chance, then publish one recommended market per fixture.</p>
   </header>
 
 </div>

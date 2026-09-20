@@ -124,9 +124,7 @@ $stakes = [100, 200, 500, 1000, 2000, 5000];
   <header class="page-hero">
     <p class="banker-eyebrow">Prediction of the Day</p>
     <h1>Banker of the Day</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
-<p class="lede">One tip — the strongest published lean on today’s board. Same selection as Prediction of the Day, with full analysis and stake returns.</p>
+<p class="lede">One pick: today's strongest published lean, with full analysis and stake returns. Same tip as Prediction of the Day.</p>
   </header>
 
   <ul class="banker-stats" aria-label="Banker highlights">

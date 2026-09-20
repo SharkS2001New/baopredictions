@@ -63,10 +63,7 @@ $weekCount = count($games);
 
   <header class="page-hero">
     <h1>Football Results: Recent Scores &amp; Prediction Results</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Recent football results with the original 1X2 tips beside them — a rolling seven-day prediction performance hub, separate from Yesterday.</p>
+<p class="lede">Rolling seven-day settled 1X2 tips with original leans beside the final scores. Separate from Yesterday's single-matchday audit.</p>
   </header>
 </div>
 

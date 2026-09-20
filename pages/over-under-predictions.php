@@ -56,10 +56,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero">
     <h1>Over/Under Predictions: Football Goal Tips Today</h1>
-<?php echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Football Over/Under predictions for today's fixtures — including the 2.5 goals line — based on scoring and defensive form, not match winners alone.</p>
+<p class="lede">Goals markets for today, including the Over/Under 2.5 line. Built from scoring and defensive trends, not match winners alone.</p>
   </header>
 
 </div>

@@ -64,9 +64,17 @@ function bao_jackpot_sheet(string $slug, string $apiPath): array {
 }
 
 function bao_jackpot_lede_html(array $sheet): string {
-    return '<p class="lede">' . (int) $sheet['count'] . ' games · '
-        . bao_h((string) $sheet['schedule']) . ' · Prize pool '
-        . bao_h((string) $sheet['prize_label']) . '</p>';
+    $label = (string) ($sheet['label'] ?? 'Jackpot');
+    $count = (int) ($sheet['count'] ?? 0);
+    $schedule = (string) ($sheet['schedule'] ?? 'open');
+    $prize = (string) ($sheet['prize_label'] ?? 'varies');
+    $countBit = $count > 0
+        ? $count . ' fixtures'
+        : 'this round\'s fixtures';
+    return '<p class="lede">Free <strong>' . bao_h($label) . '</strong> tip sheet for '
+        . bao_h($schedule) . ' play — ' . bao_h($countBit)
+        . ' with a 1X2 lean and short reasoning on every game. Prize pool '
+        . bao_h($prize) . '. Confirm the live card on the operator before you play.</p>';
 }
 
 /**

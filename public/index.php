@@ -183,6 +183,15 @@ $router->get('/sitemap.xml', function () {
     include __DIR__ . '/../pages/sitemap.php';
 });
 
+$router->get('/sitemaps', function () {
+    include __DIR__ . '/../pages/sitemaps.php';
+});
+
+$router->get('/sitemaps/', function () {
+    header('Location: /sitemaps', true, 301);
+    exit;
+});
+
 $router->get('/football-predictions-today', function () {
     include __DIR__ . '/../pages/football-predictions-today.php';
 });
@@ -222,6 +231,23 @@ $router->get('/sokafans-predictions', function () {
 $router->get('/cheerplex-tips', function () {
     include __DIR__ . '/../pages/cheerplex-tips.php';
 });
+
+$router->get('/venasbet-predictions', function () {
+    include __DIR__ . '/../pages/venasbet-predictions.php';
+});
+
+$brandLandings = require __DIR__ . '/../config/brand-landings.php';
+if (is_array($brandLandings)) {
+    foreach (array_keys($brandLandings) as $brandSlug) {
+        if (!is_string($brandSlug) || $brandSlug === '') {
+            continue;
+        }
+        $router->get('/' . $brandSlug, function () use ($brandSlug) {
+            $bao_brand_slug = $brandSlug;
+            include __DIR__ . '/../pages/brand-landing.php';
+        });
+    }
+}
 
 $router->get('/accumulator-tips', function () {
     include __DIR__ . '/../pages/accumulator-tips.php';

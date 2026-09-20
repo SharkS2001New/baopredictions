@@ -34,6 +34,7 @@ $rows = [
     ['https://www.baopredictions.com/betnumbers-tips', $liveDay, 'daily', '0.6'],
     ['https://www.baopredictions.com/sokafans-predictions', $liveDay, 'daily', '0.6'],
     ['https://www.baopredictions.com/cheerplex-tips', $liveDay, 'daily', '0.6'],
+    ['https://www.baopredictions.com/venasbet-predictions', $liveDay, 'daily', '0.6'],
     ['https://www.baopredictions.com/1x2-predictions', $liveDay, 'hourly', '0.8'],
     ['https://www.baopredictions.com/double-chance-predictions', $liveDay, 'daily', '0.7'],
     ['https://www.baopredictions.com/over-under-predictions', $liveDay, 'daily', '0.7'],
@@ -47,6 +48,7 @@ $rows = [
     ['https://www.baopredictions.com/jackpots/odibets-laki-tatu-predictions', $liveDay, 'daily', '0.8'],
     ['https://www.baopredictions.com/jackpots/mozzart-super-daily-jackpot-predictions', $liveDay, 'daily', '0.8'],
     ['https://www.baopredictions.com/sunpel-prediction', $today, 'weekly', '0.5'],
+    ['https://www.baopredictions.com/sitemaps', $today, 'weekly', '0.5'],
     ['https://www.baopredictions.com/blog', $today, 'weekly', '0.6'],
     ['https://www.baopredictions.com/how-we-predict', $staticDay, 'monthly', '0.6'],
     ['https://www.baopredictions.com/how-to-read-btts-odds', $staticDay, 'monthly', '0.5'],
@@ -60,6 +62,16 @@ $rows = [
     ['https://www.baopredictions.com/terms-of-service', $staticDay, 'yearly', '0.3'],
     ['https://www.baopredictions.com/llms.txt', $staticDay, 'monthly', '0.3'],
 ];
+
+$brandLandings = require __DIR__ . '/../config/brand-landings.php';
+if (is_array($brandLandings)) {
+    foreach (array_keys($brandLandings) as $brandSlug) {
+        if (!is_string($brandSlug) || $brandSlug === '') {
+            continue;
+        }
+        $rows[] = ['https://www.baopredictions.com/' . $brandSlug, $liveDay, 'daily', '0.6'];
+    }
+}
 
 echo '<?xml version="1.0" encoding="UTF-8"?>' . "\n";
 echo '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">' . "\n";

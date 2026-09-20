@@ -68,10 +68,7 @@ if ($marketTomorrow > $pickCount) {
 
 <header class="page-hero">
     <h1>Football Predictions Tomorrow</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Provisional football predictions for tomorrow — an early board that can change after today's results, lineups and late team news.</p>
+<p class="lede">Early tips for tomorrow's fixtures. This board is provisional: lineups, team news and late odds can still change before kickoff.</p>
   </header>
 
 </div>

@@ -56,10 +56,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero">
     <h1>Must Win Teams Today</h1>
-<?php echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Looking for the must win teams today? Stronger win cases based on form, venue, opposition, motivation and team news — not guarantees.</p>
+<p class="lede">High-confidence 1X2 shortlist for today — stronger win cases from form, venue and opposition. Still opinions, not locks.</p>
   </header>
 
 </div>

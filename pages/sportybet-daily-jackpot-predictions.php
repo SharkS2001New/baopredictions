@@ -89,8 +89,6 @@ if (count($dateLabels) === 1) {
 
 <header class="page-hero">
     <h1>SportyBet Jackpot Predictions, Tips &amp; Prizes</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
 <?php echo bao_jackpot_lede_html($sheet); ?>
   </header>
 

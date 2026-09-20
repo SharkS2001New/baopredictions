@@ -77,10 +77,7 @@ $trackUnits = isset($track['units']) ? (float) $track['units'] : null;
 
 <header class="page-hero">
     <h1>Football Predictions Today</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Free football predictions today with published leans, reasoning and a public record — model strength, not guaranteed winners.</p>
+<p class="lede">Today's full tip board — every published lean with confidence and match context. Filter by market, then check Yesterday and Results to see what settled.</p>
   </header>
 
 </div>

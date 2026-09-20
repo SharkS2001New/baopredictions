@@ -3,7 +3,7 @@
  * One API definition per public tips page.
  * Route becomes: GET /api/{key}
  */
-return [
+$pages = [
 
     'homepage' => [
         'title' => 'Homepage predictions',
@@ -89,6 +89,15 @@ return [
 
     'cheerplex-tips' => [
         'title' => 'Cheerplex tips today',
+        'day' => 'today',
+        'limit' => 40,
+        'market' => 'best',
+        'min_confidence' => 58,
+        'order' => 'confidence_desc',
+    ],
+
+    'venasbet-predictions' => [
+        'title' => 'VenasBet tips today',
         'day' => 'today',
         'limit' => 40,
         'market' => 'best',
@@ -230,3 +239,24 @@ return [
         'latest_round' => true,
     ],
 ];
+
+// Brand-comparison landings share the BetNumbers mixed-market engine.
+$brandLandings = require __DIR__ . '/brand-landings.php';
+if (is_array($brandLandings)) {
+    foreach ($brandLandings as $slug => $meta) {
+        if (!is_string($slug) || $slug === '' || isset($pages[$slug])) {
+            continue;
+        }
+        $brandName = is_array($meta) ? (string) ($meta['brand'] ?? $slug) : $slug;
+        $pages[$slug] = [
+            'title' => $brandName . ' tips today',
+            'day' => 'today',
+            'limit' => 40,
+            'market' => 'best',
+            'min_confidence' => 58,
+            'order' => 'confidence_desc',
+        ];
+    }
+}
+
+return $pages;

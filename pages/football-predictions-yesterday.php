@@ -88,10 +88,7 @@ $settledCount = $ySettled;
 
 <header class="page-hero">
     <h1>Yesterday's Football Predictions</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">See exactly how published tips performed on <strong><?php echo bao_h($yesterdayLabel); ?></strong> — every win and loss kept on the board. No cherry-picking.</p>
+<p class="lede">How tips published for <strong><?php echo bao_h($yesterdayLabel); ?></strong> finished — every win and loss kept on the board so you can judge the record, not marketing claims.</p>
   </header>
 
 </div>

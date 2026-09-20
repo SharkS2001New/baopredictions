@@ -66,12 +66,7 @@ $baoRecent = is_array($baoStats['recent'] ?? null) ? $baoStats['recent'] : [];
 <div class="wrap">
 <header class="page-hero">
       <h1>Today's Football Predictions</h1>
-<?php
-require_once __DIR__ . '/../components/seo.php';
-echo bao_last_updated_html();
-?>
-<?php echo bao_rg_notice_html(); ?>
-<p class="lede">Know the odds before kickoff. Tips across 1X2, BTTS, over/under and double chance for today's biggest games, popular leagues first.</p>
+<p class="lede">Free tips for today's biggest fixtures — 1X2, BTTS, Over/Under and Double Chance, with popular leagues listed first. Open any card for the lean and the reasoning behind it.</p>
     </header>
 </div>
 
@@ -81,6 +76,7 @@ echo bao_last_updated_html();
 <div class="matches-area">
 
     <?php
+require_once __DIR__ . '/../components/seo.php';
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/homepage');
 if ($payload === null) {

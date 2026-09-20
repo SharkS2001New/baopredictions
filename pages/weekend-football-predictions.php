@@ -67,10 +67,7 @@ if ($marketWeekend > $pickCount) {
 
 <header class="page-hero">
     <h1>Weekend Football Predictions: Saturday &amp; Sunday Tips</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Saturday and Sunday fixtures in one board — free 1X2 weekend tips for planning, reviewed again as lineups arrive.</p>
+<p class="lede">Saturday and Sunday fixtures in one place. Plan the weekend card now, then revisit as lineups land closer to kickoff.</p>
   </header>
 
 </div>

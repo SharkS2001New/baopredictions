@@ -1,57 +1,82 @@
 <footer class="site-footer">
   <div class="wrap">
-    <div class="footer-grid">
-      <div>
-        <h3>Predictions</h3>
-        <ul>
-          <li><a href="/football-predictions-today">Today</a></li>
-          <li><a href="/football-predictions-tomorrow">Tomorrow</a></li>
-          <li><a href="/football-predictions-yesterday">Yesterday</a></li>
-          <li><a href="/weekend-football-predictions">Weekend</a></li>
-          <li><a href="/must-win-teams-today">Must-Win</a></li>
-          <li><a href="/sure-bets-today">Sure Bets</a></li>
-          <li><a href="/banker-of-the-day">Banker of the Day</a></li>
-          <li><a href="/accumulator-tips">Accumulators</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Markets</h3>
-        <ul>
-          <li><a href="/1x2-predictions">1X2</a></li>
-          <li><a href="/double-chance-predictions">Double Chance</a></li>
-          <li><a href="/over-under-predictions">Over/Under</a></li>
-          <li><a href="/btts-predictions">BTTS</a></li>
-          <li><a href="/ht-ft-predictions">HT/FT</a></li>
-        </ul>
-      </div>
+<?php
+    $baoBrandLandings = [];
+    try {
+        $baoBrandLandings = require dirname(__DIR__) . '/config/brand-landings.php';
+        if (!is_array($baoBrandLandings)) {
+            $baoBrandLandings = [];
+        }
+    } catch (Throwable $e) {
+        $baoBrandLandings = [];
+    }
+?>
+    <div class="footer-grid footer-grid--seo">
       <div>
         <h3>Jackpots</h3>
         <ul>
-          <li><a href="/jackpot-predictions">All Jackpots</a></li>
-          <li><a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega</a></li>
-          <li><a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek</a></li>
-          <li><a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek</a></li>
-          <li><a href="/jackpots/sportybet-daily-jackpot-predictions">SportyBet Daily</a></li>
-          <li><a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu</a></li>
-          <li><a href="/jackpots/mozzart-super-daily-jackpot-predictions">Mozzart Super Daily</a></li>
+          <li><a href="/jackpot-predictions">Jackpot Predictions Hub</a></li>
+          <li><a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a></li>
+          <li><a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek Jackpot Predictions</a></li>
+          <li><a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek Jackpot Predictions</a></li>
+          <li><a href="/jackpots/sportybet-daily-jackpot-predictions">SportyBet Daily Jackpot Predictions</a></li>
+          <li><a href="/jackpots/odibets-laki-tatu-predictions">Odibets Laki Tatu Jackpot Predictions</a></li>
+          <li><a href="/jackpots/mozzart-super-daily-jackpot-predictions">Mozzart Super Daily Jackpot Predictions</a></li>
+          <li><a href="/mega-jackpot-strategy-guide">Mega Jackpot Strategy Guide</a></li>
         </ul>
       </div>
       <div>
-        <h3>Site</h3>
+        <h3>Free Predictions</h3>
+        <ul>
+          <li><a href="/football-predictions-today">Football Predictions Today</a></li>
+          <li><a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a></li>
+          <li><a href="/football-predictions-yesterday">Football Predictions Yesterday</a></li>
+          <li><a href="/weekend-football-predictions">Weekend Football Predictions</a></li>
+          <li><a href="/live-football-predictions">Live Football Predictions</a></li>
+          <li><a href="/must-win-teams-today">Must Win Teams Today</a></li>
+          <li><a href="/sure-bets-today">Sure Bets Today</a></li>
+          <li><a href="/banker-of-the-day">Banker of the Day</a></li>
+          <li><a href="/accumulator-tips">Accumulator Tips Today</a></li>
+          <li><a href="/betnumbers-tips">Bet Numbers Tips Today</a></li>
+          <li><a href="/sokafans-predictions">SokaFans Predictions</a></li>
+          <li><a href="/cheerplex-tips">Cheerplex Predictions &amp; Tips</a></li>
+          <li><a href="/sunpel-prediction">Sunpel Prediction</a></li>
+          <li><a href="/venasbet-predictions">VenasBet Predictions</a></li>
+<?php foreach ($baoBrandLandings as $baoBrandSlug => $baoBrandMeta):
+  if (!is_string($baoBrandSlug) || $baoBrandSlug === '' || !is_array($baoBrandMeta)) {
+      continue;
+  }
+  $baoBrandLabel = trim((string) ($baoBrandMeta['breadcrumb'] ?? $baoBrandMeta['brand'] ?? ''));
+  if ($baoBrandLabel === '') {
+      continue;
+  }
+?>
+          <li><a href="/<?php echo htmlspecialchars($baoBrandSlug, ENT_QUOTES, 'UTF-8'); ?>"><?php echo htmlspecialchars($baoBrandLabel, ENT_QUOTES, 'UTF-8'); ?></a></li>
+<?php endforeach; ?>
+        </ul>
+      </div>
+      <div>
+        <h3>Betting Markets</h3>
+        <ul>
+          <li><a href="/1x2-predictions">1X2 Predictions Today</a></li>
+          <li><a href="/double-chance-predictions">Double Chance Predictions</a></li>
+          <li><a href="/over-under-predictions">Over/Under Predictions</a></li>
+          <li><a href="/btts-predictions">BTTS Predictions Today</a></li>
+          <li><a href="/ht-ft-predictions">HT/FT Predictions</a></li>
+          <li><a href="/how-to-read-btts-odds">How to Read BTTS Odds</a></li>
+          <li><a href="/results">Football Prediction Results</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Quick Links</h3>
         <ul>
           <li><a href="/how-we-predict">How We Predict</a></li>
-          <li><a href="/sunpel-prediction">Sunpel Prediction</a></li>
-          <li><a href="/results">Results</a></li>
-          <li><a href="/blog">Blog</a></li>
-          <li><a href="/about-us">About</a></li>
-          <li><a href="/partners">Partners</a></li>
-          <li><a href="/faq">FAQ</a></li>
-          <li><a href="/contact-us">Contact</a></li>
-        </ul>
-      </div>
-      <div>
-        <h3>Legal</h3>
-        <ul>
+          <li><a href="/about-us">About Bao Predictions</a></li>
+          <li><a href="/blog">Football Predictions Blog</a></li>
+          <li><a href="/faq">Football Predictions FAQ</a></li>
+          <li><a href="/partners">Partners &amp; Link Exchange</a></li>
+          <li><a href="/sitemaps">Sitemaps</a></li>
+          <li><a href="/contact-us">Contact Us</a></li>
           <li><a href="/responsible-betting">Responsible Betting</a></li>
           <li><a href="/privacy-policy">Privacy Policy</a></li>
           <li><a href="/terms-of-service">Terms of Service</a></li>

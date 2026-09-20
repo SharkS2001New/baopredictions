@@ -48,10 +48,7 @@
 
 <header class="page-hero">
     <h1>Jackpot Predictions</h1>
-<?php require_once __DIR__ . '/../components/seo.php';
-echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-<p class="lede">Free jackpot prediction sheets for SportPesa, Betika, SportyBet, Odibets and Mozzart — current fixtures, selections, and the reasoning behind them.</p>
+<p class="lede">All Kenya jackpot sheets in one hub — SportPesa, Betika, SportyBet, Odibets and Mozzart. Open the live round for the operator you play.</p>
   </header>
 
 </div>
@@ -68,6 +65,7 @@ echo bao_last_updated_html(); ?>
 <h2 class="section-title">Current Jackpot Predictions</h2>
 <p class="text-muted">The jackpot pages linked below carry the current fixtures and selections for each operator. &quot;SportPesa Mega Jackpot&quot; commonly refers to the 17-game weekend coupon, while other operators run different formats, schedules, and game counts. Check the operator-specific sheet for this round's fixtures, deadline, and available prediction markets before placing a selection.</p>
 <?php
+require_once __DIR__ . '/../components/seo.php';
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/jackpot-predictions');
 $apiItems = is_array($payload) ? ($payload['jackpots'] ?? []) : [];

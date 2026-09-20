@@ -48,11 +48,7 @@
 
 <header class="page-hero">
     <h1>Accumulator Tips</h1>
-<?php require_once __DIR__ . '/../components/seo.php';
-echo bao_last_updated_html(); ?>
-<?php echo bao_rg_notice_html(); ?>
-
-<p class="lede">Pre-built 3-, 5-, and 8-fold accumulator tips today — each leg checked against the current schedule, with combined odds shown upfront.</p>
+<p class="lede">Ready-made 3-, 5- and 8-fold tickets for today. Each leg is checked against the live schedule, with combined odds shown upfront.</p>
   </header>
 
 </div>
@@ -62,6 +58,7 @@ echo bao_last_updated_html(); ?>
 <div class="main-grid">
 <div class="matches-area">
 <?php
+require_once __DIR__ . '/../components/seo.php';
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/accumulator-tips');
 if ($payload === null) {

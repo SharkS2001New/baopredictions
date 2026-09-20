@@ -1719,6 +1719,32 @@ main:has(.bao-faq) + .site-footer {
   margin-bottom: var(--space-xl);
 }
 
+.footer-grid--seo {
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: var(--space-lg) 1.5rem;
+}
+
+.footer-grid--seo li {
+  margin-bottom: 0.35rem;
+  line-height: 1.35;
+}
+
+.footer-grid--seo a {
+  font-size: 0.82rem;
+}
+
+@media (max-width: 960px) {
+  .footer-grid--seo {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 560px) {
+  .footer-grid--seo {
+    grid-template-columns: 1fr;
+  }
+}
+
 .footer-grid h3 {
   color: #e85a4a;
   font-size: 0.8rem;
@@ -3673,3 +3699,72 @@ main:has(.bao-faq) + .site-footer {
     grid-template-columns: repeat(2, minmax(0, 1fr));
   }
 }
+
+/* =========================================================
+   HTML sitemaps directory
+   ========================================================= */
+
+.sitemaps-meta {
+  margin: -0.5rem 0 1.5rem;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.sitemaps-panel {
+  background: var(--card-bg);
+  border: 1px solid var(--card-border);
+  border-radius: 12px;
+  padding: 1.1rem 1.15rem 1.25rem;
+  margin-bottom: 1.35rem;
+  box-shadow: var(--panel-shadow);
+}
+
+.sitemaps-panel-head {
+  margin-bottom: 0.85rem;
+}
+
+.sitemaps-panel-head h2 {
+  margin: 0 0 0.35rem;
+  font-size: 1.2rem;
+}
+
+.sitemaps-panel-head p {
+  margin: 0;
+  font-size: 0.9rem;
+  color: var(--ink-muted);
+}
+
+.sitemaps-cloud {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.45rem 0.75rem;
+}
+
+.sitemaps-cloud a {
+  display: inline-block;
+  font-size: 0.92rem;
+  font-weight: 600;
+  color: var(--ink);
+  text-decoration: underline;
+  text-underline-offset: 0.15em;
+  text-decoration-color: color-mix(in srgb, var(--ink-muted) 55%, transparent);
+}
+
+.sitemaps-cloud a:hover {
+  color: var(--amber-deep);
+  text-decoration-color: var(--amber-deep);
+}
+
+@media (max-width: 720px) {
+  .sitemaps-cloud {
+    gap: 0.55rem 0.85rem;
+  }
+
+  .sitemaps-cloud a {
+    font-size: 0.88rem;
+  }
+}
+
