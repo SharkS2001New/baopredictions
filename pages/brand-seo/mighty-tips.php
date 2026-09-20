@@ -21,7 +21,7 @@
 <p>If you want a single stronger lean rather than a full list, <a href="/banker-of-the-day">Banker of the Day</a> is the tighter board.</p>
 
 <h2>Mighty Tips today: check the publication date</h2>
-<p>The board above lists fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, each with its kickoff time. Prediction URLs stay constant while the fixtures beneath them change daily, so an indexed page elsewhere can easily show matches that have already finished. Check the kickoff, then use <a href="/results">Results</a> for anything already settled.</p>
+<p>The board above lists fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, each with its kickoff time. Prediction URLs stay constant while the fixtures beneath them change daily, so an indexed page elsewhere can easily show matches that have already finished. Searches for <strong>MightyTips today</strong> and <strong>Mighty Tips predictions</strong> hit the same problem from both spellings. Check the kickoff, then use <a href="/results">Results</a> for anything already settled.</p>
 
 <h3>Mighty Tips correct score: why this page does not publish one</h3>
 <p><strong>Mighty Tips correct score</strong> is a popular search and the hardest market in football to call. A scoreline needs both the result and the exact goal count to land, and the pages that publish them rarely show a settled record for that market specifically. Rather than print a number that looks authoritative, this board names the market the evidence supports — often Over/Under or BTTS where the scoring pattern is the real signal.</p>

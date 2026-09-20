@@ -121,7 +121,7 @@ require __DIR__ . '/../components/sidebar.php';
     <h2>Markets on this VenasBet board</h2>
     <p>Not every fixture deserves a match-winner. A stronger side on paper can still be a Double Chance or Under selection if the price and form say so. Use 1X2 when venue and recent form line up clearly. Prefer Double Chance when the underdog is competitive enough that a straight match-winner is fragile — common in congested midweeks. Lean BTTS or Over/Under when both attacks create chances or when a key defender is confirmed out. HT/FT appears only when first-half patterns are clear enough to justify the extra risk.</p>
     <p>Compare a higher-floor shortlist on <a href="/sure-bets-today">Sure Bets Today</a> when you want fewer, tighter picks. Build accumulators from the stronger leans only, after kickoffs still match your slip. Do not stake every card as one multi by default — that is how a single late equaliser clears a tidy-looking slip.</p>
-    <p>Only the open card above is active for <strong><?php echo bao_h($todayLabel); ?></strong>. Older indexed VenasBet-style pages should not be staked. Jackpot coupons belong on operator sheets via the <a href="/jackpot-predictions">Jackpot Predictions</a> hub, not as padded filler on this daily board.</p>
+    <p>Only the open card above is active for <strong><?php echo bao_h($todayLabel); ?></strong>. Older indexed VenasBet-style pages should not be staked, however current the layout looks.</p>
 
     <h3>What the other VenasBet pages leave unclear</h3>
     <p>The five VenasBet-related pages reviewed for this article publish broad market coverage with odds and probability columns, which is genuinely useful. Three of them describe the service as providing “guaranteed” or “100% sure” predictions, wording no football tipster can support, and several carry dated fixture tables without making the date obvious. None explain when a goals market or Double Chance is the better home for a lean than a forced 1X2. Stating that reasoning, publishing a visible date and dropping guarantee language is the difference on this page.</p>
@@ -135,15 +135,15 @@ require __DIR__ . '/../components/sidebar.php';
 $faqs = [
   [
     'q' => 'Are VenasBet predictions free here?',
-    'a' => 'Yes. This VenasBet-style board and every jackpot sheet on Bao Predictions are free to view. There is no VIP paywall on the tip cards above.',
+    'a' => 'Yes. Every card on this VenasBet-style board is free to view. There is no VIP tier and no paywall on the tips above.',
   ],
   [
     'q' => 'Which markets appear on this board?',
     'a' => '1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture on this VenasBet page.',
   ],
   [
-    'q' => 'Where are midweek jackpot sheets?',
-    'a' => 'Open SportPesa Midweek Jackpot Predictions or Betika Midweek Jackpot Predictions from the Jackpot Predictions hub. This page remains the daily tip board.',
+    'q' => 'Why do VenasBet predictions show a probability percentage?',
+    'a' => 'A percentage describes how an outcome distribution is modelled, not how likely you are to win a bet. Read it next to the form and team news rather than on its own.',
   ],
   [
     'q' => 'How do I know the tips are still current?',
