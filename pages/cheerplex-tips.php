@@ -103,7 +103,7 @@ require __DIR__ . '/../components/sidebar.php';
     <p>The Cheerplex free daily table lists fixtures with an exact score column alongside a secondary tip such as GG or a match result, with deeper jackpot and multibet content sold separately. Aggregators covering the brand extend that into 1X2, Double Chance, Over/Under and BTTS.</p>
     <p>Exact score is the hardest market in football to call, and publishing one by default creates precision the evidence rarely supports. This board names a single market per fixture instead. Two active attacks point at BTTS or Over/Under; a competitive underdog points at Double Chance; a clear venue edge with steady form supports a straight 1X2.</p>
 
-    <h2>How to assess Cheerplex tips</h2>
+    <h2>How to assess a Cheerplex prediction</h2>
     <p>Read the selection, then check the fixture behind it:</p>
     <ul>
       <li><strong>Recent form:</strong> the last six matches, weighted by opponent quality.</li>
@@ -115,7 +115,7 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Missing lineup information is left blank rather than guessed, and HT/FT appears only where first-half patterns justify the extra risk. Accumulator legs should come from the stronger cards only, after kickoffs still match your slip.</p>
 
-    <h2>Cheerplex prediction today: check the publication date</h2>
+    <h2>Cheerplex prediction: check the date on the card</h2>
     <p>The cards above are the live list on this page, and the fixture times on each card tell you when they kick off. When this page was researched in September 2026, the indexed Cheerplex daily tables carried fixture dates from earlier in the week rather than the day they were served on — exactly the trap worth avoiding, because the layout looks current even when the card is not.</p>
 
     <h3>Cheerplex jackpot prediction vs this board</h3>

@@ -103,7 +103,7 @@ require __DIR__ . '/../components/sidebar.php';
     <p>Pages in this cluster publish more than match winners. Selections run across 1X2, Double Chance, both teams to score and goal lines, with some sites adding correct score and VIP tiers alongside the free list.</p>
     <p>That range matters because the same fixture can support different angles. A match may have a clear 1X2 direction while Double Chance covers a wider outcome, or the evidence may point at goals rather than the result. Every card on this board names one market and the reason behind it, so the choice is visible rather than implied.</p>
 
-    <h2>How to assess SokaFans tips</h2>
+    <h2>How to assess a SokaFans prediction</h2>
     <p>Separate the published prediction from the evidence you can check yourself:</p>
     <ul>
       <li><strong>Recent form:</strong> the last six matches, weighted by opponent quality.</li>
@@ -115,7 +115,7 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Confidence here is a capped lean rather than a hit-rate claim. A lunchtime read can move once evening lineups land, so re-check before staking. HT/FT stays rare on purpose, and building accumulator legs is a second step — only from the stronger cards, and only while kickoffs still match your slip.</p>
 
-    <h2>SokaFans tips today: check the publication date</h2>
+    <h2>SokaFans tips today prediction: check the date</h2>
     <p>The cards above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, each showing its own kickoff time. <strong>SokaFans tips today prediction</strong> searches often land on URLs whose fixtures have already been played, because the address stays fixed while the card rotates each day. Read the kickoff before acting on any tip; settled selections move to <a href="/results">Results</a>.</p>
 
     <h3>SokaFans Mega Jackpot prediction</h3>

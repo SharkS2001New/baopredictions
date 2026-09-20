@@ -8,7 +8,7 @@
 <p>Pages in this cluster typically publish a dated fixture list with a suggested result, sometimes a scoreline, and occasionally a goals angle. The board on this page works differently: one recommended market per fixture across 1X2, Double Chance, BTTS, Over/Under and HT/FT, each with a short reason.</p>
 <p>That single-market rule exists because the alternative encourages cherry-picking. If a page shows a result tip, a scoreline and a goals line for the same match, at least one of them will usually look right afterwards, which tells you nothing useful before kickoff.</p>
 
-<h2>How to assess PredictZ tips</h2>
+<h2>How to assess a PredictZ selection</h2>
 <p>Read the tip, then test the fixture behind it:</p>
 <ul>
   <li><strong>Recent form:</strong> the last six matches, adjusted for opponent quality.</li>

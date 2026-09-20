@@ -8,7 +8,7 @@
 <p>The Statarea layout is built for scanning: each fixture shows percentage columns across result, half-time, goals and BTTS markets, ordered by kickoff. Sites that rebuild the old interface offer similar coverage, usually adding Double Chance and correct score.</p>
 <p>Because every market appears at once, it is easy to pick the number that suits a pre-existing opinion. The more disciplined read is the opposite order: decide what the fixture evidence supports, then look at whether the grid agrees. On this Bao page each match carries a single recommended market with the reason attached, and a dedicated result shortlist lives on <a href="/1x2-predictions">1X2 Predictions Today</a>.</p>
 
-<h2>How to assess Statarea tips</h2>
+<h2>How to assess a Statarea prediction</h2>
 <p>Use the grid as one input among several:</p>
 <ul>
   <li><strong>Recent form:</strong> the last six matches, not a single eye-catching result.</li>

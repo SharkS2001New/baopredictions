@@ -8,7 +8,7 @@
 <p>Pages in this cluster publish result selections, goals lines and scoreline suggestions across a broad fixture list. This board narrows that to one recommended market per match — 1X2, Double Chance, BTTS, Over/Under or HT/FT — with the reason written out so the selection can be argued with.</p>
 <p>The market follows the fixture. A clear favourite with a venue edge supports 1X2. A competitive underdog makes Double Chance the sounder expression of the same lean. Two open attacks, or a confirmed defensive absence, point at the goals markets. HT/FT is reserved for fixtures where first-half patterns are strong enough to carry the added risk.</p>
 
-<h2>How to assess Victor prediction tips</h2>
+<h2>How to assess a Victor prediction</h2>
 <p>Read the tip, then check the evidence:</p>
 <ul>
   <li><strong>Recent form:</strong> the last six matches, weighted by opposition.</li>

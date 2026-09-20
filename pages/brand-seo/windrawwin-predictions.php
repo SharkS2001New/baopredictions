@@ -8,7 +8,7 @@
 <p>Result-led prediction pages publish a selection per fixture with form tables and statistical context alongside. That suits bettors who think in 1, X and 2 first, which is most of the market in Kenya and across Africa.</p>
 <p>This board keeps the same instinct but refuses to force it. Each fixture gets one recommended market: 1X2 where the evidence supports a winner, Double Chance where the underdog is live enough to make a straight result fragile, and BTTS or Over/Under where goals rather than the result carry the signal. <a href="/1x2-predictions">1X2 Predictions Today</a> and <a href="/double-chance-predictions">Double Chance Predictions</a> cover those two markets on dedicated boards.</p>
 
-<h2>How to assess WinDrawWin tips</h2>
+<h2>How to assess a WinDrawWin prediction</h2>
 <p>Read the selection, then test the fixture:</p>
 <ul>
   <li><strong>Recent form:</strong> the last six matches, adjusted for opponent quality.</li>

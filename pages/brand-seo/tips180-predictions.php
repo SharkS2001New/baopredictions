@@ -19,7 +19,7 @@
   <li><strong>Market fit:</strong> result, Double Chance or goals, decided by the evidence.</li>
 </ul>
 
-<h2>Tips180 prediction today: check the publication date</h2>
+<h2>Tips180 prediction: check the publication date</h2>
 <p>The cards above cover fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, each showing its own kickoff. Prediction URLs in this cluster stay fixed while the card rotates daily, so a page can read as current long after its fixtures were played. Check the kickoff, then use <a href="/results">Results</a> for anything settled.</p>
 
 <h3>Tips180 correct score and Victorpredict Tips180</h3>

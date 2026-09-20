@@ -103,7 +103,7 @@ require __DIR__ . '/../components/sidebar.php';
     <p>VenasBet tables pair each fixture with a tip, an odds figure and a probability percentage, spread across Over 1.5, Over 2.5, Under 3.5, Double Chance, draw no bet and straight result markets. Recent form is shown as a short W/D/L string per side.</p>
     <p>A probability figure describes a distribution, not a recommendation, and an odds quote can change before kickoff. This board keeps one recommended market per fixture with the reasoning written out, so you can see which evidence produced the lean rather than inferring it from a number.</p>
 
-    <h2>How to assess VenasBet tips</h2>
+    <h2>How to assess a VenasBet prediction</h2>
     <p>Take the published selection, then check the match:</p>
     <ul>
       <li><strong>Recent form:</strong> the last six matches, weighted by opponent quality.</li>

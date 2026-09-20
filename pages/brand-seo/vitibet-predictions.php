@@ -8,7 +8,7 @@
 <p>Calendar-style prediction sites publish result forecasts and goals markets several days ahead, refreshing them as fixtures approach. This board takes the narrower approach: one recommended market per fixture for today — 1X2, Double Chance, BTTS, Over/Under or HT/FT — with a reason attached.</p>
 <p>The further out a forecast sits, the fewer inputs it can use. A Wednesday lean written on Sunday cannot account for a weekend injury, a red card or rotation before a European tie. Treat long-range output as a shortlist of matches worth watching, not a slip to fill in.</p>
 
-<h2>How to assess Vitibet tips</h2>
+<h2>How to assess a Vitibet prediction</h2>
 <p>Check the fixture behind the forecast:</p>
 <ul>
   <li><strong>Recent form:</strong> the last six matches, weighted by opponent.</li>
