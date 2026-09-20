@@ -36,6 +36,16 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/cheerplex-tips');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
+?>
 
 <div class="wrap wrap-wide">
 
@@ -48,9 +58,13 @@
 
 <header class="page-hero page-hero--full">
     <h1>Cheerplex Prediction &amp; Tips for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
-<p class="lede">Cheerplex provides daily football tips and jackpot ideas that many Kenyan bettors search for before kickoff. Bao Predictions publishes free Cheerplex-style tips for today across major European leagues and other competitions — covering 1X2, Double Chance, BTTS, Over/Under and HT/FT — with GG and goals markets when they fit the fixture better than a straight result.</p>
-<?php echo bao_intro_links_html('With our free tips, <a href="/sure-bets-today">Sure Bets Today</a>, or <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> you can widen the slate before you stake.'); ?>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede"><strong>Cheerplex predictions</strong> on Bao Predictions are free mixed-market tips for <strong><?php echo bao_h($todayLabel); ?></strong><?php
+if ($tipCount > 0) {
+  echo ' — <strong>' . (int) $tipCount . ' published selections</strong>';
+}
+?>. Each card shows one recommended market (1X2, Double Chance, BTTS, Over/Under or HT/FT), with GG and goals leans when they fit better than a straight result. This daily board is not a full SportPesa Mega Jackpot coupon — open the live Mega sheet when you are filling a 17-game card.</p>
+<?php echo bao_intro_links_html('Widen the slate on <a href="/sure-bets-today">Sure Bets Today</a>, or open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> for the current weekend card.'); ?>
   </header>
 
 </div>
@@ -59,14 +73,7 @@
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
-
-  <?php
-require_once __DIR__ . '/../components/api-curl.php';
-require_once __DIR__ . '/../components/seo.php';
-$payload = bao_curl_api('/api/cheerplex-tips');
-$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
-  ? $payload['games']
-  : [];
+<?php
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (!$games) {
@@ -74,6 +81,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'cheerplex-tips')]);
 }
+echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -88,41 +96,33 @@ require __DIR__ . '/../components/sidebar.php';
 
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
-    <h2>Cheerplex Predictions</h2>
-    <p>Looking for <strong>Cheerplex</strong> football predictions and tips? Bao Predictions covers daily football selections, jackpot fixtures and popular betting markets including 1X2, Double Chance, BTTS, Over/Under and Half Time/Full Time. Check the available match information and compare the selections before placing a bet.</p>
-
-    <h2>Cheerplex</h2>
-    <p><strong>Cheerplex</strong> searches are often associated with football predictions, betting tips and daily match selections. Bao Predictions provides football predictions across leagues and competitions, with individual matches assessed according to the market being considered.</p>
-    <p>You can review straightforward outcomes such as home win, draw or away win, as well as goal-based markets where they are available. The focus is on giving you the prediction and relevant match context without presenting any result as guaranteed.</p>
-
-    <h2>Cheerplex Prediction</h2>
-    <p>A <strong>Cheerplex prediction</strong> gives you a football selection for an individual match or a group of fixtures. Depending on the match, the prediction may cover 1X2, Double Chance, BTTS, Over/Under or Half Time/Full Time.</p>
-    <p>When comparing predictions, look at the actual fixture as well as the selected market. A strong-looking team on paper does not automatically make every betting market suitable, particularly when the prediction is based on goals, both teams to score or a double-chance outcome.</p>
-
-    <h2>Cheerplex Prediction Today</h2>
-    <p>For <strong>Cheerplex prediction today</strong>, check the latest available football fixtures and selections for the current day's matches. Today's predictions can change as fixtures, team information and available markets are updated, so it is worth checking the latest version before making a selection.</p>
-    <p>The daily list can include matches from different competitions, giving you the option to review individual predictions rather than relying on one overall tip. Always check the fixture time and market before placing a bet.</p>
-
-    <?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_jackpot_sections_html('Cheerplex'); ?>
-
-    <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. See <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday</a> · <a href="/results">Results</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/football-predictions-today">Football Predictions Today</a></p>
+<?php
+echo bao_brand_seo_stack_html('Cheerplex', $games, [
+  'angle' => 'Cheerplex searches often pair daily tips with <strong>Cheerplex Mega Jackpot prediction</strong> intent. Keep those jobs separate: use this page for today’s singles board, then confirm the live SportPesa Mega Jackpot coupon on the dedicated sheet before you play.',
+  'shortlist_label' => 'Cheerplex shortlist',
+  'related' => '<a href="/football-predictions-today">Football Predictions Today</a> · <a href="/sokafans-predictions">SokaFans Predictions</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> · <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/results">Results</a>',
+]);
+?>
   </div>
 </section>
 
 <?php
 $faqs = [
   [
+    'q' => 'Are Cheerplex tips free here?',
+    'a' => 'Yes. This Cheerplex-style board and every jackpot sheet on Bao Predictions are free to view. There is no VIP paywall on the tip cards above.',
+  ],
+  [
     'q' => 'Which markets appear on this board?',
-    'a' => 'The same mixed-market engine as Bet Numbers and SokaFans: 1X2, BTTS, Over/Under 2.5 and Double Chance — one recommended market per fixture.',
+    'a' => 'The same mixed-market engine as Bet Numbers and SokaFans: 1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture.',
   ],
   [
     'q' => 'Where is the SportPesa Mega Jackpot sheet?',
-    'a' => 'Open SportPesa Mega Jackpot Predictions for the live 17-game card with per-fixture reasoning. This page is the daily mixed-market tip board.',
+    'a' => 'Open SportPesa Mega Jackpot Predictions for the live 17-game card with per-fixture reasoning. This page is the daily mixed-market tip board only.',
   ],
   [
-    'q' => 'Are Cheerplex tips free here?',
-    'a' => 'Yes. Every tip board and jackpot sheet on Bao Predictions is free to view. There is no VIP paywall on this page.',
+    'q' => 'How do I know the tips are still current?',
+    'a' => 'Check the last-updated timestamp at the top of this page and the kickoff on each card. Team news can change a lean after first publish.',
   ],
   [
     'q' => 'Do you guarantee jackpot results?',

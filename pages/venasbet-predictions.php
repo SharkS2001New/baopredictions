@@ -36,6 +36,16 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/venasbet-predictions');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
+?>
 
 <div class="wrap wrap-wide">
 
@@ -48,9 +58,13 @@
 
 <header class="page-hero page-hero--full">
     <h1>VenasBet Predictions for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
-<p class="lede">Looking for <strong>VenasBet</strong> football predictions and tips? Bao Predictions covers daily football selections, jackpot fixtures and popular betting markets including 1X2, Double Chance, BTTS, Over/Under and Half Time/Full Time. Check the available match information and compare the selections before placing a bet — tips are opinions based on available match data, not guaranteed outcomes.</p>
-<?php echo bao_intro_links_html('With our free tips, <a href="/football-predictions-today">Football Predictions Today</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> you can review more boards before you stake with your favourite bookmakers.'); ?>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede"><strong>VenasBet predictions</strong> on Bao Predictions are free mixed-market tips for <strong><?php echo bao_h($todayLabel); ?></strong><?php
+if ($tipCount > 0) {
+  echo ' — <strong>' . (int) $tipCount . ' published selections</strong>';
+}
+?>. Each card shows one recommended market (1X2, Double Chance, BTTS, Over/Under or HT/FT), the model lean and a short reason. Midweek jackpot players should still open the live operator sheet — this daily board is not a full coupon.</p>
+<?php echo bao_intro_links_html('Compare with <a href="/football-predictions-today">Football Predictions Today</a>, or open <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek Jackpot Predictions</a> and the <a href="/jackpot-predictions">Jackpot Predictions</a> hub.'); ?>
   </header>
 
 </div>
@@ -59,14 +73,7 @@
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
-
-  <?php
-require_once __DIR__ . '/../components/api-curl.php';
-require_once __DIR__ . '/../components/seo.php';
-$payload = bao_curl_api('/api/venasbet-predictions');
-$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
-  ? $payload['games']
-  : [];
+<?php
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (!$games) {
@@ -74,6 +81,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'venasbet-predictions')]);
 }
+echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -88,25 +96,13 @@ require __DIR__ . '/../components/sidebar.php';
 
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
-    <h2>VenasBet Predictions</h2>
-    <p>Looking for <strong>VenasBet</strong> football predictions and tips? Bao Predictions covers daily football selections, jackpot fixtures and popular betting markets including 1X2, Double Chance, BTTS, Over/Under and Half Time/Full Time. Check the available match information and compare the selections before placing a bet.</p>
-
-    <h2>VenasBet</h2>
-    <p><strong>VenasBet</strong> searches are often associated with football predictions, betting tips and daily match selections. Bao Predictions provides football predictions across leagues and competitions, with individual matches assessed according to the market being considered.</p>
-    <p>You can review straightforward outcomes such as home win, draw or away win, as well as goal-based markets where they are available. The focus is on giving you the prediction and relevant match context without presenting any result as guaranteed.</p>
-
-    <h2>VenasBet Prediction</h2>
-    <p>A <strong>VenasBet prediction</strong> gives you a football selection for an individual match or a group of fixtures. Depending on the match, the prediction may cover 1X2, Double Chance, BTTS, Over/Under or Half Time/Full Time.</p>
-    <p>When comparing predictions, look at the actual fixture as well as the selected market. A strong-looking team on paper does not automatically make every betting market suitable, particularly when the prediction is based on goals, both teams to score or a double-chance outcome.</p>
-
-    <h2>VenasBet Prediction Today</h2>
-    <p>For <strong>VenasBet prediction today</strong>, check the latest available football fixtures and selections for the current day's matches. Today's predictions can change as fixtures, team information and available markets are updated, so it is worth checking the latest version before making a selection.</p>
-    <p>The daily list can include matches from different competitions, giving you the option to review individual predictions rather than relying on one overall tip. Always check the fixture time and market before placing a bet.</p>
-
-    <?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_jackpot_sections_html('VenasBet'); ?>
-
-    <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. See <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday</a> · <a href="/results">Results</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a> · <a href="/cheerplex-tips">Cheerplex Tips</a></p>
+<?php
+echo bao_brand_seo_stack_html('VenasBet', $games, [
+  'angle' => 'VenasBet searches often overlap with midweek jackpot research. Keep the jobs separate: use this page for today’s free singles board, then open SportPesa Midweek or Betika Midweek sheets when you need a full coupon view.',
+  'shortlist_label' => 'VenasBet shortlist',
+  'related' => '<a href="/football-predictions-today">Football Predictions Today</a> · <a href="/cheerplex-tips">Cheerplex Tips</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a> · <a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek Jackpot Predictions</a> · <a href="/results">Results</a>',
+]);
+?>
   </div>
 </section>
 
@@ -114,19 +110,23 @@ require __DIR__ . '/../components/sidebar.php';
 $faqs = [
   [
     'q' => 'Are VenasBet predictions free here?',
-    'a' => 'Yes. Every tip board and jackpot sheet on Bao Predictions is free to view. There is no VIP paywall on this page.',
+    'a' => 'Yes. This VenasBet-style board and every jackpot sheet on Bao Predictions are free to view. There is no VIP paywall on the tip cards above.',
   ],
   [
     'q' => 'Which markets appear on this board?',
-    'a' => 'The same mixed-market engine as Bet Numbers Tips: 1X2, BTTS, Over/Under 2.5 and Double Chance — one recommended market per fixture.',
+    'a' => 'The same mixed-market engine as Bet Numbers Tips: 1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture.',
   ],
   [
-    'q' => 'Where are jackpot sheets?',
-    'a' => 'Use the Jackpot Predictions hub for SportPesa Mega, Midweek, Betika, SportyBet, Odibets Laki Tatu and Mozzart Super Daily — each match is analysed separately.',
+    'q' => 'Where are midweek jackpot sheets?',
+    'a' => 'Open SportPesa Midweek Jackpot Predictions or Betika Midweek Jackpot Predictions from the Jackpot Predictions hub. This page remains the daily tip board.',
+  ],
+  [
+    'q' => 'How do I know the tips are still current?',
+    'a' => 'Check the last-updated timestamp at the top of this page and the kickoff on each card. Team news can change a lean after first publish.',
   ],
   [
     'q' => 'Do you guarantee wins?',
-    'a' => 'No. Football predictions are opinions based on available match data, not guaranteed outcomes. Stake only what you can afford to lose.',
+    'a' => 'No. Confidence figures are model leans with a publish cap, not promised win rates. Stake only what you can afford to lose.',
   ],
 ];
 ?>

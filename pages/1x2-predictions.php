@@ -37,6 +37,18 @@
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
 
+
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/1x2-predictions');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
+?>
+
 <div class="wrap wrap-wide">
 
   <nav aria-label="Breadcrumb">
@@ -48,7 +60,8 @@
 
 <header class="page-hero page-hero--full">
     <h1>Free Betting Tips 1X2 Today</h1>
-<p class="lede">Welcome to free <strong>1X2 predictions</strong> and betting tips today from Bao Predictions. This board publishes home, draw or away leans only — with confidence and match context on every card — for fixtures across popular leagues. Free 1X2 tips are updated below; compare them with Double Chance or jackpot sheets when a single result looks thin.</p>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede">Free <strong>1X2 predictions</strong> for <strong><?php echo bao_h($todayLabel); ?></strong><?php if (!empty($tipCount)) { echo ' — <strong>' . (int) $tipCount . ' tips</strong>'; } ?>: home, draw or away leans only, with confidence and match context on every card. Compare with Double Chance or jackpot sheets when a single result looks thin.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
@@ -61,13 +74,6 @@
 
 
   <?php
-require_once __DIR__ . '/../components/api-curl.php';
-require_once __DIR__ . '/../components/seo.php';
-$payload = bao_curl_api('/api/1x2-predictions');
-$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
-  ? $payload['games']
-  : [];
-$stats = bao_api_stats();
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (!$games) {
@@ -75,6 +81,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>

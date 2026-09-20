@@ -43,6 +43,8 @@ $payload = bao_curl_api('/api/must-win-teams-today');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
 ?>
 
 <div class="wrap wrap-wide">
@@ -56,6 +58,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero page-hero--full">
     <h1>Must Win Teams Today</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <p class="lede">Must win teams today — a high-confidence 1X2 shortlist built from form, venue, opposition and team news. These are stronger win cases on today's board, still published as opinions rather than locks.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
@@ -74,6 +77,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>
@@ -119,7 +123,7 @@ if ($payload === null) {
 
     <h2>Today's Fixtures Need Fresh Analysis</h2>
     <p>Must-win selections should be updated for each matchday rather than copied from previous prediction cards.</p>
-    <p>The Premier League schedule on <strong>12 September 2026</strong> includes Liverpool vs Fulham, Tottenham vs Everton and Sunderland vs Arsenal, among other fixtures. Liverpool entered the Fulham fixture unbeaten after three league matches, with one win and two draws, while Fulham had lost their opening three league games. This contrast illustrates why current form matters when assessing whether a team qualifies for the day's must-win list.</p>
+    <p>Must-win assessments change with the fixture list. A side that looked strong on paper can drop off the board after a poor run, while an in-form home team can appear once recent results and venue support the lean. Always check the live cards above rather than an old example fixture list.</p>
     <p>The same principle applies across other leagues. Recent results, confirmed absences and the current match situation should be checked before publishing that day's selections.</p>
 
     <h2>Must Win Teams vs Guaranteed Wins</h2>

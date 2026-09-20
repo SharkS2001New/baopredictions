@@ -66,8 +66,18 @@ $baoRecent = is_array($baoStats['recent'] ?? null) ? $baoStats['recent'] : [];
 <div class="wrap wrap-wide">
 <header class="page-hero page-hero--full">
     <h1>Today's Football Predictions</h1>
-<p class="lede">Free tips for today's biggest fixtures across 1X2, BTTS, Over/Under and Double Chance, with popular leagues listed first. Open any card for the lean and the reasoning behind it, then use the full Today board or jackpot hub for a wider slate.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
+<?php
+require_once __DIR__ . '/../components/seo.php';
+$todayLabel = date('j F Y');
+$predToday = (int) ($baoToday['predictions'] ?? 0);
+echo bao_board_freshness_html();
+?>
+<p class="lede">Free football predictions for <strong><?php echo bao_h($todayLabel); ?></strong><?php
+if ($predToday > 0) {
+  echo ' — <strong>' . $predToday . ' published tips</strong>';
+}
+?> across 1X2, Double Chance, BTTS, Over/Under and HT/FT. Popular leagues are listed first; open any card for the lean and short reason, then use the full Today board or jackpot hub for a wider slate.</p>
+<?php echo bao_intro_links_html('Browse <a href="/football-predictions-today">Football Predictions Today</a>, <a href="/sure-bets-today">Sure Bets Today</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> for Kenya coupons.'); ?>
   </header>
 </div>
 
@@ -103,29 +113,35 @@ if ($payload === null) {
 
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
-    <h2>Bao Predictions</h2>
-    <p><strong>Bao Predictions</strong> provides free football predictions and betting tips for matches from domestic and international leagues. Our football tips cover 1X2, Double Chance, BTTS, Over/Under and HT/FT, together with daily match predictions and jackpot selections. Each fixture is assessed using factors such as recent form, home and away performance, head-to-head results and available team information.</p>
+    <h2>Bao Predictions — free football tips</h2>
+    <p><strong>Bao Predictions</strong> publishes free football predictions for today’s fixtures across 1X2, Double Chance, BTTS, Over/Under and HT/FT. The cards above are a live slice of the daily board — each shows one recommended market, a model lean and a short reason. Tips are opinions based on available match data, not guaranteed outcomes.</p>
 
-    <h2>Direct Win Prediction</h2>
-    <p><strong>Direct win prediction</strong> focuses on selecting the team expected to win a football match outright. Bao Predictions provides direct win selections for fixtures where the available form and match information point towards a home or away victory. The analysis considers recent results, home advantage, league position and other relevant factors before the prediction is published.</p>
+    <h2>How to use today’s board</h2>
+    <ul>
+      <li>Open a card for the pick, kickoff and reasoning</li>
+      <li>Use <a href="/football-predictions-today">Football Predictions Today</a> for the full slate</li>
+      <li>Filter stronger leans on <a href="/sure-bets-today">Sure Bets Today</a> or <a href="/must-win-teams-today">Must Win Teams Today</a></li>
+      <li>Check settled tips on <a href="/results">Results</a> and <a href="/football-predictions-yesterday">Yesterday</a></li>
+    </ul>
 
-    <h2>SokaFans</h2>
-    <p><strong>SokaFans</strong> predictions cover daily football tips, match selections and jackpot predictions for football followers looking for upcoming fixtures. SokaFans tips can include different football markets, while Bao Predictions provides its own daily analysis across 1X2, Double Chance, BTTS, Over/Under and HT/FT. Readers can review the available information and compare selections before making their own decisions.</p>
+    <h2>Kenya jackpot predictions</h2>
+    <p>For coupon play, open the live sheet that matches your operator — not a daily singles board:</p>
+    <ul>
+      <li><a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a></li>
+      <li><a href="/jackpots/sportpesa-midweek-jackpot-predictions">SportPesa Midweek Jackpot Predictions</a></li>
+      <li><a href="/jackpots/betika-midweek-jackpot-predictions">Betika Midweek Jackpot Predictions</a></li>
+      <li><a href="/jackpot-predictions">All jackpot predictions</a></li>
+    </ul>
 
-    <h2>Cheerplex</h2>
-    <p><strong>Cheerplex</strong> predictions and football tips are followed by bettors looking for daily match selections and jackpot predictions. The available tips can cover individual matches as well as larger jackpot coupons. Bao Predictions also provides daily football analysis, with individual fixtures assessed according to their recent form, venue, competition and other relevant match information.</p>
+    <h2>Brand-style tip boards</h2>
+    <p>Looking for a familiar tip-site layout? These free boards use the same mixed-market engine as today’s card:</p>
+    <p class="seo-related"><a href="/sokafans-predictions">SokaFans Predictions</a> · <a href="/cheerplex-tips">Cheerplex Tips</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a> · <a href="/sunpel-prediction">Sunpel Prediction</a> · <a href="/venasbet-predictions">VenasBet Predictions</a> · <a href="/sitemaps">Full sitemaps</a></p>
 
-    <h2>Everyday Winning Tips</h2>
-    <p><strong>Everyday winning tips</strong> are aimed at football bettors who want fresh selections for matches taking place throughout the week. Bao Predictions publishes daily football tips across several markets, including direct wins, Double Chance, BTTS and Over/Under. Results are never guaranteed, so each selection should be treated as football analysis rather than a certain outcome.</p>
-
-    <h2>Cheerplex Mega Jackpot Prediction</h2>
-    <p><strong>Cheerplex Mega Jackpot prediction</strong> content helps bettors review the fixtures included in the Mega Jackpot before making their selections. Each match can be considered separately by looking at recent form, home and away performance, league position and team news. Jackpot matches often come from different competitions, so the strength of one selection should not automatically be applied to another.</p>
-
-    <h2>Free VIP Tips Today</h2>
-    <p><strong>Free VIP tips today</strong> are searched by bettors looking for football selections without having to pay for access to a premium prediction service. Bao Predictions provides free football tips covering different fixtures and betting markets, allowing readers to see the available selections before deciding which ones they want to follow. Free tips should be assessed on their reasoning and record rather than claims of guaranteed results.</p>
+    <h2>Transparency</h2>
+    <p>Confidence is a capped model lean reviewed before publish — never a “sure win.” See <a href="/how-we-predict">How we predict</a> for publish rules, and <a href="/results">Results</a> for the settled record.</p>
 
     <p><strong>18+ only. Gamble responsibly.</strong> Never bet more than you can afford to lose. See <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/results">Results</a></p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/football-predictions-tomorrow">Tomorrow</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/results">Results</a></p>
   </div>
 </section>
 

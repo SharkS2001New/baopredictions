@@ -43,6 +43,8 @@ $payload = bao_curl_api('/api/ht-ft-predictions');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
 ?>
 
 <div class="wrap wrap-wide">
@@ -56,6 +58,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero page-hero--full">
     <h1>HT/FT Predictions Today</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <p class="lede">Halftime / full-time predictions for today — combinations that need both first-half and full-time outcomes. Useful when tempo and match context point the same way. Always re-check late team news before you stake.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
@@ -74,6 +77,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>
@@ -86,6 +90,8 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>Halftime Fulltime Predictions: Football Tips Today</h2>
     <p>Halftime fulltime predictions forecast both the half-time and full-time result of a football match. A selection such as <strong>X/1</strong> means the match is expected to be level at half-time before the home team wins at full-time. Bao Predictions uses first-half trends, full-time results, home and away form and other match data to identify the HT/FT outcomes with the strongest supporting evidence. The live board above shows today's published selections.</p>
+    <?php echo bao_shortlist_summary_html($games, 'HT/FT shortlist'); ?>
+
 
     <h2>What Is a Halftime Fulltime Prediction?</h2>
     <p>A <strong>halftime fulltime prediction</strong> combines two outcomes in one selection: the result at half-time and the result at the end of the match.</p>

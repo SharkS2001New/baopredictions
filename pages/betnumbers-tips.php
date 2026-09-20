@@ -36,6 +36,16 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/betnumbers-tips');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
+?>
 
 <div class="wrap wrap-wide">
 
@@ -48,9 +58,13 @@
 
 <header class="page-hero page-hero--full">
     <h1>Bet Numbers Prediction for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
-<p class="lede">Bet Numbers prediction for today covers football matches across local and international leagues. Bao Predictions compares 1X2, Double Chance, BTTS, Over/Under and related markets on each fixture, then publishes the single selection that best fits the evidence — so the tip numbers you see below are market picks, not random scorelines. Soccer tips for tomorrow and yesterday sit on their own boards.</p>
-<?php echo bao_intro_links_html('With our free tips, <a href="/football-predictions-yesterday">Football Predictions Yesterday</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> you can check settled results and coupons in one place.'); ?>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede"><strong>Bet Numbers prediction for today</strong> on <strong><?php echo bao_h($todayLabel); ?></strong><?php
+if ($tipCount > 0) {
+  echo ' — <strong>' . (int) $tipCount . ' published tips</strong>';
+}
+?>. Bao compares 1X2, Double Chance, BTTS, Over/Under and related markets on each fixture, then publishes the single selection that best fits the evidence — market picks, not random scorelines. Tomorrow and yesterday sit on their own boards.</p>
+<?php echo bao_intro_links_html('Check settled tips on <a href="/football-predictions-yesterday">Football Predictions Yesterday</a>, or open <a href="/jackpot-predictions">Jackpot Predictions</a> for Kenya coupons.'); ?>
   </header>
 
 </div>
@@ -61,13 +75,7 @@
 <div class="matches-area">
 
 
-  <?php
-require_once __DIR__ . '/../components/api-curl.php';
-require_once __DIR__ . '/../components/seo.php';
-$payload = bao_curl_api('/api/betnumbers-tips');
-$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
-  ? $payload['games']
-  : [];
+<?php
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (!$games) {
@@ -75,6 +83,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -121,7 +130,7 @@ if ($payload === null) {
     <p>That is why Bao's <strong>Betnumbers tips</strong> explain the football situation behind the selection instead of relying on unsupported accuracy claims. Market badges on each card show which market won the selection.</p>
 
     <h2>Betnumbers Today</h2>
-    <p>As of <strong>12 September 2026</strong>, daily Betnumbers-style prediction pages publish date-specific football selections across several leagues and markets, and they separate 1X2, Double Chance and Over/Under selections as the day's fixture list changes.</p>
+    <p>As of <strong><?php echo bao_h($todayLabel); ?></strong><?php if ($tipCount > 0) { echo ' with <strong>' . (int) $tipCount . ' tips</strong> on this board'; } ?>, Bet Numbers-style pages publish date-specific selections and separate markets as the day's fixture list changes.</p>
     <p>For Bao, the active prediction card follows the same basic principle: show the date clearly, keep completed fixtures separate from upcoming matches and update selections when important team information changes.</p>
     <p>This is particularly important for searches such as <strong>betnumbers prediction today</strong> and <strong>today's Betnumbers predictions</strong>, because an old result can remain online long after the match has finished. Check <a href="/results">Results</a> for settled tips, and use this page for the open card only.</p>
     <p>Bao Predictions does not guarantee winning results. Football remains unpredictable, and even a well-supported selection can lose.</p>

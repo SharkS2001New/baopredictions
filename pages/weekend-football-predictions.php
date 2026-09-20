@@ -43,6 +43,8 @@ $payload = bao_curl_api('/api/weekend-football-predictions');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
 $stats = bao_api_stats();
 $updatedIso = is_array($stats) && !empty($stats['last_updated'])
   ? (string) $stats['last_updated']
@@ -67,6 +69,7 @@ if ($marketWeekend > $pickCount) {
 
 <header class="page-hero page-hero--full">
     <h1>Weekend Football Predictions</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <p class="lede">Saturday and Sunday fixtures in one board — free weekend football tips across popular leagues. Plan the card early, then revisit as lineups land closer to kickoff. Each selection shows the lean and match context so you can compare fixtures before you stake.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
@@ -85,6 +88,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['show_date' => true, 'page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>

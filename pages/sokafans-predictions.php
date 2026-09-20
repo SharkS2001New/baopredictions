@@ -36,6 +36,16 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/sokafans-predictions');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
+?>
 
 <div class="wrap wrap-wide">
 
@@ -48,9 +58,13 @@
 
 <header class="page-hero page-hero--full">
     <h1>SokaFans Predictions for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
-<p class="lede">SokaFans predictions are searched for daily tips, weekend fixtures and Mega Jackpot coupons. This Bao Predictions board lists free SokaFans-style selections for today — one recommended market per match — so you can review form and venue without paying for a VIP wall. Jackpot players should still open the live operator sheet rather than treating this daily board as a full 17-game coupon.</p>
-<?php echo bao_intro_links_html('Continue with <a href="/weekend-football-predictions">Weekend Football Predictions</a> or the <a href="/jackpot-predictions">Jackpot Predictions</a> hub for SportPesa and Betika cards.'); ?>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede"><strong>SokaFans predictions</strong> on Bao Predictions are free mixed-market tips for <strong><?php echo bao_h($todayLabel); ?></strong><?php
+if ($tipCount > 0) {
+  echo ' — <strong>' . (int) $tipCount . ' published selections</strong>';
+}
+?>. Each card shows one recommended market (1X2, Double Chance, BTTS, Over/Under or HT/FT), the model lean and a short reason so you can judge form and venue before you stake. This daily board is not a full SportPesa Mega Jackpot coupon — open the live jackpot sheet when you are filling a 17-game card.</p>
+<?php echo bao_intro_links_html('Continue with <a href="/weekend-football-predictions">Weekend Football Predictions</a>, the <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> sheet, or the <a href="/jackpot-predictions">Jackpot Predictions</a> hub.'); ?>
   </header>
 
 </div>
@@ -59,14 +73,7 @@
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
-
-  <?php
-require_once __DIR__ . '/../components/api-curl.php';
-require_once __DIR__ . '/../components/seo.php';
-$payload = bao_curl_api('/api/sokafans-predictions');
-$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
-  ? $payload['games']
-  : [];
+<?php
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (!$games) {
@@ -74,6 +81,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'sokafans-predictions')]);
 }
+echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -88,45 +96,82 @@ require __DIR__ . '/../components/sidebar.php';
 
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
+<?php
+/*
+ * Keyword → section map (SokaFans):
+ * - sokafans predictions          → H1 + opening + this H2
+ * - sokafans prediction           → H2 “SokaFans Prediction”
+ * - sokafans prediction today /
+ *   sokafans tips today           → H2 “SokaFans Prediction Today” + tip board
+ * - sokafans mega jackpot /
+ *   sportpesa mega                → bao_brand_jackpot_sections_html
+ * - free sokafans predictions     → opening + FAQ + free-vs-VIP H2
+ * Tip board above remains the primary utility — copy explains it, does not re-list every pick.
+ */
+?>
     <h2>SokaFans Predictions</h2>
-    <p>Looking for <strong>SokaFans</strong> football predictions and tips? Bao Predictions covers daily football selections, jackpot fixtures and popular betting markets including 1X2, Double Chance, BTTS, Over/Under and Half Time/Full Time. Check the available match information and compare the selections before placing a bet.</p>
-
-    <h2>SokaFans</h2>
-    <p><strong>SokaFans</strong> searches are often associated with football predictions, betting tips and daily match selections. Bao Predictions provides football predictions across leagues and competitions, with individual matches assessed according to the market being considered.</p>
-    <p>You can review straightforward outcomes such as home win, draw or away win, as well as goal-based markets where they are available. The focus is on giving you the prediction and relevant match context without presenting any result as guaranteed.</p>
+    <p><strong>SokaFans predictions</strong> are daily football tip boards that Kenyan bettors often search alongside weekend fixtures and Mega Jackpot coupons. On Bao Predictions, this page is a free SokaFans-style board: one recommended market per fixture, with the lean and reasoning visible without a VIP paywall.</p>
+    <p>The tip cards above are the live selections for today. The sections below explain how to read a tip, when to switch to a jackpot sheet, and how this free board differs from paid tip packages.</p>
 
     <h2>SokaFans Prediction</h2>
-    <p>A <strong>SokaFans prediction</strong> gives you a football selection for an individual match or a group of fixtures. Depending on the match, the prediction may cover 1X2, Double Chance, BTTS, Over/Under or Half Time/Full Time.</p>
-    <p>When comparing predictions, look at the actual fixture as well as the selected market. A strong-looking team on paper does not automatically make every betting market suitable, particularly when the prediction is based on goals, both teams to score or a double-chance outcome.</p>
+    <p>A <strong>SokaFans prediction</strong> on this board is a single-fixture selection — not an accumulator ticket and not a full jackpot coupon. Depending on the evidence, the published market may be:</p>
+    <ul>
+      <li><strong>1X2</strong> — home win, draw or away win</li>
+      <li><strong>Double Chance</strong> — 1X, 12 or X2 when a single result looks thin</li>
+      <li><strong>BTTS</strong> — both teams to score</li>
+      <li><strong>Over/Under</strong> — usually the 2.5 goals line</li>
+      <li><strong>HT/FT</strong> — Half Time/Full Time combinations when tempo supports them</li>
+    </ul>
+    <p>Judge the pick against the fixture and the market shown on the card. A strong league position does not automatically justify every market — especially goals or Double Chance leans.</p>
 
     <h2>SokaFans Prediction Today</h2>
-    <p>For <strong>SokaFans prediction today</strong>, check the latest available football fixtures and selections for the current day's matches. Today's predictions can change as fixtures, team information and available markets are updated, so it is worth checking the latest version before making a selection.</p>
-    <p>The daily list can include matches from different competitions, giving you the option to review individual predictions rather than relying on one overall tip. Always check the fixture time and market before placing a bet.</p>
+    <p>For <strong>SokaFans prediction today</strong> on <strong><?php echo bao_h($todayLabel); ?></strong>, use the live board above. Tips can move when team news or kickoff changes land, so check the last-updated time before you stake.</p>
+    <?php echo bao_shortlist_summary_html($games, 'SokaFans shortlist'); ?>
+    <p>If you are planning Saturday–Sunday fixtures rather than today’s midweek slate, move to <a href="/weekend-football-predictions">Weekend Football Predictions</a>. Settled outcomes belong on <a href="/football-predictions-yesterday">Yesterday</a> and <a href="/results">Results</a> — not on this pre-match board.</p>
 
-    <?php require_once __DIR__ . '/../components/seo.php'; echo bao_brand_jackpot_sections_html('SokaFans'); ?>
+    <h2>How to read a tip on this board</h2>
+    <p>Before you copy a selection onto a slip, check:</p>
+    <ul>
+      <li>Kickoff time and whether the fixture is still scheduled</li>
+      <li>The market on the card (1X2 is not the same as Double Chance or Over/Under)</li>
+      <li>The short reason — it should match the market being tipped</li>
+      <li>Confidence as a model lean only (capped for publish; never a “sure win”)</li>
+      <li>Whether you need a jackpot sheet instead of a daily singles board</li>
+    </ul>
+    <p>Bao’s publish rules and confidence caps are documented on <a href="/how-we-predict">How we predict</a>.</p>
 
-    <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. See <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-yesterday">Yesterday</a> · <a href="/results">Results</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a></p>
+    <?php echo bao_brand_jackpot_sections_html('SokaFans'); ?>
+
+    <h2>Free SokaFans-style tips vs VIP walls</h2>
+    <p>Many SokaFans-style searches expect a free daily list, then hit a paywall for “VIP” or long jackpot packages. This Bao page keeps the daily mixed-market board free: every card above shows the pick and reason without registration.</p>
+    <p>What you still need to verify yourself: the bookmaker’s live odds, confirmed lineups, and — for coupons — the current SportPesa Mega Jackpot or Betika round on the operator app. A free tip board does not replace the live coupon.</p>
+
+    <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions based on available match data, not guaranteed outcomes. Stake only what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a> · <a href="/cheerplex-tips">Cheerplex Tips</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>
   </div>
 </section>
 
 <?php
 $faqs = [
   [
-    'q' => 'Are SokaFans predictions free here?',
-    'a' => 'Yes. Every tip board and jackpot sheet on Bao Predictions is free to view. There is no VIP paywall on this page.',
+    'q' => 'Are SokaFans predictions free on Bao Predictions?',
+    'a' => 'Yes. This SokaFans-style board and every jackpot sheet on Bao Predictions are free to view. There is no VIP paywall on the tip cards above.',
   ],
   [
     'q' => 'Which markets appear on this board?',
-    'a' => 'The same mixed-market engine as Bet Numbers Tips: 1X2, BTTS, Over/Under 2.5 and Double Chance — one recommended market per fixture.',
+    'a' => 'The same mixed-market engine as Bet Numbers Tips: 1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture, with a short reason on the card.',
   ],
   [
-    'q' => 'Where are jackpot sheets?',
-    'a' => 'Use the Jackpot Predictions hub for SportPesa Mega, Midweek, Betika, SportyBet, Odibets Laki Tatu and Mozzart Super Daily — each match is analysed separately.',
+    'q' => 'Is this a SportPesa Mega Jackpot coupon?',
+    'a' => 'No. This page is the daily tip board. For the live 17-game card open SportPesa Mega Jackpot Predictions, or use the Jackpot Predictions hub for Betika, SportyBet, Odibets Laki Tatu and Mozzart sheets.',
+  ],
+  [
+    'q' => 'How do I know the tips are still current?',
+    'a' => 'Check the last-updated timestamp at the top of this page and the kickoff on each card. Team news can change a lean after first publish — re-check before you stake.',
   ],
   [
     'q' => 'Do you guarantee wins?',
-    'a' => 'No. Football predictions are opinions based on available match data, not guaranteed outcomes. Stake only what you can afford to lose.',
+    'a' => 'No. Confidence figures are model leans with a publish cap, not promised win rates. Stake only what you can afford to lose.',
   ],
 ];
 ?>

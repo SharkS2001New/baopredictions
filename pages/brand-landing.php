@@ -32,15 +32,19 @@ $faqs = [
   ],
   [
     'q' => 'Which markets appear on this board?',
-    'a' => 'The same mixed-market engine as Bet Numbers Tips: 1X2, BTTS, Over/Under 2.5 and Double Chance — one recommended market per fixture.',
+    'a' => 'The same mixed-market engine as Bet Numbers Tips: 1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture, with a short reason on the card.',
   ],
   [
-    'q' => 'Where are jackpot sheets?',
-    'a' => 'Use the Jackpot Predictions hub for SportPesa Mega, Midweek, Betika, SportyBet, Odibets Laki Tatu and Mozzart Super Daily — each match is analysed separately.',
+    'q' => 'Is this a SportPesa Mega Jackpot coupon?',
+    'a' => 'No. This page is the daily tip board. For the live 17-game card open SportPesa Mega Jackpot Predictions, or use the Jackpot Predictions hub for Betika, SportyBet, Odibets Laki Tatu and Mozzart sheets.',
+  ],
+  [
+    'q' => 'How do I know the tips are still current?',
+    'a' => 'Check the last-updated timestamp at the top of this page and the kickoff on each card. Team news can change a lean after first publish — re-check before you stake.',
   ],
   [
     'q' => 'Do you guarantee wins?',
-    'a' => 'No. Football predictions are opinions based on available match data, not guaranteed outcomes. Stake only what you can afford to lose.',
+    'a' => 'No. Confidence figures are model leans with a publish cap, not promised win rates. Stake only what you can afford to lose.',
   ],
 ];
 
@@ -101,9 +105,23 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 <header class="page-hero page-hero--full">
     <h1><?php echo bao_h($h1); ?></h1>
 <?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<?php if ($intro !== ''): ?>
-    <p class="lede"><?php echo $intro; ?></p>
-<?php endif; ?>
+<?php
+$tipCount = count($games);
+$todayLabel = date('j F Y');
+if ($intro !== '') {
+  echo '<p class="lede">' . $intro;
+  if ($tipCount > 0) {
+    echo ' <strong>' . (int) $tipCount . ' tips</strong> are on the board for <strong>' . bao_h($todayLabel) . '</strong>.';
+  }
+  echo '</p>';
+} else {
+  echo '<p class="lede"><strong>' . bao_h($brand) . ' predictions</strong> on Bao Predictions are free mixed-market tips for <strong>' . bao_h($todayLabel) . '</strong>';
+  if ($tipCount > 0) {
+    echo ' — <strong>' . (int) $tipCount . ' published selections</strong>';
+  }
+  echo '. Each card shows one recommended market (1X2, Double Chance, BTTS, Over/Under or HT/FT), the model lean and a short reason.</p>';
+}
+?>
 <?php echo bao_intro_links_html($introLinks !== '' ? $introLinks : null); ?>
   </header>
 
@@ -122,6 +140,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => $slug]);
 }
+echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -136,21 +155,11 @@ require __DIR__ . '/../components/sidebar.php';
 
 <section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
-    <h2><?php echo bao_h($brand); ?> Predictions</h2>
-    <p>Looking for <strong><?php echo bao_h($brand); ?></strong> football predictions and tips? Bao Predictions covers daily football selections, jackpot fixtures and popular betting markets including 1X2, Double Chance, BTTS, Over/Under and Half Time/Full Time. Check the available match information and compare the selections before placing a bet.</p>
-
-    <h2><?php echo bao_h($brand); ?> Prediction</h2>
-    <p>A <strong><?php echo bao_h($brand); ?> prediction</strong> gives you a football selection for an individual match or a group of fixtures. Depending on the match, the prediction may cover 1X2, Double Chance, BTTS, Over/Under or Half Time/Full Time.</p>
-    <p>When comparing predictions, look at the actual fixture as well as the selected market. A strong-looking team on paper does not automatically make every betting market suitable, particularly when the prediction is based on goals, both teams to score or a double-chance outcome.</p>
-
-    <h2><?php echo bao_h($brand); ?> Prediction Today</h2>
-    <p>For <strong><?php echo bao_h($brand); ?> prediction today</strong>, check the latest available football fixtures and selections for the current day's matches. Today's predictions can change as fixtures, team information and available markets are updated, so it is worth checking the latest version before making a selection.</p>
-    <p>The daily list can include matches from different competitions, giving you the option to review individual predictions rather than relying on one overall tip. Always check the fixture time and market before placing a bet.</p>
-
-<?php echo bao_brand_jackpot_sections_html($brand); ?>
-
-    <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. See <a href="/responsible-betting">Responsible Betting</a>.</p>
-    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/football-predictions-yesterday">Yesterday</a> · <a href="/results">Results</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/betnumbers-tips">Bet Numbers Tips</a></p>
+<?php
+echo bao_brand_seo_stack_html($brand, $games, [
+  'shortlist_label' => $brand . ' shortlist',
+]);
+?>
   </div>
 </section>
 

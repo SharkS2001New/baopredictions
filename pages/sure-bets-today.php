@@ -43,6 +43,8 @@ $payload = bao_curl_api('/api/sure-bets-today');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
 ?>
 
 <div class="wrap wrap-wide">
@@ -56,6 +58,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero page-hero--full">
     <h1>Sure Bets Today — Strongest Leans</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <p class="lede">Sure bets today are a cross-market shortlist of Bao Predictions' stronger published leans — not guaranteed results. Each tip shows the recommended market and confidence so you can narrow fixtures worth closer attention before kickoff.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
@@ -74,6 +77,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>

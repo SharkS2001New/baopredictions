@@ -43,6 +43,8 @@ $payload = bao_curl_api('/api/over-under-predictions');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
 ?>
 
 <div class="wrap wrap-wide">
@@ -56,6 +58,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero page-hero--full">
     <h1>Over/Under Predictions Today</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <p class="lede">Free Over/Under football predictions for today's fixtures, including the 2.5 goals line. Tips are built from scoring and defensive trends rather than match winners alone. Check each card below, then compare with BTTS when both sides look likely to score.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
@@ -74,6 +77,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>
@@ -86,6 +90,8 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>Over/Under Predictions: Football Goal Tips Today</h2>
     <p><strong>Over/Under predictions</strong> are football forecasts based on the total number of goals expected in a match. An Over selection predicts that the game will finish with more goals than the specified line, while an Under selection predicts fewer. The most commonly searched football line is <strong>Over/Under 2.5 goals</strong>, where Over 2.5 requires at least three goals and Under 2.5 requires two or fewer.</p>
+    <?php echo bao_shortlist_summary_html($games, 'Over/Under shortlist'); ?>
+
     <p>Bao Predictions provides free Over/Under predictions for today's football fixtures, using recent scoring and defensive form, home and away performance, head-to-head results and available team information to assess the expected goal pattern of each match. The live board above shows today's published selections.</p>
 
     <h2>How Over/Under 2.5 Goals Works</h2>

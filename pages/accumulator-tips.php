@@ -36,6 +36,11 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/accumulator-tips');
+?>
 
 <div class="wrap wrap-wide">
 
@@ -48,8 +53,9 @@
 
 <header class="page-hero page-hero--full">
     <h1>Accumulator Tips Today</h1>
-<p class="lede">Pre-built 3-, 5- and 8-fold accumulator tips for today. Each leg is checked against the current schedule, with combined odds shown upfront so you can review the ticket before kickoff.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede">Pre-built 3-, 5- and 8-fold accumulator tips for <strong><?php echo bao_h(date('j F Y')); ?></strong>. Each leg is checked against the current schedule, with combined odds shown upfront so you can review the ticket before kickoff.</p>
+<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -59,9 +65,6 @@
 <div class="main-grid">
 <div class="matches-area">
 <?php
-require_once __DIR__ . '/../components/seo.php';
-require_once __DIR__ . '/../components/api-curl.php';
-$payload = bao_curl_api('/api/accumulator-tips');
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (empty($payload['accumulators'])) {

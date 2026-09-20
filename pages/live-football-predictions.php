@@ -43,6 +43,8 @@ $payload = bao_curl_api('/api/live-football-predictions');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
 $stats = bao_api_stats();
 $updatedIso = is_array($stats) && !empty($stats['last_updated'])
   ? (string) $stats['last_updated']
@@ -66,6 +68,7 @@ if ($marketLive > $liveCount) {
 
 <header class="page-hero page-hero--full">
     <h1>Live Football Predictions & Scores</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <p class="lede">In-play football scores beside any still-relevant tips. Score and minute come first; published leans stay visible when they still matter. The page refreshes about every 90 seconds so you can follow the slate as matches unfold.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
@@ -84,6 +87,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['class' => 'live-board', 'page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>

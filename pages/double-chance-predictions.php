@@ -43,6 +43,8 @@ $payload = bao_curl_api('/api/double-chance-predictions');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
 ?>
 
 <div class="wrap wrap-wide">
@@ -56,6 +58,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero page-hero--full">
     <h1>Double Chance Predictions Today</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <p class="lede">Free Double Chance tips covering 1X, 12 and X2 — two outcomes in one selection when a single result looks thin. Each card shows the recommended cover with form and fixture context. Use this board alongside 1X2 when you want safer match-result cover.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
@@ -74,6 +77,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>
@@ -86,6 +90,8 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>Double Chance Predictions: Football Tips Today</h2>
     <p><strong>Double Chance predictions</strong> cover two of the three possible match results in a single selection: home win or draw (1X), home win or away win (12), or draw or away win (X2). This gives the prediction a wider result range than a standard 1X2 pick, while still requiring the selected outcome combination to occur.</p>
+    <?php echo bao_shortlist_summary_html($games, 'Double Chance shortlist'); ?>
+
     <p>Bao Predictions provides free <strong>Double Chance predictions</strong> for today's football fixtures. The selections are based on factors such as recent form, league position, home and away performance, head-to-head results, team news and player availability. The live board above shows today's published Double Chance leans.</p>
 
     <h2>What Does Double Chance Mean?</h2>

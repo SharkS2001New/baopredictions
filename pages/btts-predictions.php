@@ -43,6 +43,8 @@ $payload = bao_curl_api('/api/btts-predictions');
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
 ?>
 
 <div class="wrap wrap-wide">
@@ -56,6 +58,7 @@ $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['
 
 <header class="page-hero page-hero--full">
     <h1>BTTS Predictions Today — Both Teams To Score</h1>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
 <p class="lede">Free <strong>BTTS</strong> (both teams to score) predictions today for matches where each side has a credible route to a goal. Selections use scoring form, defensive records and home/away patterns. Review the card reasoning below, then cross-check Over/Under or 1X2 when goals markets are not the best fit.</p>
 <?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
@@ -74,6 +77,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
+echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>
@@ -86,6 +90,8 @@ if ($payload === null) {
   <div class="wrap prose">
     <h2>BTTS Predictions Today: Both Teams To Score</h2>
     <p><strong>BTTS predictions today</strong> identify football matches where both the home and away teams are expected to score at least once. The final result does not matter for a BTTS Yes selection: 1-1, 2-1 and 3-2 all qualify because both sides found the net.</p>
+    <?php echo bao_shortlist_summary_html($games, 'BTTS shortlist'); ?>
+
     <p>Bao Predictions provides free <strong>BTTS predictions</strong> across today's football fixtures, with selections based on factors such as recent scoring form, goals conceded, home and away performance, head-to-head results and available team information. The focus is on finding matches where the evidence supports goals at both ends. The live board above shows today's published BTTS leans.</p>
 
     <h2>How BTTS Predictions Are Made</h2>

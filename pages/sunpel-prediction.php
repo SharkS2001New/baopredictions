@@ -36,6 +36,16 @@
 <body>
     <?php require __DIR__ . '/../components/header.php'; ?>
 <main id="main">
+<?php
+require_once __DIR__ . '/../components/seo.php';
+require_once __DIR__ . '/../components/api-curl.php';
+$payload = bao_curl_api('/api/sunpel-prediction');
+$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
+  ? $payload['games']
+  : [];
+$tipCount = count($games);
+$todayLabel = date('j F Y');
+?>
 
 <div class="wrap wrap-wide">
 
@@ -48,8 +58,12 @@
 
 <header class="page-hero page-hero--full">
     <h1>Sunpel Prediction for Today</h1>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_board_freshness_html(); ?>
-<p class="lede">Sunpel prediction is a popular search for daily football tips, correct-score style ideas and Kenya jackpot analysis. Bao Predictions publishes a free Sunpel-style board for today: mixed markets with clear reasoning on each card, plus guidance on checking tip freshness so an old indexed round is not mistaken for this weekend’s live coupon.</p>
+<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
+<p class="lede"><strong>Sunpel prediction</strong> for <strong><?php echo bao_h($todayLabel); ?></strong><?php
+if ($tipCount > 0) {
+  echo ' — <strong>' . (int) $tipCount . ' free tips</strong>';
+}
+?> on Bao Predictions: mixed markets with clear reasoning on each card. Check tip freshness so an old indexed round is not mistaken for this weekend’s live coupon.</p>
 <?php echo bao_intro_links_html('Compare <a href="/betnumbers-tips">Bet Numbers Tips</a> on the same engine, or open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> for the current Mega card.'); ?>
   </header>
 
@@ -60,13 +74,7 @@
 <div class="main-grid">
 <div class="matches-area">
 
-  <?php
-require_once __DIR__ . '/../components/api-curl.php';
-require_once __DIR__ . '/../components/seo.php';
-$payload = bao_curl_api('/api/sunpel-prediction');
-$games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
-  ? $payload['games']
-  : [];
+<?php
 if ($payload === null) {
   echo bao_api_fail_msg();
 } elseif (!$games) {
@@ -74,6 +82,7 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'sunpel-prediction')]);
 }
+echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -114,7 +123,7 @@ require __DIR__ . '/../components/sidebar.php';
 
     <h2>Sunpel jackpot prediction and previous results</h2>
     <p>Jackpot predictions need an additional freshness check because the fixture list changes every week. A <strong>Sunpel jackpot prediction</strong> from a previous round should not be treated as today's selection simply because the page remains indexed.</p>
-    <p>Sunpel’s jackpot section does provide previous selections with result statuses, which can be useful when reviewing how individual picks performed. Its published jackpot page, however, currently surfaces a SportPesa Mega Jackpot card dated 29 August 2026, showing why bettors should check the date and status before using an old selection.</p>
+    <p>Sunpel’s jackpot section does provide previous selections with result statuses, which can be useful when reviewing how individual picks performed. Indexed jackpot pages can outlive the round they were written for — always check the date and status before using an old selection.</p>
     <p>For Bao Predictions, the goal is to keep the active fixture list clearly separated from previous results and to explain difficult matches rather than hiding uncertainty behind a high confidence label. Start with our live <a href="/jackpot-predictions">jackpot predictions</a> hub, then open the sheet that matches your coupon.</p>
 
     <h2>How Bao compares on the same markets</h2>
