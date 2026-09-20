@@ -104,26 +104,35 @@ if ($payload === null) {
 </div>
 </section>
 
-<section class="section section-muted">
+<section class="section section-muted bao-seo-stack">
   <div class="wrap prose">
-    <h2>How we work</h2>
-    <p>Most tip sites either bury you in picks or quietly delete the ones that lost. We do the opposite — everything we publish stays up after it settles, and every card explains the thinking behind it, so you can weigh it yourself instead of just trusting a number.</p>
-    <p>Here's what actually goes into a prediction:</p>
-    <p>Form matters most when it's recent and relevant — we weight a team's last few results more heavily if they came in the same competition and at the same ground as the match coming up. A cup run away from home tells you less about Saturday's league game than people think.</p>
-    <p>Head-to-head history still counts, but less than it used to once half the squad has turned over since the last meeting. We check it, we just don't lean on it the way older tipster sites do.</p>
-    <p>Team news gets checked as late as possible — an injury confirmed Thursday can flip a pick that looked solid on Tuesday.</p>
-    <p>We also watch the market. When our own read on a match disagrees sharply with the bookmakers' price, that's usually the game worth a second look, not the one to skip.</p>
-    <p>And motivation counts for something the stats sheet won't show you — a team fighting relegation plays differently than one with nothing left to play for. That's why Must-Win Teams gets its own list instead of getting mixed in with everything else.</p>
-    <h3>What the confidence numbers mean</h3>
-    <p>75–85% is as sure as we publish — cards are hard-capped at 85%, and we never show 100%, because that would read as a guarantee. 60–74% is a solid lean, still not a lock. 55–59% is a thinner edge — better for an accumulator leg than a heavy single. Below 55%, we don't publish it on tip boards. If the data doesn't point anywhere, we'd rather say nothing than guess and call it analysis.</p>
-    <p>None of this is a guarantee. Football doesn't work that way, and our best picks still lose sometimes. The <a href="/results">results page</a> shows exactly how often — we'd rather you see the real numbers than take our word for it. If you want the longer version of all this, it's on <a href="/how-we-predict">How We Predict</a>.</p>
-    <p><strong>Jackpots:</strong> we cover SportPesa Mega and Midweek, Betika Midweek, SportyBet Daily, and Odibets Laki Tatu. Every game on every sheet gets its own note — a 17-game jackpot only needs one bad line to fall apart, so we don't phone in the analysis on any single match.</p>
-    <p><strong>One more thing:</strong> we're not a bookmaker, and nothing here is financial advice. Bet with licensed operators, stay 18+, and have a read of our <a href="/responsible-betting">responsible betting guide</a> if you haven't already.</p>
+    <h2>Bao Predictions</h2>
+    <p><strong>Bao Predictions</strong> provides free football predictions and betting tips for matches from domestic and international leagues. Our football tips cover <a href="/1x2-predictions">1X2</a>, <a href="/double-chance-predictions">Double Chance</a>, <a href="/btts-predictions">BTTS</a>, <a href="/over-under-predictions">Over/Under</a> and <a href="/ht-ft-predictions">HT/FT</a>, together with <a href="/football-predictions-today">daily match predictions</a> and <a href="/jackpot-predictions">jackpot selections</a>. Each fixture is assessed using factors such as recent form, home and away performance, head-to-head results and available team information.</p>
+
+    <h2>Direct Win Prediction</h2>
+    <p><strong>Direct win prediction</strong> focuses on selecting the team expected to win a football match outright. Bao Predictions provides direct win selections for fixtures where the available form and match information point towards a home or away victory. The analysis considers recent results, home advantage, league position and other relevant factors before the prediction is published. See today's <a href="/1x2-predictions">1X2 predictions</a> and <a href="/must-win-teams-today">Must Win Teams</a> for the current board.</p>
+
+    <h2>SokaFans</h2>
+    <p><strong>SokaFans</strong> predictions cover daily football tips, match selections and jackpot predictions for football followers looking for upcoming fixtures. SokaFans tips can include different football markets, while Bao Predictions provides its own daily analysis across 1X2, Double Chance, BTTS, Over/Under and HT/FT. Readers can review the available information and compare selections before making their own decisions.</p>
+
+    <h2>Cheerplex</h2>
+    <p><strong>Cheerplex</strong> predictions and football tips are followed by bettors looking for daily match selections and jackpot predictions. The available tips can cover individual matches as well as larger jackpot coupons. Bao Predictions also provides daily football analysis, with individual fixtures assessed according to their recent form, venue, competition and other relevant match information.</p>
+
+    <h2>Everyday Winning Tips</h2>
+    <p><strong>Everyday winning tips</strong> are aimed at football bettors who want fresh selections for matches taking place throughout the week. Bao Predictions publishes daily football tips across several markets, including direct wins, Double Chance, BTTS and Over/Under. Results are never guaranteed, so each selection should be treated as football analysis rather than a certain outcome. Check <a href="/results">Results</a> and <a href="/football-predictions-yesterday">Yesterday</a> for the public record of wins and losses.</p>
+
+    <h2>Cheerplex Mega Jackpot Prediction</h2>
+    <p><strong>Cheerplex Mega Jackpot prediction</strong> content helps bettors review the fixtures included in the Mega Jackpot before making their selections. Each match can be considered separately by looking at recent form, home and away performance, league position and team news. Jackpot matches often come from different competitions, so the strength of one selection should not automatically be applied to another. For Bao's live sheets, see <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot predictions</a> and the full <a href="/jackpot-predictions">jackpot hub</a>.</p>
+
+    <h2>Free VIP Tips Today</h2>
+    <p><strong>Free VIP tips today</strong> are searched by bettors looking for football selections without having to pay for access to a premium prediction service. Bao Predictions provides free football tips covering different fixtures and betting markets, allowing readers to see the available selections before deciding which ones they want to follow. Free tips should be assessed on their reasoning and record rather than claims of guaranteed results. Start with <a href="/football-predictions-today">today's board</a>, <a href="/sure-bets-today">Sure Bets Today</a>, or <a href="/banker-of-the-day">Banker of the Day</a>.</p>
+
+    <p><strong>18+ only. Gamble responsibly.</strong> Never bet more than you can afford to lose. See <a href="/responsible-betting">Responsible Betting</a>.</p>
+    <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/how-we-predict">How We Predict</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/results">Results</a></p>
   </div>
 </section>
 
 <?php
-$baoTrack = is_array($baoStats['track'] ?? null) ? $baoStats['track'] : [];
 $faqs = [
   [
     'q' => 'Are Bao Predictions free?',
