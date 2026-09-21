@@ -25,7 +25,5 @@
 <h3>“Sure wins” wording</h3>
 <p><strong>Vitibet prediction today sure wins</strong> is high-intent phrasing that football cannot support. No forecast, statistical or otherwise, removes the chance of a late equaliser or a red card. Confidence on these cards is capped and presented as a lean. If you want fewer selections held to a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> is the shortlist board — a tighter filter, not a promise.</p>
 
-<h3>What the other Vitibet pages leave unclear</h3>
-<p>The reviewed pages in this cluster do calendar coverage well and say little about its limits. None map the "next 7 days" intent onto a practical routine — plan early, confirm on matchday — and several carry sure-win language in headings without a settled record behind it. Setting out that routine, and being explicit about what a forward forecast cannot know, is the gain here.</p>
 <p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-tomorrow">Tomorrow</a> · <a href="/weekend-football-predictions">Weekend</a> · <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/results">Results</a></p>

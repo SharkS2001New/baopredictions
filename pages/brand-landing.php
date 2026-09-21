@@ -143,7 +143,6 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => $slug]);
 }
-echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->

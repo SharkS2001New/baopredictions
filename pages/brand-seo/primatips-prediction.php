@@ -26,7 +26,5 @@
 <h3>What this page will not do</h3>
 <p>No invented correct scores, no guaranteed-win language, and no filler sections added to reach a word count. Confidence is a capped lean, and a thin read stays a thin read. Skipping a fixture is a legitimate outcome of analysis.</p>
 
-<h3>What the other PrimaTips pages leave unclear</h3>
-<p>The reviewed pages serving this cluster are largely thin keyword pages: a brand name, a list, and little explanation of how the selections were reached or when they were published. Setting out the method in full, attaching a reason to each card, and keeping the fixture slate unique to this URL rather than shared with the other brand boards on Bao is the difference.</p>
 <p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>

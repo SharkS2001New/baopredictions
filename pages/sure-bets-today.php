@@ -77,7 +77,6 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? '')]);
 }
-echo bao_results_bridge_html();
 ?>
   </div><!-- /.matches-area -->
 <?php require __DIR__ . '/../components/sidebar.php'; ?>

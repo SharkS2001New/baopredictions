@@ -26,7 +26,5 @@
 <h3>Why this page does not publish a correct score</h3>
 <p><strong>Mighty Tips correct score</strong> is a popular search and the hardest market in football to call. A scoreline needs both the result and the exact goal count to land, and the pages that publish them rarely show a settled record for that market specifically. Rather than print a number that looks authoritative, this board names the market the evidence supports — often Over/Under or BTTS where the scoring pattern is the real signal.</p>
 
-<h3>What the other Mighty Tips pages leave unclear</h3>
-<p>The reviewed pages in this cluster are strong on listing volume and scoreline presentation, and several mix free lists with paid access without making the boundary obvious at a glance. What they leave thin is an explanation of why a given market was chosen and what would change it. Every card on this page is free to view, confidence is capped rather than sold as accuracy, and the fixture slate is unique to this URL.</p>
 <p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/ht-ft-predictions">HT/FT Predictions</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>

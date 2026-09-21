@@ -81,7 +81,6 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'venasbet-predictions')]);
 }
-echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -115,16 +114,12 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Where the evidence is thin, the lean stays thin rather than being dressed up as a banker. A lunchtime read can move once evening lineups land, so re-check before staking.</p>
 
-    <h2>Check the publication date</h2>
-    <p>The cards above are the open list on this page, with kickoff times shown per fixture. When this page was researched in September 2026, several VenasBet-branded pages were serving fixture tables dated weeks earlier while still reading as current — the clearest argument for checking the date before anything else. Settled tips move to <a href="/results">Results</a>.</p>
 
     <h2>Markets on this VenasBet board</h2>
     <p>Not every fixture deserves a match-winner. A stronger side on paper can still be a Double Chance or Under selection if the price and form say so. Use 1X2 when venue and recent form line up clearly. Prefer Double Chance when the underdog is competitive enough that a straight match-winner is fragile — common in congested midweeks. Lean BTTS or Over/Under when both attacks create chances or when a key defender is confirmed out. HT/FT appears only when first-half patterns are clear enough to justify the extra risk.</p>
     <p>Compare a higher-floor shortlist on <a href="/sure-bets-today">Sure Bets Today</a> when you want fewer, tighter picks. Build accumulators from the stronger leans only, after kickoffs still match your slip. Do not stake every card as one multi by default — that is how a single late equaliser clears a tidy-looking slip.</p>
     <p>Only the open card above is active for <strong><?php echo bao_h($todayLabel); ?></strong>. Older indexed VenasBet-style pages should not be staked, however current the layout looks.</p>
 
-    <h3>What the other VenasBet pages leave unclear</h3>
-    <p>The five VenasBet-related pages reviewed for this article publish broad market coverage with odds and probability columns, which is genuinely useful. Three of them describe the service as providing “guaranteed” or “100% sure” predictions, wording no football tipster can support, and several carry dated fixture tables without making the date obvious. None explain when a goals market or Double Chance is the better home for a lean than a forced 1X2. Stating that reasoning, publishing a visible date and dropping guarantee language is the difference on this page.</p>
 
     <p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions based on available match data, not guaranteed outcomes. <a href="/responsible-betting">Responsible Betting</a>.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>

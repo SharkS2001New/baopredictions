@@ -25,7 +25,5 @@
 <h3>Correct score and Victorpredict Tips180</h3>
 <p><strong>Tips180 correct score</strong> is the market most likely to be presented with more confidence than it deserves; a scoreline needs the result and the exact goal count together. This page does not publish invented scorelines. Where the scoring pattern is the strongest signal, the card names Over/Under or BTTS instead. Cross-traffic from <strong>Victorpredict Tips180</strong> can compare <a href="/victorspredicts">Victor Prediction</a>, which keeps a separate fixture slate.</p>
 
-<h3>What the other Tips180 pages leave unclear</h3>
-<p>The reviewed pages emphasise tip volume and correct-score grids, with limited explanation of market choice. None of them set out when Double Chance should replace a straight 1X2, which is the decision most of this brand's traffic is actually trying to make. Writing that rule down, and showing the reason on each card, is the difference on this page.</p>
 <p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/double-chance-predictions">Double Chance Predictions</a> · <a href="/victorspredicts">Victor Prediction</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>

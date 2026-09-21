@@ -81,7 +81,6 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'cheerplex-tips')]);
 }
-echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -127,10 +126,8 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Midweek coupons live under the <a href="/jackpot-predictions">Jackpot Predictions</a> hub. Indexed Mega articles can outlive the round — date-check every time. Settled daily tips move to <a href="/results">Results</a>. Only the open card above is active for <strong><?php echo bao_h($todayLabel); ?></strong>.</p>
 
-    <h3>What the other Cheerplex pages leave unclear</h3>
-    <p>The five Cheerplex-related pages reviewed for this article cover fixture lists, exact-score tables, VIP upsell terms and SportPesa Mega Jackpot framing. Several market “sure multibets” or improved jackpot accuracy without a settled record behind the claim, and one displays a free daily table whose most recent entries predate the current day. None of them state the limits of an exact-score selection or separate the daily board from the Mega Jackpot coupon with a date check. This page does both, and every tip stays free to view for Kenyan and broader African readers.</p>
-
-    <p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions, not guaranteed outcomes. Stake only what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
+    
+<p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions, not guaranteed outcomes. Stake only what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>
   </div>
 </section>

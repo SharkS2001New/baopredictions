@@ -81,7 +81,6 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'sokafans-predictions')]);
 }
-echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -121,10 +120,8 @@ require __DIR__ . '/../components/sidebar.php';
     <h3>Mega Jackpot vs this daily board</h3>
     <p>A <strong>SokaFans Mega Jackpot prediction</strong> is a different product from a daily singles board: seventeen SportPesa fixtures that must match the live coupon. Open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> when you are filling the SportPesa Mega Jackpot card, then confirm every kickoff on SportPesa. Midweek Kenyan coupons sit under the <a href="/jackpot-predictions">Jackpot Predictions</a> hub. Jackpot articles routinely stay online after a round closes, which makes the date check the most useful habit in this category.</p>
 
-    <h3>What the other SokaFans pages leave unclear</h3>
-    <p>The five SokaFans-related pages reviewed for this article concentrate on fixture lists, probability labels, free-versus-VIP tiers and jackpot promotion. Two of them use “sure win” or 100% framing without publishing a settled record a reader could audit, and none separate the daily singles board from the Mega Jackpot coupon with a clear date check. A more useful page puts the prediction into match context — market type, recent form, venue, team news — and says plainly which product the reader is looking at. That is what this board does, with every card free to view.</p>
-
-    <p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions based on available match data, not guaranteed outcomes. Stake only what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
+    
+<p><strong>18+ only. Gamble responsibly.</strong> Tips are opinions based on available match data, not guaranteed outcomes. Stake only what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>
   </div>
 </section>

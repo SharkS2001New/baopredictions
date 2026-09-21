@@ -26,7 +26,5 @@
 <h3>Mega Jackpot</h3>
 <p><strong>Supatips Mega Jackpot prediction</strong> means the current SportPesa 17-game card, which this daily board does not reproduce. Open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a>, confirm all 17 fixtures against the live SportPesa slip, and check the round's start and end dates. Other Kenyan coupons sit under the <a href="/jackpot-predictions">Jackpot Predictions</a> hub. Jackpot pages are the worst offenders for staying online past their round, so this check matters more here than anywhere else on the site.</p>
 
-<h3>What the other Supatips pages leave unclear</h3>
-<p>The reviewed pages in this cluster commonly run daily tips and Mega Jackpot copy on one URL, with accuracy claims that are not backed by a settled, checkable record. Keeping the two intents apart, publishing every tip free, and tying the board to a visible date is the practical gain for readers here.</p>
 <p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
 <p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>

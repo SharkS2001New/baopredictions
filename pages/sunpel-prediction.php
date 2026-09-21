@@ -82,7 +82,6 @@ if ($payload === null) {
 } else {
   echo bao_matches_html($games, ['page' => (string)($payload['page'] ?? 'sunpel-prediction')]);
 }
-echo bao_results_bridge_html();
 ?>
 
   </div><!-- /.matches-area -->
@@ -125,10 +124,8 @@ require __DIR__ . '/../components/sidebar.php';
     </ul>
     <p>Use <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> or the <a href="/jackpot-predictions">Jackpot Predictions</a> hub, then re-check the operator app.</p>
 
-    <h3>What the other Sunpel pages leave unclear</h3>
-    <p>The five Sunpel-related pages reviewed for this article list fixtures, promote M-Pesa jackpot access or republish Sunpel-branded Mega Jackpot slips. Two of them claim success rates above 90% across 1X2 and Double Chance without publishing a settled record against a specific coupon, and one daily table's most recent dated entries predate the current day. The free-versus-paid boundary is also easy to miss when the same page carries both. This page keeps every tip free, names one market per fixture with the reason, ties the board to a visible date, and routes jackpot intent to the live operator sheet rather than a stale 17-leg mirror.</p>
-
-    <p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. Only stake what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
+    
+<p><strong>18+ only. Gamble responsibly.</strong> Football predictions are opinions, not guaranteed outcomes. Only stake what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
     <p class="seo-related"><strong>Related:</strong> <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/jackpot-predictions">Jackpot Predictions</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>
   </div>
 </section>
