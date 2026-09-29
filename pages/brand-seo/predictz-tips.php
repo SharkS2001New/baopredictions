@@ -1,30 +1,33 @@
 <?php
-/** Unique SEO body for /predictz-tips — do not share across brands. */
+/** Unique SEO body for /predictz-tips — MD-pattern content. */
 ?>
-<p>A <strong>PredictZ</strong> tip is a daily football prediction organised by fixture date, covering match result and goals markets. The searches around the brand — <strong>PredictZ today</strong>, <strong>100 PredictZ</strong>, <strong>Surebet PredictZ</strong> — mix an ordinary request for today's card with wording that implies certainty. Those are two different things, and only the first can be answered honestly.</p>
-<?php echo bao_shortlist_summary_html($games, 'PredictZ shortlist'); ?>
-
-<h2>What a PredictZ-style prediction covers</h2>
-<p>Pages in this cluster typically publish a dated fixture list with a suggested result, sometimes a scoreline, and occasionally a goals angle. The board on this page works differently: one recommended market per fixture across 1X2, Double Chance, BTTS, Over/Under and HT/FT, each with a short reason.</p>
-<p>That single-market rule exists because the alternative encourages cherry-picking. If a page shows a result tip, a scoreline and a goals line for the same match, at least one of them will usually look right afterwards, which tells you nothing useful before kickoff.</p>
-
-<h2>How to assess a PredictZ selection</h2>
-<p>Read the tip, then test the fixture behind it:</p>
-<ul>
-  <li><strong>Recent form:</strong> the last six matches, adjusted for opponent quality.</li>
-  <li><strong>Home/away record:</strong> venue often explains a surprising selection.</li>
-  <li><strong>League position:</strong> worth weighting when the points gap is substantial.</li>
-  <li><strong>Head-to-head:</strong> supporting context, not proof.</li>
-  <li><strong>Team news:</strong> confirmed absences only.</li>
-  <li><strong>Market fit:</strong> whether the evidence supports a result or a goals market.</li>
-</ul>
-<p>Tomorrow's fixtures belong on <a href="/football-predictions-tomorrow">Football Predictions Tomorrow</a>; treat an early provisional lean as provisional until lineups are confirmed.</p>
-
-<h2>Check the publication date</h2>
-<p>Everything above is drawn from fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Daily prediction URLs rarely change while the fixtures underneath rotate every day, which is how an old card ends up looking like the current one. Read the kickoff on each card before staking, and check <a href="/results">Results</a> for tips that have already settled.</p>
-
-<h3>“100” and “Surebet” wording</h3>
-<p><strong>100 PredictZ</strong> and <strong>Surebet PredictZ</strong> are search phrasings, not performance claims we can verify. Across the pages reviewed in this cluster, no published, settled record was found to support "100%" or "sure" framing — the language appears in headings and copy rather than in results anyone can audit. If you want fewer selections with a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> is the shortlist board; it is still an opinion, not a promise. <strong>Victor PredictZ</strong> pairs two separate tipster names in one query; on Bao the <a href="/victorspredicts">Victor Prediction</a> board keeps its own fixture slate rather than mirroring this one.</p>
-
-<p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
-<p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/victorspredicts">Victor Prediction</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a></p>
+<p><a href="/">PredictZ</a> tips are football predictions for upcoming matches across different leagues and competitions. Football fans and bettors looking for <strong>PredictZ today</strong> can check recent form, team performance and match statistics. PredictZ searches also cover different betting markets.</p>
+<p>Bao Predictions provides free football tips across markets such as <a href="/1x2-predictions">1X2</a>, <a href="/btts-predictions">BTTS</a>, <a href="/over-under-predictions">Over/Under</a> and <a href="/double-chance-predictions">Double Chance</a>. Our aim is simple. Use available data to give football fans clear and well-analyzed PredictZ tips.</p>
+<h2>PredictZ Today</h2>
+<p><strong>PredictZ today</strong> covers football matches being played today. PredictZ tips can include home wins, draws, away wins, goals and BTTS.</p>
+<p>For example, a match may show a 70% home-win probability. The draw may have 20%. The away win may have 10%. This gives a clear idea of how the numbers lean.</p>
+<p>Bao Predictions provides <a href="/football-predictions-today">football predictions today</a> with current fixtures and match analysis.</p>
+<h2>100 PredictZ</h2>
+<p><strong>100 PredictZ</strong> searches imply certainty football cannot provide. No tipster can guarantee a 100% result.</p>
+<p>Bao Predictions confidence scale is capped at 85%. A 75-85% figure represents a strong probability of a winning result, not a guarantee.</p>
+<p>For tighter selections, see <a href="/sure-bets-today">Sure Bets Today</a> or <a href="/banker-of-the-day">Banker of the Day</a>.</p>
+<h2>Surebet PredictZ</h2>
+<p><strong>Surebet PredictZ</strong> searches ask for guaranteed winning tips. Football outcomes cannot be predicted with certainty.</p>
+<p>Bao provides well-analyzed PredictZ tips with reasons on each card. Our aim is to give football fans reliable predictions based on available match data.</p>
+<h2>Victor PredictZ</h2>
+<p><strong>Victor PredictZ</strong> searches compare PredictZ and Victor Prediction tips. Both publish daily football selections, but the fixture lists can differ.</p>
+<p>Readers can use this PredictZ page or open <a href="/victorspredicts">Victor Prediction</a> to compare the available tips for today.</p>
+<h2>PredictZ Results and Track Record</h2>
+<p>Past results help users see how football tips have performed. PredictZ tips should therefore be checked against actual results where possible.</p>
+<p>Bao keeps its prediction results visible. Wins and losses are both included.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>What is PredictZ?</h3>
+<p>PredictZ is a daily football prediction brand covering different matches and betting markets. They include 1X2, goals, BTTS, Double Chance and correct score.</p>
+<h3>Where can I find PredictZ today?</h3>
+<p>You can use Bao Predictions' <a href="/football-predictions-today">Football Predictions Today</a> to see today's fixtures and football tips.</p>
+<h3>What is 100 PredictZ?</h3>
+<p><strong>100 PredictZ</strong> searches ask for guaranteed results. Football cannot be predicted with 100% certainty. Bao confidence is capped at 85%.</p>
+<h3>What is Surebet PredictZ?</h3>
+<p><strong>Surebet PredictZ</strong> searches ask for sure winning tips. Bao provides well-analyzed selections but does not guarantee outcomes.</p>
+<h3>Do PredictZ tips guarantee wins?</h3>
+<p>No. Football predictions are opinions, not guaranteed outcomes. Only stake what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>

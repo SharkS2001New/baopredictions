@@ -66,16 +66,13 @@ if ($marketLive > $liveCount) {
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Live Football Predictions & Scores</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">In-play football scores beside any still-relevant tips. Score and minute come first; published leans stay visible when they still matter. The page refreshes about every 90 seconds so you can follow the slate as matches unfold.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -139,46 +136,6 @@ if ($liveCount > 0) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is the Livescores page?',
-    'a' => 'The live board for matches already underway — current score and minute first, then any still-relevant tip. It is not a duplicate of the pre-match Today page.
-
-Use it to follow fixtures in play. Settled auditing belongs on Results and Yesterday once the match finishes.',
-  ],
-  [
-    'q' => 'How often does Livescores update?',
-    'a' => 'The board reloads about every 90 seconds while matches are in play. Scores and clocks can lag briefly depending on the feed.
-
-Pre-match planning still belongs on Football Predictions Today or Tomorrow. Livescores is for in-progress fixtures.',
-  ],
-  [
-    'q' => 'Are live tips guaranteed?',
-    'a' => 'No. In-play context changes quickly — red cards, tempo shifts and late goals rewrite the picture. Any lean shown is informational, not a sure win.
-
-Model leans remain capped at 85% and are not win-rate promises. 18+ only if you are staking on live markets.',
-  ],
-  [
-    'q' => 'Why is a match on Livescores but not Today?',
-    'a' => 'Today lists pre-match published leans for the matchday. Livescores only shows fixtures that have kicked off, prioritising live state over the full daily catalogue.
-
-A game can move from Today to Livescores at kickoff, then to Yesterday/Results after the final whistle.',
-  ],
-  [
-    'q' => 'Can I check results here?',
-    'a' => 'Finished fixtures roll off the live view into Yesterday (one matchday) and Results (seven-day rolling list). Losses stay visible there.
-
-Do not treat Livescores as the performance archive — it is a live window only.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => 'Football Predictions Today for the full pre-match board; Sure Bets Today and Must Win Teams Today for higher publish floors.
-
-How We Predict explains how pre-match leans are built before kickoff.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -187,13 +144,6 @@ How We Predict explains how pre-match leans are built before kickoff.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Livescores FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -202,7 +152,6 @@ How We Predict explains how pre-match leans are built before kickoff.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Livescores', 'url' => '/live-football-predictions'],

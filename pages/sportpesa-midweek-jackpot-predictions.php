@@ -53,15 +53,13 @@ $gameCount = (int) $sheet['count'];
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>SportPesa Midweek Jackpot Prediction</h1>
-<?php echo bao_jackpot_lede_html($sheet); ?>
-<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -115,46 +113,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is SportPesa Midweek Jackpot?',
-    'a' => 'SportPesa\'s midweek football pool — a multi-game 1X2 card between weekend Mega rounds, with its own stake and prize tier on SportPesa.
-
-Confirm live game count and deadline on SportPesa before playing.',
-  ],
-  [
-    'q' => 'Is the midweek sheet free?',
-    'a' => 'Yes. Bao publishes the full Midweek sheet with per-game reasoning at no charge.
-
-Double Chance notes may appear beside tight 1X2 leans — jackpots still require 1X2 on the operator slip.',
-  ],
-  [
-    'q' => 'How do you analyse midweek games?',
-    'a' => 'Each leg separately: form, home/away, H2H context, team news, rotation risk in congested weeks. No single blanket accuracy score for the whole card.
-
-Stephen Karuku, Lead Analyst, reviews before publish.',
-  ],
-  [
-    'q' => 'Midweek vs Mega — what changes?',
-    'a' => 'Mega is the weekend SportPesa Mega Jackpot product (17-game name). Midweek is a smaller midweek card with different stake and prize.
-
-SMS codes differ — never assume Mega\'s MJP format fits Midweek.',
-  ],
-  [
-    'q' => 'Are midweek tips guaranteed?',
-    'a' => 'No. Midweek cards still need every leg correct for the top prize. Confidence on cards is a capped model lean, not a hit-rate promise.
-
-18+ only. See Responsible Betting.',
-  ],
-  [
-    'q' => 'Previous round visible?',
-    'a' => 'When SportPesa opens a new round, Bao keeps the previous sheet with ✅/❌ where settled — wins and losses together.
-
-Use that audit before trusting generic “midweek jackpot won every week” claims elsewhere.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -163,13 +121,6 @@ Use that audit before trusting generic “midweek jackpot won every week” clai
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">SportPesa Midweek FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -178,7 +129,6 @@ Use that audit before trusting generic “midweek jackpot won every week” clai
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

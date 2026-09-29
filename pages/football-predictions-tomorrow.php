@@ -66,20 +66,13 @@ if ($marketTomorrow > $pickCount) {
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Football Predictions Tomorrow</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Early board for <strong><?php echo bao_h($tomorrowLabel); ?></strong><?php
-if ($pickCount > 0) {
-  echo ' — <strong>' . (int) $pickCount . ' provisional tips</strong>';
-}
-?>. Lineups and late team news can still shift a lean overnight, so treat this as a planning view and re-check closer to kickoff. Cards lean toward match-result markets with confidence and short context; switch to Today once the fixtures belong to the live matchday.</p>
-<?php echo bao_intro_links_html('Compare with <a href="/football-predictions-today">Football Predictions Today</a>, plan Saturday–Sunday on <a href="/weekend-football-predictions">Weekend Football Predictions</a>, or open <a href="/jackpot-predictions">Jackpot Predictions</a> for Kenya coupons.'); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -136,46 +129,6 @@ if ($pickCount > 0) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is the Tomorrow board?',
-    'a' => 'A provisional early board for the next matchday — published leans with reasoning before lineups are confirmed. It can move when team news arrives.
-
-Think of Tomorrow as a draft view. Today becomes the main board once the matchday arrives; Yesterday archives what actually happened.',
-  ],
-  [
-    'q' => 'Are tomorrow tips final?',
-    'a' => 'No. Tomorrow tips are explicitly provisional. Confirmed injuries, suspensions or tactical changes can shift a lean after first publish.
-
-Re-check this page and Football Predictions Today on matchday morning. The last-updated timestamp shows when the board last changed.',
-  ],
-  [
-    'q' => 'How are tomorrow picks chosen?',
-    'a' => 'Same methodology as Today: form, home/away, league context, H2H where relevant, and early team-news signals — then the 55% publish floor.
-
-Fixtures below the floor stay off the board. Higher bands (Must Win ~75%+ 1X2, Sure Bets ~78%+ mixed markets) only appear when the data supports them early.',
-  ],
-  [
-    'q' => 'Why publish before lineups?',
-    'a' => 'Readers planning accas or jackpot research often want an early read. Publishing early with a clear “provisional” label is more honest than pretending lineups are known.
-
-When news breaks, cards update rather than silently disappearing. Losses from earlier publishes still audit on Yesterday and Results.',
-  ],
-  [
-    'q' => 'How is Tomorrow different from Today?',
-    'a' => 'Today is the live matchday board. Tomorrow is the next-day early board that may still change. Results and Yesterday are settled views — not pre-match lists.
-
-Do not treat Tomorrow as a second Today page; switch to Today once kickoffs belong to the current calendar day.',
-  ],
-  [
-    'q' => 'Where can I verify results later?',
-    'a' => 'Football Predictions Yesterday for one matchday; Results for the rolling seven-day settled sample with headline track figures.
-
-Model leans are not win-rate promises. Compare each card to the final score once the fixture finishes.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -184,13 +137,6 @@ Model leans are not win-rate promises. Compare each card to the final score once
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Football Predictions Tomorrow FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -199,7 +145,6 @@ Model leans are not win-rate promises. Compare each card to the final score once
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Football Predictions Tomorrow', 'url' => '/football-predictions-tomorrow'],

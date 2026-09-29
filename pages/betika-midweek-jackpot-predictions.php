@@ -53,15 +53,13 @@ $gameCount = (int) $sheet['count'];
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Betika Midweek Jackpot Prediction</h1>
-<?php echo bao_jackpot_lede_html($sheet); ?>
-<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -118,46 +116,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is Betika Midweek Jackpot?',
-    'a' => 'Betika\'s midweek multi-match football jackpot — 1X2 selections on a fixed operator card with its own stake and prize pool.
-
-Confirm the live fixture list on Betika before kickoff.',
-  ],
-  [
-    'q' => 'Is the Betika sheet free on Bao?',
-    'a' => 'Yes — full per-game leans and notes, no paywall.
-
-We name the product Betika Midweek Jackpot exactly as listed on the operator.',
-  ],
-  [
-    'q' => 'How are legs picked?',
-    'a' => 'Form, home/away splits, H2H where relevant, team news, and match context on each fixture — same review flow as other jackpot sheets.
-
-Marginal games get honest lower leans instead of false “banker” language.',
-  ],
-  [
-    'q' => 'Betika vs SportPesa jackpots?',
-    'a' => 'Different operators, stakes, game counts and deadlines. Bao covers both with separate sheets — never mix slips.
-
-Always confirm live rules on Betika\'s app before staking.',
-  ],
-  [
-    'q' => 'Guaranteed wins?',
-    'a' => 'No. Jackpot products are high-variance. One miss on the card ends the top prize chase.
-
-18+ only. Treat sheets as research, not promises.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => 'Jackpot predictions hub for all operators; Double Chance predictions for cover concepts on tight legs.
-
-Football Predictions Today for non-jackpot daily leans.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -166,13 +124,6 @@ Football Predictions Today for non-jackpot daily leans.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Betika Midweek FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -181,7 +132,6 @@ Football Predictions Today for non-jackpot daily leans.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

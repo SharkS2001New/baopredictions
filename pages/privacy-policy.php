@@ -53,7 +53,6 @@ $updatedDate = bao_reviewed_date();
 
   <header class="page-hero">
     <h1>Privacy Policy</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
 <p class="lede">What Bao Predictions collects when you browse or contact us — and what we do not do with that information.</p>
   </header>
 

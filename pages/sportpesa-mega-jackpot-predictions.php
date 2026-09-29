@@ -53,15 +53,13 @@ $sheet = bao_jackpot_sheet('sportpesa-mega-jackpot-predictions', '/api/sportpesa
 $payload = $sheet['payload'];
 $gameCount = (int) $sheet['count'];
 ?>
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>SportPesa Mega Jackpot Predictions — 17 Games</h1>
-<?php echo bao_jackpot_lede_html($sheet); ?>
-<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -110,46 +108,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'Is the SportPesa jackpot prediction free on Bao Predictions?',
-    'a' => 'Yes — every SportPesa Mega Jackpot sheet is free, with no paywall on the per-game reasoning.
-
-Each fixture shows 1X2 lean, optional Double Chance context, and notes on form, venue and team news where confirmed.',
-  ],
-  [
-    'q' => 'What\'s the correct SMS code for the Mega Jackpot?',
-    'a' => 'MJP, sent to 79079, followed by "#" and your selections for the full card. Other SportPesa jackpots use different codes — double-check before sending.
-
-Confirm the live round length on SportPesa before texting a slip.',
-  ],
-  [
-    'q' => 'Do you guarantee jackpot wins?',
-    'a' => 'No. SportPesa Mega Jackpot is a long-shot entertainment product — treat any sheet as a way to think through the card, not a promise.
-
-One wrong leg loses the top prize. Previous-round ✅/❌ stays visible here when a new round opens.',
-  ],
-  [
-    'q' => 'How many games is Mega Jackpot?',
-    'a' => 'SportPesa Mega Jackpot is a 17-game product — confirm the live card on SportPesa for this round.
-
-Mega Jackpot Pro lets you play 13–17 legs from the same card; unused SMS slots are entered as 0.',
-  ],
-  [
-    'q' => 'What is Mega Jackpot Pro?',
-    'a' => 'Pro lets you pick 13–17 games from the same SportPesa Mega Jackpot card instead of all legs. Fewer picks mean lower max prize but better realistic odds.
-
-On SMS, positions you skip are entered as 0 while still filling the full format SportPesa expects.',
-  ],
-  [
-    'q' => 'What if a match is postponed?',
-    'a' => 'Follow SportPesa\'s void and bonus rules for that round — operator terms decide whether a leg is voided or settled later.
-
-Re-check the live SportPesa card and Bao sheet after postponements; stakes and deadlines are operator-controlled.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -158,13 +116,6 @@ Re-check the live SportPesa card and Bao sheet after postponements; stakes and d
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">SportPesa Mega Jackpot FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -173,7 +124,6 @@ Re-check the live SportPesa card and Bao sheet after postponements; stakes and d
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

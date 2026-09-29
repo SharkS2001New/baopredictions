@@ -115,15 +115,13 @@ if (is_array($prevGames)) {
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Mozzart Super Daily Jackpot Predictions</h1>
-<?php echo bao_jackpot_lede_html($sheet); ?>
-<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -200,46 +198,6 @@ if ($contested > 0) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is Mozzart Super Daily Jackpot?',
-    'a' => 'Mozzartbet\'s daily multi-match football jackpot — 1X2 selections on Mozzart\'s current Super Daily card.
-
-Confirm live game count, stake (often cited around KES 20) and prize pool on Mozzartbet before playing.',
-  ],
-  [
-    'q' => 'Is the Mozzart sheet free on Bao?',
-    'a' => 'Yes — per-game leans and notes without a paywall.
-
-We use the exact product name Mozzart Super Daily Jackpot.',
-  ],
-  [
-    'q' => 'How are games analysed?',
-    'a' => 'Same fixture-level process: form, home/away, H2H where relevant, team news. Double Chance may flag tight 1X2 leans.
-
-Do not treat every leg as equally strong — read individual confidences.',
-  ],
-  [
-    'q' => 'Are Mozzart tips guaranteed?',
-    'a' => 'No. Super Daily still needs your operator-defined correct count for the top prize. One miss can end the chase.
-
-18+ only. Jackpots are entertainment products, not income.',
-  ],
-  [
-    'q' => 'Game count questions?',
-    'a' => 'Competitor pages often cite 16 games — always confirm the active card on Mozzartbet.
-
-Operators can swap fixtures; re-check the slip at kickoff.',
-  ],
-  [
-    'q' => 'Previous rounds?',
-    'a' => 'When a new Super Daily round publishes, Bao keeps the previous sheet with settled ✅/❌ where available.
-
-Losses remain visible — use that record instead of win-only marketing screenshots.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -248,13 +206,6 @@ Losses remain visible — use that record instead of win-only marketing screensh
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Mozzart Super Daily Jackpot FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -263,7 +214,6 @@ Losses remain visible — use that record instead of win-only marketing screensh
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

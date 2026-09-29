@@ -64,24 +64,17 @@ $baoRecent = is_array($baoStats['recent'] ?? null) ? $baoStats['recent'] : [];
 </section>
 
 <div class="wrap wrap-wide">
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Today's Football Predictions</h1>
 <?php
 require_once __DIR__ . '/../components/seo.php';
 $todayLabel = date('j F Y');
 $predToday = (int) ($baoToday['predictions'] ?? 0);
-echo bao_board_freshness_html();
 ?>
-<p class="lede">Free football predictions for <strong><?php echo bao_h($todayLabel); ?></strong><?php
-if ($predToday > 0) {
-  echo ' — <strong>' . $predToday . ' published tips</strong>';
-}
-?> across 1X2, Double Chance, BTTS, Over/Under and HT/FT. Popular leagues are listed first; open any card for the lean and short reason, then use the full Today board or jackpot hub for a wider slate.</p>
-<?php echo bao_intro_links_html('Browse <a href="/football-predictions-today">Football Predictions Today</a>, <a href="/sure-bets-today">Sure Bets Today</a>, or <a href="/jackpot-predictions">Jackpot Predictions</a> for Kenya coupons.'); ?>
   </header>
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -145,46 +138,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'Are Bao Predictions free?',
-    'a' => 'Yes. Every tip board, jackpot sheet, Yesterday archive and Results listing is free to view. Bao Predictions does not charge for picks or take stakes.
-
-The homepage shows a live slice of today\'s board; full daily lists, shortlists and jackpot sheets live on their own pages with the same free access.',
-  ],
-  [
-    'q' => 'How accurate are your football tips?',
-    'a' => 'Check Results — we publish every settled pick, wins and losses. That is the real number, not a marketing line.
-
-Headline figures on Results update as fixtures settle. Model leans describe publish strength, not a guaranteed probability.',
-  ],
-  [
-    'q' => 'What do the confidence ratings mean?',
-    'a' => 'They are capped model leans reviewed by Stephen Karuku, Lead Analyst — not predicted win rates. 75–85% is the strongest published band (hard-capped at 85%). 60–74% is a solid lean. 55–59% is a thinner edge, often better as an accumulator leg.
-
-Below 55% we usually leave a fixture off tip boards. Cards never show 100%. Must Win Teams Today (~75%+ 1X2) and Sure Bets Today (~78%+ mixed markets) are the named high bands.',
-  ],
-  [
-    'q' => 'Do you cover Kenyan jackpots?',
-    'a' => 'Yes — SportPesa Mega Jackpot, SportPesa Midweek Jackpot, Betika Midweek Jackpot, SportyBet Daily, Odibets Laki Tatu, and Mozzart Super Daily Jackpot, with notes on every game.
-
-Each sheet gets per-fixture reasoning: form, home/away, H2H context, team news where confirmed. Confirm live card size and stake on the operator before playing.',
-  ],
-  [
-    'q' => 'How often do tips get updated?',
-    'a' => 'Usually the evening before, then again on matchday when team news changes the picture. Tomorrow\'s early board is provisional until lineups firm up.
-
-Jackpot sheets refresh when operators publish a new round.',
-  ],
-  [
-    'q' => 'Is this financial advice?',
-    'a' => 'No. These are opinions based on available match data — not financial advice, not guaranteed outcomes, and not an invitation to start betting.
-
-Bet only with licensed operators, only what you can afford to lose, and only if you are 18 or over. See Responsible Betting for limits, warning signs and help links.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -193,13 +146,6 @@ Bet only with licensed operators, only what you can afford to lose, and only if 
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Football Predictions FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
   </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -208,7 +154,6 @@ Bet only with licensed operators, only what you can afford to lose, and only if 
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([['name' => 'Home', 'url' => '/']]);
 echo bao_organization_schema();
 ?>

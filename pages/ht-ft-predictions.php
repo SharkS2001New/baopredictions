@@ -56,16 +56,13 @@ $todayLabel = date('j F Y');
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>HT/FT Predictions Today</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Halftime / full-time predictions for today — combinations that need both first-half and full-time outcomes. Useful when tempo and match context point the same way. Always re-check late team news before you stake.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -146,46 +143,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What are HT/FT predictions?',
-    'a' => 'Half-time/full-time combinations — e.g. Draw/Home — predicting the standing at the break and at the final whistle. Higher odds, lower hit rate than plain 1X2.
-
-Bao only publishes HT/FT when the combined lean clears the 55% floor; confidence caps at 85%.',
-  ],
-  [
-    'q' => 'Why is HT/FT harder than 1X2?',
-    'a' => 'You need two phase outcomes to align. A team can dominate but draw at half-time; a slow start can still end in an away win.
-
-Form, home/away and tactical patterns (fast starters vs second-half teams) feed the model — still not a guarantee.',
-  ],
-  [
-    'q' => 'How does Bao analyse HT/FT?',
-    'a' => 'First-half scoring trends, second-half performance, H2H phase patterns where sample size helps, and team news affecting early intensity.
-
-Stephen Karuku reviews before publish. Late team news can change tempo expectations.',
-  ],
-  [
-    'q' => 'Are HT/FT tips “sure wins”?',
-    'a' => 'No. HT/FT is among the highest-variance mainstream markets. We do not use guaranteed-win language.
-
-Treat HT/FT as specialist — better for small stakes or acca fun, not heavy singles. 18+ only.',
-  ],
-  [
-    'q' => 'HT/FT on Sure Bets?',
-    'a' => 'Sure Bets Today (~78%+ band) can surface HT/FT when it is the strongest market on a fixture — rare, but published when data supports it.
-
-Most high-band shortlists are 1X2, Double Chance, BTTS or Over/Under instead.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => '1X2 predictions for simpler match-result leans; Football Predictions Today for the full daily board.
-
-Results and Yesterday for settled auditing.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -194,13 +151,6 @@ Results and Yesterday for settled auditing.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Halftime Fulltime FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -209,7 +159,6 @@ Results and Yesterday for settled auditing.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Halftime Fulltime Predictions', 'url' => '/ht-ft-predictions'],

@@ -121,11 +121,9 @@ $stakes = [100, 200, 500, 1000, 2000, 5000];
   </ol>
 </nav>
 
-  <header class="page-hero page-hero--full">
+  <header class="page-hero page-hero--full page-hero--title-only">
     <p class="banker-eyebrow">Prediction of the Day</p>
     <h1>Banker of the Day — Prediction of the Day</h1>
-<p class="lede">One pick: today's strongest published lean from Bao Predictions, with full analysis and stake returns. Same selection as Prediction of the Day — reviewed for publication before it goes live.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
   <ul class="banker-stats" aria-label="Banker highlights">
@@ -259,46 +257,6 @@ $stakes = [100, 200, 500, 1000, 2000, 5000];
   </article>
 </div>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is the Banker of the Day?',
-    'a' => 'Bao\'s single Prediction of the Day — the strongest published lean from today\'s Sure Bets and Today boards, preferring popular leagues, then model confidence. One tip, not a guaranteed win.
-
-Stephen Karuku, Lead Analyst, signs off the boards this pick is drawn from. The sidebar card and this page share the same selection.',
-  ],
-  [
-    'q' => 'Is this the same as Prediction of the Day in the sidebar?',
-    'a' => 'Yes. The sidebar card and this page share the same pick. This page adds the full write-up, stake-return examples and links to the wider boards.
-
-If team news moves the underlying boards, the banker can change — check the last-updated line.',
-  ],
-  [
-    'q' => 'What does the confidence percentage mean?',
-    'a' => 'It is a capped model lean (never shown as 100%). Strong bankers often sit in the upper published band, but even high leans can lose.
-
-Must Win (~75%+ 1X2) and Sure Bets (~78%+ mixed markets) are the pools this pick is chosen from. The percentage is not a promised hit rate.',
-  ],
-  [
-    'q' => 'Are stake returns guaranteed?',
-    'a' => 'No. Stake-return tables show illustrative returns at common stake sizes if the selection wins at the published price — not a promise of profit.
-
-Odds can move after publish. 18+ only. Never stake money you cannot afford to lose.',
-  ],
-  [
-    'q' => 'How is the banker chosen?',
-    'a' => 'From the highest-confidence published leans on Sure Bets Today and Football Predictions Today, with weight toward major leagues readers follow most.
-
-Form, home/away, team news and market clarity all feed the underlying cards. The banker is the top lean that clears those bars — not a separate secret model.',
-  ],
-  [
-    'q' => 'Where can I see if it won?',
-    'a' => 'Yesterday for the matchday audit and Results for the rolling seven-day record. Losses stay published.
-
-Check Yesterday and Results once the fixture settles.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -307,13 +265,6 @@ Check Yesterday and Results once the fixture settles.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Banker of the Day FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -321,7 +272,6 @@ Check Yesterday and Results once the fixture settles.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Banker of the Day', 'url' => '/banker-of-the-day'],

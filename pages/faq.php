@@ -124,7 +124,6 @@ Read Responsible Betting first. Tips are informational opinions — not financia
 
   <header class="page-hero">
     <h1>Frequently Asked Questions</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
 <p class="lede">Direct answers on free tips, model leans, board roles, jackpots, and how Yesterday differs from Results — with the methodology detail most tip-site FAQs skip.</p>
   </header>
 

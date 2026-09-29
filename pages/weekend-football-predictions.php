@@ -67,16 +67,13 @@ if ($marketWeekend > $pickCount) {
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Weekend Football Predictions</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Saturday and Sunday fixtures in one board — free weekend football tips across popular leagues. Plan the card early, then revisit as lineups land closer to kickoff. Each selection shows the lean and match context so you can compare fixtures before you stake.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -141,46 +138,6 @@ if ($pickCount > 0) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is the weekend predictions page?',
-    'a' => 'A Saturday–Sunday focused board when European league volume peaks — same methodology as Today but scoped to the weekend fixture list.
-
-SportPesa Mega Jackpot rounds also land on weekends; this page complements (not replaces) the Mega sheet.',
-  ],
-  [
-    'q' => 'How is weekend different from Today?',
-    'a' => 'Today covers the current calendar matchday (any day). Weekend filters to the Sat–Sun cluster readers search for explicitly.
-
-Publish floors are unchanged: 55% minimum, Must Win ~75%+ 1X2, Sure Bets ~78%+ mixed markets, 85% cap.',
-  ],
-  [
-    'q' => 'Are weekend tips stronger?',
-    'a' => 'More fixtures can mean more published leans — not automatically stronger ones. Each card still must clear the floor on its own merits.
-
-Big-name clashes can be harder to price, not easier. Read reasoning on each card.',
-  ],
-  [
-    'q' => 'How are picks chosen?',
-    'a' => 'Form, home/away, H2H where relevant, team news, and competition context — reviewed by Stephen Karuku before publish.
-
-Rotation in congested European schedules is a common weekend factor checked late.',
-  ],
-  [
-    'q' => 'Are weekend tips guaranteed?',
-    'a' => 'No. Weekend upset rates are part of football — that is why confidence is a capped lean, not a win-rate promise.
-
-Audit on Yesterday and Results; losses stay up.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => 'Football Predictions Today for the full daily hub; SportPesa Mega Jackpot predictions for the weekend 17-game product.
-
-Accumulator tips if you are building multi-leg tickets from published leans.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -189,13 +146,6 @@ Accumulator tips if you are building multi-leg tickets from published leans.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Weekend Football Predictions FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -204,7 +154,6 @@ Accumulator tips if you are building multi-leg tickets from published leans.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Weekend Football Predictions', 'url' => '/weekend-football-predictions'],

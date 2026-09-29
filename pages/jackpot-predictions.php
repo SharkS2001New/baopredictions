@@ -46,15 +46,13 @@
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Jackpot Predictions — Kenya Tips Hub</h1>
-<p class="lede">Free jackpot prediction sheets for SportPesa, Betika, SportyBet, Odibets and Mozzart. Open the live round for the operator you play — each sheet lists current fixtures with a 1X2 lean and short reasoning per game.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap prose">
     <p>Looking for a free jackpot prediction? Bao Predictions brings together football jackpot picks for bettors in Kenya and across Africa, covering SportPesa, Betika, SportyBet, Odibets and Mozzart. Each prediction sheet shows the current fixtures, our selections, and the reasoning behind them — not just a list of picks. As of this week, six jackpots are live: the SportPesa Mega Jackpot (17 games, weekend), SportPesa Midweek Jackpot (13 games), Betika Midweek Jackpot (15 games), SportyBet Daily Jackpot (13 games), Odibets Laki Tatu (10 games), and Mozzart Super Daily Jackpot (16 games). Always use the active sheet for the operator you're playing rather than an old jackpot list, since fixtures and deadlines change every round.</p>
   </div>
@@ -119,46 +117,6 @@ if ($payload === null && !$baoJackpots) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'Which jackpots does Bao cover?',
-    'a' => 'SportPesa Mega Jackpot, SportPesa Midweek Jackpot, Betika Midweek Jackpot, SportyBet Daily, Odibets Laki Tatu, and Mozzart Super Daily Jackpot — each on its own sheet with per-game notes.
-
-Confirm live game count, stake, deadline and bonus tiers on the operator before playing. Bao does not take stakes.',
-  ],
-  [
-    'q' => 'Are jackpot predictions guaranteed?',
-    'a' => 'No. Jackpots are long-shot entertainment products. One wrong leg on a multi-game card loses the top prize.
-
-Sheets help you think through each fixture — form, home/away, H2H, team news — not promise a perfect card.',
-  ],
-  [
-    'q' => 'How are jackpot legs analysed?',
-    'a' => 'Each game is reviewed separately: recent form, venue, H2H context, availability, and stakes. Double Chance may appear beside 1X2 to show tight-fixture risk.
-
-We do not flatten 17 different certainty levels into one blanket “accuracy” percentage for the whole card.',
-  ],
-  [
-    'q' => 'Do game counts ever change?',
-    'a' => 'Operators swap fixtures or round sizes. Bao reads live game count from the fixtures array on each sheet when available.
-
-SportPesa Mega Jackpot is a 17-game product name; SportyBet Daily is typically 13; Odibets Laki Tatu is 10 games with the KES 300,000 prize name — always confirm the live slip.',
-  ],
-  [
-    'q' => 'Previous round results?',
-    'a' => 'When a new round replaces the old one, previous-round cards stay visible with ✅/❌ on 1X2 or Double Chance where settled.
-
-That audit trail includes losses — not a curated highlight reel.',
-  ],
-  [
-    'q' => 'Who writes jackpot sheets?',
-    'a' => 'Stephen Karuku, Lead Analyst at Bao Predictions, signs off published jackpot sheets using the same review flow as daily tip boards.
-
-18+ only. Jackpot staking carries high risk — see Responsible Betting.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -167,20 +125,12 @@ That audit trail includes losses — not a curated highlight reel.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Jackpot Predictions FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

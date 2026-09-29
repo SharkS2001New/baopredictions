@@ -56,16 +56,13 @@ $todayLabel = date('j F Y');
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Sure Bets Today — Strongest Leans</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Sure bets today are a cross-market shortlist of Bao Predictions' stronger published leans — not guaranteed results. Each tip shows the recommended market and confidence so you can narrow fixtures worth closer attention before kickoff.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -123,46 +120,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'Are sure bets guaranteed?',
-    'a' => 'No. There is no football bet that is certain to win. Sure Bets Today lists stronger selections based on available match data — not guarantees.
-
-The name describes a publish band (roughly 78%+ model lean across markets), not a promised outcome. Cards cap at 85% and never show 100%.',
-  ],
-  [
-    'q' => 'How does Bao pick sure bets today?',
-    'a' => 'Fixtures where form, venue, league context, head-to-head, availability and other match info align on a clear market — then clear the ~78% publish floor.
-
-The clearest market is published: sometimes 1X2, sometimes Double Chance, BTTS, Over/Under or HT/FT. Stephen Karuku reviews before cards go live.',
-  ],
-  [
-    'q' => 'Which markets are covered?',
-    'a' => '1X2, Double Chance, BTTS, Over/Under and HT/FT. The clearest market for a fixture is published, not always the match winner.
-
-That is why Sure Bets differs from Must Win Teams Today, which is 1X2-only at ~75%+.',
-  ],
-  [
-    'q' => 'How is this different from Must Win Teams?',
-    'a' => 'Must Win Teams focuses on high-confidence 1X2 win leans (~75%+). Sure Bets covers the strongest leans across several markets (~78%+).
-
-A fixture might qualify here on BTTS or Double Chance without appearing on Must Win. Both are shortlists from the same daily pool.',
-  ],
-  [
-    'q' => 'Is this arbitrage?',
-    'a' => 'No. These are tip leans on single selections, not multi-book arbitrage positions locked in across operators.
-
-“Sure bet” on Bao means a high publish band — not a mathematical arb. 18+ only if you are staking.',
-  ],
-  [
-    'q' => 'Where can I check results?',
-    'a' => 'Results and Yesterday show how published tips land over time — wins and losses both.
-
-Compare each card to the final score once fixtures finish.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -171,13 +128,6 @@ Compare each card to the final score once fixtures finish.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Sure Bets FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -186,7 +136,6 @@ Compare each card to the final score once fixtures finish.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Sure Bets Today', 'url' => '/sure-bets-today'],

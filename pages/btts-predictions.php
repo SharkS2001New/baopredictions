@@ -56,16 +56,13 @@ $todayLabel = date('j F Y');
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>BTTS Predictions Today — Both Teams To Score</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Free <strong>BTTS</strong> (both teams to score) predictions today for matches where each side has a credible route to a goal. Selections use scoring form, defensive records and home/away patterns. Review the card reasoning below, then cross-check Over/Under or 1X2 when goals markets are not the best fit.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -124,46 +121,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What are BTTS predictions?',
-    'a' => 'Both Teams To Score selections — Yes or No — based on scoring trends, defensive form and team news. BTTS is a goals market, not match result.
-
-Each card shows the lean, confidence (capped at 85%) and short reasoning. Below 55% we usually leave the fixture off the board.',
-  ],
-  [
-    'q' => 'How does Bao analyse BTTS?',
-    'a' => 'Recent scoring and conceding patterns, home/away splits, H2H goal history where relevant, and confirmed absences (especially strikers or keepers).
-
-A open game can still finish 0–0 if chances misfire — BTTS leans are opinions, not guarantees.',
-  ],
-  [
-    'q' => 'Are BTTS tips guaranteed?',
-    'a' => 'No. BTTS markets are volatile — early goals, red cards and late defensive blocks change outcomes quickly.
-
-Confidence figures are model leans, not predicted hit rates. 18+ only if staking.',
-  ],
-  [
-    'q' => 'BTTS vs Over/Under — what is the difference?',
-    'a' => 'BTTS cares whether both sides score, not total goals. Over/Under focuses on the goal line (e.g. 2.5). A 2–0 win is Over 2.5 but BTTS No.
-
-Bao publishes whichever market has the clearer signal on each fixture — see Over/Under predictions for goal-line leans.',
-  ],
-  [
-    'q' => 'How is BTTS different from 1X2?',
-    'a' => '1X2 picks a match winner or draw. BTTS ignores who wins — only whether both teams score.
-
-Sure Bets Today may publish BTTS when that is the strongest market on a fixture, even when 1X2 looks coin-flip.',
-  ],
-  [
-    'q' => 'Where can I check results?',
-    'a' => 'Yesterday and Results focus on settled 1X2 for the headline track, but BTTS cards on daily boards still show outcomes beside the original lean when settled.
-
-Use the board archive rather than assuming marketing win-rate claims.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -172,13 +129,6 @@ Use the board archive rather than assuming marketing win-rate claims.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">BTTS Predictions FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -187,7 +137,6 @@ Use the board archive rather than assuming marketing win-rate claims.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'BTTS Predictions', 'url' => '/btts-predictions'],

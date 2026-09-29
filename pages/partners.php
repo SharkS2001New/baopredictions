@@ -61,11 +61,9 @@ $mailto = 'mailto:hello@baopredictions.com?subject=' . rawurlencode('Link Exchan
   </ol>
 </nav>
 
-  <header class="page-hero">
+  <header class="page-hero page-hero--title-only">
     <p class="partners-eyebrow">Free backlink exchange</p>
     <h1>Link Exchange Partners</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<p class="lede">Bao Predictions partners with relevant football, sports and betting-content sites for mutual editorial backlinks — no fee, no paid placement packages.</p>
   </header>
 
   <ul class="partners-stats" aria-label="Programme highlights">
@@ -138,61 +136,13 @@ $mailto = 'mailto:hello@baopredictions.com?subject=' . rawurlencode('Link Exchan
   </article>
 </div>
 
-<?php
-$faqs = [
-  [
-    'q' => 'Is the link exchange free?',
-    'a' => 'Yes. Bao Predictions does not charge for editorial link exchanges. Both sides place dofollow links at no cost — no paid placement packages.
 
-Exchanges are contextual and reviewed by Stephen Karuku, Lead Analyst, before approval.',
-  ],
-  [
-    'q' => 'Will the links be dofollow?',
-    'a' => 'Yes. Approved exchanges use editorial dofollow links. We expect the same on your side and verify before confirming the exchange complete.
-
-Homepage footer spam packs are not part of this programme.',
-  ],
-  [
-    'q' => 'How do I apply?',
-    'a' => 'Email hello@baopredictions.com with subject “Link Exchange Request”, or use Contact with Partnership enquiry. Include your URL, niche, proposed page, and anchor text.
-
-We aim to reply within 48 hours — approved or declined with a reason.',
-  ],
-  [
-    'q' => 'What if one side removes the link?',
-    'a' => 'We audit active exchanges periodically. Contact us before removing or moving an agreed link.
-
-If a partner link disappears without notice, we remove ours after attempting to resolve it.',
-  ],
-  [
-    'q' => 'Do partners influence picks?',
-    'a' => 'No. Published leans follow the same methodology and publish floors (55% minimum, 85% cap) whether or not a partner link appears on site.
-
-We decline unlicensed gambling operators, link farms, and unrelated niches.',
-  ],
-  [
-    'q' => 'Can we republish Bao tips?',
-    'a' => 'Ask first via Contact with scope and attribution plan. Unauthorised scraping or win-only rebrand of our cards is not permitted.
-
-Quote track figures from Results — model leans are not the same as historical win rate.',
-  ],
-];
-?>
-
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Link exchange FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Partners', 'url' => '/partners'],

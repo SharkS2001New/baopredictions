@@ -19,45 +19,14 @@ $title = (string) $meta['title'];
 $description = (string) $meta['description'];
 $keywords = (string) $meta['keywords'];
 $h1 = (string) $meta['h1'];
-$intro = trim((string) ($meta['intro'] ?? $meta['lede'] ?? ''));
-$introLinks = trim((string) ($meta['intro_links'] ?? ''));
 $breadcrumb = (string) $meta['breadcrumb'];
 $canonical = 'https://www.baopredictions.com/' . $slug;
-$faqTitle = $brand . ' FAQ';
-$sections = is_array($meta['sections'] ?? null) ? $meta['sections'] : [];
 
 require_once __DIR__ . '/../components/api-curl.php';
 $payload = bao_curl_api('/api/' . $slug);
 $games = (is_array($payload) && !empty($payload['games']) && is_array($payload['games']))
   ? $payload['games']
   : [];
-$todayLabel = date('j F Y');
-$tipCount = count($games);
-
-$faqs = [
-  [
-    'q' => 'Are ' . $brand . ' tips free here?',
-    'a' => 'Yes. This tip board on Bao Predictions is free to view. There is no VIP paywall on the cards above.',
-  ],
-  [
-    'q' => 'Which markets appear on this board?',
-    'a' => '1X2, Double Chance, BTTS, Over/Under and HT/FT — one recommended market per fixture, with a short reason on the card.',
-  ],
-  [
-    'q' => 'How do I know the tips are still current?',
-    'a' => 'Check the last-updated timestamp at the top of this page and the kickoff on each card. Team news can change a lean after first publish — re-check before you stake.',
-  ],
-  [
-    'q' => 'Do you guarantee wins?',
-    'a' => 'No. Confidence figures are model leans with a publish cap, not promised win rates. Stake only what you can afford to lose.',
-  ],
-];
-if (array_intersect($sections, ['jackpot', 'mega_jackpot', 'sportpesa_mega', 'midweek_jackpot'])) {
-  array_splice($faqs, 2, 0, [[
-    'q' => 'Is this a full jackpot coupon?',
-    'a' => 'No. This page is the daily tip board. Open the matching jackpot sheet from the sections above or the Jackpot Predictions hub, then confirm the live operator card before you play.',
-  ]]);
-}
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -107,30 +76,13 @@ if (array_intersect($sections, ['jackpot', 'mega_jackpot', 'sportpesa_mega', 'mi
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1><?php echo bao_h($h1); ?></h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<?php
-if ($intro !== '') {
-  echo '<p class="lede">' . $intro;
-  if ($tipCount > 0) {
-    echo ' <strong>' . (int) $tipCount . ' tips</strong> are on this page for <strong>' . bao_h($todayLabel) . '</strong>.';
-  }
-  echo '</p>';
-} else {
-  echo '<p class="lede"><strong>' . bao_h($brand) . '</strong> tips on this page for <strong>' . bao_h($todayLabel) . '</strong>';
-  if ($tipCount > 0) {
-    echo ' — <strong>' . (int) $tipCount . ' selections</strong>';
-  }
-  echo '. Each card shows one recommended market with a short reason.</p>';
-}
-?>
-<?php echo bao_intro_links_html($introLinks !== '' ? $introLinks : null); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -175,13 +127,6 @@ if (is_file($seoPartial)) {
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title"><?php echo bao_h($faqTitle); ?></h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-  </div>
-</section>
-
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/timezone.js?v=20260913c" defer></script>
@@ -189,7 +134,6 @@ if (is_file($seoPartial)) {
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => $breadcrumb, 'url' => '/' . $slug],

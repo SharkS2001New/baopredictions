@@ -1,30 +1,25 @@
 <?php
-/** Unique SEO body for /primatips-prediction — do not share across brands. */
+/** Unique SEO body for /primatips-prediction — MD-pattern content. */
 ?>
-<p>A <strong>PrimaTips prediction</strong> is a short daily football tip tied to a dated fixture list, covering match result and goals markets. The appeal of this style is brevity: a compact card you can read in a minute rather than a wall of fixtures. The risk is that brevity hides the reasoning, which is where most prediction pages quietly fail their readers.</p>
-<?php echo bao_shortlist_summary_html($games, 'PrimaTips shortlist'); ?>
-
-<h2>What PrimaTips predictions cover</h2>
-<p>This board publishes one recommended market per fixture across 1X2, Double Chance, BTTS, Over/Under and HT/FT, each with a short reason. There is no jackpot section here, because jackpot coupons are not part of what this page is asked for — padding a tip board with unrelated sections helps nobody.</p>
-<p>The market is chosen from the evidence rather than the fixture's profile. A big name is not automatically a result selection, and a tight table game is often better expressed as Double Chance than as a forced winner.</p>
-
-<h2>How to assess PrimaTips selections</h2>
-<p>Check the fixture underneath the tip:</p>
-<ul>
-  <li><strong>Recent form:</strong> the last six matches, opponent quality included.</li>
-  <li><strong>Home/away record:</strong> venue splits, which frequently explain a lean.</li>
-  <li><strong>League position:</strong> context when the points gap is meaningful.</li>
-  <li><strong>Head-to-head:</strong> supporting evidence between comparable squads.</li>
-  <li><strong>Team news:</strong> confirmed injuries and suspensions before kickoff.</li>
-  <li><strong>Market fit:</strong> whether the result or the goals market carries the evidence.</li>
-</ul>
-<p>For a shorter list held to a higher evidence bar, <a href="/sure-bets-today">Sure Bets Today</a> filters harder. For the full slate, <a href="/football-predictions-today">Football Predictions Today</a> carries every open fixture.</p>
-
-<h2>Check the publication date</h2>
-<p>The short list above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>. Compact tip pages are the easiest of all to mistake for evergreen content, since the layout looks identical from one day to the next. Anyone searching <strong>PrimaTips today</strong> should read the kickoff before staking, and check <a href="/results">Results</a> for anything already settled.</p>
-
-<h3>What this page will not do</h3>
-<p>No invented correct scores, no guaranteed-win language, and no filler sections added to reach a word count. Confidence is a capped lean, and a thin read stays a thin read. Skipping a fixture is a legitimate outcome of analysis.</p>
-
-<p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
-<p class="seo-related"><strong>Related:</strong> <a href="/sure-bets-today">Sure Bets Today</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>
+<p><a href="/">PrimaTips predictions</a> are football tips for upcoming matches across different leagues and competitions. Football fans and bettors looking for <strong>PrimaTips today</strong> can check recent form, team performance and match statistics. <strong>PrimaTips prediction</strong> searches also cover different betting markets.</p>
+<p>Bao Predictions provides free football tips across markets such as <a href="/1x2-predictions">1X2</a>, <a href="/btts-predictions">BTTS</a>, <a href="/over-under-predictions">Over/Under</a> and <a href="/double-chance-predictions">Double Chance</a>. Our aim is simple. Use available data to give football fans clear and well-analyzed PrimaTips.</p>
+<h2>PrimaTips Today</h2>
+<p><strong>PrimaTips today</strong> covers football matches being played today. PrimaTips tips can include home wins, draws, away wins, goals and BTTS.</p>
+<p>For example, a match may show a 68% home-win probability. The draw may have 20%. The away win may have 12%. This gives a clear idea of how the numbers lean.</p>
+<p>Bao Predictions provides <a href="/football-predictions-today">football predictions today</a> with current fixtures and match analysis.</p>
+<h2>PrimaTips Prediction</h2>
+<p><strong>PrimaTips prediction</strong> covers different football markets. PrimaTips football tips include 1X2, BTTS, goals, Double Chance and HT/FT.</p>
+<p>Our forecasts are produced from deep analysis. Each prediction focuses on the specific market being considered.</p>
+<p>For example, a team may have won 7 of its last 10 home matches. That is useful information when it plays another team with a weak away record. But injuries, suspensions and team rotation can change the match.</p>
+<h2>PrimaTips Results and Track Record</h2>
+<p>Past results help users see how football tips have performed. PrimaTips predictions should therefore be checked against actual results where possible.</p>
+<p>Bao keeps its prediction results visible. Wins and losses are both included.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>What are PrimaTips predictions?</h3>
+<p>PrimaTips predictions are football tips covering different matches and betting markets. They include 1X2, goals, BTTS, Double Chance and HT/FT.</p>
+<h3>Where can I find PrimaTips today?</h3>
+<p>You can use Bao Predictions' <a href="/football-predictions-today">Football Predictions Today</a> to see today's fixtures and football tips.</p>
+<h3>What is PrimaTips prediction?</h3>
+<p><strong>PrimaTips prediction</strong> is a daily football tip based on match statistics, form and available data.</p>
+<h3>Do PrimaTips predictions guarantee wins?</h3>
+<p>No. Football predictions are opinions, not guaranteed outcomes. Only stake what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>

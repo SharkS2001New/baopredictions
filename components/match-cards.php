@@ -295,10 +295,6 @@ function bao_matches_html(array $games, array $opts = []): string {
     if ($title !== '') {
         $html .= '<h2 class="at-matches-title">' . bao_h($title) . '</h2>';
     }
-    if (($opts['results_bridge'] ?? true) !== false) {
-        require_once __DIR__ . '/seo.php';
-        $html .= bao_results_bridge_html();
-    }
     $html .= '<div class="matches-container at-matches-grid" data-bao-matches>';
     foreach ($visible as $g) {
         $html .= bao_match_card($g + ['_show_date' => $showDate]);

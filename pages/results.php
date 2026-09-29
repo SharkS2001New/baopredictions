@@ -61,10 +61,8 @@ $weekCount = count($games);
   </ol>
 </nav>
 
-  <header class="page-hero page-hero--full">
+  <header class="page-hero page-hero--full page-hero--title-only">
     <h1>Football Prediction Results</h1>
-<p class="lede">Rolling seven-day settled tips with the original leans beside final scores. Separate from Yesterday's single-matchday audit — use Results to review a longer performance window.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 </div>
 
@@ -147,46 +145,6 @@ if ($weekCount > 0) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'Is this the same as Yesterday?',
-    'a' => 'No. Yesterday is one matchday. Results is the rolling last seven days of settled tips, plus the headline track-record strip at the top.
-
-Use Yesterday when you want a single day\'s audit. Use Results when you want recent context across the week and the longer qualifying sample.',
-  ],
-  [
-    'q' => 'Do you hide losing tips?',
-    'a' => 'No. Wins and losses both stay published so the prediction record can be reviewed honestly.
-
-Each entry keeps the original 1X2 selection, published odds where recorded, model lean and final score together.',
-  ],
-  [
-    'q' => 'How are the headline figures calculated?',
-    'a' => 'Settled 1X2 tips with the required model information and a book price. Incomplete entries and postponements are excluded. Those figures are separate from the seven-day list alone.
-
-Headline figures update as the qualifying sample grows.',
-  ],
-  [
-    'q' => 'Are model leans guaranteed win rates?',
-    'a' => 'No. A model lean is an assessment of the available data at publish time — capped at 85% — not a guaranteed probability of winning.
-
-The honest read is how published selections perform over a meaningful sample on this page, including losses.',
-  ],
-  [
-    'q' => 'Does this cover football results today?',
-    'a' => 'Yes — as today\'s matches settle they enter the rolling seven-day board. Earlier days in the window remain available for recent checks.
-
-The list fills as fixtures finish.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => 'Yesterday\'s football predictions for a single matchday, and today\'s football predictions for the live pre-match board.
-
-How We Predict explains methodology; Responsible Betting covers staking risk (18+).',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -195,13 +153,6 @@ How We Predict explains methodology; Responsible Betting covers staking risk (18
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Football Results FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -210,7 +161,6 @@ How We Predict explains methodology; Responsible Betting covers staking risk (18
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Football Results', 'url' => '/results'],

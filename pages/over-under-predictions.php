@@ -56,16 +56,13 @@ $todayLabel = date('j F Y');
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Over/Under Predictions Today</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Free Over/Under football predictions for today's fixtures, including the 2.5 goals line. Tips are built from scoring and defensive trends rather than match winners alone. Check each card below, then compare with BTTS when both sides look likely to score.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -142,46 +139,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What are Over/Under predictions?',
-    'a' => 'Goal-line selections — typically Over or Under 2.5 goals — based on scoring trends, tempo and defensive records. Not the same as BTTS or 1X2.
-
-Each card shows market, lean and reasoning. Publish floor remains 55%; confidence caps at 85%.',
-  ],
-  [
-    'q' => 'How does Bao analyse goal lines?',
-    'a' => 'Recent goals scored and conceded, home/away scoring splits, H2H totals where still relevant, weather or venue context when it matters, and team news.
-
-A high-scoring streak can end in a low block — Over/Under leans are estimates, not promises.',
-  ],
-  [
-    'q' => 'Are Over 2.5 tips guaranteed?',
-    'a' => 'No. Early red cards, conservative tactics and missed chances routinely break goal-line bets.
-
-Avoid “sure goal fest” language — we do not use it. 18+ only if staking.',
-  ],
-  [
-    'q' => 'Over/Under vs BTTS?',
-    'a' => 'Over 2.5 needs three+ total goals regardless of who scores. BTTS Yes needs both teams to score — a 3–0 win is Over but BTTS No.
-
-Bao picks whichever market has the clearer signal on each fixture.',
-  ],
-  [
-    'q' => 'Which line does Bao use?',
-    'a' => 'Most cards use the mainstream 2.5 line when that is what books price on the fixture. Alternate lines may appear when the model signal is clearer there.
-
-Always confirm the line on your operator slip matches the card before staking.',
-  ],
-  [
-    'q' => 'Where can I check results?',
-    'a' => 'Settled goal-line results appear beside the original lean on daily boards. Yesterday and Results help audit broader performance.
-
-Headline track figures on Results focus on qualifying 1X2 — not every goals market.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -190,13 +147,6 @@ Headline track figures on Results focus on qualifying 1X2 — not every goals ma
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Over/Under FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -205,7 +155,6 @@ Headline track figures on Results focus on qualifying 1X2 — not every goals ma
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Over/Under Predictions', 'url' => '/over-under-predictions'],

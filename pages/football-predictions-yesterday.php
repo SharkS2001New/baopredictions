@@ -86,10 +86,8 @@ $settledCount = $ySettled;
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Yesterday's Football Predictions & Results</h1>
-<p class="lede">See how yesterday's published tips finished — wins and losses kept on the same board. Use this audit to judge the record, then return to Today or Tomorrow for the next slate.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
@@ -191,46 +189,6 @@ if ($settledCount > 0) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is the Yesterday page?',
-    'a' => 'A single-matchday audit — every published tip from the previous day beside its final score, wins and losses kept on the same cards.
-
-It answers “how did yesterday’s board land?” Results covers a rolling seven-day window instead of one day.',
-  ],
-  [
-    'q' => 'Do you remove losing tips?',
-    'a' => 'No. Unsuccessful predictions stay published with the original lean, market and reasoning. That is the point of an audit page.
-
-Generic tip sites often delete losers. Bao keeps them so you can judge the record honestly — including calls that looked strong on paper.',
-  ],
-  [
-    'q' => 'How is Yesterday different from Results?',
-    'a' => 'Yesterday is one matchday only. Results is the rolling last seven days of settled tips plus the headline track-record strip above the list.
-
-A single day can look unusually hot or cold; the seven-day view adds context. Both pages keep losses visible.',
-  ],
-  [
-    'q' => 'What do confidence figures mean here?',
-    'a' => 'The percentage shown is the model lean at publish time — capped at 85%, never 100% — not a guaranteed win rate for that card.
-
-A high lean that lost still tells you something: even top-band selections fail. Compare the lean to the outcome rather than assuming the number was a promise.',
-  ],
-  [
-    'q' => 'Can I see examples of wins and losses?',
-    'a' => 'Yes. Use All / Won only / Lost only above the board, or read the cards directly — each settled tip keeps the original pick beside the final score.
-
-Use those examples to see how form, team news and venue context played out — not as proof the next card will repeat.',
-  ],
-  [
-    'q' => 'Where is today\'s live board?',
-    'a' => 'Football Predictions Today for the current matchday. Tomorrow for the early next-day board. Livescores for fixtures already underway.
-
-Check Today for pre-match leans on the current calendar day.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -239,13 +197,6 @@ Check Today for pre-match leans on the current calendar day.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Football Predictions Yesterday FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -255,7 +206,6 @@ Check Today for pre-match leans on the current calendar day.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Football Predictions Yesterday', 'url' => '/football-predictions-yesterday'],

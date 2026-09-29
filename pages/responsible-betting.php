@@ -51,10 +51,8 @@ $updatedDate = bao_reviewed_date();
   </ol>
 </nav>
 
-  <header class="page-hero">
+  <header class="page-hero page-hero--title-only">
     <h1>Responsible Betting</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<p class="lede">Bao tips are opinions for adults. They are not income advice, stake size advice, or a promise that a selection will win.</p>
   </header>
 
   <article class="prose">
@@ -79,61 +77,13 @@ $updatedDate = bao_reviewed_date();
   </article>
 </div>
 
-<?php
-$faqs = [
-  [
-    'q' => 'Does Bao encourage betting?',
-    'a' => 'No. We publish football analysis for adults who already choose to bet with licensed operators. Tips are informational opinions — not invitations to start.
 
-If you do not bet today, this site is still readable as form research — but nothing here requires staking.',
-  ],
-  [
-    'q' => 'Are tips guaranteed profits?',
-    'a' => 'No. Model leans describe publish strength (capped at 85%), not promised returns. Even high-band Must Win and Sure Bets selections lose.
-
-Results and Yesterday show wins and losses together — the honest counter to marketing “sure win” claims.',
-  ],
-  [
-    'q' => 'What age do I need to be?',
-    'a' => '18+ in Kenya for licensed betting products, or the legal age where you live. Bao content assumes an adult audience.
-
-Underage gambling is illegal. Keep accounts and devices away from minors.',
-  ],
-  [
-    'q' => 'How should I manage stakes?',
-    'a' => 'Set a fixed budget, use operator deposit limits, and never chase losses. Jackpots and long accas are high-variance entertainment — not income plans.
-
-Separate staking money from rent, school fees, or savings. Stop if betting stops feeling optional.',
-  ],
-  [
-    'q' => 'Where can I get help?',
-    'a' => 'If gambling is harming finances or relationships, pause and seek help — Gamblers Anonymous, BeGambleAware, or local support services.
-
-Licensed operators also offer self-exclusion tools. Use them early, not after heavy losses.',
-  ],
-  [
-    'q' => 'Is Bao financial advice?',
-    'a' => 'No. Nothing on Bao Predictions is investment or financial advice. We are not a bookmaker and do not know your personal circumstances.
-
-Make your own decisions with licensed operators only. 18+ | Gamble responsibly.',
-  ],
-];
-?>
-
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Responsible Betting FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Responsible Betting', 'url' => '/responsible-betting'],

@@ -1,30 +1,25 @@
 <?php
-/** Unique SEO body for /supatips-prediction — do not share across brands. */
+/** Unique SEO body for /supatips-prediction — MD-pattern content. */
 ?>
-<p>A <strong>Supatips prediction</strong> is a daily football tip aimed largely at Kenyan bettors, with Mega Jackpot coverage attached to the same brand. As with most jackpot-adjacent tipsters, the searches split between people who want today's singles and people filling a 17-game coupon, and the two need to be answered separately.</p>
-<?php echo bao_shortlist_summary_html($games, 'Supatips shortlist'); ?>
-
-<h2>What Supatips predictions cover</h2>
-<p>This board publishes one recommended market per fixture — 1X2, Double Chance, BTTS, Over/Under or HT/FT — with a short reason on the card. It is the daily singles product, free to view, with no paywalled tier behind it.</p>
-<p>Market choice tracks the evidence. Clear venue edge and steady form support a result selection; a competitive underdog points to Double Chance; open attacks or a confirmed defensive absence move the lean to goals. If you prefer one stronger pick over a full list, <a href="/banker-of-the-day">Banker of the Day</a> is the tighter board.</p>
-
-<h2>How to assess Supatips selections</h2>
-<p>Read the tip, then check the fixture:</p>
-<ul>
-  <li><strong>Recent form:</strong> the last six matches, weighted by opponent.</li>
-  <li><strong>Home/away record:</strong> venue splits, especially in congested weeks.</li>
-  <li><strong>League position:</strong> useful when the points gap is real.</li>
-  <li><strong>Head-to-head:</strong> supporting evidence between comparable squads.</li>
-  <li><strong>Team news:</strong> confirmed injuries and suspensions before kickoff.</li>
-  <li><strong>Market fit:</strong> result or goals, decided by what the evidence supports.</li>
-</ul>
-<p>Confidence is capped rather than sold as an accuracy figure, and a lunchtime lean can look different after evening team news.</p>
-
-<h2>Check the publication date</h2>
-<p>The board above covers fixtures scheduled for <strong><?php echo bao_h($todayLabel); ?></strong>, each with a kickoff time on the card. A <strong>Supatips prediction today</strong> is only worth as much as the fixture it names, and searches for <strong>Supatips today</strong> hit the same trap: tip URLs stay fixed while the matches underneath them rotate. Check the kickoff before staking. Settled tips move to <a href="/results">Results</a>.</p>
-
-<h3>Mega Jackpot</h3>
-<p><strong>Supatips Mega Jackpot prediction</strong> means the current SportPesa 17-game card, which this daily board does not reproduce. Open <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a>, confirm all 17 fixtures against the live SportPesa slip, and check the round's start and end dates. Other Kenyan coupons sit under the <a href="/jackpot-predictions">Jackpot Predictions</a> hub. Jackpot pages are the worst offenders for staying online past their round, so this check matters more here than anywhere else on the site.</p>
-
-<p>Football predictions are probabilities rather than guarantees. If you bet, only do so if you are 18 or over, use licensed services where permitted, and stake only money you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>
-<p class="seo-related"><strong>Related:</strong> <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot</a> · <a href="/football-predictions-today">Football Predictions Today</a> · <a href="/results">Results</a> · <a href="/how-we-predict">How We Predict</a></p>
+<p><a href="/">Supatips predictions</a> are football tips for Kenyan bettors covering upcoming matches. Football fans and bettors looking for <strong>Supatips prediction today</strong> can check recent form, team performance and match statistics. <strong>Supatips today</strong> searches also cover different betting markets.</p>
+<p>Bao Predictions provides free football tips across markets such as <a href="/1x2-predictions">1X2</a>, <a href="/btts-predictions">BTTS</a>, <a href="/over-under-predictions">Over/Under</a> and <a href="/double-chance-predictions">Double Chance</a>. Our aim is simple. Use available data to give football fans clear and well-analyzed Supatips.</p>
+<h2>Supatips Prediction Today</h2>
+<p><strong>Supatips prediction today</strong> covers football matches being played today. <strong>Supatips today</strong> tips can include home wins, draws, away wins, goals and BTTS.</p>
+<p>For example, a match may show a 70% home-win probability. The draw may have 20%. The away win may have 10%. This gives a clear idea of how the numbers lean.</p>
+<p>Bao Predictions provides <a href="/football-predictions-today">football predictions today</a> with current fixtures and match analysis for Supatips.</p>
+<h2>Supatips Mega Jackpot Prediction</h2>
+<p><strong>Supatips mega jackpot prediction</strong> covers several matches in one ticket. A jackpot with 17 matches is different from choosing one match.</p>
+<p>If one selection fails, the whole ticket may be affected. Double Chance can sometimes be useful for a close fixture.</p>
+<p>Bao provides <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> for the live operator sheet. Always confirm every fixture against the live slip before you play.</p>
+<h2>Supatips Results and Track Record</h2>
+<p>Past results help users see how football tips have performed. <strong>Supatips predictions</strong> should therefore be checked against actual results where possible.</p>
+<p>Bao keeps its prediction results visible. Wins and losses are both included. This provides transparency of our predictions which always have high winning probability.</p>
+<h2>Frequently Asked Questions</h2>
+<h3>What are Supatips predictions?</h3>
+<p>Supatips predictions are football tips covering different matches and betting markets. They include 1X2, goals, BTTS, Double Chance and correct score.</p>
+<h3>Where can I find Supatips prediction today?</h3>
+<p>You can use Bao Predictions' <a href="/football-predictions-today">Football Predictions Today</a> to see today's fixtures and football tips.</p>
+<h3>What is Supatips mega jackpot prediction?</h3>
+<p><strong>Supatips mega jackpot prediction</strong> refers to tips for the SportPesa 17-game coupon. Open the live <a href="/jackpots/sportpesa-mega-jackpot-predictions">SportPesa Mega Jackpot Predictions</a> sheet and confirm the fixtures before staking.</p>
+<h3>Do Supatips predictions guarantee wins?</h3>
+<p>No. Football predictions are opinions, not guaranteed outcomes. Only stake what you can afford to lose. <a href="/responsible-betting">Responsible Betting</a>.</p>

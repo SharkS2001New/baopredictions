@@ -87,15 +87,13 @@ if (count($dateLabels) === 1) {
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>SportyBet Jackpot Predictions, Tips &amp; Prizes</h1>
-<?php echo bao_jackpot_lede_html($sheet); ?>
-<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -158,46 +156,6 @@ if ($gameCount > 0) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is SportyBet Daily Jackpot?',
-    'a' => 'SportyBet\'s daily multi-match football jackpot — 1X2 picks on the operator\'s current card with a shared daily prize pool.
-
-SportyBet Daily is typically a 13-game card — confirm the live list on SportyBet.',
-  ],
-  [
-    'q' => 'Is the SportyBet sheet free?',
-    'a' => 'Yes. Bao publishes the daily sheet with reasoning on every leg at no charge.
-
-Previous-round results stay visible when a new card replaces the old one.',
-  ],
-  [
-    'q' => 'How do you analyse the daily card?',
-    'a' => 'Each match on its own merits: form, venue, H2H context, team news. Double Chance may highlight tight 1X2 leans.
-
-We do not assign one confidence score to the entire slip — legs vary.',
-  ],
-  [
-    'q' => 'Daily vs weekend jackpots?',
-    'a' => 'SportyBet Daily resets on a daily cadence with fewer legs than SportPesa Mega Jackpot. Stakes and prizes differ — read SportyBet\'s live terms.
-
-Do not copy a Mega-format SMS onto SportyBet.',
-  ],
-  [
-    'q' => 'Are tips guaranteed?',
-    'a' => 'No. Daily jackpots still require every leg (or operator-defined tiers) to land for full payout.
-
-18+ only. Model leans cap at 85%.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => 'Jackpot predictions hub; 1X2 predictions for standalone match-result research.
-
-Results for settled non-jackpot track record.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -206,13 +164,6 @@ Results for settled non-jackpot track record.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">SportyBet Jackpot FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -221,7 +172,6 @@ Results for settled non-jackpot track record.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

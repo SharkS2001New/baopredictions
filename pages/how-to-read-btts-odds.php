@@ -67,7 +67,6 @@ $updatedDate = date('j F Y', strtotime($updatedIso));
 
   <header class="page-hero">
     <h1>How to Read BTTS Odds</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
 <p class="lede">Both Teams To Score prices embed the market’s view of scoring — they are not a second confidence score from Bao.</p>
   </header>
 

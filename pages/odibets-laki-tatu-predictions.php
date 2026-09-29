@@ -115,15 +115,13 @@ if (is_array($prevGames)) {
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Odibet Laki Tatu Jackpot Predictions</h1>
-<?php echo bao_jackpot_lede_html($sheet); ?>
-<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -202,46 +200,6 @@ if ($dateSpan !== '') {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is Laki Tatu?',
-    'a' => 'Odibets Laki Tatu — OdiBet\'s daily jackpot named for the KES 300,000 top prize, not “three games.”
-
-The product is a 10-game card — confirm the live list on OdiBet.',
-  ],
-  [
-    'q' => 'Does Laki Tatu mean three games?',
-    'a' => 'No. “Laki Tatu” refers to the KES 300,000 prize name, not a three-match ticket.
-
-Check OdiBet for the current game count and stake before playing.',
-  ],
-  [
-    'q' => 'What is the stake amount?',
-    'a' => 'Typically KES 15 on recent cards, but confirm the live stake and bonus rules in the OdiBet app before playing — operator terms change.
-
-18+ only. Bao does not present stake figures as unchangeable rules.',
-  ],
-  [
-    'q' => 'Are bonus tiers fixed?',
-    'a' => 'No. Lower tiers for partial correct slips vary by round — check OdiBet\'s current card rather than copying old articles.
-
-Bao focuses on per-game analysis; payout maths stays on the operator.',
-  ],
-  [
-    'q' => 'Do you hide losing tips?',
-    'a' => 'No. Previous-round wins and losses stay visible for an audit trail when a new Laki Tatu card opens.
-
-Each leg shows 1X2 lean with optional Double Chance context.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => '1X2 predictions and Double Chance predictions for the match markets behind each leg.
-
-Jackpot predictions hub for other Kenyan pools.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -250,13 +208,6 @@ Jackpot predictions hub for other Kenyan pools.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Odibet Laki Tatu FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -265,7 +216,6 @@ Jackpot predictions hub for other Kenyan pools.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Jackpot Predictions', 'url' => '/jackpot-predictions'],

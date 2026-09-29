@@ -76,7 +76,6 @@ foreach ($games as $g) {
 
   <header class="page-hero">
     <h1>SportPesa Mega Jackpot Strategy Guide</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
 <p class="lede">How to read a 17-game SportPesa Mega Jackpot card without treating every leg as a banker — then open the live sheet for this round.</p>
   </header>
 

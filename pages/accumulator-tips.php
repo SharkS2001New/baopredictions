@@ -51,16 +51,13 @@ $payload = bao_curl_api('/api/accumulator-tips');
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Accumulator Tips Today</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Pre-built 3-, 5- and 8-fold accumulator tips for <strong><?php echo bao_h(date('j F Y')); ?></strong>. Each leg is checked against the current schedule, with combined odds shown upfront so you can review the ticket before kickoff.</p>
-<?php echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -126,46 +123,6 @@ if (is_array($yTickets) && $yTickets !== []) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What are accumulator tips on Bao?',
-    'a' => 'Suggested multi-leg combinations built from published daily leans — not guaranteed acca wins. Each leg links back to the underlying card and reasoning.
-
-Accas multiply odds and risk together. One failed leg loses the whole ticket unless your operator offers acca insurance (check their terms).',
-  ],
-  [
-    'q' => 'How are acca legs chosen?',
-    'a' => 'Legs come from fixtures that cleared the 55% publish floor, often mixing solid 60–74% leans rather than only top-band singles.
-
-Form, venue, team news and market clarity on each card matter more than stacking famous club names.',
-  ],
-  [
-    'q' => 'Are acca tips “sure wins”?',
-    'a' => 'No. Combined tickets are among the highest-variance ways to bet. Bao does not use guaranteed-win language for accas.
-
-Model leans on legs are capped at 85% and are not win-rate promises. 18+ only; stake small relative to singles.',
-  ],
-  [
-    'q' => 'How many legs are typical?',
-    'a' => 'Published accas vary by matchday depth — fewer legs when the board is thin, more when several independent leans clear the bar.
-
-More legs mean higher quoted odds and lower realistic hit rate. Treat long accas as entertainment, not income planning.',
-  ],
-  [
-    'q' => 'Can I swap legs?',
-    'a' => 'Yes — these are starting points. Read each leg\'s card on Today or market pages (1X2, BTTS, etc.) and drop legs you disagree with.
-
-Team news on matchday can invalidate an early acca plan. Re-check before kickoff.',
-  ],
-  [
-    'q' => 'Where can I verify results?',
-    'a' => 'Results and Yesterday show how individual published leans landed — the fair way to judge acca building blocks.
-
-We do not retroactively edit losing legs off the daily record.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -174,13 +131,6 @@ We do not retroactively edit losing legs off the daily record.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Accumulator Tips FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -188,7 +138,6 @@ We do not retroactively edit losing legs off the daily record.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Accumulator Tips', 'url' => '/accumulator-tips'],

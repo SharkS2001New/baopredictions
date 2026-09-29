@@ -56,16 +56,13 @@ $todayLabel = date('j F Y');
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Must Win Teams Today</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Must win teams today — a high-confidence 1X2 shortlist built from form, venue, opposition and team news. These are stronger win cases on today's board, still published as opinions rather than locks.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -145,46 +142,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is Must Win Teams Today?',
-    'a' => 'A 1X2-only shortlist of high-confidence win leans — roughly 75%+ model lean — drawn from today\'s pool. It is not a list of guaranteed winners.
-
-Motivation, form, home/away and team news feed the underlying cards. The name reflects situational pressure (relegation, title races), not a promise.',
-  ],
-  [
-    'q' => 'How is this different from Sure Bets?',
-    'a' => 'Must Win is match-result (1X2) only at ~75%+. Sure Bets is the higher band (~78%+) across 1X2, Double Chance, BTTS, Over/Under and HT/FT.
-
-A strong BTTS lean might appear on Sure Bets but not here. A clear home win lean might appear on both.',
-  ],
-  [
-    'q' => 'Are these teams guaranteed to win?',
-    'a' => 'No. “Must win” describes football context and a publish floor — not a sure outcome. Even 85% leans (our cap) lose.
-
-Check Results and Yesterday for the honest record. We never publish 100% on cards.',
-  ],
-  [
-    'q' => 'How are teams selected?',
-    'a' => 'Recent form, home/away splits, H2H where still relevant, confirmed team news and competition stakes — then the ~75% 1X2 floor.
-
-Fixtures below 55% stay off tip boards entirely. Stephen Karuku reviews before publish.',
-  ],
-  [
-    'q' => 'Can I use these in accumulators?',
-    'a' => 'You can, but stacking several “must win” sides multiplies risk — one upset breaks the acca.
-
-Lower-band leans (55–59%) suit acca legs more often than heavy singles. 18+ only; see Responsible Betting.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => 'Sure Bets Today for mixed-market high bands; Football Predictions Today for the full board; Banker of the Day for a single top lean.
-
-Tomorrow carries the early next-day board when you are planning ahead.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -193,13 +150,6 @@ Tomorrow carries the early next-day board when you are planning ahead.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Must Win Teams FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -208,7 +158,6 @@ Tomorrow carries the early next-day board when you are planning ahead.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Must Win Teams Today', 'url' => '/must-win-teams-today'],

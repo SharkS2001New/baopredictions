@@ -631,6 +631,15 @@ ol {
   margin-bottom: 0.35rem;
 }
 
+.page-hero--title-only {
+  padding: 0.35rem 0 0.15rem;
+  margin-bottom: 0;
+}
+
+.page-hero--title-only h1 {
+  margin-bottom: 0;
+}
+
 .page-hero .lede {
   color: var(--ink-muted);
   font-size: 1.05rem;
@@ -863,6 +872,10 @@ main:has(.bao-faq) + .site-footer {
 
 .section-tight {
   padding: var(--space-lg) 0;
+}
+
+.section-tight--flush-top {
+  padding-top: 0.5rem;
 }
 
 .section-dark {
@@ -3838,8 +3851,9 @@ main:has(.bao-faq) + .site-footer {
 
 .bao-analyst-wrap {
   margin-top: 1.15rem;
+  margin-bottom: 1.25rem;
   padding-top: 0.35rem;
-  padding-bottom: 0;
+  padding-bottom: 0.5rem;
 }
 
 .bao-analyst-card {

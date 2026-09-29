@@ -56,16 +56,13 @@ $todayLabel = date('j F Y');
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Double Chance Predictions Today</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Free Double Chance tips covering 1X, 12 and X2 — two outcomes in one selection when a single result looks thin. Each card shows the recommended cover with form and fixture context. Use this board alongside 1X2 when you want safer match-result cover.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -138,46 +135,6 @@ if ($payload === null) {
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is Double Chance?',
-    'a' => 'A market covering two of three 1X2 outcomes — 1X (home or draw), X2 (draw or away), or 12 (home or away). It trades lower odds for broader cover.
-
-Bao publishes Double Chance when that market carries the clearest lean on a fixture, not automatically on every match.',
-  ],
-  [
-    'q' => 'When does Bao prefer Double Chance over 1X2?',
-    'a' => 'When form and team news point to a side not losing (or avoiding a draw) but outright win confidence sits below the 1X2 publish bar.
-
-Jackpot sheets also show Double Chance cover where useful — one wrong 1X2 line ends a ticket, so context matters.',
-  ],
-  [
-    'q' => 'Are Double Chance tips safer?',
-    'a' => 'They cover more outcomes, so hit rate can look smoother — but odds are lower and legs still lose. Nothing here is guaranteed.
-
-Model leans remain capped at 85%. A strong 1X2 lean and a Double Chance lean on the same match are not the same bet.',
-  ],
-  [
-    'q' => 'How are Double Chance picks built?',
-    'a' => 'Same core inputs as 1X2: form, home/away, H2H context, team news, competition stakes — then the 55% floor on the Double Chance market itself.
-
-Stephen Karuku reviews before publish. Re-check cards if late team news drops.',
-  ],
-  [
-    'q' => 'Double Chance on jackpots?',
-    'a' => 'Jackpot products require 1X2 entries on the operator slip. Bao still shows Double Chance on sheets to explain risk around tight fixtures.
-
-SportPesa Mega Jackpot, Odibets Laki Tatu and other named products each have their own stake rules — confirm live on the book.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => '1X2 predictions for outright match-result leans; Sure Bets Today when Double Chance is the top band across markets.
-
-Results and Yesterday for settled auditing on published boards.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -186,13 +143,6 @@ Results and Yesterday for settled auditing on published boards.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Double Chance FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -201,7 +151,6 @@ Results and Yesterday for settled auditing on published boards.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Double Chance Predictions', 'url' => '/double-chance-predictions'],

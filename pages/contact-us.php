@@ -115,10 +115,8 @@ $updatedDate = bao_reviewed_date();
   </ol>
 </nav>
 
-  <header class="page-hero">
+  <header class="page-hero page-hero--title-only">
     <h1>Contact Us</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
-<p class="lede">Send tip corrections, partnership notes, league requests or press questions through the form. We read every message; replies are slower on heavy match weekends.</p>
   </header>
 
   <article class="prose">
@@ -205,55 +203,13 @@ $updatedDate = bao_reviewed_date();
   </article>
 </div>
 
-<?php
-$faqs = [
-  [
-    'q' => 'How fast do you reply?',
-    'a' => 'Usually within a few business days. Heavy match weekends can slow replies because the desk is also reviewing team news and board updates.
 
-Tip corrections with full fixture details get priority over generic “best pick today?” messages.',
-  ],
-  [
-    'q' => 'What should I include for a score correction?',
-    'a' => 'Home and away teams, kick-off date, the published tip, and the correct final score. That is enough to check Yesterday or Results without guessing the fixture.
-
-Stephen Karuku\'s desk reviews corrections through this form. We do not silently rewrite settled history.',
-  ],
-  [
-    'q' => 'Can I request a league?',
-    'a' => 'Yes — name the competition and why it matters for Kenyan readers. We still only publish when model output and book prices clear the same 55% floor as other boards.
-
-FKF Premier League fixtures already ingest when odds allow; sparse pricing means fewer KPL cards than European leagues.',
-  ],
-  [
-    'q' => 'Do you sell fixed tips or private bankers?',
-    'a' => 'No. Everything we publish is on the public boards — Today, shortlists, jackpots, Yesterday and Results. We do not sell “sure” private tips by email.
-
-Banker of the Day is the same free Prediction of the Day shown in the sidebar, not a paid product.',
-  ],
-  [
-    'q' => 'Partnership or press enquiries?',
-    'a' => 'Choose Partnership enquiry in the subject list, or see Partners for link-exchange details. Include your URL, niche, and proposed placement.
-
-Bao does not sell guaranteed-win placements or hide losses for sponsors.',
-  ],
-];
-?>
-
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Contact FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Contact', 'url' => '/contact-us'],

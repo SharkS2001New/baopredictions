@@ -58,16 +58,13 @@ $todayLabel = date('j F Y');
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Free Betting Tips 1X2 Today</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede">Free <strong>1X2 predictions</strong> for <strong><?php echo bao_h($todayLabel); ?></strong><?php if (!empty($tipCount)) { echo ' — <strong>' . (int) $tipCount . ' tips</strong>'; } ?>: home, draw or away leans only, with confidence and match context on every card. Compare with Double Chance or jackpot sheets when a single result looks thin.</p>
-<?php require_once __DIR__ . '/../components/seo.php'; echo bao_intro_links_html(); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -144,46 +141,6 @@ echo bao_shortlist_summary_html($games, '1X2 shortlist');
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What are 1X2 predictions?',
-    'a' => 'Match-result tips — Home (1), Draw (X), or Away (2) — with model lean, reasoning and optional published odds. This is Bao\'s core market on daily boards.
-
-Below 55% model lean we usually leave the fixture unpublished. Confidence displays cap at 85%; never 100%.',
-  ],
-  [
-    'q' => 'How are 1X2 picks built?',
-    'a' => 'Form, home/away splits, league position, H2H where relevant, team news and match context — model first, then human review by Stephen Karuku, Lead Analyst.
-
-Must Win Teams Today (~75%+) and the headline Results track sample are both rooted in 1X2 leans.',
-  ],
-  [
-    'q' => 'Are 1X2 tips guaranteed?',
-    'a' => 'No. 1X2 is the simplest market but still loses often — favourites drop points, underdogs score late.
-
-Check Results for wins and losses together. Model lean ≠ win rate.',
-  ],
-  [
-    'q' => '1X2 vs Double Chance?',
-    'a' => '1X2 picks one outcome. Double Chance covers two outcomes at lower odds. Bao publishes whichever market has the clearer signal.
-
-Jackpot slips require 1X2 entries even when Double Chance explains risk on our sheet.',
-  ],
-  [
-    'q' => 'How does this relate to Today?',
-    'a' => 'Football Predictions Today is the full multi-market daily board. This page filters to 1X2-only leans for readers who want match-result focus.
-
-Tomorrow, Yesterday and Results play the same board roles as on the main hub.',
-  ],
-  [
-    'q' => 'Where can I verify results?',
-    'a' => 'Results publishes the rolling seven-day settled 1X2 list and headline track figures. Yesterday isolates one matchday.
-
-Losses stay visible on both pages.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -192,13 +149,6 @@ Losses stay visible on both pages.',
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">1X2 Predictions FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -207,7 +157,6 @@ Losses stay visible on both pages.',
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => '1X2 Predictions', 'url' => '/1x2-predictions'],

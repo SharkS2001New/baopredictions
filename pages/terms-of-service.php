@@ -53,7 +53,6 @@ $updatedDate = bao_reviewed_date();
 
   <header class="page-hero">
     <h1>Terms of Service</h1>
-<?php echo bao_last_updated_html($updatedIso); ?>
 <p class="lede">These terms cover use of Bao Predictions. This page is also our terms and conditions for the site.</p>
   </header>
 

@@ -75,20 +75,13 @@ $trackUnits = isset($track['units']) ? (float) $track['units'] : null;
   </ol>
 </nav>
 
-<header class="page-hero page-hero--full">
+<header class="page-hero page-hero--full page-hero--title-only">
     <h1>Football Predictions Today</h1>
-<?php echo bao_board_freshness_html(is_array($payload) ? $payload : null); ?>
-<p class="lede"><strong><?php echo bao_h($todayLabel); ?></strong><?php
-if ($predToday > 0) {
-  echo ' — <strong>' . (int) $predToday . ' free tips</strong>';
-}
-?> covering 1X2, Double Chance, BTTS, Over/Under and HT/FT. Each card shows one recommended market, the model lean and a short reason so you can check form and kickoff before you stake. Popular leagues are listed first; tips are opinions from available match data, not guaranteed winners.</p>
-<?php echo bao_intro_links_html('Browse <a href="/1x2-predictions">1X2 Predictions Today</a>, tighten the slate on <a href="/sure-bets-today">Sure Bets Today</a>, or open <a href="/jackpot-predictions">Jackpot Predictions</a> for Kenya coupons.'); ?>
   </header>
 
 </div>
 
-<section class="section-tight">
+<section class="section-tight section-tight--flush-top">
   <div class="wrap wrap-wide">
 <div class="main-grid">
 <div class="matches-area">
@@ -168,46 +161,6 @@ echo bao_shortlist_summary_html($games, 'daily board');
   </div>
 </section>
 
-<?php
-$faqs = [
-  [
-    'q' => 'What is this page?',
-    'a' => 'Bao\'s main daily football predictions board — published leans, markets, model indication and reasoning for today\'s fixtures. It is the live matchday hub, not an archive.
-
-Each card can cover 1X2, BTTS, Over/Under, Double Chance or HT/FT depending on where the clearest signal sits. Shortlists like Must Win and Sure Bets filter the same pool at higher publish floors.',
-  ],
-  [
-    'q' => 'Are these guaranteed winners?',
-    'a' => 'No. Confidence and model figures describe lean strength, not a sure win or financial advice. Cards cap at 85% and never show 100%.
-
-Even strong leans lose. The honest check is Results and Yesterday once fixtures finish — we keep unsuccessful calls visible.',
-  ],
-  [
-    'q' => 'Why does the update time matter?',
-    'a' => 'Team news can change after a tip is first published. An injury confirmed on matchday can flip a lean that looked solid two days earlier.
-
-Check the last-updated line at the top of this page before treating an earlier prediction as current.',
-  ],
-  [
-    'q' => 'What about AI or mathematical predictions?',
-    'a' => 'Data-driven models help process form, venue and scoring trends consistently, but the output is still an estimate you can check after the match.
-
-Stephen Karuku reviews model output against team news and context before publish. The useful question is what evidence supports the selection — not whether the page uses an “AI” label.',
-  ],
-  [
-    'q' => 'Where can I see settled results?',
-    'a' => 'Performance figures update as today\'s fixtures finish. Results holds the rolling seven-day settled list; Yesterday covers the previous matchday in one view.
-
-Headline track figures live on Results.',
-  ],
-  [
-    'q' => 'Where else can I look?',
-    'a' => 'Today\'s 1X2 predictions for match-result tips; HT/FT predictions for half-time/full-time combinations; Must Win Teams Today and Sure Bets Today for higher publish floors.
-
-Tomorrow carries the early board for the next matchday. Livescores covers fixtures already underway.',
-  ],
-];
-?>
 
 
 <section class="section section-tight bao-analyst-wrap">
@@ -216,13 +169,6 @@ Tomorrow carries the early board for the next matchday. Livescores covers fixtur
   </div>
 </section>
 
-<section class="section section-tight bao-faq">
-  <div class="wrap">
-    <h2 class="section-title">Football Predictions Today FAQ</h2>
-    <?php echo bao_faq_items_html($faqs); ?>
-
-  </div>
-</section>
 
 </main>
   <?php require __DIR__ . '/../components/footer.php'; ?>
@@ -231,7 +177,6 @@ Tomorrow carries the early board for the next matchday. Livescores covers fixtur
 <script src="/assets/js/theme.js?v=20260913c" defer></script>
 <!--BAO_SCHEMA_START-->
 <?php
-echo bao_faq_schema($faqs);
 echo bao_breadcrumb_schema([
   ['name' => 'Home', 'url' => '/'],
   ['name' => 'Football Predictions Today', 'url' => '/football-predictions-today'],
