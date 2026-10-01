@@ -10,7 +10,7 @@
 <p>Bao Predictions provides bet explorer <a href="/football-predictions-today">football predictions today</a> with current fixtures and match analysis across different competitions.</p>
 <h2>BetExplorer Tips</h2>
 <p><strong>BetExplorer tips</strong> covers different football markets and match outcomes. These may include home wins, draws, away wins, BTTS, goal markets and Double Chance.</p>
-<p>A ber explorer prediction should be considered together with the statistics behind it. For example, if a team has scored in 9 of its last 10 matches and its opponent has conceded in 8 of its last 10, the goal markets may deserve attention.</p>
+<p>A bet explorer prediction should be considered together with the statistics behind it. For example, if a team has scored in 9 of its last 10 matches and its opponent has conceded in 8 of its last 10, the goal markets may deserve attention.</p>
 <p>Bao Predictions reviews different factors before publishing its football tips.</p>
 <h2>BetExplorer Soccer</h2>
 <p><strong>BetExplorer soccer</strong> information covers football matches from different leagues and competitions. European football provides a large number of fixtures throughout the season.</p>
