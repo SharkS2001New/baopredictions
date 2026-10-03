@@ -386,25 +386,60 @@ function bao_breadcrumb_schema(array $crumbs): string {
     return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
 }
 
-function bao_organization_schema(): string {
+function bao_website_schema(): string {
+    static $emitted = false;
+    if ($emitted) {
+        return '';
+    }
+    $emitted = true;
+
     $data = [
         '@context' => 'https://schema.org',
-        '@type' => 'Organization',
-        'name' => 'Bao Predictions',
-        'alternateName' => 'Bao Predictions Analysis Team',
-        'url' => 'https://www.baopredictions.com',
-        'logo' => 'https://www.baopredictions.com/assets/img/logo-mark.png',
-        'description' => 'Kenya-facing football predictions and jackpot analysis with a public track record of wins and losses.',
-        'areaServed' => 'KE',
-        'knowsAbout' => [
-            'Football predictions',
-            'SportPesa Mega Jackpot',
-            'Betika Midweek Jackpot',
-            'FKF Premier League',
-            'Kenya jackpot tips',
+        '@graph' => [
+            [
+                '@type' => 'WebSite',
+                '@id' => 'https://www.baopredictions.com/#website',
+                'url' => 'https://www.baopredictions.com/',
+                'name' => 'Bao Predictions',
+                'alternateName' => ['Bao', 'baopredictions.com', 'www.baopredictions.com'],
+                'description' => 'Football predictions, free betting tips, match analysis and Kenya jackpot predictions from Bao Predictions.',
+                'inLanguage' => 'en',
+                'publisher' => ['@id' => 'https://www.baopredictions.com/#organization'],
+            ],
+            [
+                '@type' => 'Organization',
+                '@id' => 'https://www.baopredictions.com/#organization',
+                'name' => 'Bao Predictions',
+                'alternateName' => [
+                    'Bao',
+                    'Bao Predictions Analysis Team',
+                    'baopredictions.com',
+                    'www.baopredictions.com',
+                ],
+                'url' => 'https://www.baopredictions.com/',
+                'logo' => [
+                    '@type' => 'ImageObject',
+                    'url' => 'https://www.baopredictions.com/assets/img/logo-mark.png',
+                ],
+                'description' => 'Kenya-facing football predictions and jackpot analysis with a public track record of wins and losses.',
+                'areaServed' => 'KE',
+                'knowsAbout' => [
+                    'Football predictions',
+                    'SportPesa Mega Jackpot',
+                    'Betika Midweek Jackpot',
+                    'FKF Premier League',
+                    'Kenya jackpot tips',
+                ],
+            ],
         ],
     ];
+
     return '<script type="application/ld+json">' . json_encode($data, JSON_UNESCAPED_SLASHES | JSON_UNESCAPED_UNICODE) . '</script>';
+}
+
+function bao_organization_schema(): string {
+    // Combined WebSite + Organization graph (emitted once per response via head-assets).
+    return bao_website_schema();
 }
 
 function bao_person_schema(): string {

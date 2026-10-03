@@ -13,6 +13,7 @@ if (function_exists('bao_env')) {
     }
 }
 ?>
+<meta name="application-name" content="Bao Predictions">
 <meta property="og:image" content="<?php echo htmlspecialchars($baoOgImage, ENT_QUOTES, 'UTF-8'); ?>">
 <meta property="og:image:secure_url" content="<?php echo htmlspecialchars($baoOgImage, ENT_QUOTES, 'UTF-8'); ?>">
 <meta property="og:image:type" content="image/jpeg">
@@ -21,3 +22,9 @@ if (function_exists('bao_env')) {
 <meta property="og:image:alt" content="Bao Predictions football predictions and free betting tips">
 <meta name="twitter:image" content="<?php echo htmlspecialchars($baoOgImage, ENT_QUOTES, 'UTF-8'); ?>">
 <meta name="twitter:image:alt" content="Bao Predictions football predictions and free betting tips">
+<?php
+if (!function_exists('bao_website_schema')) {
+    require_once __DIR__ . '/seo.php';
+}
+echo bao_website_schema();
+?>

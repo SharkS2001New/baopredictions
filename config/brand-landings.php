@@ -346,4 +346,17 @@ return [
         'related' => '',
     ],
 
+    'foretips-predictions' => [
+        'brand' => 'Foretips',
+        'title' => 'Foretips Predictions Today, Foretips Tips, 1X2 & Football Predictions',
+        'description' => 'Foretips Predictions Today, Foretips Tips, 1X2 & Football Predictions',
+        'keywords' => 'foretips, foretips predictions, foretips tomorrow, foretips today, foretips tips, foretips football predictions, foretips prediction today, foretips match predictions, foretips 1X2 predictions, foretips BTTS predictions, foretips over under predictions, foretips double chance, foretips correct score, foretips weekend predictions, foretips jackpot predictions',
+        'h1' => 'Foretips Predictions Today, Foretips Tips & Football Predictions',
+        'intro' => '',
+        'intro_links' => '',
+        'breadcrumb' => 'Foretips Predictions',
+        'sections' => ['prediction'],
+        'related' => '',
+    ],
+
 ];
