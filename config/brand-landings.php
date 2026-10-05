@@ -359,4 +359,57 @@ return [
         'related' => '',
     ],
 
+
+    'betsloaded-predictions' => [
+        'brand' => 'Betsloaded',
+        'title' => 'Betsloaded Prediction Today, Betsloaded Tips & Correct Score',
+        'description' => 'Betsloaded Prediction Today, Betsloaded Tips & Correct Score',
+        'keywords' => 'betsloaded, betsloaded prediction, betsloaded tip, betsloaded correct score prediction, betsloaded over 2.5 prediction, bestloaded',
+        'h1' => 'Betsloaded Predictions Today, Betsloaded Tips & Football Predictions',
+        'intro' => '',
+        'intro_links' => '',
+        'breadcrumb' => 'Betsloaded Predictions',
+        'sections' => ['prediction'],
+        'related' => '',
+    ],
+
+    'betwizad-predictions' => [
+        'brand' => 'Betwizad',
+        'title' => 'Betwizad Prediction Today, Football Tips & Correct Score',
+        'description' => 'Betwizad Prediction Today, Football Tips & Correct Score',
+        'keywords' => 'betwizad, betwizad expert tips, betwizad prediction today, betwizad app, betwizad com expert tips, betwizad correct score, betwizad correctscore, betwizad football prediction, betwizad prediction for today',
+        'h1' => 'Betwizad Predictions Today, Betwizad Expert Tips & Football Predictions',
+        'intro' => '',
+        'intro_links' => '',
+        'breadcrumb' => 'Betwizad Predictions',
+        'sections' => ['prediction'],
+        'related' => '',
+    ],
+
+    'soccer24-predictions' => [
+        'brand' => 'Soccer24',
+        'title' => 'Soccer24 Predictions Today, Soccer24 Tips & Football Predictions',
+        'description' => 'Soccer24 Predictions Today, Soccer24 Tips & Football Predictions',
+        'keywords' => 'soccer24, soccer24 predictions, soccer24 prediction today, soccer24 tips, soccer24 livescore, soccer24 results, soccer24 football predictions, soccer 24, soccer24 correct score, soccer24 over 2.5, soccer24 jackpot',
+        'h1' => 'Soccer24 Predictions Today, Soccer24 Tips & Football Predictions',
+        'intro' => '',
+        'intro_links' => '',
+        'breadcrumb' => 'Soccer24 Predictions',
+        'sections' => ['prediction'],
+        'related' => '',
+    ],
+
+    'tipsterarea-predictions' => [
+        'brand' => 'TipsterArea',
+        'title' => 'TipsterArea Prediction Today, Tipster Area Football Tips',
+        'description' => 'TipsterArea Prediction Today, Tipster Area Football Tips',
+        'keywords' => 'tipsterarea, tipster area, tipsterarea most win, tipsterarea prediction, tipsterarea tips, tipsterarea today, tipsterarea today wins',
+        'h1' => 'TipsterArea Predictions Today, Tipster Area Football  Tips',
+        'intro' => '',
+        'intro_links' => '',
+        'breadcrumb' => 'TipsterArea Predictions',
+        'sections' => ['prediction'],
+        'related' => '',
+    ],
+
 ];
