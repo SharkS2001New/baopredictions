@@ -22,6 +22,7 @@
         </div>
       </details>
       <a href="/jackpot-predictions">Jackpots</a>
+      <a href="/prediction-sites">Sites</a>
       <a href="/accumulator-tips">Accas</a>
       <a href="/results" class="nav-cta">Results</a>
     </nav>

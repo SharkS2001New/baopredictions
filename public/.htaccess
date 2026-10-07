@@ -23,12 +23,13 @@
 </IfModule>
 
 <IfModule mod_headers.c>
-  # Dynamic tip HTML (front controller) — never long-cache in the browser.
-  # Exception: sitemap.xml is routed through index.php, so FilesMatch on a
-  # static file never applies — use SetEnvIf on the request URI instead.
+  # Public HTML is cacheable so crawlers can store a copy (same as Blazing Tips).
+  # API responses stay uncached. Sitemap and robots are routed through PHP,
+  # so FilesMatch on a static file never applies — match the request URI.
+  SetEnvIf Request_URI "^/api/" bao_is_api
   SetEnvIf Request_URI "^/sitemap\.xml$" bao_is_crawl_asset
   SetEnvIf Request_URI "^/robots\.txt$" bao_is_crawl_asset
-  Header set Cache-Control "no-store" env=!bao_is_crawl_asset
+  Header set Cache-Control "no-store" env=bao_is_api
   Header set Cache-Control "public, max-age=3600" env=bao_is_crawl_asset
   <FilesMatch "\.(css|js|woff2?)$">
     Header set Cache-Control "public, max-age=604800, immutable"

@@ -53,6 +53,7 @@
           <li><a href="/about-us">About Us</a></li>
           <li><a href="/blog">Blog</a></li>
           <li><a href="/partners">Partners</a></li>
+          <li><a href="/prediction-sites">Prediction Sites</a></li>
           <li><a href="/sitemaps">Sitemaps</a></li>
           <li><a href="/faq">FAQ</a></li>
           <li><a href="/contact-us">Contact Us</a></li>

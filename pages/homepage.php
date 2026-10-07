@@ -257,6 +257,7 @@ if ($payload === null) {
 <p>Yes. Bao provides a range of free betting tips and free football predictions.</p>
 <h3>Do you provide football predictions tomorrow?</h3>
 <p>Yes. Bao publishes football predictions tomorrow for upcoming fixtures.</p>
+<p>Brand tip boards are listed on <a href="/prediction-sites">Prediction Sites</a>.</p>
   </div>
 </section>
 

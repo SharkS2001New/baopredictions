@@ -49,6 +49,7 @@ $rows = [
     ['https://www.baopredictions.com/jackpots/mozzart-super-daily-jackpot-predictions', $liveDay, 'daily', '0.8'],
     ['https://www.baopredictions.com/sunpel-prediction', $today, 'weekly', '0.5'],
     ['https://www.baopredictions.com/sitemaps', $today, 'weekly', '0.5'],
+    ['https://www.baopredictions.com/prediction-sites', $today, 'weekly', '0.6'],
     ['https://www.baopredictions.com/blog', $today, 'weekly', '0.6'],
     ['https://www.baopredictions.com/how-we-predict', $staticDay, 'monthly', '0.6'],
     ['https://www.baopredictions.com/how-to-read-btts-odds', $staticDay, 'monthly', '0.5'],

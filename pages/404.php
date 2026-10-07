@@ -51,6 +51,7 @@ http_response_code(404);
       <li><a href="/live-football-predictions">Livescores</a> — matches already underway</li>
       <li><a href="/results">Football Results</a> — settled tips from the last seven days</li>
       <li><a href="/jackpot-predictions">Jackpot Predictions</a> — SportPesa, Betika, SportyBet, Odibets, Mozzart</li>
+      <li><a href="/prediction-sites">Prediction Sites</a> — Forebet, BetClan, Soccer24 and the other brand boards</li>
       <li><a href="/faq">FAQ</a> · <a href="/contact-us">Contact</a></li>
     </ul>
     <p><a class="btn btn-primary" href="/">Back to homepage</a></p>
