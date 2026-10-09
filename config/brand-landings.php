@@ -36,10 +36,10 @@ return [
 
     'forebet-predictions' => [
         'brand' => 'Forebet',
-        'title' => 'Forebet Predictions Today, Forebet Tips & Football Analysis',
-        'description' => 'Forebet Predictions Today, Forebet Tips & Football Analysis',
-        'keywords' => 'forebet, forebet today, forebet prediction, forebet mega jackpot prediction, forebet prediction today, zulubet predictions for today forebet, forebet today prediction, forebet today prediction tips, mega jackpot prediction 17 games today forebet, forebet tomorrow, forebet midweek jackpot predictions, sure mega jackpot predictions this weekend forebet, forebet predictions',
-        'h1' => 'Forebet Predictions Today - Football Tips, Analysis & Forebet Today Prediction',
+        'title' => 'Forebet Predictions Today, Football Tips & Best Picks',
+        'description' => 'Get Forebet predictions today, football tips, match picks, correct score tips, Over 2.5, BTTS, Double Chance and reliable football predictions from Bao.',
+        'keywords' => 'Forebet Predictions, Forebet Prediction, Forebet Today, Forebet Football Predictions, Forebet Tips, Forebet Prediction Today, Forebet Predictions Tomorrow, Forebet Double Chance Predictions, Forebet Over 2.5 Predictions, Forebet BTTS Predictions, Forebet Correct Score Predictions, Forebet Jackpot Predictions',
+        'h1' => 'Forebet Predictions, Football Tips & Forebet Prediction Today',
         'intro' => '',
         'intro_links' => '',
         'breadcrumb' => 'Forebet Predictions',
