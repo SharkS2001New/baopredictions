@@ -187,15 +187,6 @@ $router->get('/sitemaps', function () {
     include __DIR__ . '/../pages/sitemaps.php';
 });
 
-$router->get('/prediction-sites', function () {
-    include __DIR__ . '/../pages/prediction-sites.php';
-});
-
-$router->get('/prediction-sites/', function () {
-    header('Location: /prediction-sites', true, 301);
-    exit;
-});
-
 $router->get('/sitemaps/', function () {
     header('Location: /sitemaps', true, 301);
     exit;

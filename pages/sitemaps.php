@@ -106,7 +106,6 @@ $sections = [
       ['label' => 'Responsible Betting', 'href' => '/responsible-betting'],
       ['label' => 'Privacy Policy', 'href' => '/privacy-policy'],
       ['label' => 'Terms of Service', 'href' => '/terms-of-service'],
-      ['label' => 'Prediction Sites', 'href' => '/prediction-sites'],
       ['label' => 'XML Sitemap', 'href' => '/sitemap.xml'],
       ['label' => 'llms.txt', 'href' => '/llms.txt'],
     ],
